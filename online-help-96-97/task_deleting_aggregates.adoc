@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_deleting_aggregates.html 
+sidebar: sidebar 
+keywords: delete, aggregates, system, manager, online, help, root 
+summary: 'È possibile utilizzare System Manager per eliminare gli aggregati quando non sono più necessari i dati negli aggregati. Tuttavia, non è possibile eliminare l"aggregato root perché contiene il volume root, che contiene le informazioni di configurazione del sistema.' 
+---
+= Elimina gli aggregati con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per eliminare gli aggregati quando non sono più necessari i dati negli aggregati. Tuttavia, non è possibile eliminare l'aggregato root perché contiene il volume root, che contiene le informazioni di configurazione del sistema.
+
+.Prima di iniziare
+* Tutti i volumi FlexVol e le relative macchine virtuali di storage (SVM) contenuti nell'aggregato devono essere cancellati.
+* L'aggregato deve essere offline.
+
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selezionare uno o più aggregati che si desidera eliminare, quindi fare clic su *Delete* (Elimina).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+*Informazioni correlate*
+
+xref:reference_aggregates_window.adoc[Finestra aggregati]
+
+xref:reference_storage_tiers_window.adoc[Finestra Storage Tiers (livelli di storage)]

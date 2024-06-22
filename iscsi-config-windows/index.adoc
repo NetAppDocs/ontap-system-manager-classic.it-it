@@ -1,0 +1,48 @@
+---
+permalink: iscsi-config-windows/index.html 
+sidebar: sidebar 
+keywords: iscsi, service, storage, virtual, machine, svm, provision, lun, isvsi, initiator, windows, host, computer 
+summary: 'Utilizzando l"interfaccia classica di Gestore di sistema ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente il servizio iSCSI su una macchina virtuale di storage (SVM), eseguire il provisioning di un LUN e rendere disponibile il LUN utilizzando un iniziatore iSCSI su un computer host Windows.' 
+---
+= Panoramica della configurazione iSCSI per Windows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia classica di Gestore di sistema ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente il servizio iSCSI su una macchina virtuale di storage (SVM), eseguire il provisioning di un LUN e rendere disponibile il LUN utilizzando un iniziatore iSCSI su un computer host Windows.
+
+Queste procedure si basano sui seguenti presupposti:
+
+* Si sta utilizzando Microsoft iSCSI software Initiator su Windows Server 2008 o Windows Server 2012.
+* La rete utilizza l'indirizzamento IPv4.
+* Si desidera assegnare gli indirizzi alle interfacce logiche utilizzando uno dei seguenti metodi:
++
+** Automaticamente, da una subnet definita
+** Manualmente, utilizzando un indirizzo selezionato da una subnet esistente
+** Manualmente, utilizzando un indirizzo che verrà aggiunto a una subnet esistente
+
+
+* Non si sta configurando l'avvio SAN iSCSI.
+
+
+Per ulteriori informazioni su come configurare l'host specifico con ONTAP, vedere https://docs.netapp.com/us-en/ontap-sanhost/index.html["Configurazione host SAN ONTAP"].
+
+Per ulteriori informazioni sull'amministrazione DELLA SAN, consultare https://docs.netapp.com/us-en/ontap/san-admin/index.html["Panoramica sull'amministrazione DELLA SAN ONTAP 9"]
+
+
+
+== Altri modi per farlo in ONTAP
+
+|===
+
+
+| Per completare questa attività utilizzando... | Fare riferimento a... 
+
+
+| System Manager riprogettato (disponibile con 9.7 e versioni successive) | https://docs.netapp.com/us-en/ontap/task_san_provision_windows.html["Eseguire il provisioning dello storage SAN per i server Windows"] 
+
+
+| Interfaccia a riga di comando (CLI) di ONTAP | https://docs.netapp.com/us-en/ontap/san-admin/lun-setup-workflow-concept.html["Workflow di setup del LUN con la CLI"] 
+|===

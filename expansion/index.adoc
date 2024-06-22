@@ -1,0 +1,48 @@
+---
+permalink: expansion/index.html 
+sidebar: sidebar 
+keywords: nondisruptive, expand, exist, cluster, ha, pair, expansion, overview 
+summary: È possibile espandere rapidamente e senza interruzioni un cluster esistente aggiungendo una coppia ha. Un cluster più grande aumenta le performance e la capacità di storage disponibili nel cluster. 
+---
+= Panoramica sull'espansione del cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile espandere rapidamente e senza interruzioni un cluster esistente aggiungendo una coppia ha. Un cluster più grande aumenta le performance e la capacità di storage disponibili nel cluster.
+
+Utilizzare questa procedura solo se si verificano le seguenti condizioni:
+
+* Il cluster esistente soddisfa i seguenti requisiti:
++
+** È in esecuzione ONTAP 9.
+** Contiene almeno due nodi.
++
+Sebbene alcuni esempi di questa procedura utilizzino un cluster a due nodi, si applica anche ai cluster con più di due nodi.
+
++
+Se si desidera aggiungere un nodo a un cluster a nodo singolo, è necessario seguire un'altra procedura.
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-controller-add/home.html["Aggiunta di un secondo controller per creare una coppia ha"]
+
+** Non utilizza l'indirizzamento IPv6 o la crittografia dello storage.
+** Non si tratta di una configurazione MetroCluster.
+
+
+* I moduli controller che si intende aggiungere soddisfano i seguenti requisiti:
++
+** Se non sono nuovi, sono stati cancellati, non fanno più parte di un cluster e sono pronti per essere aggiunti al nuovo cluster.
+** Supportano ONTAP 9.
+** Utilizzano una versione della famiglia di release di ONTAP 9.
+
+
+* Quando si completano le attività di configurazione di ONTAP con Gestore di sistema, si desidera utilizzare l'interfaccia utente di _Classic_ Gestore di sistema per ONTAP 9.7 e versioni precedenti, non l'interfaccia utente di Gestione di sistema di ONTAP per ONTAP 9.7 e versioni successive.
++
+https://docs.netapp.com/us-en/ontap/["Documentazione di Gestore di sistema di ONTAP"]
+
+* Si desidera utilizzare le Best practice, non esplorare tutte le opzioni disponibili.
+* Non si desidera leggere un sacco di background concettuale.
+

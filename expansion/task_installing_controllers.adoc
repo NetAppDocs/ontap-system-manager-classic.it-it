@@ -1,0 +1,54 @@
+---
+permalink: expansion/task_installing_controllers.html 
+sidebar: sidebar 
+keywords: install, controller, exist, cluster, installation, setup, instruction, install the controllers 
+summary: Quando si installano i controller che verranno aggiunti a un cluster esistente, seguire i primi tre passaggi delle istruzioni di installazione e configurazione appropriate. 
+---
+= Installare i controller
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si installano controller che verranno aggiunti a un cluster esistente, seguire i primi tre passaggi delle _istruzioni di installazione e configurazione_ appropriate.
+
+[NOTE]
+.A proposito di questa attività
+====
+A partire da ONTAP 9.0, la modalità ha è attivata per impostazione predefinita sul nuovo hardware.
+
+====
+.Fasi
+. Ottenere le _istruzioni di installazione e configurazione_ per il numero di modello FAS del modulo controller che si desidera aggiungere al cluster.
++
+** Per un nuovo modulo controller, il documento è disponibile nella confezione.
+** Per un modulo controller riassegnato, è possibile scaricare il documento.
+https://mysupport.netapp.com/site/docs-and-kb["Documentazione NetApp"]
+
+
+. Seguire la sezione _Prepare for installation_ con le seguenti eccezioni:
++
+** È possibile ignorare le istruzioni relative al download di software o fogli di lavoro.
+** È necessario fornire una connessione alla console seriale anche se non è menzionata nelle _istruzioni di installazione e configurazione_.
++
+È necessaria una console seriale perché è necessario utilizzare la CLI nodeshell per configurare le LIF di gestione dei nodi.
+
++
+Se la sezione ONTAP non menziona la console seriale, viene visualizzata la sezione 7-mode.
+
+
+
+. Seguire la sezione _Installazione dell'hardware_.
+. Seguire la sezione _Cable storage_.
+. Ignorare la maggior parte della sezione _Configurazione completa del sistema_ con le seguenti eccezioni:
++
+** Se richiesto, è necessario accendere tutti gli shelf di dischi e controllare gli ID.
+** È necessario collegare la console seriale per accedere al nodo.
++
+Se la sezione ONTAP non menziona la console seriale, viene visualizzata la sezione 7-mode.
+
+
+
+. Saltare la sezione _configurazione completa_.
+

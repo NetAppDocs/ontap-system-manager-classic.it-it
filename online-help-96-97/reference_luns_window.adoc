@@ -1,0 +1,270 @@
+---
+permalink: online-help-96-97/reference_luns_window.html 
+sidebar: sidebar 
+keywords: online, help, lun, management, window, command, button, initiator, portset, group, online, help 
+summary: È possibile utilizzare la finestra LUN per creare e gestire LUN e visualizzare informazioni sulle LUN. È inoltre possibile aggiungere, modificare o eliminare gruppi di iniziatori e ID iniziatore. 
+---
+= Finestra LUN in Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra LUN in Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare e gestire LUN e visualizzare informazioni sulle LUN. È inoltre possibile aggiungere, modificare o eliminare gruppi di iniziatori e ID iniziatore.
+
+
+
+== Scheda LUN Management (Gestione LUN)
+
+Questa scheda consente di creare, clonare, eliminare, spostare o modificare le impostazioni delle LUN. È inoltre possibile assegnare LUN a un gruppo di criteri QoS (Storage Quality of Service).
+
+
+
+== Pulsanti di comando
+
+* *Crea*
++
+Apre la procedura guidata Create LUN (Crea LUN), che consente di creare LUN.
+
++
+In un cluster su una piattaforma AFF che non contiene LUN esistenti, viene aperta la finestra di dialogo Crea LUN ottimizzati SAN FC, che consente di configurare una o più LUN ottimizzate SAN FC.
+
+* *Clone*
++
+Apre la finestra di dialogo Clone LUN, che consente di clonare i LUN selezionati.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit LUN (Modifica LUN), che consente di modificare le impostazioni del LUN selezionato.
+
+* *Elimina*
++
+Elimina il LUN selezionato.
+
+* *Stato*
++
+Consente di modificare lo stato del LUN selezionato in Online o non in linea.
+
+* *Sposta*
++
+Apre la finestra di dialogo Move LUN (Sposta LUN), che consente di spostare il LUN selezionato in un nuovo volume o in un volume o qtree esistente all'interno della stessa SVM (Storage Virtual Machine).
+
+* *QoS dello storage*
++
+Apre la finestra di dialogo Dettagli qualità del servizio, che consente di assegnare una o più LUN a un gruppo di criteri nuovo o esistente.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+== Elenco LUN
+
+* *Nome*
++
+Visualizza il nome del LUN.
+
+* *SVM*
++
+Visualizza il nome della SVM (Storage Virtual Machine) in cui viene creato il LUN.
+
+* *Percorso container*
++
+Visualizza il nome del file system (volume o qtree) che contiene il LUN.
+
+* *Prenotazione di spazio*
++
+Specifica se la riserva di spazio è attivata o disattivata.
+
+* *Dimensioni disponibili*
++
+Visualizza lo spazio disponibile nel LUN.
+
+* *Dimensione totale*
++
+Visualizza lo spazio totale nel LUN.
+
+* *%utilizzato*
++
+Visualizza lo spazio totale (in percentuale) utilizzato.
+
+* *Tipo*
++
+Specifica il tipo di LUN.
+
+* *Stato*
++
+Specifica lo stato del LUN.
+
+* *Gruppo di policy*
++
+Visualizza il nome del gruppo di criteri Storage QoS a cui è assegnata la LUN. Per impostazione predefinita, questa colonna è nascosta.
+
+* *Applicazione*
++
+Visualizza il nome dell'applicazione assegnata al LUN.
+
+* *Descrizione*
++
+Visualizza la descrizione del LUN.
+
+
+
+
+
+== Area dei dettagli
+
+L'area sotto l'elenco LUN visualizza i dettagli relativi al LUN selezionato.
+
+* Scheda *Dettagli*
++
+Visualizza i dettagli relativi al LUN, ad esempio il numero di serie del LUN, se il LUN è un clone, la descrizione del LUN, il gruppo di criteri a cui è assegnato il LUN, il throughput minimo del gruppo di criteri, il throughput massimo del gruppo di criteri, i dettagli sull'operazione di spostamento del LUN, E l'applicazione assegnata al LUN. È inoltre possibile visualizzare i dettagli relativi ai gruppi di iniziatori e agli iniziatori associati al LUN selezionato.
+
+* Scheda Performance (prestazioni)*
++
+Visualizza i grafici delle metriche delle performance delle LUN, inclusi velocità di trasferimento dei dati, IOPS e tempo di risposta.
+
++
+La modifica del fuso orario del client o del fuso orario del cluster influisce sui grafici delle metriche delle performance. Aggiornare il browser per visualizzare i grafici aggiornati.
+
+
+
+
+
+== Scheda Initiator Groups
+
+Questa scheda consente di creare, eliminare o modificare le impostazioni dei gruppi di iniziatori e degli ID di iniziatori.
+
+
+
+== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Initiator Group (Crea gruppo di iniziatori), che consente di creare gruppi di iniziatori per controllare l'accesso degli host a LUN specifiche.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Initiator Group (Modifica gruppo di iniziatori), che consente di modificare le impostazioni del gruppo di iniziatori selezionato.
+
+* *Elimina*
++
+Elimina il gruppo iniziatore selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+== Initiator Groups (gruppi iniziatori
+
+* *Nome*
++
+Visualizza il nome del gruppo iniziatore.
+
+* *Tipo*
++
+Specifica il tipo di protocollo supportato dal gruppo di iniziatori. I protocolli supportati sono iSCSI, FC/FCoE o Mixed (iSCSI e FC/FCoE).
+
+* *Sistema operativo*
++
+Specifica il sistema operativo per il gruppo iniziatore.
+
+* *Portset*
++
+Visualizza il set di porte associato al gruppo di iniziatori.
+
+* *Conteggio iniziatori*
++
+Visualizza il numero di iniziatori aggiunti al gruppo di iniziatori.
+
+
+
+
+
+== Area dei dettagli
+
+L'area sotto l'elenco Initiator Groups (gruppi di iniziatori) visualizza i dettagli sugli iniziatori aggiunti al gruppo di iniziatori selezionato e sui LUN mappati al gruppo di iniziatori.
+
+
+
+== Scheda Portsets
+
+Questa scheda consente di creare, eliminare o modificare le impostazioni dei portset.
+
+
+
+== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Portset (Crea portset), che consente di creare portset per limitare l'accesso alle LUN.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Portset (Modifica portset), che consente di selezionare le interfacce di rete da associare al portset.
+
+* *Elimina*
++
+Elimina il set di porte selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+== Elenco di portset
+
+* *Nome portset*
++
+Visualizza il nome del portset.
+
+* *Tipo*
++
+Specifica il tipo di protocollo supportato dal portset. I protocolli supportati sono iSCSI, FC/FCoE o Mixed (iSCSI e FC/FCoE).
+
+* *Numero di interfacce*
++
+Visualizza il numero di interfacce di rete associate al set di porte.
+
+* *Conteggio gruppi iniziatori*
++
+Visualizza il numero di gruppi di iniziatori associati al portset.
+
+
+
+
+
+== Area dei dettagli
+
+L'area sotto l'elenco Portsets visualizza i dettagli relativi alle interfacce di rete e ai gruppi di iniziatori associati al portset selezionato.
+
+*Informazioni correlate*
+
+xref:task_creating_luns.adoc[Creazione di LUN]
+
+xref:task_deleting_luns.adoc[Eliminazione LUN in corso]
+
+xref:task_creating_initiator_groups.adoc[Creazione di gruppi di iniziatori]
+
+xref:task_editing_luns.adoc[Modifica delle LUN]
+
+xref:task_editing_initiator_groups.adoc[Modifica dei gruppi di iniziatori]
+
+xref:task_editing_initiators.adoc[Modifica degli iniziatori]
+
+xref:task_bringing_luns_online.adoc[Portare le LUN online]
+
+xref:task_taking_luns_offline.adoc[Portare le LUN offline]
+
+xref:task_cloning_luns.adoc[Cloning LUN]

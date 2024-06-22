@@ -1,0 +1,45 @@
+---
+permalink: expansion/task_generating_autosupport_message_about_completing_expansion.html 
+sidebar: sidebar 
+keywords: expand, cluster, autosupport, indicate, expansion, process, complete, message, communicate, internal, external, support, staff, complete, troubleshoot, generate, generate an autosupport, message about completing expansion 
+summary: Una volta espanso un cluster, è necessario inviare un messaggio AutoSupport per indicare che il processo di espansione è completo. 
+---
+= Generare un messaggio AutoSupport sul completamento dell'espansione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta espanso un cluster, è necessario inviare un messaggio AutoSupport per indicare che il processo di espansione è completo. Questo messaggio comunica al personale di supporto interno ed esterno che l'espansione è completa e funge da indicatore orario per qualsiasi risoluzione dei problemi che potrebbe essere richiesta in seguito.
+
+.Prima di iniziare
+AutoSupport deve essere configurato.
+
+.Fasi
+. Per ciascun nodo del cluster, inviare un messaggio AutoSupport utilizzando `system node autosupport invoke` comando.
++
+Il messaggio deve essere inviato una volta per ciascun nodo del cluster, inclusi i nodi appena aggiunti.
+
++
+Se sono stati aggiunti due nodi a un cluster a due nodi, è necessario inviare il messaggio quattro volte.
+
++
+[listing]
+----
+cluster1::> system node autosupport invoke -node * -message "cluster expansion complete" -type all
+The AutoSupport was successfully invoked on node "cluster1-1". To view the status
+of the AutoSupport, use the "system node autosupport history show" command.
+Note: It may take several minutes for the AutoSupport to appear in the history list.
+The AutoSupport was successfully invoked on node "cluster1-2". To view the status
+of the AutoSupport, use the "system node autosupport history show" command.
+Note: It may take several minutes for the AutoSupport to appear in the history list.
+The AutoSupport was successfully invoked on node "cluster1-3". To view the status
+of the AutoSupport, use the "system node autosupport history show" command.
+Note: It may take several minutes for the AutoSupport to appear in the history list.
+The AutoSupport was successfully invoked on node "cluster1-4". To view the status
+of the AutoSupport, use the "system node autosupport history show" command.
+Note: It may take several minutes for the AutoSupport to appear in the history list.
+4 entries were acted on.
+----
+

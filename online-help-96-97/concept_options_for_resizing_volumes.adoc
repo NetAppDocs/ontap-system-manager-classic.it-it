@@ -1,0 +1,44 @@
+---
+permalink: online-help-96-97/concept_options_for_resizing_volumes.html 
+sidebar: sidebar 
+keywords: option, resize, volume, wizard, snapshot, reserve, snapshot, copy, results, view, online, help 
+summary: È possibile utilizzare la procedura guidata ridimensionamento volume per modificare le dimensioni del volume, regolare la riserva di snapshot, eliminare le copie Snapshot e visualizzare dinamicamente i risultati delle modifiche. 
+---
+= Opzioni per il ridimensionamento dei volumi con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la procedura guidata ridimensionamento volume in Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare le dimensioni del volume, regolare la riserva di snapshot, eliminare le copie Snapshot e visualizzare dinamicamente i risultati delle modifiche.
+
+La procedura guidata ridimensionamento volume visualizza un grafico a barre che mostra le allocazioni di spazio correnti all'interno del volume, inclusa la quantità di spazio utilizzato e libero. Quando si apportano modifiche alle dimensioni o alla riserva Snapshot del volume, questo grafico viene aggiornato dinamicamente per riflettere le modifiche.
+
+È inoltre possibile utilizzare il pulsante *Calculate space* (Calcola spazio) per determinare la quantità di spazio liberato eliminando le copie Snapshot selezionate.
+
+È possibile utilizzare la procedura guidata ridimensionamento volume per apportare le seguenti modifiche al volume:
+
+* *Modificare le dimensioni del volume*
++
+È possibile modificare le dimensioni del volume totale per aumentare o ridurre lo spazio di storage.
+
+* *Regola riserva snapshot*
++
+È possibile regolare la quantità di spazio riservato alle copie Snapshot per aumentare o ridurre lo spazio di storage.
+
+* *Elimina copie Snapshot*
++
+È possibile eliminare le copie Snapshot per recuperare lo spazio del volume.
+
++
+[NOTE]
+====
+Le copie Snapshot in uso non possono essere eliminate.
+
+====
+* *Crescita automatica*
++
+È possibile specificare il limite al quale il volume può essere aumentato automaticamente, se necessario.
+
+

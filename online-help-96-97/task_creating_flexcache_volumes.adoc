@@ -1,0 +1,53 @@
+---
+permalink: online-help-96-97/task_creating_flexcache_volumes.html 
+sidebar: sidebar 
+keywords: online, help, create, flexcache, volume, system, manager 
+summary: A partire da System Manager 9.6, è possibile creare un volume FlexCache. 
+---
+= Creare volumi FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile creare un volume FlexCache.
+
+.A proposito di questa attività
+Prima di creare un volume FlexCache, è necessario disporre di una licenza di capacità FlexCache.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Nella finestra *Volumes*, fare clic su *Create* > *FlexCache*.
++
+Viene visualizzata la finestra Crea volume FlexCache.
+
+. *Opzionale:* i seguenti campi nell'area *Volume origine* visualizzano i valori del volume di origine per il quale si desidera creare un volume FlexCache. È possibile modificarle.
++
+** *Cluster*: Utilizzare il menu a discesa per selezionare il cluster associato al volume di origine.
+** *SVM*: Utilizzare il menu a discesa per selezionare la SVM contenente il volume di origine.
++
+Se si sceglie una SVM che non è in peering, ma è consentita la peer, System Manager consente di eseguire il peer in modo esplicito.
+
+** *Volume*: Utilizzare il menu a discesa per selezionare il nome del volume o inserire il nome nel campo.
+
+
+. I seguenti campi nell'area *Volume FlexCache* visualizzano i valori predefiniti per il volume FlexCache che si sta creando. È possibile modificarle.
++
+** *SVM*: Utilizzare il menu a discesa per selezionare la SVM in cui si desidera creare il volume FlexCache. Se la capacità della licenza FlexCache è piena o quasi piena, selezionare *Gestisci licenza FlexCache* per modificare la licenza.
+** *Nuovo nome volume*: Immettere un nome per il volume FlexCache.
+** *Dimensione*: Specificare le dimensioni del volume FlexCache, comprese le unità di misura.
++
+Il campo delle dimensioni viene inizialmente impostato per impostazione predefinita. La dimensione specificata non può superare la dimensione della capacità concessa in licenza.
+
+
+
+. Fare clic su *Save* (Salva) per creare il volume FlexCache.
++
+È possibile tornare alla finestra *Volumes* per visualizzare il volume FlexCache nell'elenco dei volumi.
+
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

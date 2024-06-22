@@ -1,0 +1,88 @@
+---
+permalink: online-help-96-97/concept_dns_ddns_services.html 
+sidebar: sidebar 
+keywords: dns, ddns, service, system, manager, manage, online, help, edit, settings, command, button 
+summary: È possibile utilizzare System Manager per gestire i servizi DNS/DDNS. 
+---
+= Gestione dei servizi DNS/DDNS con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per gestire i servizi ONTAP/DDNS, è possibile utilizzare Gestione di sistema Classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Attiva o disattiva DDNS
+
+È possibile utilizzare System Manager per attivare o disattivare DDNS su un sistema di storage.
+
+.A proposito di questa attività
+* Il DNS è attivato per impostazione predefinita.
+* DDNS è disattivato per impostazione predefinita.
+* System Manager non esegue controlli di convalida per le impostazioni DNS e DDNS.
+
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *servizi*, fare clic su *DNS/DDNS*.
+. Nella finestra *DNS/DDNS Services* (servizi DNS/DDNS), fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Modifica impostazioni DNS/DDNS*, attivare DDNS selezionando la casella di controllo *servizio DDNS*.
++
+È possibile disattivare DDNS deselezionando la casella di controllo *servizio DDNS*.
+
+. Fare clic su *OK*.
+
+
+
+
+== Modificare le impostazioni DNS e DDNS
+
+È possibile gestire le informazioni degli host a livello centrale utilizzando il DNS. È possibile utilizzare System Manager per aggiungere o modificare il nome di dominio DNS del sistema di storage. È inoltre possibile abilitare DDNS sul sistema di storage per aggiornare automaticamente il server dei nomi nel server DNS.
+
+.Prima di iniziare
+È necessario configurare un server CIFS o un account Active Directory per la macchina virtuale di storage (SVM) affinché DDNS sicuro funzioni.
+
+.A proposito di questa attività
+System Manager non esegue controlli di convalida per le impostazioni DNS e DDNS.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *servizi*, fare clic su *DNS/DDNS*.
+. Fare clic su *Edit* (Modifica).
+. Nell'area *DNS Domains and Name Servers* (domini e server dei nomi DNS), aggiungere o modificare i nomi di dominio DNS e gli indirizzi IP.
+. Selezionare la casella di controllo *servizio DDNS* per attivare il DDNS.
++
+.. Selezionare la casella di controllo *Enable Secure DDNS* (attiva DDNS sicuro) per attivare il DDNS sicuro.
+.. Specificare il nome di dominio completo (FQDN) e il valore del tempo di attivazione del servizio DDNS.
++
+Per impostazione predefinita, Time to live (tempo di attivazione) è impostato su 24 ore e FQDN su `SVM name. domain name`.
+
+
+
+. Fare clic su *OK* per salvare le modifiche apportate.
+
+
+
+
+== Finestra DNS/DDNS Services (servizi DNS/DDNS)
+
+La finestra DNS/DDNS Services (servizi DNS/DDNS) consente di visualizzare e modificare le impostazioni DNS e DDNS correnti del sistema.
+
+
+
+=== Pulsanti di comando
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit DNS/DDNS Settings (Modifica impostazioni DNS/DDNS), che consente di aggiungere o modificare i dettagli DNS o DDNS. È inoltre possibile attivare o disattivare il DDNS.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+

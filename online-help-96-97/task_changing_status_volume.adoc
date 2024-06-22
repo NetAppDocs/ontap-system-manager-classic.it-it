@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_changing_status_volume.html 
+sidebar: sidebar 
+keywords: flexvol, change, status, volume, online, help, system, manager 
+summary: 'È possibile utilizzare Gestore di sistema per modificare lo stato di un volume FlexVol quando si desidera disattivare un volume, riportarlo in linea o limitare l"accesso a un volume.' 
+---
+= Modificare lo stato di un volume con Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare lo stato di un volume FlexVol quando si desidera disattivare un volume, ripristinare un volume online o limitare l'accesso a un volume.
+
+.Prima di iniziare
+* Se si desidera che un volume sia la destinazione di un'operazione di copia di un volume o di un'operazione di replica di SnapMirror, il volume deve essere nello stato con restrizioni.
+* Se si desidera portare un volume NAS offline, è necessario rimuovere il volume NAS.
+
+
+.A proposito di questa attività
+È possibile disattivare un volume per eseguire la manutenzione del volume, spostarlo o distruggerlo. Quando un volume non è in linea, non è disponibile per l'accesso in lettura o scrittura da parte dei client. Non è possibile scollegare un volume root.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume per il quale si desidera modificare lo stato.
+. Dal menu *altre azioni* > *Cambia stato in*, selezionare lo stato del volume desiderato.
+. Fare clic su *OK* nella finestra di dialogo di conferma per modificare lo stato del volume.
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

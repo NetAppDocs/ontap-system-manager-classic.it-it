@@ -1,0 +1,14 @@
+---
+permalink: online-help-96-97/concept_setting_up_logical_storage.html 
+sidebar: sidebar 
+keywords: online, help, set, up, logical, storage, svm, volume 
+summary: 'La configurazione dello storage logico consiste nella creazione di macchine virtuali di storage (SVM) e volumi.' 
+---
+= Configurare lo storage logico utilizzando Gestione di sistema Classic - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare lo storage logico utilizzando Gestore di sistema ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti). La configurazione dello storage logico consiste nella creazione di macchine virtuali di storage (SVM) e volumi.

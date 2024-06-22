@@ -1,0 +1,90 @@
+---
+permalink: online-help-96-97/concept_hardware_cache.html 
+sidebar: sidebar 
+keywords: hardware, cache, system, manager, manage, online, help, flash, 
+summary: È possibile utilizzare System Manager per gestire i moduli hardware cache. 
+---
+= Gestione della cache hardware con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per gestire i moduli hardware cache, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+[NOTE]
+====
+Flash cache è nota come hardware cache in System Manager.
+
+====
+
+
+== Attiva o disattiva i moduli Flash cache
+
+È possibile attivare o disattivare la funzionalità della cache esterna per un sistema di storage su cui è installato un modulo Flash cache utilizzando System Manager. È possibile abilitare i moduli Flash cache in base ai requisiti di carico di lavoro del sistema storage.
+
+.Fasi
+. Fare clic su *Configuration* > *hardware cache*
+. Se si desidera modificare uno o più moduli, spostare il cursore per attivare o disattivare ciascun modulo, secondo necessità.
+
+
+
+
+== Funzionamento dei moduli Flash cache
+
+L'utilizzo dei moduli Flash cache migliora le performance di un sistema storage. L'impatto dell'utilizzo dei moduli Flash cache viene visualizzato nella finestra hardware cache.
+
+È possibile configurare i moduli e i dischi Flash cache in base ai requisiti di carico di lavoro di un sistema storage. Determinando il carico di lavoro di lettura (numero di operazioni di lettura) servito dai moduli e dai dischi Flash cache, è possibile analizzare le performance del sistema storage.
+
+I moduli Flash cache non contengono dati durante l'avvio del sistema di storage o quando il controllo viene restituito al sistema di storage dopo un evento di Takeover. Pertanto, i dischi servono tutte le richieste di lettura dei dati del sistema di storage.
+
+Il modulo Flash cache viene popolato lentamente con i dati quando vengono soddisfatte le richieste di lettura dei dati. Poiché le richieste di lettura dei dati fornite dai moduli Flash cache sono più veloci di quelle gestite dai dischi, le performance del sistema storage migliorano.
+
+Le richieste di lettura dei dati fornite dal modulo Flash cache sostituiscono le richieste di lettura dei dati fornite dai dischi e, di conseguenza, il miglioramento delle prestazioni nel sistema di storage è direttamente correlato alle letture dei dischi che vengono sostituite. Per comprendere l'impatto dei moduli Flash cache sulle prestazioni del sistema storage, è necessario visualizzare il grafico del carico di lavoro in lettura nella finestra hardware cache quando il modulo Flash cache contiene dati.
+
+
+
+== Finestra hardware cache
+
+È possibile utilizzare la finestra hardware cache per attivare o disattivare i moduli Flash cache per un sistema storage su cui è installato un modulo Flash cache. È inoltre possibile visualizzare le statistiche dei carichi di lavoro in lettura.
+
+
+
+=== Informazioni sul modulo
+
+* *Nome del sistema di storage*
++
+Il nome del sistema di storage su cui è installato un modulo Flash cache viene visualizzato sotto l'immagine.
+
+* *Pulsante di attivazione/disattivazione*
++
+Spostare il pulsante di commutazione per attivare o disattivare il modulo.
+
+* *Dimensione*
++
+Le dimensioni del modulo in gigabyte. Se sono presenti più schede del modulo Flash cache, viene visualizzata la dimensione totale della cache di tutte le schede.
+
++
+[NOTE]
+====
+Le dimensioni del modulo Flash cache visualizzate sono diverse da quelle effettive per i seguenti motivi:
+    - System Manager segnala solo la capacità utilizzabile fornita da ONTAP.
+    - Una parte della capacità totale è riservata per la memorizzazione dei metadati.
+
+====
+* *Nomi dei modelli*
++
+I nomi dei modelli dei moduli.
+
+* *Latenza di lettura del sistema*
++
+Visualizza la latenza di lettura media in millisecondi.
+
+
+
+
+
+=== Carico di lavoro di lettura della cache
+
+Indica le prestazioni del sistema di storage visualizzando un grafico che specifica la velocità del carico di lavoro di lettura che viene servita dai dischi e dal modulo Flash cache.

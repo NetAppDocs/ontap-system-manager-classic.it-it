@@ -1,0 +1,76 @@
+---
+permalink: iscsi-config-esxi/task_creating_svm.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, iscsi, target, host, access, lun, logical, interface, lif, administration, function, cluster, create, create a new svm 
+summary: 'La SVM (Storage Virtual Machine) fornisce la destinazione iSCSI attraverso la quale un host accede alle LUN. Quando si crea la SVM, si creano anche interfacce logiche (LIF) che forniscono percorsi alla LUN. È possibile creare una SVM per separare i dati e le funzioni di amministrazione di un utente da quelle degli altri utenti di un cluster.' 
+---
+= Creare una nuova SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La SVM (Storage Virtual Machine) fornisce la destinazione iSCSI attraverso la quale un host accede alle LUN. Quando si crea la SVM, si creano anche interfacce logiche (LIF) che forniscono percorsi alla LUN. È possibile creare una SVM per separare i dati e le funzioni di amministrazione di un utente da quelle degli altri utenti di un cluster.
+
+.Prima di iniziare
+* È necessario disporre di un numero sufficiente di indirizzi di rete per creare due LIF per ciascun nodo.
+
+
+.Fasi
+. Accedere alla finestra *SVM*.
+. Fare clic su *Create* (Crea).
+. Nella finestra *Storage Virtual Machine (SVM) Setup*, creare il campo SVM:
++
+.. Specificare un nome univoco per la SVM.
++
+Il nome deve essere un FQDN (Fully Qualified Domain Name) o seguire un'altra convenzione che garantisca nomi univoci in un cluster.
+
+.. Selezionare l'IPSpace a cui appartiene la SVM.
++
+Se il cluster non utilizza più spazi IP, viene utilizzato l'IPSpace "`Default`".
+
+.. Mantenere la selezione del tipo di volume predefinito.
++
+Solo i volumi FlexVol sono supportati con i protocolli SAN.
+
+.. Selezionare tutti i protocolli per i quali si dispone di licenze e che è possibile utilizzare su SVM, anche se non si desidera configurare immediatamente tutti i protocolli.
++
+Selezionando sia NFS che CIFS quando si crea la SVM, questi due protocolli possono condividere le stesse LIF. L'aggiunta di questi protocolli in un secondo momento non consente loro di condividere le LIF.
+
++
+Se CIFS è uno dei protocolli selezionati, lo stile di protezione viene impostato su NTFS. In caso contrario, lo stile di protezione viene impostato su UNIX.
+
+.. Mantenere l'impostazione della lingua predefinita C.UTF-8.
+.. Selezionare l'aggregato root desiderato per contenere il volume root SVM.
++
+L'aggregato per il volume di dati viene selezionato separatamente in una fase successiva.
+
+.. Fare clic su *Invia e continua*.
+
+
++
+La SVM viene creata, ma i protocolli non sono ancora configurati.
+
+. Se viene visualizzata la pagina *Configure CIFS/NFS Protocol* (Configura protocollo CIFS/NFS) perché CIFS o NFS è stato attivato, fare clic su *Skip* (Ignora) e configurare CIFS o NFS in un secondo momento.
+. Configurare il servizio iSCSI e creare LIF dalla pagina *Configure iSCSI Protocol* (Configura protocollo iSCSI):
++
+.. Immettere un nome alias di destinazione.
+.. Assegnare l'indirizzo IP per le LIF utilizzando una subnet o senza una subnet.
+.. Invio `2` Nel campo *LIF per nodo*.
++
+Per garantire disponibilità e mobilità dei dati, sono necessarie due LIF per ciascun nodo.
+
+.. Ignorare l'area opzionale *Provision a LUN for iSCSI storage* (Provisioning LUN per lo storage iSCSI) perché il LUN viene fornito da Virtual Storage Console per VMware vSphere in un passaggio successivo.
+.. Fare clic su *Invia e continua*.
+
+
+. Se viene visualizzata la pagina *Configure FC/FCoE Protocol* (Configura protocollo FC/FCoE) perché FC è stato attivato, fare clic su *Skip* (Ignora), quindi configurare FC in un secondo momento.
+. Quando viene visualizzato il messaggio *SVM Administration* (Amministrazione SVM), configurare o rinviare la configurazione di un amministratore separato per questa SVM:
++
+** Fare clic su *Ignora* e configurare un amministratore in un secondo momento, se lo si desidera.
+** Inserire le informazioni richieste, quindi fare clic su *Submit & Continue* (Invia e continua).
+
+
+. Esaminare la pagina *Riepilogo*, registrare le informazioni LIF, quindi fare clic su *OK*.
+

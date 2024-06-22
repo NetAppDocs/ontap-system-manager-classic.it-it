@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/reference_dashboard_window.html 
+sidebar: sidebar 
+keywords: system, manager, dashboard, window, multiple, panel, online, help 
+summary: 'La finestra Dashboard contiene più pannelli che forniscono informazioni cumulative a colpo d"occhio sul sistema e sulle sue performance.' 
+---
+= Finestra del dashboard per Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La finestra del pannello di controllo in Gestione di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) contiene più pannelli che forniscono informazioni cumulative a colpo d'occhio sul sistema e sulle sue performance.
+
+È possibile utilizzare la finestra Dashboard per visualizzare informazioni su avvisi e notifiche importanti, l'efficienza e la capacità di aggregati e volumi, i nodi disponibili in un cluster, lo stato dei nodi in una coppia ad alta disponibilità (ha), le applicazioni e gli oggetti più attivi, e le metriche delle performance di un cluster o di un nodo.
+
+* *Avvisi e notifiche*
++
+Visualizza tutti gli avvisi in rosso, ad esempio eventi EMS di emergenza, dettagli dei nodi offline, dettagli dei dischi rotti, diritti di licenza ad alto rischio e dettagli delle porte di rete offline. Visualizza tutte le notifiche in giallo, ad esempio le notifiche di Health monitor che si sono verificate nelle ultime 24 ore a livello di cluster, i diritti di licenza a medio rischio, i dettagli dei dischi non assegnati, il numero di LIF migrati, le operazioni di spostamento del volume non riuscite, e le operazioni di spostamento dei volumi che hanno richiesto l'intervento amministrativo nelle ultime 24 ore.
+
++
+Il pannello Avvisi e notifiche visualizza fino a tre avvisi e notifiche oltre i quali viene visualizzato un collegamento Visualizza tutti. Per visualizzare ulteriori informazioni sugli avvisi e le notifiche, fare clic sul collegamento Visualizza tutto.
+
++
+L'intervallo di aggiornamento per il pannello Avvisi e notifiche è di un minuto.
+
+* *Panoramica del cluster*
++
+Visualizza gli aggregati e i volumi che si stanno avvicinando alla capacità, l'efficienza dello storage di un cluster o nodo e i dettagli di protezione dei volumi principali.
+
++
+La scheda Capacity (capacità) visualizza i principali aggregati online che si stanno avvicinando alla capacità, in ordine decrescente di spazio utilizzato.
+
++
+La scheda Capacity (capacità) fornisce un collegamento al numero di volumi con la capacità massima utilizzata quando si inserisce un valore valido nel campo Volumes execcedendo la capacità utilizzata di. Visualizza anche la quantità di dati inattivi (cold) disponibili nel cluster.
+
++
+La scheda Efficiency (efficienza) visualizza i risparmi di efficienza dello storage per un cluster o un nodo. È possibile visualizzare lo spazio logico totale utilizzato, lo spazio fisico totale utilizzato e i risparmi complessivi. È possibile selezionare un cluster o un nodo specifico per visualizzare i risparmi in termini di efficienza dello storage. Per System Manager 9.5, lo spazio utilizzato per le copie Snapshot è _non_ incluso nei valori per lo spazio logico totale utilizzato, lo spazio fisico totale utilizzato e il risparmio complessivo. Tuttavia, a partire da System Manager 9.6, lo spazio utilizzato per le copie Snapshot è incluso nei valori relativi allo spazio logico totale utilizzato, allo spazio fisico totale utilizzato e al risparmio complessivo.
+
++
+L'intervallo di aggiornamento per il pannello Cluster Overview (Panoramica cluster) è di 15 minuti.
+
++
+La scheda protezione visualizza informazioni sui volumi a livello di cluster che non hanno relazioni di protezione definite. Vengono visualizzati solo i volumi FlexVol e FlexGroup che soddisfano i seguenti criteri:
+
++
+** I volumi sono volumi RW e sono online.
+** L'aggregato contenente i volumi è online.
+** I volumi hanno relazioni di protezione e non sono ancora inizializzati.
+È possibile accedere alla finestra Volumes (volumi) per visualizzare i volumi che non hanno una relazione di protezione definita.
+
+
++
+La scheda protezione visualizza anche le cinque SVM principali con il numero più elevato di volumi che non hanno relazioni di protezione definite.
+
+* *Nodi*
++
+Visualizza una rappresentazione grafica del numero e dei nomi dei nodi disponibili nel cluster e dello stato dei nodi presenti in una coppia ha. Posizionare il cursore sulla rappresentazione grafica dei nodi per visualizzare lo stato dei nodi in una coppia ha.
+
++
+È possibile visualizzare ulteriori informazioni su tutti i nodi utilizzando il collegamento Nodes (nodi). È inoltre possibile fare clic sulla rappresentazione grafica per visualizzare il modello dei nodi e il numero di aggregati, pool di storage, shelf e dischi disponibili nei nodi. È possibile gestire i nodi utilizzando il collegamento Manage Nodes (Gestisci nodi). È possibile gestire i nodi in una coppia ha utilizzando il collegamento Manage ha (Gestisci ha).
+
++
+L'intervallo di refresh per il pannello Nodes (nodi) è di 15 minuti.
+
+* *Applicazioni e oggetti*
++
+È possibile utilizzare il pannello applicazioni e oggetti per visualizzare informazioni su applicazioni, client e file in un cluster.
+
++
+La scheda Applications (applicazioni) visualizza informazioni sulle cinque applicazioni principali del cluster. È possibile visualizzare le cinque applicazioni principali in base a IOPS e latenza (da bassa a alta o da alta a bassa) o capacità (da bassa a alta o da alta a bassa).
+
++
+Fare clic sul grafico a barre specifico per visualizzare ulteriori informazioni sull'applicazione. Vengono visualizzati lo spazio totale, lo spazio utilizzato e lo spazio disponibile per la capacità, i dettagli IOPS per gli IOPS e i dettagli della latenza per la latenza.
+
++
+È possibile fare clic su *View details* (Visualizza dettagli) per aprire la finestra delle applicazioni dell'applicazione specifica.
+
++
+La scheda oggetti visualizza informazioni sui primi cinque client e file attivi nel cluster. È possibile visualizzare i primi cinque client e file attivi in base agli IOPS o al throughput.
+
++
+[NOTE]
+====
+Queste informazioni vengono visualizzate solo per i protocolli CIFS e NFS.
+
+====
++
+L'intervallo di refresh per il pannello Applications and Objects (applicazioni e oggetti) è di un minuto.
+
+* *Prestazioni*
++
+Visualizza le metriche di performance medie, le metriche di performance di lettura e le metriche di performance di scrittura del cluster in base a latenza, IOPS e throughput. Per impostazione predefinita, vengono visualizzate le metriche medie delle performance. È possibile fare clic su Read (lettura) o Write (scrittura) per visualizzare rispettivamente le metriche di performance in lettura o in scrittura. È possibile visualizzare le metriche delle performance del cluster o di un nodo.
+
++
+Se le informazioni sulle prestazioni del cluster non possono essere recuperate da ONTAP, non è possibile visualizzare il rispettivo grafico. In questi casi, System Manager visualizza il messaggio di errore specifico.
+
++
+L'intervallo di refresh per i grafici nel pannello Performance (prestazioni) è di 15 secondi.
+
+
+
+
+
+== Monitoraggio di un cluster mediante la dashboard
+
+La dashboard di System Manager consente di monitorare lo stato e le performance di un cluster. È inoltre possibile identificare i problemi hardware e di configurazione dello storage utilizzando la dashboard.
+
+.Fasi
+. Fare clic sulla scheda *Dashboard* per visualizzare i pannelli della dashboard relativi a salute e performance.
+

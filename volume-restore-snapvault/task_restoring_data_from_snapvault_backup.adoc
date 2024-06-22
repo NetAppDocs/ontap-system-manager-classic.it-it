@@ -1,0 +1,73 @@
+---
+permalink: volume-restore-snapvault/task_restoring_data_from_snapvault_backup.html 
+sidebar: sidebar 
+keywords: snapvault, backup, destination, volume, perform, restore, operation, backed-up, data, corrupt, lost, restore data from a snapvault backup 
+summary: 'Dopo aver selezionato il volume di destinazione del backup di SnapVault, è necessario eseguire l"operazione di ripristino su un nuovo volume per verificare i dati di cui è stato eseguito il backup o su un volume esistente per ripristinare i dati persi o danneggiati.' 
+---
+= Ripristinare i dati da un backup SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver selezionato il volume di destinazione del backup di SnapVault, è necessario eseguire l'operazione di ripristino su un nuovo volume per verificare i dati di cui è stato eseguito il backup o su un volume esistente per ripristinare i dati persi o danneggiati.
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *destination*.
+
+.Fasi
+. A seconda della versione di System Manager in esecuzione, eseguire una delle seguenti operazioni:
++
+** ONTAP 9.4 o versione precedente: Fare clic su *protezione* > *relazioni*.
+** A partire da ONTAP 9.5: Fare clic su *protezione* > *Relazioni volume*.
+
+
+. Selezionare la SVM che contiene il volume di destinazione del backup di SnapVault, quindi fare clic su *operazioni* > *Ripristina*.
+. Nella finestra di dialogo *Restore*, ripristinare i dati nel volume di origine originale o in un nuovo volume:
++
+|===
+| Se si desidera ripristinare a... | Quindi... 
+
+
+ a| 
+Il volume di origine originale
+ a| 
+Selezionare *Volume di origine*.
+
+
+
+ a| 
+Un nuovo volume
+ a| 
+.. Selezionare *altro volume*.
+.. Selezionare il cluster peered e la SVM peered per il volume.
+.. Selezionare una SVM in peering dall'elenco.
+.. Se la SVM non è in peering, creare la relazione peer SVM:
++
+... Selezionare la SVM.
+... Fare clic su *Authenticate*.
+... Immettere le credenziali dell'amministratore del cluster in peered, quindi fare clic su *Create* (Crea).
+
+
+.. Selezionare *New Volume* (nuovo volume).
+.. Se si desidera modificare il nome predefinito, visualizzato nel formato `destination_SVM_name_destination_volume_name_restore`, specificare un nuovo nome e selezionare l'aggregato contenente per il volume.
+.. Selezionare la casella di controllo *Enable dedupe* (attiva deduplica).
+
+
+|===
++
+image:../media/restore_to.gif["Selezione del volume da ripristinare"]
+
+. Selezionare l'ultima copia Snapshot o selezionare una copia Snapshot specifica che si desidera ripristinare.
+. Selezionare la casella di controllo *OK per ripristinare il volume dalla copia Snapshot*.
+. Selezionare la casella di controllo *Enable Network Compression* (Abilita compressione di rete) per comprimere i dati trasferiti durante l'operazione di ripristino.
+. Fare clic su *Restore* (Ripristina).
++
+Durante il processo di ripristino, il volume da ripristinare viene modificato in sola lettura. Al termine dell'operazione di ripristino, la relazione temporanea viene rimossa e il volume ripristinato viene modificato in lettura/scrittura.
+
++
+image::../media/restore_configuration.gif[Risultato dell'operazione di ripristino del volume]
+
+. Fare clic su *OK* nella finestra del messaggio.
+

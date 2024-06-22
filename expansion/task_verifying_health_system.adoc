@@ -1,0 +1,66 @@
+---
+permalink: expansion/task_verifying_health_system.html 
+sidebar: sidebar 
+keywords: expand, cluster, verify, component, healthy, config, advisor, tool, run, ontap, cli, command, verify the health of the system 
+summary: 'Prima di espandere un cluster, è necessario verificare che tutti i componenti del cluster siano integri eseguendo lo strumento Config Advisor ed eseguendo diversi comandi dell"interfaccia utente di ONTAP.' 
+---
+= Verificare lo stato del sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di espandere un cluster, è necessario verificare che tutti i componenti del cluster siano integri eseguendo lo strumento Config Advisor ed eseguendo diversi comandi dell'interfaccia utente di ONTAP.
+
+.Fasi
+. Verificare di disporre della versione più recente di Config Advisor:
++
+** Se non si dispone di Config Advisor sul portatile, scaricarlo.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["Download NetApp: Config Advisor"]
+
+** Se si dispone di Config Advisor, avviarlo, fare clic su *Guida* > *Controlla aggiornamenti* e seguire le istruzioni visualizzate per eseguire l'aggiornamento, se necessario.
++
+[NOTE]
+====
+Non disinstallare la versione precedente dello strumento né eliminare la cartella dei dati durante l'aggiornamento. Lo strumento disinstalla la versione precedente e la sostituisce con la versione più recente. Rinomina la cartella dei dati come ultima cartella e conserva tutto il contenuto della cartella.
+
+====
+
+
+. Verificare il cablaggio e la configurazione eseguendo Config Advisor:
++
+.. Collegare il laptop alla rete di gestione del cluster.
+.. Fare clic su *Collect Data* (raccolta dati).
++
+Config Advisor visualizza tutti i problemi rilevati.
+
+.. Se si riscontrano problemi, correggerli ed eseguire nuovamente lo strumento.
+
+
+. Controllare lo stato del sistema con i seguenti comandi:
++
+.. Verificare che il cluster sia in buono stato utilizzando `system health status show` Controllare e verificare che lo stato sia `ok`.
++
+[listing]
+----
+cluster1::> system health status show
+Status
+---------------
+ok
+----
+.. Verificare che tutti i nodi del cluster siano in buono stato utilizzando `cluster show` Controllare e verificare che lo stato di salute di ciascun nodo sia `true`.
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+2 entries were displayed.
+----
+
+
+

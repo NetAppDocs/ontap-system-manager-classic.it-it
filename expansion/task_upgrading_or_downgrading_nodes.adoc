@@ -1,0 +1,42 @@
+---
+permalink: expansion/task_upgrading_or_downgrading_nodes.html 
+sidebar: sidebar 
+keywords: join, install, node, cluster, run, ontap, upgrade, downgrade 
+summary: 'Prima di unire i nodi appena installati al cluster, è necessario assicurarsi che eseguano la stessa versione di ONTAP in esecuzione nel cluster. Se i nodi eseguono una versione diversa, è necessario eseguire l"aggiornamento o il downgrade dei nodi in modo che corrispondano al cluster.' 
+---
+= Eseguire l'upgrade o il downgrade dei nodi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di unire i nodi appena installati al cluster, è necessario assicurarsi che eseguano la stessa versione di ONTAP in esecuzione nel cluster. Se i nodi eseguono una versione diversa, è necessario eseguire l'aggiornamento o il downgrade dei nodi in modo che corrispondano al cluster.
+
+.Fasi
+. Determinare la versione di ONTAP installata sul cluster: `cluster image show`
+. Visualizzare la versione corrente di ONTAP sui nodi:
++
+.. Sul primo nodo, visualizzare la versione del software: `system node image show`
++
+[listing]
+----
+::*> system node image show
+                 Is      Is                                Install
+Node     Image   Default Current Version                   Date
+-------- ------- ------- ------- ------------------------- -------------------
+localhost
+         image1  false   false   9.3                    MM/DD/YYYY TIMESTAMP
+         image1  true    true    9.3                    MM/DD/YYYY TIMESTAMP
+2 entries were displayed.
+----
+.. Ripetere il passaggio precedente per il secondo nodo.
+
+
+. Confrontare le versioni di ONTAP sul cluster e i nodi ed eseguire una delle seguenti operazioni:
++
+** Se le versioni di ONTAP sul cluster e i nodi sono identici, non è necessario alcun upgrade o downgrade.
+** Se le versioni di ONTAP sul cluster e i nodi sono diversi, è possibile link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Upgrade ONTAP (Aggiorna server)"] sui nodi con versioni precedenti o è possibile link:https://docs.netapp.com/us-en/ontap/revert/index.html["Ripristina ONTAP"] per nodi con versioni successive.
+
+
+

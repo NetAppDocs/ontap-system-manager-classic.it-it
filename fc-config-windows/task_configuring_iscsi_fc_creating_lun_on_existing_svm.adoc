@@ -1,0 +1,48 @@
+---
+permalink: fc-config-windows/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, fc, exist, storage, virtual, machine, svm, create, lun, contain, volume, wizard, information, protocol, configure fc on an existing svm 
+summary: 'È possibile configurare FC su una macchina virtuale di storage (SVM) esistente e creare un LUN e il relativo volume con una singola procedura guidata. Il protocollo FC deve essere già abilitato ma non configurato su SVM. Queste informazioni sono destinate alle SVM per le quali si stanno configurando più protocolli, ma non sono ancora stati configurati FC.' 
+---
+= Configurare FC su una SVM esistente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare FC su una macchina virtuale di storage (SVM) esistente e creare un LUN e il relativo volume con una singola procedura guidata. Il protocollo FC deve essere già abilitato ma non configurato su SVM. Queste informazioni sono destinate alle SVM per le quali si stanno configurando più protocolli, ma non sono ancora stati configurati FC.
+
+.Prima di iniziare
+Il fabric FC deve essere configurato e le porte fisiche desiderate devono essere collegate al fabric.
+
+.Fasi
+. Accedere alla finestra *SVM*.
+. Selezionare la SVM che si desidera configurare.
+. Nel riquadro SVM**Details** (Dettagli SVM), verificare che *FC/FCoE* sia visualizzato con uno sfondo grigio, che indica che il protocollo è abilitato ma non completamente configurato.
++
+Se viene visualizzato *FC/FCoE* con uno sfondo verde, la SVM è già configurata.
+
++
+image::../media/existing_svm_protocols_fc_windows.gif[L'immagine mostra la pagina dei dettagli con tutti e quattro i protocolli con sfondo grigio.]
+
+. Fare clic sul collegamento del protocollo *FC/FCoE* con lo sfondo grigio.
++
+Viene visualizzata la finestra Configure FC/FCoE Protocol (Configura protocollo FC/FCoE).
+
+. Configurare il servizio FC e i LIF dalla pagina *Configure FC/FCoE Protocol* (Configura protocollo FC/FCoE):
++
+.. Selezionare la casella di controllo *Configura LIF dati per FC*.
+.. Invio `2` Nel campo *LIF per nodo*.
++
+Per ciascun nodo sono necessarie due LIF, per garantire disponibilità e mobilità dei dati.
+
+.. Nell'area *Provision a LUN for FCP storage* (fornitura di un LUN per lo storage FCP), immettere le dimensioni del LUN, il tipo di host e le WWPN desiderate degli iniziatori host.
+.. Fare clic su *Invia e chiudi*.
+
+
++
+image::../media/svm_wizard_fc_details.gif[L'illustrazione mostra il passaggio 4 della procedura guidata di installazione SVM: Compilazione dei dettagli FC.]
+
+. Esaminare la pagina *Riepilogo*, registrare le informazioni LIF, quindi fare clic su *OK*.
+

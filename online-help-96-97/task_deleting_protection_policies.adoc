@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_deleting_protection_policies.html 
+sidebar: sidebar 
+keywords: delete, protection, policies, online, help, system, manager 
+summary: Se non si desidera più utilizzare il criterio, è possibile utilizzare System Manager per eliminare un criterio di protezione. 
+---
+= Eliminazione delle policy di protezione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se non si desidera più utilizzare il criterio, è possibile utilizzare System Manager per eliminare un criterio di protezione.
+
+.A proposito di questa attività
+I criteri di mirroring a livello di cluster o i criteri di vault non vengono visualizzati.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la macchina virtuale di storage (SVM), quindi fare clic su *Impostazioni SVM*.
+. Nella finestra *Criteri di protezione*, selezionare il criterio che si desidera eliminare, quindi fare clic su *Elimina*.
+. Nella finestra di dialogo *Delete Policy* (Elimina policy), fare clic su *Delete* (Elimina).
+

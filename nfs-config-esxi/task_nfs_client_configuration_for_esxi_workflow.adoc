@@ -1,0 +1,16 @@
+---
+permalink: nfs-config-esxi/task_nfs_client_configuration_for_esxi_workflow.html 
+sidebar: sidebar 
+keywords: nfs, client, configuration, esxi, workflow, nfs client configuration for esxi workflow 
+summary: 'Quando si rende disponibile lo storage a un host ESXi utilizzando NFS, si effettua il provisioning di un volume su utilizzando per e quindi si effettua la connessione all"esportazione NFS dall"host ESXi.' 
+---
+= Configurazione del client NFS per il workflow ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si rende disponibile lo storage a un host ESXi utilizzando NFS, si effettua il provisioning di un volume su utilizzando per e quindi si effettua la connessione all'esportazione NFS dall'host ESXi.
+
+image::../media/nfs_client_configuration_with_vaai_workflow.gif[Configurazione del client NFS con VAAI per ESX]

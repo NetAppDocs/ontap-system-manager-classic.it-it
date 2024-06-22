@@ -1,0 +1,217 @@
+---
+permalink: online-help-96-97/concept_system_alerts.html 
+sidebar: sidebar 
+keywords: system, manager, monitor, cluster, health, alerts, delete, 
+summary: È possibile utilizzare System Manager per monitorare diverse parti di un cluster. 
+---
+= Gestione degli avvisi di sistema con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per monitorare diverse parti di un cluster.
+
+
+
+== Riconoscere gli avvisi di stato del sistema
+
+È possibile utilizzare System Manager per riconoscere e rispondere agli avvisi sullo stato di salute del sistema per i sottosistemi. È possibile utilizzare le informazioni visualizzate per eseguire l'azione consigliata e correggere il problema segnalato dall'avviso.
+
+.Fasi
+. Fare clic su *Eventi e processi* > *Avvisi di sistema*.
+. Nella finestra *System Alerts* (Avvisi di sistema), fare clic sull'icona a forma di freccia accanto al nome del sottosistema.
+. Selezionare l'avviso che si desidera riconoscere, quindi fare clic su *Acknowledge* (Conferma).
+. Digitare il proprio nome, quindi fare clic su *Acknowledge* (Conferma).
+
+
+
+
+== Eliminare gli avvisi di stato del sistema
+
+È possibile utilizzare System Manager per eliminare gli avvisi sullo stato di salute del sistema che non richiedono alcun intervento da parte dell'utente.
+
+.Fasi
+. Fare clic su *Eventi e processi* > *Avvisi di sistema*.
+. Nella finestra *System Alerts* (Avvisi di sistema), fare clic sull'icona a forma di freccia accanto al nome del sottosistema.
+. Selezionare l'avviso che si desidera sospendere, quindi fare clic su *Sospendi*.
+. Digitare il proprio nome, quindi fare clic su *Sospendi*.
+
+
+
+
+== Eliminare gli avvisi sullo stato di salute del sistema
+
+È possibile utilizzare System Manager per eliminare gli avvisi sullo stato di salute del sistema a cui si è già risposto.
+
+.Fasi
+. Fare clic su *Eventi e processi* > *Avvisi di sistema*.
+. Nella finestra *System Alerts* (Avvisi di sistema), fare clic sull'icona a forma di freccia accanto al nome del sottosistema.
+. Selezionare l'avviso che si desidera eliminare, quindi fare clic su *Delete* (Elimina).
+. Fare clic su *OK*.
+
+
+
+
+== Monitoraggio dello stato dei cluster disponibili
+
+Esistono diversi monitor di stato che monitorano diverse parti di un cluster. I monitor di stato consentono di eseguire il ripristino dagli errori all'interno dei sistemi ONTAP rilevando gli eventi, inviando avvisi ed eliminando gli eventi non appena vengono eliminati.
+
+[cols="1a,1a,1a"]
+|===
+| Nome del monitor di stato (identificatore) | Nome del sottosistema (identificatore) | Scopo 
+
+
+ a| 
+Switch del cluster (switch del cluster)
+ a| 
+Switch (stato dello switch)
+ a| 
+Monitora gli switch di rete del cluster e gli switch di rete di gestione per la temperatura, l'utilizzo, la configurazione dell'interfaccia, la ridondanza (solo switch di rete del cluster) e il funzionamento di ventole e alimentatori. Il monitor di stato dello switch del cluster comunica con gli switch tramite SNMP. SNMPv2c è l'impostazione predefinita.
+
+[NOTE]
+====
+A partire da ONTAP 9.2, questo monitor è in grado di rilevare e segnalare quando uno switch del cluster si è riavviato dall'ultimo periodo di polling.
+
+====
+
+
+ a| 
+Fabric MetroCluster
+ a| 
+Switch
+ a| 
+Monitora la topologia del fabric back-end di configurazione MetroCluster e rileva configurazioni errate, come cablaggio e zoning errati e errori ISL.
+
+
+
+ a| 
+Salute di MetroCluster
+ a| 
+Interconnessione, RAID e storage
+ a| 
+Monitora adattatori FC-VI, adattatori FC Initiator, aggregati e dischi sinistri e porte tra cluster
+
+
+
+ a| 
+Connettività del nodo (connessione al nodo)
+ a| 
+Operazioni CIFS senza interruzioni (CIFS-NDO)
+ a| 
+Monitora le connessioni SMB per le operazioni senza interruzioni alle applicazioni Hyper-V.
+
+
+
+ a| 
+Storage (SAS-Connect)
+ a| 
+Monitora shelf, dischi e adattatori a livello di nodo per verificare la presenza di percorsi e connessioni appropriati.
+
+
+
+ a| 
+Sistema
+ a| 
+non applicabile
+ a| 
+Aggrega le informazioni provenienti da altri monitor dello stato di salute.
+
+
+
+ a| 
+Connettività del sistema (connessione al sistema)
+ a| 
+Storage (SAS-Connect)
+ a| 
+Monitora gli shelf a livello di cluster per rilevare i percorsi appropriati a due nodi in cluster ha.
+
+|===
+
+
+== Modi per rispondere agli avvisi sullo stato di salute del sistema
+
+Quando si verifica un avviso di stato di salute del sistema, è possibile riconoscerlo, ottenere ulteriori informazioni, riparare la condizione sottostante ed evitare che si verifichi di nuovo.
+
+Quando un monitor dello stato di salute genera un avviso, è possibile rispondere in uno dei seguenti modi:
+
+* Ottenere informazioni sull'avviso, che includono la risorsa interessata, la severità dell'avviso, la probabile causa, il possibile effetto e le azioni correttive.
+* Ottenere informazioni dettagliate sull'avviso, ad esempio l'ora in cui l'avviso è stato generato e se altri hanno già confermato l'avviso.
+* Ottenere informazioni sullo stato della risorsa o del sottosistema interessato, ad esempio uno shelf o un disco specifico.
+* Riconoscere l'avviso per indicare che qualcuno sta lavorando al problema e identificarsi come "`Acknowledger`".
+* Risolvere il problema adottando le azioni correttive fornite nell'avviso, ad esempio la risoluzione di un problema di connettività tramite il cablaggio.
+* Eliminare l'avviso, se il sistema non lo ha cancellato automaticamente.
+* Eliminare un avviso per evitare che influisca sullo stato di salute di un sottosistema.
++
+La soppressione è utile quando si comprende un problema. Una volta eliminato un avviso, questo può comunque verificarsi, ma lo stato del sottosistema viene visualizzato come "`ok-with-suppressed`" (ok-with-suppressed). quando si verifica l'avviso sospeso.
+
+
+
+
+
+== Finestra Avvisi di sistema
+
+È possibile utilizzare la finestra Avvisi di sistema per ulteriori informazioni sugli avvisi di stato del sistema. È inoltre possibile riconoscere, eliminare e sospendere gli avvisi dalla finestra.
+
+
+
+=== Pulsanti di comando
+
+* *Riconoscere*
++
+Consente di riconoscere l'avviso selezionato per indicare che il problema è stato risolto e identifica la persona che fa clic sul pulsante come "`Acknowledger`".
+
+* *Sospendi*
++
+Consente di eliminare l'avviso selezionato per impedire al sistema di notificare nuovamente lo stesso avviso e di identificare l'utente come "`Ssoppressore`".
+
+* *Elimina*
++
+Elimina l'avviso selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco degli avvisi
+
+* *Sottosistema (N. N. di avvisi)*
++
+Visualizza il nome del sottosistema, ad esempio la connessione SAS, lo stato dello switch, CIFS NDO o MetroCluster, per cui viene generato l'avviso.
+
+* *ID avviso*
++
+Visualizza l'ID dell'avviso.
+
+* Nodo *
++
+Visualizza il nome del nodo per cui viene generato l'avviso.
+
+* *Severità*
++
+Visualizza la severità dell'avviso come Sconosciuto, Altro, informazioni, degradato, minore, Maggiore, critico o fatale.
+
+* *Risorsa*
++
+Visualizza la risorsa che ha generato l'avviso, ad esempio uno shelf o un disco specifico.
+
+* *Ora*
++
+Visualizza l'ora in cui è stato generato l'avviso.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area dei dettagli visualizza informazioni dettagliate sull'avviso, ad esempio l'ora in cui l'avviso è stato generato e se l'avviso è stato confermato. L'area include anche informazioni sulla probabile causa e sul possibile effetto della condizione generata dall'avviso e sulle azioni consigliate per correggere il problema segnalato dall'avviso.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Amministrazione del sistema"]

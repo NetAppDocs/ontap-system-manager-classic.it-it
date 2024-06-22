@@ -1,0 +1,130 @@
+---
+permalink: online-help-96-97/concept_snapshot_policies.html 
+sidebar: sidebar 
+keywords: snapshot, manager, system, create, manage, policy, storage, online, help 
+summary: È possibile utilizzare System Manager per creare e gestire le policy Snapshot nel sistema storage. 
+---
+= Gestisci le policy Snapshot con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare e gestire le policy Snapshot nel sistema di storage.
+
+
+
+== Informazioni sulle policy di Snapshot
+
+Quando viene applicata a un volume, una policy Snapshot specifica una pianificazione o pianificazioni in base alle quali vengono create le copie Snapshot e specifica il numero massimo di copie Snapshot che ciascuna pianificazione può creare. Una policy Snapshot può includere fino a cinque pianificazioni.
+
+Per le relazioni del vault, l'attributo etichetta SnapMirror viene utilizzato per selezionare le copie Snapshot sui volumi di origine. Solo le copie Snapshot con le etichette configurate nelle regole dei criteri del vault vengono replicate nelle operazioni del vault di backup. Il criterio Snapshot assegnato al volume di origine deve includere l'attributo Label di SnapMirror.
+
+
+
+== Creare policy Snapshot
+
+È possibile creare una policy Snapshot in System Manager per specificare il numero massimo di copie Snapshot che è possibile creare automaticamente e la frequenza di creazione.
+
+.Fasi
+. Fare clic su *Protection* > *Snapshot Policies*.
+. Fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Create Snapshot Policy*, specificare il nome del criterio.
+. Fare clic su *Aggiungi*, quindi specificare il nome della pianificazione, il numero massimo di copie Snapshot che si desidera conservare e il nome dell'etichetta SnapMirror.
++
+Il numero massimo di copie Snapshot che è possibile conservare in base alle pianificazioni specificate non deve superare 254.
+
+. Fare clic su *OK*, quindi su *Crea*.
+
+
+
+
+== Modificare le policy Snapshot
+
+È possibile modificare i dettagli di una policy Snapshot esistente, ad esempio il nome della pianificazione, l'etichetta SnapMirror o il numero massimo di copie Snapshot create, utilizzando la finestra di dialogo Edit Snapshot Policy (Modifica policy snapshot) in System Manager.
+
+.Fasi
+. Fare clic su *Protection* > *Snapshot Policies*.
+. Nella finestra *Snapshot Policies*, selezionare il criterio Snapshot che si desidera modificare e fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Snapshot Policy* (Modifica policy istantanea), selezionare la pianificazione che si desidera modificare e fare clic su *Edit* (Modifica).
+. Fare clic su *OK*.
+. Verificare le modifiche apportate al criterio Snapshot selezionato nella finestra di dialogo *Edit Snapshot Policy* (Modifica policy istantanea) e fare clic su *Save* (Salva).
+
+
+
+
+== Elimina policy Snapshot
+
+È possibile utilizzare System Manager per eliminare le policy Snapshot. Se si elimina una policy Snapshot utilizzata da uno o più volumi, le copie Snapshot del volume o dei volumi non vengono più create in base alla policy eliminata.
+
+.Prima di iniziare
+È necessario aver dissociato la policy Snapshot da ogni volume che la utilizza.
+
+.Fasi
+. Fare clic su *Protection* > *Snapshot Policies*.
+. Selezionare il criterio Snapshot e fare clic su *Delete* (Elimina).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+
+
+== Finestra delle policy di Snapshot
+
+È possibile utilizzare la finestra Snapshot Policies per gestire le attività delle policy di Snapshot, come l'aggiunta, la modifica e l'eliminazione delle policy di Snapshot.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Snapshot Policy (Crea policy istantanea), che consente di aggiungere pianificazioni di backup e specificare il numero massimo di copie Snapshot da conservare in una policy.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Snapshot Policy (Modifica policy snapshot), che consente di modificare la frequenza con cui devono essere create le copie Snapshot e il numero massimo di copie Snapshot da conservare.
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete (Elimina), che consente di eliminare il criterio Snapshot selezionato.
+
+* *Visualizza come*
++
+Consente di visualizzare le policy di Snapshot come elenco o come struttura.
+
+* *Stato*
++
+Apre il menu, che consente di attivare o disattivare la policy Snapshot selezionata.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei criteri di Snapshot
+
+* *Nome policy/pianificazione*
++
+Specifica il nome del criterio Snapshot e le pianificazioni del criterio.
+
+* *Storage Virtual Machine*
++
+Specifica il nome della macchina virtuale di storage (SVM) a cui appartengono le copie Snapshot.
+
+* *Stato*
++
+Specifica lo stato della policy Snapshot, che può essere attivata o disattivata.
+
+* *Numero massimo di snapshot da conservare*
++
+Specifica il numero massimo di copie Snapshot da conservare.
+
+* *Etichetta SnapMirror*
++
+Specifica il nome dell'attributo di etichetta SnapMirror della copia Snapshot generata dalla pianificazione del backup.
+
+

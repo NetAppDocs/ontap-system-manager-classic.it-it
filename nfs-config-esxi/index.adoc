@@ -1,0 +1,38 @@
+---
+permalink: nfs-config-esxi/index.html 
+sidebar: sidebar 
+keywords: nfs, access, esxi, host, datastores, ontap, volume, configuration, overview, vsc 
+summary: 'Utilizzando l"interfaccia classica di Gestore di sistema di ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente l"accesso NFS per gli host ESXi agli archivi dati utilizzando volumi ONTAP.' 
+---
+= Panoramica della configurazione NFS per ESXi con VSC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia classica di Gestore di sistema di ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente l'accesso NFS per gli host ESXi agli archivi dati utilizzando volumi ONTAP.
+
+Utilizzare questa procedura se:
+
+* Si sta utilizzando una versione supportata di Virtual Storage Console per VMware vSphere (VSC) per eseguire il provisioning di un datastore e creare un volume.
++
+** A partire da VSC 7.0, VSC fa parte di https://docs.netapp.com/us-en/ontap-tools-vmware-vsphere/index.html["Strumenti ONTAP per VMware vSphere"^] Appliance virtuale, che include VSC, vStorage API for Storage Awareness (VASA) Provider e Storage Replication Adapter (SRA) per le funzionalità di VMware vSphere.
+** Controllare https://imt.netapp.com/matrix/["Tool di matrice di interoperabilità NetApp"^] Per confermare la compatibilità tra le versioni correnti di ONTAP e VSC.
+
+
+* La rete dati utilizza l'IPSpace predefinito, il dominio di trasmissione predefinito e il gruppo di failover predefinito.
++
+Se la rete dati è piatta, questi oggetti predefiniti prescrivono che le LIF effettueranno il failover corretto in caso di errore di collegamento. Se non si utilizzano gli oggetti predefiniti, fare riferimento a. https://docs.netapp.com/us-en/ontap/networking/index.html["Gestione della rete"^] Per informazioni su come configurare il failover del percorso LIF.
+
+* Si desidera utilizzare il plug-in per VMware VAAI.
++
+** Le API vStorage VMware per l'integrazione degli array (VAAI) consentono di eseguire l'offload delle copie e la riserva di spazio. Il plug-in per VMware VAAI utilizza questo metodo per migliorare le performance degli host, poiché le operazioni non devono passare attraverso l'host ESXi, sfruttando in tal modo la clonazione efficiente in termini di spazio e tempo in ONTAP.
+** L'utilizzo di VMware VAAI per il provisioning del datastore è una Best practice.
+** Il plug-in NFS per VMware VAAI è disponibile sul sito https://mysupport.netapp.com/site/global/dashboard["Supporto NetApp"^] sito.
+
+
+* L'accesso NFS avviene tramite NFSv3 e NFSv4 per l'utilizzo con VMware VAAI.
+
+
+Per ulteriori informazioni, vedere https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597: VMware vSphere per ONTAP"^] E la documentazione per la release VSC.

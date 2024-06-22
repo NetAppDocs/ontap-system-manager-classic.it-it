@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/task_performing_unplanned_switchover.html 
+sidebar: sidebar 
+keywords: perform, unplanned, switchover, system, manager, metrocluster, site, online, help 
+summary: A partire da System Manager 9.6, è possibile avviare uno switchover non pianificato di un sito MetroCluster. Questa operazione è utile dopo un evento di interruzione o di disastro. 
+---
+= Esecuzione di uno switchover non pianificato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile avviare uno switchover non pianificato di un sito MetroCluster. Questa operazione è utile dopo un evento di interruzione o di disastro.
+
+.Prima di iniziare
+Il MetroCluster viene eseguito in condizioni operative normali; tuttavia, i nodi nel cluster locale (sito A) sono attivi, ma i nodi nel cluster remoto (sito B) non sono attivi.
+
+.Fasi
+. [[step1]]verificare che il sito B sia effettivamente inattivo.
++
+Un errore di connessione potrebbe far apparire il sito B inattivo.
+
++
+[NOTE]
+====
+L'avvio del processo di switchover con il sito B up potrebbe causare risultati disastrosi.
+
+====
+. In Gestione sistema, accedere al sito MetroCluster locale (sito A) utilizzando le credenziali di amministratore del cluster.
+. Fare clic su *Configurazione* > *MetroCluster*
++
+Viene visualizzata la finestra MetroCluster Switchover/Switchback Operations.
+
+. Fare clic su *Avanti*.
++
+La finestra delle operazioni di switchover/switchback di MetroCluster visualizza lo stato delle operazioni e il gestore di sistema verifica se è possibile effettuare uno switchover negoziato.
+
+. Una volta completato il processo di convalida, fare clic su *passa dal sito B al sito A* per avviare il processo di switchover.
++
+Viene visualizzato un messaggio di avviso che avvisa che l'operazione di switchover passa dal sito B al sito A. Lo stato del sito B deve essere "`UNREACHABLE`" (IRRAGGIUNGIBILE) e tutti i nodi del sito B devono essere visualizzati in rosso.
+
++
+[NOTE]
+====
+Come indicato al punto link:#step1["1"], Il sito B deve essere inattivo e non solo disconnesso. Inoltre, è necessario tenere presente che l'operazione di switchover potrebbe causare la perdita di dati.
+
+====
+. Se si desidera continuare, verificare che la casella di controllo sia selezionata, quindi fare clic su *Sì*.
++
+Viene avviato il processo di switchover. Gli stati del sito A e del sito B vengono visualizzati sopra le rappresentazioni grafiche delle relative configurazioni. Se l'operazione di switchover non riesce, viene visualizzato un messaggio di errore. Fare clic su *Chiudi*. Correggere eventuali errori e ricominciare dal passo link:task_performing_negotiated_planned_switchover.html#step1["1"]
+
+. Eseguire tutte le attività di manutenzione richieste per il sito B.
+. Assicurarsi che il sito B sia attivo.
++
+Viene avviato il processo di riparazione. Quando System Manager indica che la riparazione è stata completata, il sito B è operativo e i sistemi si preparano per il processo di switchback. Nella parte inferiore della finestra viene visualizzato il pulsante *Cambia da sito A a sito B*.
+
+. Passare a. xref:task_performing_switchback.adoc[Esecuzione di uno switchback] per avviare l'operazione di switchback.
+

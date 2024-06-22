@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_editing_data_protection_volumes.html 
+sidebar: sidebar 
+keywords: edit, data, protection, system, manager, online, help, dp, volume 
+summary: 'È possibile utilizzare System Manager per modificare il nome di un volume DP (Data Protection). Se l"efficienza dello storage nel volume di origine non è attivata, è possibile attivare l"efficienza dello storage solo nel volume di destinazione.' 
+---
+= Modifica i volumi di protezione dei dati con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare il nome del volume per un volume di protezione dati (DP). Se l'efficienza dello storage nel volume di origine non è attivata, è possibile attivare l'efficienza dello storage solo nel volume di destinazione.
+
+.A proposito di questa attività
+Non è possibile modificare l'efficienza dello storage su un volume DP mirror.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare la macchina virtuale di storage (SVM) in cui risiede il volume DP che si desidera modificare.
+. Selezionare il volume che si desidera modificare, quindi fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Data Protection Volume* (Modifica volume protezione dati), modificare il nome del volume.
+. Assicurarsi che l'opzione *Enable Storage Efficiency* (Abilita efficienza dello storage) sia selezionata.
++
+Se l'efficienza dello storage è già attivata sul volume, la casella di controllo viene selezionata per impostazione predefinita.
+
+. *Opzionale:* fare clic sulla scheda *Avanzate* ed eseguire le seguenti operazioni:
++
+.. Selezionare il criterio di caching che si desidera assegnare al volume.
+.. Selezionare la priorità di conservazione per i dati memorizzati nella cache nel volume.
+
+
++
+Queste opzioni sono disponibili solo per i volumi FlexVol di protezione dei dati in un aggregato di Flash Pool.
+
+. Fare clic su *Save* (Salva).
+

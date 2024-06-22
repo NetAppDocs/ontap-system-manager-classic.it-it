@@ -1,0 +1,60 @@
+---
+permalink: online-help-96-97/task_configuring_fc_fcoe_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: online, help, configure, fc, protocol, fcoe, svm, online, help, system, manager 
+summary: 'È possibile configurare il protocollo FC e il protocollo FCoE sulla macchina virtuale di storage (SVM) per gli host SAN. Le LIF vengono create sugli adattatori più adatti e vengono assegnate ai portset per garantire la ridondanza del percorso dati. In base alle proprie esigenze, è possibile configurare il protocollo FC, i protocolli FCoE o entrambi utilizzando System Manager.' 
+---
+= Configurare il protocollo FC e il protocollo FCoE su SVM con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per configurare il protocollo FC e il protocollo FCoE sulla macchina virtuale di storage (SVM) per gli host SAN. Le LIF vengono create sugli adattatori più adatti e vengono assegnate ai portset per garantire la ridondanza del percorso dati. In base alle proprie esigenze, è possibile configurare il protocollo FC, i protocolli FCoE o entrambi utilizzando System Manager.
+
+.Prima di iniziare
+* La licenza FCP deve essere attivata sul cluster.
+* Tutti i nodi del cluster devono essere integri.
+* Ogni nodo deve avere almeno due porte configurate correttamente per ciascun protocollo (FC e FCoE).
+
+
+.A proposito di questa attività
+* È possibile configurare il protocollo FC e il protocollo FCoE durante la creazione di SVM oppure configurare i protocolli in un secondo momento.
++
+Se i protocolli non sono consentiti su SVM, è possibile utilizzare la finestra Edit Storage Virtual Machine per abilitare i protocolli per SVM.
+
+* Gli aggregati SnapLock non sono considerati per la creazione automatica dei volumi.
+
+
+.Fasi
+. Se i protocolli non sono stati configurati durante la creazione di SVM, fare clic sulla scheda *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *FC/FCoE*.
+. Nella sezione *Data Interface Configuration* (Configurazione interfaccia dati), selezionare l'opzione corrispondente per configurare le LIF dei dati per il protocollo FC e il protocollo FCoE.
+. Specificare il numero di LIF di dati per nodo per ciascun protocollo.
++
+Il numero minimo di LIF per nodo è uno. Il numero massimo corrisponde al numero minimo di tutte le porte in `up` di tutti i nodi. Se il valore massimo è un numero dispari, il numero pari precedente viene considerato come il valore massimo. È possibile scegliere qualsiasi numero pari nell'intervallo di valori minimo e massimo.
+
++
+Un cluster a quattro nodi ha node1, node2 e node3 con sei porte ciascuna in `up` e node4 con sette porte in `up` stato. Il valore massimo effettivo per il cluster è sei.
+
++
+Se il numero di LIF che si desidera assegnare al nodo è superiore a due, è necessario assegnare almeno un portset a ciascun LIF.
+
+. Se si desidera verificare o modificare la configurazione LIF generata automaticamente, selezionare *Rivedi o Modifica l'associazione interfaccia*.
++
+È possibile modificare solo il nome LIF e la porta home. Assicurarsi di non specificare voci duplicate.
+
+. *Opzionale:* eseguire il provisioning di un LUN per lo storage FC o FCoE durante la configurazione del protocollo, fornendo le dimensioni del LUN, il tipo di sistema operativo per il LUN e i dettagli dell'iniziatore host.
+. Fare clic su *Invia e continua*.
+
+
+.Risultati
+Le LIF e i portset di dati vengono creati con la configurazione specificata. I LIF vengono distribuiti di conseguenza tra i portset. Il servizio FCP viene avviato se tutte le LIF sono state create correttamente per almeno un protocollo.
+
+Se la creazione LIF non riesce, è possibile creare le LIF e avviare il servizio FCP dalla finestra FC/FCoE.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro documentazione di ONTAP 9"]

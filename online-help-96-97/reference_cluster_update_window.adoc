@@ -1,0 +1,117 @@
+---
+permalink: online-help-96-97/reference_cluster_update_window.html 
+sidebar: sidebar 
+keywords: online, help, cluster, update, window, tab, update, command, button, history, tab 
+summary: È possibile utilizzare la finestra Cluster Update per eseguire un aggiornamento automatizzato del cluster senza interruzioni oppure aggiornare i cluster a nodo singolo in modo disgregante. 
+---
+= Finestra di aggiornamento del cluster con Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra aggiornamento cluster per eseguire un aggiornamento automatizzato del cluster senza interruzioni oppure aggiornare i cluster a nodo singolo in modo disgregante con Gestione di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Schede
+
+* *Cluster Update*
++
+Consente di eseguire un aggiornamento automatizzato del cluster senza interruzioni oppure di aggiornare i cluster a nodo singolo in modo disgregante.
+
+* *Aggiorna cronologia*
++
+Visualizza i dettagli degli aggiornamenti del cluster precedenti.
+
+
+
+
+
+== Scheda Cluster Update (aggiornamento cluster)
+
+La scheda Cluster Update (aggiornamento cluster) consente di eseguire un aggiornamento automatizzato del cluster senza interruzioni oppure di aggiornare i cluster a nodo singolo in modo disgregante.
+
+
+
+== Pulsanti di comando
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+* *Selezionare*
++
+È possibile selezionare la versione dell'immagine software per l'aggiornamento.
+
++
+** Cluster Version Details (Dettagli versione cluster): Visualizza la versione corrente del cluster in uso e i dettagli della versione dei nodi o delle coppie ad alta disponibilità (ha).
+** Available Software Images (immagini software disponibili): Consente di selezionare un'immagine software esistente per l'aggiornamento.
++
+In alternativa, è possibile scaricare un'immagine software dal NetApp Support Site e aggiungere l'immagine per l'aggiornamento.
+
+
+
+* *Convalidare*
++
+È possibile visualizzare e convalidare il cluster in base alla versione dell'immagine software per l'aggiornamento. Una convalida di pre-aggiornamento verifica se il cluster si trova in uno stato pronto per un aggiornamento. Se la convalida viene completata con errori, una tabella visualizza lo stato dei vari componenti e l'azione correttiva richiesta per gli errori.
+
++
+È possibile eseguire l'aggiornamento solo quando la convalida è stata completata correttamente.
+
+* *Aggiorna*
++
+È possibile aggiornare tutti i nodi nel cluster o una coppia ha nel cluster alla versione selezionata dell'immagine software. Mentre l'aggiornamento è in corso, è possibile scegliere di sospendere l'aggiornamento, quindi annullare o riprendere l'aggiornamento.
+
++
+Se si verifica un errore, l'aggiornamento viene messo in pausa e viene visualizzato un messaggio di errore con le procedure correttive. È possibile scegliere se riprendere l'aggiornamento dopo aver eseguito le procedure correttive o annullare l'aggiornamento. Una volta completato l'aggiornamento, è possibile visualizzare la tabella con il nome del nodo, l'uptime, lo stato e la versione di ONTAP.
+
+
+
+
+
+== Scheda Update History (Aggiorna cronologia)
+
+Visualizza i dettagli della cronologia degli aggiornamenti del cluster.
+
+
+
+== Aggiorna elenco cronologia
+
+* *Versione immagine*
++
+Specifica la versione dell'immagine ONTAP a cui il nodo verrà aggiornato.
+
+* *Aggiornamenti software installati su*
++
+Specifica il tipo di disco su cui sono installati gli aggiornamenti.
+
+* *Stato*
++
+Specifica lo stato dell'aggiornamento dell'immagine software (se l'aggiornamento viene eseguito correttamente o annullato).
+
+* *Ora di inizio*
++
+Specifica l'ora in cui è stato avviato l'aggiornamento.
+
+* *Tempo di completamento*
++
+Specifica l'ora in cui l'aggiornamento è stato completato.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Tempo impiegato per l'aggiornamento*
++
+Specifica il tempo necessario per il completamento dell'aggiornamento.
+
+* *Versione precedente*
++
+Specifica la versione ONTAP del nodo prima dell'aggiornamento.
+
+* *Versione aggiornata*
++
+Specifica la versione ONTAP del nodo dopo l'aggiornamento.
+
+

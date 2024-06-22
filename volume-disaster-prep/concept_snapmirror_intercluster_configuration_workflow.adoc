@@ -1,0 +1,23 @@
+---
+permalink: volume-disaster-prep/concept_snapmirror_intercluster_configuration_workflow.html 
+sidebar: sidebar 
+keywords: preparing, prepare, volume, disaster, recovery, verify, cluster, peer, relationship, snapmirror, residing, reside, peer, destination, periodical, volume disaster recovery preparation workflow 
+summary: 'La preparazione dei volumi per il disaster recovery implica la verifica della relazione peer del cluster, la creazione della relazione SnapMirror tra i volumi residenti sui cluster peered, la configurazione della SVM di destinazione per l"accesso ai dati e il monitoraggio periodico della relazione SnapMirror.' 
+---
+= Workflow di preparazione del disaster recovery dei volumi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La preparazione dei volumi per il disaster recovery implica la verifica della relazione peer del cluster, la creazione della relazione SnapMirror tra i volumi residenti sui cluster peered, la configurazione della SVM di destinazione per l'accesso ai dati e il monitoraggio periodico della relazione SnapMirror.
+
+image::../media/snapmirror_intercluster_cfg_workflow.gif[Questa illustrazione è un diagramma di flusso del flusso di lavoro per la preparazione del disaster recovery del volume. Le fasi del flusso di lavoro corrispondono agli argomenti.]
+
+È disponibile ulteriore documentazione per consentire l'attivazione del volume di destinazione per testare la configurazione del disaster recovery o in caso di disastro. È inoltre possibile ottenere ulteriori informazioni su come riattivare il volume di origine dopo il disastro.
+
+xref:../volume-disaster-recovery/index.html[Disaster recovery dei volumi]
+
++
+Descrive come attivare rapidamente un volume di destinazione dopo un disastro e riattivare il volume di origine in ONTAP.

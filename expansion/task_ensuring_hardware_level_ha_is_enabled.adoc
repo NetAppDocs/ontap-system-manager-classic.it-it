@@ -1,0 +1,50 @@
+---
+permalink: expansion/task_ensuring_hardware_level_ha_is_enabled.html 
+sidebar: sidebar 
+keywords: install, controller, module, reuse, maintenance, mode, ha, state, hardware-level, enable, ensure hardware-level ha is enabled 
+summary: Se i moduli controller appena installati vengono riutilizzati, non nuovi, è necessario accedere alla modalità di manutenzione e assicurarsi che il loro stato ha sia impostato su ha. 
+---
+= Assicurarsi che l'ha a livello hardware sia attivato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se i moduli controller appena installati vengono riutilizzati, non nuovi, è necessario accedere alla modalità di manutenzione e assicurarsi che il loro stato ha sia impostato su ha.
+
+.A proposito di questa attività
+Se si utilizzano nuovi moduli controller, è possibile ignorare questa procedura perché ha è attivato per impostazione predefinita. In caso contrario, è necessario eseguire questa procedura su entrambi i nodi.
+
+.Fasi
+. Sul primo nodo, accedere alla modalità di manutenzione:
++
+.. Uscire dal nodeshell entrando `halt`.
++
+Viene visualizzato il prompt DEL CARICATORE.
+
+.. Accedere alla modalità di manutenzione immettendo `boot_ontap maint`.
++
+Una volta visualizzate alcune informazioni, viene visualizzato il prompt della modalità di manutenzione.
+
+
+
+. In modalità Maintenance (manutenzione), assicurarsi che il modulo controller e lo chassis siano in stato ha:
++
+.. Visualizzare lo stato ha del modulo controller e dello chassis immettendo `ha-config show`.
+.. Se lo stato visualizzato del controller non è `HA`, invio `ha-config modify controller ha`.
+.. Se lo stato visualizzato del telaio non è `HA`, invio `ha-config modify chassis ha`.
+.. Verificare che ha sia attivato sia sul modulo controller che sullo chassis immettendo `ha-config show`.
+
+
+. Torna a ONTAP:
++
+.. Invio `halt` Per uscire dalla modalità di manutenzione.
+.. Boot ONTAP digitando `boot_ontap`
+.. Attendere l'avvio del nodo e l'avvio automatico della procedura guidata di configurazione del cluster sulla console.
+.. Premere Invio quattro volte per accettare le impostazioni esistenti per la LIF di gestione dei nodi.
+.. Accedere al nodo come `admin` utente, che non richiede una password.
+
+
+. Ripetere questa procedura sull'altro nodo che si sta aggiungendo al cluster.
+

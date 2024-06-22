@@ -1,0 +1,65 @@
+---
+permalink: online-help-96-97/concept_rules_for_assigning_storage_objects_to_policy_groups.html 
+sidebar: sidebar 
+keywords: rulw, assign, storage, object, policy, group, svm, nested, online, help 
+summary: È necessario conoscere le regole che stabiliscono come assegnare gli oggetti di storage ai gruppi di policy di Storage QoS. 
+---
+= Regole per l'assegnazione di oggetti di storage ai gruppi di criteri
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario conoscere le regole che stabiliscono come assegnare gli oggetti di storage ai gruppi di policy di Storage QoS.
+
+
+
+== Gli oggetti di storage e i gruppi di policy devono appartenere alla stessa SVM
+
+Un oggetto di storage deve essere contenuto dalla SVM a cui appartiene il gruppo di criteri. Specificare la SVM a cui appartiene il gruppo di criteri quando si crea il gruppo di criteri. Più gruppi di criteri possono appartenere alla stessa SVM.
+
+Nella seguente illustrazione, il gruppo di criteri pg1 appartiene a SVM vs1. Non è possibile assegnare i volumi vol2 o vol3 al gruppo di criteri pg1 perché tali volumi sono contenuti da una SVM diversa.
+
+image::../media/qos_rule_same_vserver.gif[Questo grafico è descritto dal testo circostante.]
+
+
+
+== Gli oggetti di storage nidificati non possono appartenere ai gruppi di criteri
+
+Non è possibile assegnare un oggetto di storage a un gruppo di criteri se l'oggetto contenente o i relativi oggetti figlio appartengono a un gruppo di criteri. Nella tabella seguente sono elencate le restrizioni.
+
+|===
+| Se si assegna... | Quindi non è possibile assegnare... 
+
+
+ a| 
+SVM a un gruppo di criteri
+ a| 
+Qualsiasi oggetto di storage contenuto dalla SVM a un gruppo di criteri
+
+
+
+ a| 
+Su un gruppo di criteri
+ a| 
+Volumi contenenti SVM o LUN figlio di un gruppo di criteri
+
+
+
+ a| 
+LUN a un gruppo di criteri
+ a| 
+I LUN contenenti un volume o una SVM in un gruppo di criteri
+
+
+
+ a| 
+Su un gruppo di criteri
+ a| 
+Il file contenente un volume o una SVM in un gruppo di criteri
+
+|===
+Nella seguente illustrazione, SVM vs3 viene assegnato al gruppo di criteri pg2. Non è possibile assegnare volumi vol4 o vol5 a un gruppo di criteri perché un oggetto nella gerarchia di storage (SVM vs3) è assegnato a un gruppo di criteri.
+
+image::../media/qos_rule_one_object.gif[Questo grafico è descritto dal testo circostante.]

@@ -1,0 +1,27 @@
+---
+permalink: nfs-config-esxi/task_verifying_nfs_access_from_esxi_host.html 
+sidebar: sidebar 
+keywords: provision, datastore, esxi, verify, nfs, access, creating, create, virtual, machine, power, verify nfs access from an esxi host 
+summary: 'Dopo aver eseguito il provisioning di un datastore, è possibile verificare che l"host ESXi disponga dell"accesso NFS creando una macchina virtuale nell"archivio dati e accendendola.' 
+---
+= Verificare l'accesso NFS da un host ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver eseguito il provisioning di un datastore, è possibile verificare che l'host ESXi disponga dell'accesso NFS creando una macchina virtuale nell'archivio dati e accendendola.
+
+.Fasi
+. Dalla pagina iniziale di vSphere Web Client, fare clic su *host e cluster*.
+. Nel riquadro di navigazione, espandere il data center per individuare l'archivio dati creato in precedenza.
+. Fare clic su *Create a new virtual machine* (Crea una nuova macchina virtuale) e fornire le informazioni richieste nella procedura guidata.
++
+Per verificare l'accesso NFS, selezionare il data center, l'host ESXi e il datastore precedentemente creati.
+
++
+La macchina virtuale viene visualizzata nell'inventario di vSphere Web Client.
+
+. Accendere la macchina virtuale.
+

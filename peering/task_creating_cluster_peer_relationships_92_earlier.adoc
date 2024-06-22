@@ -1,0 +1,82 @@
+---
+permalink: peering/task_creating_cluster_peer_relationships_92_earlier.html 
+sidebar: sidebar 
+keywords: create, cluster, peer, relationship, enter, predetermined, passphrase, ip, address, intercluster, lif, remote, successful, create a cluster peer relationship, ontap 9.2 or earlier 
+summary: 'È possibile creare una relazione peer del cluster tra due cluster immettendo una passphrase predeterminata e gli indirizzi IP delle LIF dell"intercluster del cluster remoto, quindi verificando che la relazione sia stata creata correttamente.' 
+---
+= Creazione di una relazione peer del cluster (ONTAP 9.2 o versione precedente)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia _classic_ di Gestore di sistema di ONTAP con ONTAP 9.2 o una versione precedente di ONTAP 9, è possibile creare una relazione di peer del cluster tra due cluster immettendo una passphrase predeterminata e gli indirizzi IP delle LIF dell'intercluster del cluster remoto, e quindi verificare che la relazione sia stata creata correttamente.
+
+.Prima di iniziare
+* È necessario conoscere gli indirizzi IP di tutte le LIF di intercluster dei cluster che si desidera eseguire.
+* È necessario conoscere la passphrase da utilizzare per ogni relazione peer.
+
+
+.A proposito di questa attività
+È necessario eseguire questa procedura su ciascun cluster.
+
+.Fasi
+. Dal cluster di origine, creare una relazione peer del cluster con il cluster di destinazione.
++
+.. Fare clic sulla scheda *configurazioni*.
+.. Nel riquadro *Cluster Settings*, fare clic su *Cluster Peers*.
+.. Fare clic su *Create* (Crea).
++
+Viene visualizzata la finestra di dialogo *Create Cluster Peer* (Crea peer cluster).
+
+.. [[step1d-passphrase-used]]nell'area *Details of the remote cluster to be peered* (Dettagli del cluster remoto da peering*), specificare la passphrase che entrambi i peer utilizzeranno per garantire una relazione peer del cluster autenticata.
+.. Inserire gli indirizzi IP di tutte le LIF intercluster del cluster di destinazione (uno per nodo) separati da virgole.
++
+image::../media/cluster_peer_create.gif[Finestra di dialogo Create Cluster Peer (Crea peer cluster)]
+
+.. Fare clic su *Create* (Crea).
++
+Lo stato di autenticazione è "`pending`" perché è stato configurato un solo cluster.
+
+
+
+. Passare al cluster di destinazione, quindi creare una relazione peer del cluster con il cluster di origine:
++
+.. Fare clic sulla scheda *configurazioni*.
+.. Nel riquadro *Cluster Settings*, fare clic su *Cluster Peers*.
+.. Fare clic su *Create* (Crea).
++
+Viene visualizzata la finestra di dialogo Create Cluster Peer (Crea peer cluster).
+
+.. Nell'area *Dettagli del cluster remoto da eseguire il peering*, specificare la stessa passphrase specificata in <<step1d-passphrase-used,Fase 1d>> E gli indirizzi IP delle LIF di intercluster del cluster di origine, quindi fare clic su *Create* (Crea).
+
+
++
+image::../media/cluster_peer_create_2.gif[Questa immagine viene spiegata dal testo circostante.]
+
+. Dalla finestra *Cluster Peers* del cluster di destinazione, verificare che il cluster di origine sia "`Available`" e che lo stato di autenticazione sia "`OK`".
++
+image::../media/cluster_peers_status.gif[Questa immagine viene spiegata dal testo circostante.]
+
++
+Potrebbe essere necessario fare clic su *Refresh* (Aggiorna) per visualizzare le informazioni aggiornate.
+
++
+I due cluster sono in una relazione di pari livello.
+
+. Passare al cluster di origine e verificare che il cluster di destinazione sia "`Available`" e che lo stato di autenticazione sia "`OK`".
++
+Potrebbe essere necessario fare clic su *Refresh* (Aggiorna) per visualizzare le informazioni aggiornate.
+
+
+
+
+
+== Cosa fare in seguito
+
+Creare una relazione peer SVM tra le SVM di origine e di destinazione creando una relazione di protezione dei dati tra il volume di origine e il volume di destinazione.
+
+link:../volume-backup-snapvault/index.html["Backup del volume con SnapVault"]
+
+link:../volume-disaster-recovery/index.html["Preparazione al disaster recovery dei volumi"]

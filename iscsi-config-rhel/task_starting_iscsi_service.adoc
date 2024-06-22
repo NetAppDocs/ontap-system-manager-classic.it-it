@@ -1,0 +1,58 @@
+---
+permalink: iscsi-config-rhel/task_starting_iscsi_service.html 
+sidebar: sidebar 
+keywords: iscsi, configuration, file, service, host, discover, target, access, lun, run, start the iscsi service 
+summary: 'Dopo aver modificato il file di configurazione iSCSI, è necessario avviare il servizio iSCSI in modo che l"host possa rilevare le destinazioni e accedere alle LUN. Se il servizio iSCSI è in esecuzione, è necessario riavviarlo.' 
+---
+= Avviare il servizio iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver modificato il file di configurazione iSCSI, è necessario avviare il servizio iSCSI in modo che l'host possa rilevare le destinazioni e accedere alle LUN. Se il servizio iSCSI è in esecuzione, è necessario riavviarlo.
+
+.Fase
+. Avviare il servizio iSCSI al prompt dei comandi dell'host Linux:
++
+|===
+| Se si utilizza... | Inserisci... 
+
+
+ a| 
+Red Hat Enterprise Linux serie 7 e SUSE Linux Enterprise serie 12
+ a| 
+`systemctl start iscsid`
+
+
+
+ a| 
+Red Hat Enterprise Linux serie 6
+
+[NOTE]
+====
+Eseguire questo comando la prima volta che si avvia il servizio iSCSI su un host che esegue Red Hat Enterprise Linux 6 Series e Oracle Linux 6 Series. Se si esegue `/etc/init.d/iscsi start` senza eseguire in precedenza `service iscsid force-start`viene visualizzato un messaggio di errore.
+
+==== a| 
+`service iscsid force-start`
+
+
+
+ a| 
+Red Hat Enterprise Linux serie 5 o 4 e Oracle Linux serie 5, Red Hat Enterprise Virtualization, Oracle Linux e Oracle VM
+ a| 
+`/etc/init.d/iscsi start`
+
+
+
+ a| 
+SUSE Linux Enterprise Server serie 10 o 11
+ a| 
+`/etc/init.d/open-iscsi start`
+
+|===
++
+Citrix sconsiglia l'utilizzo dello strumento iscsiadm. Lo stack XAPI nativo esegue le attività di avvio e arresto del servizio iscsi, accesso automatico all'avvio e altre operazioni iSCSI.
+
+

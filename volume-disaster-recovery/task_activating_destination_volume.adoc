@@ -1,0 +1,14 @@
+---
+permalink: volume-disaster-recovery/task_activating_destination_volume.html 
+sidebar: sidebar 
+keywords: source, volume, data, corruption, deletion, offline, state, destination, recover, access, activation, snapmirror, relationship, activate the destination volume 
+summary: 'Quando il volume di origine non è in grado di fornire dati a causa di eventi come corruzione dei dati, eliminazione accidentale o stato offline, è necessario attivare il volume di destinazione per fornire l"accesso ai dati fino a quando non si ripristinino i dati sul volume di origine. L"attivazione comporta l"interruzione dei futuri trasferimenti di dati di SnapMirror e l"interruzione della relazione di SnapMirror.' 
+---
+= Attivare il volume di destinazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando il volume di origine non è in grado di fornire dati a causa di eventi come corruzione dei dati, eliminazione accidentale o stato offline, è necessario attivare il volume di destinazione per fornire l'accesso ai dati fino a quando non si ripristinino i dati sul volume di origine. L'attivazione comporta l'interruzione dei futuri trasferimenti di dati di SnapMirror e l'interruzione della relazione di SnapMirror.

@@ -1,0 +1,318 @@
+---
+permalink: online-help-96-97/task_provisioning_storage_through_aggregates.html 
+sidebar: sidebar 
+keywords: provision, storage, aggregates, snaplock, fabricpool, online, help, flash, pool 
+summary: È possibile creare un aggregato in base alle raccomandazioni sullo storage o manualmente in base ai requisiti. È possibile creare aggregati di Flash Pool, aggregati di SnapLock e aggregati abilitati a FabricPool per fornire storage per uno o più volumi utilizzando Gestione di sistema. 
+---
+= Esegui il provisioning dello storage attraverso gli aggregati con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare un aggregato in base alle raccomandazioni sullo storage o manualmente in base ai requisiti. È possibile creare aggregati di Flash Pool, aggregati di SnapLock e aggregati abilitati a FabricPool per fornire storage per uno o più volumi utilizzando Gestione di sistema.
+
+.Prima di iniziare
+È necessario disporre di un numero di dischi di riserva sufficiente per creare un aggregato.
+
+.A proposito di questa attività
+Non è possibile eseguire le seguenti azioni utilizzando System Manager:
+
+* Combina dischi di dimensioni diverse anche se sono presenti dischi di riserva di dimensioni diverse.
++
+È possibile creare inizialmente un aggregato con dischi delle stesse dimensioni e quindi aggiungere dischi di dimensioni diverse in un secondo momento.
+
+* Combina dischi con diversi tipi di checksum.
++
+È possibile creare inizialmente un aggregato con un singolo tipo di checksum e aggiungere in un secondo momento un tipo di checksum diverso.
+
+
+
+
+
+== Creare un aggregato in base ai consigli sullo storage
+
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare un aggregato in base alle raccomandazioni sullo storage. System Manager analizza la configurazione del sistema storage e fornisce consigli sullo storage, come il numero di aggregati che verranno creati, i nodi disponibili e i dischi di riserva disponibili.
+
+.A proposito di questa attività
+* Non è possibile creare un aggregato in base ai consigli di storage nelle configurazioni Cloud Volumes ONTAP, ONTAP Select e MetroCluster.
+* Gli eventuali errori vengono visualizzati sullo schermo.
++
+È possibile correggere questi errori e creare un aggregato in base alle raccomandazioni sullo storage oppure creare un aggregato manualmente.
+
+
+
+.Fasi
+. Creare un aggregato utilizzando uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage* > *Aggiungi aggregato*.
+** Fare clic su *Storage* > *aggregate e dischi* > *aggregati* > *Crea*.
+
+
+. Esaminare le raccomandazioni relative allo storage, quindi fare clic su *Invia*.
++
+La finestra di dialogo informazioni visualizza lo stato degli aggregati.
+
+. Fare clic su *Esegui in background* per passare alla finestra *aggregati*.
+. Fare clic su *Refresh* (Aggiorna) per visualizzare gli aggregati creati.
+
+
+
+
+== Creare manualmente un aggregato
+
+È possibile creare manualmente un aggregato composto solo da HDD o solo SSD utilizzando Gestione di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+.Prima di iniziare
+Tutti i dischi devono avere le stesse dimensioni.
+
+.A proposito di questa attività
+* Se si crea un aggregato su un cluster a quattro nodi in ONTAP Select, l'opzione aggregato mirrorato è selezionata per impostazione predefinita.
+* A partire da ONTAP 9.0, è possibile creare aggregati con dimensioni del disco pari o superiori a 10 TB.
+* Se il tipo di disco aggregato è FSAS o MSATA e le dimensioni del disco sono pari o superiori a 10 TB, RAID-TEC è l'unico tipo RAID disponibile.
+
+
+.Fasi
+. Creare un aggregato utilizzando uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage* > *Aggiungi aggregato*.
+** Fare clic su *Storage* > *aggregate e dischi* > *aggregati* > *Crea*.
+
+
+. Attivare l'opzione *Manually Create aggregate* (Crea aggregato manualmente) per creare un aggregato.
+. Per creare un aggregato:
++
+.. Specificare il nome dell'aggregato, il tipo di disco e il numero di dischi o partizioni da includere nell'aggregato.
++
+La regola di hot spare minima viene applicata al gruppo di dischi con le dimensioni maggiori.
+
+.. *Opzionale:* modificare la configurazione RAID dell'aggregato:
++
+... Fare clic su *Cambia*.
+... Nella finestra di dialogo *Change RAID Configuration* (Modifica configurazione RAID), specificare il tipo di RAID e le dimensioni del gruppo RAID.
++
+I dischi condivisi supportano due tipi di RAID: RAID DP e RAID-TEC.
+
+... Fare clic su *Save* (Salva).
+
+
+.. Se si desidera eseguire il mirroring dell'aggregato, selezionare la casella di controllo *Mirror this aggregate* (mirrorizza questo aggregato).
++
+Per le configurazioni MetroCluster, la creazione di aggregati senza mirror è limitata. Pertanto, l'opzione di mirroring è attivata per impostazione predefinita per le configurazioni MetroCluster.
+
+
+
+. Fare clic su *Create* (Crea).
+
+
+.Risultati
+L'aggregato viene creato con la configurazione specificata e aggiunto all'elenco degli aggregati nella finestra aggregati.
+
+
+
+== Creare un aggregato Flash Pool manualmente
+
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare manualmente un aggregato di Flash Pool o per convertire un aggregato di HDD esistente in un aggregato di Flash Pool aggiungendo SSD. Quando si crea un nuovo aggregato HDD, è possibile eseguire il provisioning di una cache SSD e creare un aggregato Flash Pool.
+
+.Prima di iniziare
+* Devi conoscere le Best practice specifiche per la piattaforma e le Best practice specifiche per il carico di lavoro per la dimensione e la configurazione del Tier SSD aggregato di Flash Pool.
+* Tutti gli HDD devono essere in stato azzerato.
+* Se si desidera aggiungere SSD all'aggregato, tutti gli SSD esistenti e gli SSD dedicati devono avere le stesse dimensioni.
+
+
+.A proposito di questa attività
+* Non è possibile utilizzare SSD partizionati durante la creazione di un aggregato Flash Pool.
+* Non è possibile eseguire il mirroring degli aggregati se l'origine della cache è costituita da pool di storage.
+* A partire da ONTAP 9.0, è possibile creare aggregati con dimensioni del disco pari o superiori a 10 TB.
+* Se il tipo di disco aggregato è FSAS o MSATA e le dimensioni del disco sono pari o superiori a 10 TB, RAID-TEC è l'unica opzione disponibile per il tipo RAID.
+
+
+.Fasi
+. Creare un aggregato utilizzando uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage* > *Aggiungi aggregato*.
+** Fare clic su *Storage* > *aggregate e dischi* > *aggregati* > *Crea*.
+
+
+. Attivare l'opzione *Manually Create aggregate* (Crea aggregato manualmente) per creare un aggregato.
+. Nella finestra *Crea aggregato*, specificare il nome dell'aggregato, il tipo di disco e il numero di dischi o partizioni da includere per gli HDD nell'aggregato.
+. Se si desidera eseguire il mirroring dell'aggregato, selezionare la casella di controllo *Mirror this aggregate* (mirrorizza questo aggregato).
++
+Per le configurazioni MetroCluster, la creazione di aggregati senza mirror è limitata. Pertanto, l'opzione di mirroring è attivata per impostazione predefinita per le configurazioni MetroCluster.
+
+. Fare clic su *Usa Flash Pool cache con questo aggregato*.
+. Specificare l'origine della cache:
++
+|===
+| Se si desidera selezionare l'origine della cache come... | Quindi... 
+
+
+ a| 
+Pool di storage
+ a| 
+.. Selezionare *Storage Pools* come origine cache.
+.. Selezionare il pool di storage da cui è possibile ottenere la cache, quindi specificare le dimensioni della cache.
+.. Se necessario, modificare il tipo di RAID.
+
+
+
+
+ a| 
+SSD dedicati
+ a| 
+.. Selezionare *SSD dedicati* come origine cache.
+.. Selezionare le dimensioni dell'SSD e il numero di SSD da includere nell'aggregato.
+.. Modificare la configurazione RAID, se necessario:
++
+... Fare clic su *Cambia*.
+... Nella finestra di dialogo Change RAID Configuration (Modifica configurazione RAID), specificare il tipo di RAID e le dimensioni del gruppo RAID.
+... Fare clic su *Save* (Salva).
+
+
+
+
+|===
+. Fare clic su *Create* (Crea).
+
+
+.Risultati
+L'aggregato di Flash Pool viene creato con la configurazione specificata e aggiunto all'elenco degli aggregati nella finestra aggregati.
+
+
+
+== Creare un aggregato SnapLock manualmente
+
+È possibile utilizzare System Manager classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare manualmente un aggregato di conformità SnapLock o un aggregato aziendale SnapLock. È possibile creare volumi SnapLock su questi aggregati, che forniscono funzionalità "`write once, Read many`" (WORM).
+
+.Prima di iniziare
+La licenza SnapLock deve essere stata aggiunta.
+
+.A proposito di questa attività
+* Nelle configurazioni MetroCluster, è possibile creare solo aggregati aziendali SnapLock.
+* Per le LUN degli array, sono supportati solo gli aggregati aziendali SnapLock.
+* A partire da ONTAP 9.0, è possibile creare aggregati con dimensioni del disco pari o superiori a 10 TB.
+* Se il tipo di disco aggregato è FSAS o MSATA e le dimensioni del disco sono pari o superiori a 10 TB, RAID-TEC è l'unica opzione disponibile per il tipo RAID.
+* A partire da ONTAP 9.1, è possibile creare un aggregato SnapLock su una piattaforma AFF.
+
+
+.Fasi
+. Creare un aggregato SnapLock utilizzando uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage* > *Aggiungi aggregato*.
+** Fare clic su *Storage* > *aggregate e dischi* > *aggregati* > *Crea*.
+
+
+. Attivare l'opzione *Manually Create aggregate* (Crea aggregato manualmente) per creare un aggregato.
+. Per creare un aggregato SnapLock:
++
+.. Specificare il nome dell'aggregato, il tipo di disco e il numero di dischi o partizioni da includere nell'aggregato.
++
+Non è possibile modificare il nome di un aggregato di conformità SnapLock dopo aver creato l'aggregato.
+
++
+La regola di hot spare minima viene applicata al gruppo di dischi con le dimensioni maggiori.
+
+.. *Opzionale:* modificare la configurazione RAID dell'aggregato:
++
+... Fare clic su *Cambia*.
+... Nella finestra di dialogo Change RAID Configuration (Modifica configurazione RAID), specificare il tipo di RAID e le dimensioni del gruppo RAID.
++
+I dischi condivisi supportano due tipi di RAID: RAID-DP e RAID-TEC.
+
+... Fare clic su *Save* (Salva).
+
+
+.. Specificare il tipo di SnapLock.
+.. Se il ComplianceClock del sistema non è stato inizializzato, selezionare la casella di controllo *Inizializza ComplianceClock*.
++
+Questa opzione non viene visualizzata se ComplianceClock è già inizializzato sul nodo.
+
++
+[NOTE]
+====
+Assicurarsi che l'ora corrente del sistema sia corretta. ComplianceClock viene impostato in base all'orologio di sistema. Una volta impostato ComplianceClock, non è possibile modificare o interrompere ComplianceClock.
+
+====
+.. *Opzionale:* se si desidera eseguire il mirroring dell'aggregato, selezionare la casella di controllo *Mirror this aggregate* (Mirror this aggregate*).
++
+Per le configurazioni MetroCluster, la creazione di aggregati senza mirror è limitata. Pertanto, l'opzione di mirroring è attivata per impostazione predefinita per le configurazioni MetroCluster.
+
++
+Per impostazione predefinita, l'opzione di mirroring è disattivata per gli aggregati di conformità SnapLock.
+
+
+
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Creare manualmente un aggregato abilitato a FabricPool
+
+È possibile utilizzare ONTAP System Manager classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare manualmente un aggregato abilitato a FabricPool o per convertire un aggregato SSD esistente in un aggregato abilitato a FabricPool collegando un Tier cloud all'aggregato SSD.
+
+.Prima di iniziare
+* Devi aver creato un Tier cloud e averlo collegato al cluster in cui risiede l'aggregato SSD.
+* È necessario creare un Tier di cloud on-premise.
+* Deve esistere una connessione di rete dedicata tra il livello cloud e l'aggregato.
+
+
+.A proposito di questa attività
+I seguenti archivi di oggetti possono essere utilizzati come Tier cloud:
+
+* StorageGRID
+* Alibaba Cloud (a partire da System Manager 9.6)
+* Amazon Web Services (AWS) Simple Storage Service (S3)
+* Amazon Web Services (AWS) Commercial Cloud Service (C2S)
+* Storage Microsoft Azure Blob
+* Cloud IBM
+* Google Cloud
+
+
+[NOTE]
+====
+* Azure Stack, che è un servizio Azure on-premise, non è supportato.
+* Se si desidera utilizzare qualsiasi archivio di oggetti come livello cloud, diverso da StorageGRID, è necessario disporre della licenza di capacità FabricPool.
+
+
+====
+.Fasi
+. Creare un aggregato abilitato a FabricPool utilizzando uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage* > *Aggiungi aggregato*.
+** Fare clic su *Storage* > *aggregate e dischi* > *aggregati* > *Crea*.
+
+
+. Attivare l'opzione *Manually Create aggregate* (Crea aggregato manualmente) per creare un aggregato.
+. Creare un aggregato abilitato a FabricPool:
++
+.. Specificare il nome dell'aggregato, il tipo di disco e il numero di dischi o partizioni da includere nell'aggregato.
++
+[NOTE]
+====
+Solo tutti gli aggregati flash (tutti gli SSD) supportano gli aggregati abilitati per FabricPool.
+
+====
++
+La regola di hot spare minima viene applicata al gruppo di dischi con le dimensioni maggiori.
+
+.. *Opzionale:* modificare la configurazione RAID dell'aggregato:
++
+... Fare clic su *Cambia*.
+... Nella finestra di dialogo Change RAID Configuration (Modifica configurazione RAID), specificare il tipo di RAID e le dimensioni del gruppo RAID.
++
+I dischi condivisi supportano due tipi di RAID: RAID-DP e RAID-TEC.
+
+... Fare clic su *Save* (Salva).
+
+
+
+
+. Selezionare la casella di controllo *FabricPool*, quindi selezionare un livello cloud dall'elenco.
+. Fare clic su *Create* (Crea).
+
+
+*Informazioni correlate*
+
+http://www.netapp.com/us/media/tr-4070.pdf["Report tecnico di NetApp 4070: Progettazione e implementazione di Flash Pool"^]

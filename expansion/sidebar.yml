@@ -1,0 +1,61 @@
+---
+section: expansion
+title: Amministrazione del cluster
+entries:
+- title: Amministrazione dell'espansione del cluster
+  entries:
+  - title: Panoramica
+    url: "/expansion/index.html"
+  - title: Workflow di espansione del cluster
+    url: "/expansion/concept_cluster_expansion_workflow.html"
+    entries:
+    - title: Verificare che il cluster sia pronto per l'espansione
+      url: "/expansion/task_verifying_cluster_is_ready_for_expansion.html"
+      entries:
+      - title: Verificare la configurazione pianificata
+        url: "/expansion/task_verifying_planned_configuration.html"
+      - title: Raccogliere le informazioni di rete richieste
+        url: "/expansion/task_gathering_required_information.html"
+      - title: Aggiungere o sostituire gli switch
+        url: "/expansion/task_adding_or_replacing_switches.html"
+    - title: Preparare il cluster per l'espansione
+      url: "/expansion/task_preparing_cluster_for_expansion.html"
+      entries:
+      - title: Aggiunta di licenze con blocco a nodo
+        url: "/expansion/task_adding_node_locked_licenses.html"
+      - title: Verificare lo stato del sistema
+        url: "/expansion/task_verifying_health_system.html"
+      - title: Eseguire il backup della configurazione del cluster
+        url: "/expansion/task_backing_up_cluster_configuration.html"
+      - title: Generare un messaggio AutoSupport sull'avvio dell'espansione
+        url: "/expansion/task_generating_autosupport_message_about_starting_expansion.html"
+    - title: Installare i nuovi nodi
+      url: "/expansion/task_installing_new_nodes.html"
+      entries:
+      - title: Installare i controller
+        url: "/expansion/task_installing_controllers.html"
+      - title: Configurare le LIF di gestione dei nodi
+        url: "/expansion/concept_configuring_node_management_lifs.html"
+      - title: Eseguire l'upgrade o il downgrade dei nodi
+        url: "/expansion/task_upgrading_or_downgrading_nodes.html"
+      - title: Assicurarsi che l'ha a livello hardware sia attivato
+        url: "/expansion/task_ensuring_hardware_level_ha_is_enabled.html"
+      - title: Aggiungere nodi a un cluster utilizzando System Manager
+        url: "/expansion/task_adding_nodes_to_cluster_using_system_manager.html"
+      - title: Unire i nodi al cluster utilizzando la CLI
+        url: "/expansion/concept_joining_nodes_to_cluster_using_cli.html"
+    - title: Completare l'espansione
+      url: "/expansion/task_completing_expansion.html"
+      entries:
+      - title: Configurare i dettagli del nodo in System Manager
+        url: "/expansion/task_configuring_node_details_system_manager.html"
+      - title: Configurare AutoSupport sui nuovi nodi
+        url: "/expansion/task_configuring_autosupport_on_new_nodes_using_cli.html"
+      - title: Configurare la rete Service Processor
+        url: "/expansion/task_configuring_service_processor_network_cli.html"
+      - title: Convalidare la configurazione del cluster espanso
+        url: "/expansion/task_validating_configuration_expanded_cluster.html"
+      - title: Generare un messaggio AutoSupport sul completamento dell'espansione
+        url: "/expansion/task_generating_autosupport_message_about_completing_expansion.html"
+      - title: Aggiornare i percorsi LUN per i nuovi nodi
+        url: "/expansion/task_updating_lun_paths_for_new_nodes.html"

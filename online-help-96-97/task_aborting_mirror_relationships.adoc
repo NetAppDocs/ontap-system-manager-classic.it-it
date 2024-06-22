@@ -1,0 +1,29 @@
+---
+permalink: online-help-96-97/task_aborting_mirror_relationships.html 
+sidebar: sidebar 
+keywords: abort, mirror, transfer, online, help, volume, replication 
+summary: 'È possibile interrompere un"operazione di replica del volume prima del completamento del trasferimento dei dati. È possibile interrompere un aggiornamento pianificato, un aggiornamento manuale o un trasferimento iniziale dei dati.' 
+---
+= Interrompere un trasferimento mirror con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per interrompere un'operazione di replica del volume prima del completamento del trasferimento dei dati. È possibile interrompere un aggiornamento pianificato, un aggiornamento manuale o un trasferimento iniziale dei dati.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione per la quale si desidera interrompere il trasferimento dei dati e fare clic su *operazioni* > *Interrompi*.
+. Fare clic sulla casella di controllo *Sì, desidero interrompere il trasferimento* per confermare l'operazione.
+. Fare clic sulla casella di controllo *Mantieni i dati parzialmente trasferiti* per conservare i dati già trasferiti nel volume di destinazione.
+. Fare clic su *Interrompi*.
++
+Lo stato del trasferimento viene visualizzato come "`in corso`" fino al completamento dell'operazione e visualizzato come "`inattivo`" al termine dell'operazione.
+
+
+
+*Informazioni correlate*
+
+xref:reference_protection_window.adoc[Finestra di protezione]

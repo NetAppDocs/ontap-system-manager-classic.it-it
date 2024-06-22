@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_updating_single_node_clusters.html 
+sidebar: sidebar 
+keywords: update, singe, node, cluster, system, manager, online, help 
+summary: È possibile utilizzare System Manager per aggiornare i cluster a nodo singolo. 
+---
+= Aggiornamento dei cluster a nodo singolo con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per aggiornare i cluster a nodo singolo, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+.Prima di iniziare
+* I cluster devono eseguire ONTAP 9,4 o versione successiva.
+* L'immagine software deve essere stata copiata dal sito di supporto NetApp su un server HTTP sulla rete, su un server FTP sulla rete o sul sistema locale in modo che i nodi possano accedere all'immagine.
++
+link:task_obtaining_ontap_software_images.html["Ottenere immagini del software ONTAP"]
+
+
+
+.A proposito di questa attività
+* A partire da System Manager 9.5, è possibile aggiornare i cluster a nodo singolo in configurazioni MetroCluster a due pacchetti.
++
+Questa operazione deve essere eseguita su entrambi i siti.
+
+* L'aggiornamento dei cluster a nodo singolo nelle configurazioni MetroCluster non comporta interruzioni.
++
+L'interfaccia utente di System Manager non è disponibile durante il riavvio del cluster.
+
+* In System Manager 9.4 e versioni successive, è possibile aggiornare i cluster a nodo singolo in configurazioni non MetroCluster.
++
+L'aggiornamento dei cluster a nodo singolo in configurazioni non MetroCluster è un'interruzione. I dati del client non sono disponibili mentre l'aggiornamento è in corso.
+
+* Se si tenta di eseguire altre attività durante l'aggiornamento del nodo che ospita la LIF di gestione del cluster, potrebbe essere visualizzato un messaggio di errore.
++
+Prima di eseguire qualsiasi operazione, è necessario attendere il completamento dell'aggiornamento.
+
+* Se il protocollo NVMe è configurato in System Manager 9.4 e si esegue un aggiornamento da System Manager 9.4 a System Manager 9.5, il protocollo NVMe sarà disponibile per un periodo di tolleranza di 90 giorni senza licenza.
++
+Questa funzione non è disponibile nelle configurazioni MetroCluster.
+
+* Se il protocollo NVMe non è configurato in System Manager 9.5 e si esegue un aggiornamento da System Manager 9.5 a System Manager 9.6, il periodo di tolleranza non viene fornito ed è necessario installare la licenza NVMe per utilizzare il protocollo NVMe.
++
+Questa funzione non è disponibile nelle configurazioni MetroCluster.
+
+
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Update*.
+. Nella scheda *Cluster Update*, aggiungere una nuova immagine software o selezionare un'immagine software disponibile.
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Aggiungere una nuova immagine software dal client locale
+ a| 
+.. Fare clic su *Add from Local Client* (Aggiungi da client locale).
+.. Cercare l'immagine software, quindi fare clic su *Apri*.
+
+
+
+
+ a| 
+Aggiungere una nuova immagine software dal sito di supporto NetApp
+ a| 
+.. Fare clic su *Aggiungi dal server*.
+.. Nella finestra di dialogo Add a New Software Image (Aggiungi nuova immagine software), inserire l'URL del server HTTP o del server FTP su cui è stata salvata l'immagine scaricata dal sito di supporto NetApp.
++
+Per l'FTP anonimo, è necessario specificare l'URL in `+ftp://anonymous@ftpserver+` formato.
+
+.. Fare clic su *Aggiungi*.
+
+
+
+
+ a| 
+Selezionare un'immagine disponibile
+ a| 
+Scegliere una delle immagini elencate.
+
+|===
+. Fare clic su *Validate* (convalida) per eseguire i controlli di convalida pre-aggiornamento e verificare se il cluster è pronto per un aggiornamento.
++
+L'operazione di convalida verifica i componenti del cluster per verificare che l'aggiornamento possa essere completato, quindi visualizza eventuali errori o avvisi. L'operazione di convalida visualizza anche le azioni correttive necessarie da eseguire prima di aggiornare il software.
+
++
+[NOTE]
+====
+Prima di procedere con l'aggiornamento, è necessario eseguire tutte le azioni correttive richieste per gli errori. Sebbene sia possibile ignorare le azioni correttive per gli avvisi, la procedura consigliata consiste nell'eseguire tutte le azioni correttive prima di procedere con l'aggiornamento.
+
+====
+. Fare clic su *Avanti*.
+. Fare clic su *Aggiorna*.
++
+La convalida viene eseguita di nuovo.
+
++
+** Una volta completata la convalida, una tabella visualizza eventuali errori e avvisi, oltre alle azioni correttive necessarie da intraprendere prima di procedere.
+** Se la convalida viene completata con avvisi, selezionare la casella di controllo *continua aggiornamento con avvisi*, quindi fare clic su *continua*.
+Una volta completata la convalida e in corso l'aggiornamento, l'aggiornamento potrebbe essere in pausa a causa di errori. È possibile fare clic sul messaggio di errore per visualizzare i dettagli, quindi eseguire le azioni correttive prima di riprendere l'aggiornamento.
+
+
++
+Una volta completato l'aggiornamento, il nodo viene riavviato e si viene reindirizzati alla pagina di accesso di System Manager. Se il nodo impiega molto tempo per il riavvio, è necessario aggiornare il browser.
+
+. Accedere a System Manager e verificare che il cluster sia aggiornato correttamente alla versione selezionata facendo clic su *Configuration* > *Cluster* > *Update* > *Update History*, quindi visualizzando i dettagli.
+

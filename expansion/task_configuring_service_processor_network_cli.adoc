@@ -1,0 +1,70 @@
+---
+permalink: expansion/task_configuring_service_processor_network_cli.html 
+sidebar: sidebar 
+keywords: expand, cluster, configure, service, processor, sp, network, node, manual, network, configuration, automatic, configure the service processor network 
+summary: Dopo aver espanso un cluster, è necessario configurare la rete Service Processor sui nuovi nodi. 
+---
+= Configurare la rete Service Processor
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver espanso un cluster, è necessario configurare la rete Service Processor (SP) sui nuovi nodi. Se l'SP utilizza la configurazione di rete manuale, è necessario configurare gli indirizzi IP per l'SP sui nuovi nodi. Se l'SP utilizza la configurazione di rete automatica, è necessario identificare gli indirizzi IP selezionati.
+
+.Fasi
+. Se il cluster SP utilizza la configurazione di rete manuale, configurare gli indirizzi IP su entrambi i nodi per la rete SP utilizzando `system service-processor network modify` comando.
++
+I seguenti comandi configurano la rete SP nei nodi cluster1-3 e cluster1-4:
+
++
+[listing]
+----
+cluster1::> system service-processor network modify -node cluster1-3 -address-family IPv4 -enable true -ip-address 192.168.123.98-netmask 255.255.255.0 -gateway 192.168.123.1
+cluster1::> system service-processor network modify -node cluster1-4 -address-family IPv4 -enable true -ip-address 192.168.123.99 -netmask 255.255.255.0 -gateway 192.168.123.1
+----
+. Verificare che la rete SP sia configurata correttamente su entrambi i nuovi nodi utilizzando `system service-processor network show` comando per ciascun nodo.
++
+Lo stato deve essere `succeeded`. La verifica è necessaria in tutte le situazioni. Anche se la rete SP è stata configurata automaticamente, è necessario verificare che sia stata configurata correttamente ed è necessario determinare gli indirizzi IP assegnati.
+
++
+Il seguente output indica che entrambi i nodi cluster1-3 e cluster1-4 hanno eseguito correttamente la configurazione della rete SP:
+
++
+[listing]
+----
+cluster1::> system service-processor network show -node cluster1-3
+                             Address
+Node          Status         Family    Link State  IP Address
+------------- -------------- --------- ----------- ------------------------
+cluster1-3    online         IPv4      up          192.168.123.98
+
+                                 DHCP: none
+                          MAC Address: 00:a0:98:43:a1:1e
+                      Network Gateway: 10.60.172.1
+             Network Mask (IPv4 only): 255.255.255.0
+            Prefix Length (IPv6 only): -
+                      IPv6 RA Enabled: -
+                          Subnet Name: -
+              SP Network Setup Status: succeeded
+                                     ...
+
+cluster1::> system service-processor network show -node cluster1-4
+                             Address
+Node          Status         Family    Link State  IP Address
+------------- -------------- --------- ----------- ------------------------
+cluster1-4    online         IPv4      up          192.168.123.99
+
+                                 DHCP: none
+                          MAC Address: 00:a0:98:43:a1:1e
+                      Network Gateway: 10.60.172.1
+             Network Mask (IPv4 only): 255.255.255.0
+            Prefix Length (IPv6 only): -
+                      IPv6 RA Enabled: -
+                          Subnet Name: -
+              SP Network Setup Status: succeeded
+                                     ...
+----
+. Se il sito in genere dispone di voci DNS per la rete SP, verificare che le voci DNS vengano create per i nuovi nodi.
+

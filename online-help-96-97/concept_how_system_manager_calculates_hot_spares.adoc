@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/concept_how_system_manager_calculates_hot_spares.html 
+sidebar: sidebar 
+keywords: system, manager, hot, spares, disk, storage, raid, online, help 
+summary: Un hot spare è un disco assegnato a un sistema di storage ma non utilizzato da alcun gruppo RAID. Le hot spare non contengono dati e vengono assegnate a un gruppo RAID quando si verifica un guasto del disco nel gruppo RAID. System Manager utilizza il disco più grande come hot spare. 
+---
+= Funzionamento di Gestione sistema con hot spare - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un hot spare è un disco assegnato a un sistema di storage ma non utilizzato da alcun gruppo RAID. Le hot spare non contengono dati e vengono assegnate a un gruppo RAID quando si verifica un guasto del disco nel gruppo RAID. Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) utilizza il disco più grande come hot spare.
+
+Quando nel gruppo RAID sono presenti diversi tipi di dischi, il disco di dimensioni maggiori di ciascun tipo di disco viene lasciato come hot spare. Ad esempio, se nel gruppo RAID sono presenti 10 dischi SATA e 10 dischi SAS, il disco SATA di dimensioni maggiori e il disco SAS di dimensioni maggiori vengono utilizzati come hot spare.
+
+Se il disco di dimensioni maggiori viene partizionato, le hot spare vengono fornite separatamente per i gruppi RAID partizionati e non partizionati. Se il disco di dimensioni maggiori non è partizionato, viene fornito un singolo disco di riserva.
+
+Il disco non partizionato di dimensioni maggiori viene lasciato come hot spare se nel gruppo di dischi sono presenti partizioni root. Quando non è disponibile un disco non partizionato della stessa dimensione, le partizioni root spare vengono lasciate come hot spare per il gruppo partizionato root.
+
+Un singolo disco spare può fungere da hot spare per più gruppi RAID. System Manager calcola le hot spare in base al valore impostato nell'opzione `raid.min_spare_count` a livello di nodo. Ad esempio, se sono presenti 10 SSD in un gruppo RAID SSD e l'opzione `raid.min_spare_count` è impostato su `1` A livello di nodo, System Manager lascia 1 SSD come hot spare e utilizza gli altri 9 SSD per le operazioni relative agli SSD. Allo stesso modo, se in un gruppo RAID HDD sono presenti 10 HDD e l'opzione `raid.min_spare_count` è impostato su `2` A livello di nodo, System Manager lascia 2 HDD come hot spare e utilizza gli altri 8 HDD per le operazioni relative ai dischi rigidi.
+
+System Manager applica la regola hot spare per i gruppi RAID quando si crea un aggregato, si modifica un aggregato e si aggiungono HDD o SSD a un aggregato. La regola hot spare viene utilizzata anche quando si crea un pool di storage o si aggiungono dischi a un pool di storage esistente.
+
+Esistono eccezioni alla regola hot spare in System Manager:
+
+* Per MSATA o dischi in un supporto multi-disco, il numero di hot spare è il doppio del valore impostato a livello di nodo e il numero non deve essere inferiore a 2 in qualsiasi momento.
+* Le hot spare non vengono utilizzate se i dischi fanno parte di LUN di array o appliance di storage virtuali.
+

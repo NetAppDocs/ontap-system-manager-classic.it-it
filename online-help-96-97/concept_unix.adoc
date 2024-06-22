@@ -1,0 +1,116 @@
+---
+permalink: online-help-96-97/concept_unix.html 
+sidebar: sidebar 
+keywords: system, manager, unix, svm, online, help, command, button, group, tab, storage, virtual, machine 
+summary: 'È possibile utilizzare System Manager per gestire un elenco di utenti e gruppi UNIX locali per ciascuna macchina virtuale di storage (SVM).' 
+---
+= Utenti e gruppi UNIX locali con Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire un elenco di utenti e gruppi UNIX locali per ciascuna macchina virtuale di storage (SVM).
+
+
+
+== Finestra di UNIX
+
+È possibile utilizzare la finestra UNIX per gestire un elenco di utenti e gruppi UNIX locali per ciascuna macchina virtuale di storage (SVM). È possibile utilizzare utenti e gruppi UNIX locali per l'autenticazione e la mappatura dei nomi.
+
+
+
+=== Scheda gruppi
+
+È possibile utilizzare la scheda Groups (gruppi) per aggiungere, modificare o eliminare i gruppi UNIX locali di una SVM.
+
+
+
+== Pulsanti di comando
+
+* *Aggiungi gruppo*
++
+Apre la finestra di dialogo Add Group (Aggiungi gruppo), che consente di creare gruppi UNIX locali per le SVM. I gruppi UNIX locali vengono utilizzati con gli utenti UNIX locali.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Group (Modifica gruppo), che consente di modificare l'ID di un gruppo.
+
+* *Elimina*
++
+Elimina il gruppo selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco gruppi
+
+* *Nome gruppo*
++
+Visualizza il nome del gruppo.
+
+* *ID gruppo*
++
+Visualizza l'ID del gruppo.
+
+
+
+
+
+=== Scheda Users (utenti)
+
+È possibile utilizzare la scheda *Users* per aggiungere, modificare ed eliminare utenti UNIX che sono locali nelle SVM.
+
+
+
+=== Pulsanti di comando
+
+* *Aggiungi utente*
++
+Apre la finestra di dialogo Add User (Aggiungi utente), che consente di creare utenti UNIX locali per le SVM.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit User (Modifica utente), che consente di modificare l'ID utente, il gruppo UNIX a cui appartiene l'utente e il nome completo dell'utente.
+
+* *Elimina*
++
+Elimina l'utente selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco utenti
+
+* *Nome utente*
++
+Visualizza il nome dell'utente.
+
+* *ID utente*
++
+Visualizza l'ID dell'utente.
+
+* *Nome completo*
++
+Visualizza il nome completo dell'utente.
+
+* *ID gruppo primario*
++
+Visualizza l'ID del gruppo a cui appartiene l'utente.
+
+* *Nome gruppo primario*
++
+Visualizza il nome del gruppo a cui appartiene l'utente.
+
+

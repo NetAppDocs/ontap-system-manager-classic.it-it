@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/task_zeroing_disks.html 
+sidebar: sidebar 
+keywords: zero, spare, disks, system, manager, erase, data, online, help 
+summary: È possibile utilizzare System Manager per cancellare tutti i dati e formattare i dischi di riserva scrivendo degli zeri sul disco. Questi dischi possono quindi essere utilizzati in nuovi aggregati. 
+---
+= Nessun disco spare con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per cancellare tutti i dati e formattare i dischi di riserva scrivendo degli zeri sul disco. Questi dischi possono quindi essere utilizzati in nuovi aggregati.
+
+.A proposito di questa attività
+Quando si azzerano i dischi spare, tutte le parti di ricambio del cluster, comprese le LUN degli array, vengono azzerate. È possibile azzerare i dischi spare per un nodo specifico o per l'intero cluster.
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Disks*.
+. Nella finestra *dischi*, selezionare la scheda *inventario*.
+. Fare clic su *Zero spare*.
+. Nella finestra di dialogo *Zero Spares*, selezionare un nodo o "`All Nodes`" dal quale si desidera azzerare i dischi.
+. Selezionare la casella di controllo *Azzeramento di tutte le unità di riserva non azzerate* per confermare l'operazione di azzeramento.
+. Fare clic su *Zero spare*.
+
+
+*Informazioni correlate*
+
+xref:concept_storage_recommendations_for_creating_aggregates.adoc[Consigli per lo storage per la creazione di aggregati]

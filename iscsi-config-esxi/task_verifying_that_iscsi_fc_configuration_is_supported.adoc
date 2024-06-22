@@ -1,0 +1,45 @@
+---
+permalink: iscsi-config-esxi/task_verifying_that_iscsi_fc_configuration_is_supported.html 
+sidebar: sidebar 
+keywords: reliable, operation, verify, iscsi, configuration, support, verify that the iscsi configuration is supported 
+summary: 'Per un funzionamento affidabile, è necessario verificare che l"intera configurazione iSCSI sia supportata.' 
+---
+= Verificare che la configurazione iSCSI sia supportata
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per un funzionamento affidabile, è necessario verificare che l'intera configurazione iSCSI sia supportata.
+
+.Fasi
+. Accedere alla matrice di interoperabilità per verificare di disporre di una combinazione supportata dei seguenti componenti:
++
+** Software ONTAP
+** Architettura della CPU del computer host (per server rack standard)
+** Modello specifico di blade del processore (per server blade)
+** Protocollo storage (iSCSI)
+** Versione del sistema operativo ESXi
+** Tipo e versione del sistema operativo guest
+** Virtual Storage Console (VSC) per il software VMware vSphere
+** Versione di Windows Server per eseguire VSC
+
+
+. Fare clic sul nome della configurazione selezionata.
++
+I dettagli della configurazione vengono visualizzati nella finestra Dettagli configurazione.
+
+. Esaminare le informazioni nelle seguenti schede:
++
+** Note
++
+Elenca avvisi e informazioni importanti specifici della configurazione.
+
+** Policy e linee guida
++
+Fornisce linee guida generali per tutte le configurazioni SAN.
+
+
+
+

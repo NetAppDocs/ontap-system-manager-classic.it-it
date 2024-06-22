@@ -1,0 +1,46 @@
+---
+permalink: iscsi-config-esxi/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, iscsi, exist, storage, virtual, machine, svm, protocol, enable, configure iscsi on an existing svm 
+summary: 'È possibile configurare iSCSI su una macchina virtuale di storage (SVM) esistente. Il protocollo iSCSI deve essere già abilitato ma non configurato su SVM. Queste informazioni sono destinate alle SVM per le quali si stanno configurando più protocolli, ma non sono ancora stati configurati iSCSI.' 
+---
+= Configurare iSCSI su una SVM esistente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare iSCSI su una macchina virtuale di storage (SVM) esistente. Il protocollo iSCSI deve essere già abilitato ma non configurato su SVM. Queste informazioni sono destinate alle SVM per le quali si stanno configurando più protocolli, ma non sono ancora stati configurati iSCSI.
+
+.Prima di iniziare
+È necessario disporre di un numero sufficiente di indirizzi di rete per creare due LIF per ciascun nodo.
+
+.Fasi
+. Accedere alla finestra *SVM*.
+. Selezionare la SVM che si desidera configurare.
+. Nel riquadro SVM **Dettagli**, verificare che *iSCSI* sia visualizzato con uno sfondo grigio, che indica che il protocollo è abilitato ma non completamente configurato.
++
+Se viene visualizzato *iSCSI* con uno sfondo verde, la SVM è già configurata.
+
++
+image::../media/existing_svm_protocols_iscsi_esxi.gif[L'immagine mostra la pagina dei dettagli con tutti e quattro i protocolli con sfondo grigio.]
+
+. Fare clic sul collegamento del protocollo *iSCSI* con lo sfondo grigio.
++
+Viene visualizzata la finestra Configure iSCSI Protocol (Configura protocollo iSCSI).
+
+. Configurare il servizio iSCSI e i LIF dalla pagina *Configure iSCSI Protocol* (Configura protocollo iSCSI):
++
+.. Immettere un nome alias di destinazione.
+.. Invio `*2*` Nel campo *LIF per nodo*.
++
+Per garantire disponibilità e mobilità dei dati, sono necessarie due LIF per ciascun nodo.
+
+.. Assegnare gli indirizzi IP per le LIF con una subnet o senza una subnet.
+.. Ignorare l'area opzionale *Provisioning a LUN for iSCSI storage*, perché il LUN viene fornito da Virtual Storage Console per VMware vSphere in un passaggio successivo.
+.. Fare clic su *Invia e chiudi*.
+
+
+. Esaminare la pagina *Riepilogo*, registrare le informazioni LIF, quindi fare clic su *OK*.
+

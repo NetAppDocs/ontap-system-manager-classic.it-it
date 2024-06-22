@@ -1,0 +1,45 @@
+---
+permalink: expansion/task_configuring_node_details_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, configure, node, management, lif, service, processor, setting, add, configure the node details in system manager 
+summary: È possibile utilizzare System Manager per configurare le impostazioni LIF di gestione dei nodi e Service Processor per i nodi appena aggiunti. 
+---
+= Configurare i dettagli del nodo in System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare System Manager per configurare le impostazioni LIF di gestione dei nodi e Service Processor per i nodi appena aggiunti.
+
+.Prima di iniziare
+* È necessario che sia presente un numero sufficiente di porte nello spazio IPSpace predefinito per la creazione di LIF.
+* Tutte le porte devono essere attive.
+
+
+.Fasi
+. Configurare la gestione dei nodi:
++
+.. Inserire l'indirizzo IP nel campo *IP Address* (Indirizzo IP).
+.. Selezionare la porta per la gestione dei nodi nel campo *Port*.
+.. Inserire i dettagli della netmask e del gateway.
+
+
+. Configurare le impostazioni del Service Processor:
++
+.. Selezionare la casella di controllo *Ignora valori predefiniti* per sovrascrivere i valori predefiniti.
+.. Inserire l'indirizzo IP, la netmask e i dettagli del gateway.
+
+
+. Fare clic su *Submit and Proceed* (Invia e procedi) per completare la configurazione di rete dei nodi.
+. Verificare i dettagli dei nodi nella pagina *Riepilogo*.
+
+
+
+
+== Cosa fare in seguito
+
+* Se il cluster è protetto, è necessario creare il numero richiesto di LIF di intercluster nei nuovi nodi aggiunti per evitare il peering parziale e la protezione non corretta.
+* Se i protocolli dati SAN sono abilitati nel cluster, è necessario creare il numero richiesto di LIF DATI SAN per la distribuzione dei dati.
+

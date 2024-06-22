@@ -1,0 +1,54 @@
+---
+permalink: online-help-96-97/task_performing_negotiated_planned_switchover.html 
+sidebar: sidebar 
+keywords: online, help, perform, negotiated, switchover, system, help 
+summary: 'A partire da System Manager 9.6, è possibile avviare uno switchover negoziato (pianificato) di un sito MetroCluster. Questa operazione è utile quando si desidera eseguire test di disaster recovery o manutenzione pianificata sul sito.' 
+---
+= Esecuzione di uno switchover negoziato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile avviare uno switchover negoziato (pianificato) di un sito MetroCluster. Questa operazione è utile quando si desidera eseguire test di disaster recovery o manutenzione pianificata sul sito.
+
+.Fasi
+. [[step1]]in Gestione sistema, utilizzare le credenziali di amministratore del cluster per accedere al sito MetroCluster locale (sito A).
+. Fare clic su *Configurazione* > *MetroCluster*
++
+Viene visualizzata la finestra MetroCluster Switchover/Switchback Operations.
+
+. Fare clic su *Avanti*.
++
+La finestra delle operazioni di switchover e switchback di MetroCluster visualizza lo stato delle operazioni e il gestore di sistema verifica se è possibile uno switchover negoziato.
+
+. Una volta completato il processo di convalida, eseguire una delle seguenti operazioni secondarie:
++
+** Se la convalida ha esito positivo, passare al punto link:#step5["5"].
+** Se la convalida non riesce, ma il sito B è attivo, si è verificato un errore, ad esempio un problema con un sottosistema o il mirroring NVRAM non è sincronizzato. È possibile eseguire uno dei seguenti processi:
++
+*** Risolvere il problema che causa l'errore, fare clic su *Chiudi*, quindi ricominciare dal passo link:#step1["1"].
+*** Arrestare i nodi del sito B, fare clic su *Close* (Chiudi), quindi eseguire le operazioni descritte in xref:task_performing_unplanned_switchover.adoc[Esecuzione di uno switchover non pianificato].
+
+
+** Se la convalida non riesce e il sito B è inattivo, molto probabilmente si è verificato un problema di connessione. Verificare che il sito B sia effettivamente inattivo, quindi eseguire le operazioni descritte in xref:task_performing_unplanned_switchover.adoc[Esecuzione di uno switchover non pianificato].
+
+
+. [[step5]]fare clic su *Switchover dal sito B al sito A* per avviare il processo di switchover.
++
+Viene visualizzato un messaggio di avviso che avvisa che l'operazione di switchover interrompe tutti i dati SVM sul sito B e li riavvia sul sito A.
+
+. Per continuare, fare clic su *Sì*.
++
+Viene avviato il processo di switchover. Gli stati del sito A e del sito B vengono visualizzati sopra le rappresentazioni grafiche delle relative configurazioni. Se l'operazione di switchover non riesce, viene visualizzato un messaggio di errore. Fare clic su *Chiudi*. Correggere eventuali errori e ricominciare dal passo link:#step1["1"]
+
+. Attendere che System Manager indichi che la riparazione è stata completata.
++
+Una volta completata la riparazione, il sito B è operativo e i sistemi si preparano per il processo di switchback.
+
++
+Al termine della preparazione del processo di switchback, il pulsante *switchback from Site A to Site B* (passa da sito A sito B) è attivo nella parte inferiore della finestra.
+
+. Per procedere con l'operazione di switchback, eseguire le operazioni descritte in xref:task_performing_switchback.adoc[Esecuzione di uno switchback].
+

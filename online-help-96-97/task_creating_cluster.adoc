@@ -1,0 +1,58 @@
+---
+permalink: online-help-96-97/task_creating_cluster.html 
+sidebar: sidebar 
+keywords: data, center, create, cluster, online, help, system, manager 
+summary: È possibile utilizzare Gestore di sistema di ONTAP per creare e configurare un cluster nel data center. 
+---
+= Creare un cluster con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare e configurare un cluster nel data center.
+
+.A proposito di questa attività
+Se il cluster supporta ONTAP 9.1 o versioni successive, è possibile aggiungere solo i sistemi storage che eseguono ONTAP 9.1 o versioni successive.
+
+.Fasi
+. Aprire il browser Web e immettere l'indirizzo IP di gestione del nodo configurato: `+https://node-management-IP+`
++
+** Se sono state impostate le credenziali per il cluster, viene visualizzata la pagina di accesso.
++
+Per accedere, è necessario immettere le credenziali.
+
+** Se non sono state impostate le credenziali per il cluster, viene visualizzata la finestra Configurazione guidata.
++
+Fare clic sull'icona *Guided Setup* (Configurazione guidata) per configurare un cluster.
+
+
+
+. Nella pagina *Cluster*, immettere un nome per il cluster.
++
+[NOTE]
+====
+Se non vengono rilevati tutti i nodi, fare clic su *Refresh* (Aggiorna).
+
+====
++
+I nodi della rete cluster vengono visualizzati nel campo Nodes (nodi).
+
+. *Opzionale:* se lo si desidera, aggiornare i nomi dei nodi nel campo *nodi*.
+. Inserire la password per il cluster.
+. *Opzionale:* inserire i codici di licenza della funzione.
+. Fare clic su *Invia*.
+
+
+
+
+== Cosa fare in seguito
+
+Inserire i dettagli di rete nella pagina Network (rete) per continuare con la configurazione del cluster.
+
+*Informazioni correlate*
+
+xref:reference_licenses_window.adoc[Finestra delle licenze]
+
+xref:reference_configuration_updates_window.adoc[Finestra Configuration Updates (aggiornamenti configurazione)]

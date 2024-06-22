@@ -1,0 +1,100 @@
+---
+permalink: online-help-96-97/concept_events.html 
+sidebar: sidebar 
+keywords: event, log, notification, system, manager, online, help, view 
+summary: È possibile utilizzare System Manager per visualizzare il registro eventi e le notifiche degli eventi. 
+---
+= Gestione degli eventi con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per visualizzare il registro eventi e le notifiche degli eventi, è possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Finestra Eventi
+
+È possibile utilizzare la finestra Eventi per visualizzare il registro eventi e le notifiche degli eventi.
+
+
+
+=== Pulsanti di comando
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco degli eventi
+
+* *Ora*
++
+Visualizza l'ora in cui si è verificato l'evento.
+
+* Nodo *
++
+Visualizza il nodo e il cluster in cui si è verificato l'evento.
+
+* *Severità*
++
+Visualizza la severità dell'evento. I livelli di severità possibili sono:
+
++
+** Emergenza
++
+Specifica che l'origine dell'evento si è arrestata inaspettatamente e che il sistema ha riscontrato una perdita di dati non ripristinabile. È necessario intraprendere immediatamente un'azione correttiva per evitare tempi di inattività prolungati.
+
+** Avviso
++
+Specifica che l'origine dell'evento ha un avviso e deve essere intrapresa un'azione per evitare il downtime.
+
+** Critico
++
+Specifica che l'origine dell'evento è critica e potrebbe causare interruzioni del servizio se non viene intrapresa immediatamente un'azione correttiva.
+
+** Errore
++
+Specifica che l'origine dell'evento è ancora in esecuzione ed è necessaria un'azione correttiva per evitare interruzioni del servizio.
+
+** Attenzione
++
+Specifica che l'origine dell'evento ha riscontrato una ricorrenza di cui è necessario essere a conoscenza. Gli eventi di questo livello di gravità non possono causare interruzioni del servizio; tuttavia, potrebbe essere necessaria un'azione correttiva.
+
+** Avviso
++
+Specifica che l'origine dell'evento è normale, ma la gravità è una condizione significativa di cui è necessario essere a conoscenza.
+
+** Informativo
++
+Specifica che l'origine dell'evento ha una ricorrenza di cui è necessario essere a conoscenza. Potrebbe non essere necessaria alcuna azione correttiva.
+
+** Debug
++
+Specifica che l'origine dell'evento include un messaggio di debug.
+
+
+
++
+Per impostazione predefinita, vengono visualizzati il tipo di severità degli avvisi, il tipo di severità di emergenza e il tipo di severità degli errori.
+
+* *Origine*
++
+Visualizza l'origine dell'evento.
+
+* *Evento*
++
+Visualizza la descrizione dell'evento.
+
+
+
+
+
+=== Area dei dettagli
+
+Visualizza i dettagli dell'evento, tra cui la descrizione dell'evento, il nome del messaggio, il numero della sequenza, la descrizione del messaggio e l'azione correttiva per l'evento selezionato.

@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/concept_metrocluster_switchover_switchback_workflow.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, workflow, online, help, offline, maintenance 
+summary: 'A partire da System Manager 9.6, è possibile utilizzare le operazioni di switchover e switchback MetroCluster dopo un disastro che rende irraggiungibili e spenti tutti i nodi del cluster di origine. È inoltre possibile utilizzare il workflow di switchover per uno switchover negoziato (pianificato) in casi come test di disaster recovery o un sito offline per la manutenzione.' 
+---
+= Informazioni su switchover e switchback MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da Gestore di sistema di ONTAP 9.6, è possibile utilizzare le operazioni di switchover e switchback MetroCluster dopo un disastro che rende irraggiungibili e spenti tutti i nodi del cluster di origine. È inoltre possibile utilizzare il workflow di switchover per uno switchover negoziato (pianificato) in casi come test di disaster recovery o un sito offline per la manutenzione.
+
+
+
+== Informazioni su switchover e switchback MetroCluster
+
+A partire da System Manager 9.6, è possibile utilizzare le operazioni di switchover e switchback di MetroCluster per consentire a un sito del cluster di assumere il controllo delle attività di un altro sito del cluster. Questa funzionalità consente di semplificare la manutenzione o il ripristino in caso di disastri.
+
+Un'operazione di switchover consente a un cluster (sito A) di assumere il controllo delle attività eseguite solitamente da un altro cluster (sito B). Dopo lo switchover, il cluster che è stato sostituito (sede B) può essere spento per manutenzione e riparazione. Una volta completata la manutenzione, il sito B può attivarsi e le attività di riparazione sono state completate, quindi è possibile avviare un'operazione di switchback che consente al cluster riparato (sito B) di riprendere le attività che di solito esegue.
+
+System Manager supporta due tipi di operazioni di switchover, in base allo stato del sito del cluster remoto:
+
+* Uno switchover negoziato (pianificato): Questa operazione viene avviata quando è necessario eseguire la manutenzione pianificata su un cluster o testare le procedure di disaster recovery.
+* Switchover non pianificato: Questa operazione viene avviata quando si verifica un disastro in un cluster (sito B) e si desidera che un altro sito o cluster (sito A) assuma le attività del cluster interessato dal disastro (sito B) durante l'esecuzione di riparazioni e manutenzione.
+
+
+Eseguire le stesse operazioni in System Manager per entrambe le operazioni di switchover. Quando si avvia uno switchover, System Manager determina se l'operazione è fattibile e allinea il carico di lavoro di conseguenza.
+
+
+
+== Workflow di switchover e switchback MetroCluster
+
+Il processo generale per il workflow di switchover e switchback comprende le tre fasi seguenti:
+
+. *Switchover*: Il processo di switchover consente di trasferire il controllo dello storage e dell'accesso client da un sito cluster di origine (sito B) a un altro sito cluster (sito A). Questa operazione consente di eseguire operazioni senza interruzioni durante i test e la manutenzione. Inoltre, questo processo consente anche di eseguire il ripristino da un guasto del sito. Per i test di disaster recovery o la manutenzione pianificata del sito, è possibile eseguire uno switchover MetroCluster per trasferire il controllo a un sito di disaster recovery (DR) (sito A). Prima di avviare il processo, almeno uno dei nodi del sito sopravvissuti deve essere attivo e in esecuzione prima di eseguire lo switchover. Se un'operazione di switchover in precedenza non è riuscita su alcuni nodi del sito di DR, è possibile eseguire nuovamente l'operazione su tutti questi nodi.
+. *Operazioni del sito B*: Una volta completato lo switchover, System Manager completa il processo di riparazione per la configurazione IP di MetroCluster. La riparazione è un evento pianificato, che ti offre il pieno controllo di ogni fase per ridurre al minimo il downtime. La riparazione è un processo in due fasi che si verifica sui componenti dello storage e del controller per preparare i nodi nel sito riparato per il processo di switchback. Durante la prima fase, il processo guarisce gli aggregati risincronizzando i plessi mirrorati e quindi guarisce gli aggregati root riportandoli al sito di disastro.
++
+Nella seconda fase, il sito è pronto per il processo di switchback.
+
+. *Switchback*: Dopo aver eseguito interventi di manutenzione e riparazione sul sito B, si avvia l'operazione di switchback per restituire il controllo dello storage e dell'accesso client dal sito A al sito B. Per un switchback corretto, devono sussistere le seguenti condizioni:
++
+** I nodi domestici e gli shelf di storage devono essere accesi e raggiungibili dai nodi nel sito A.
+** System Manager deve aver completato correttamente la fase di riparazione prima di poter avviare l'operazione di switchback.
+** Tutti gli aggregati nel sito A devono essere in stato mirrorato e non possono essere in stato degradato o risyncing.
+** Prima di eseguire un'operazione di switchback, è necessario completare tutte le modifiche di configurazione precedenti. In questo modo si evita che tali modifiche possano competere con le operazioni di switchover o switchback negoziate.
+
+
+
+
+
+
+== Diagramma di flusso del flusso di lavoro di switchover e switchback di MetroCluster
+
+Il seguente diagramma di flusso illustra le fasi e i processi che si verificano quando si avviano le operazioni di switchover e switchback.
+
+image::../media/switchover_switchback_workflow.jpg[workflow di switchover switchback]

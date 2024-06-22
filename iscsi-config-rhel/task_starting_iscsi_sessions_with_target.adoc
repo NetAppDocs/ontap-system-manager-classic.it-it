@@ -1,0 +1,39 @@
+---
+permalink: iscsi-config-rhel/task_starting_iscsi_sessions_with_target.html 
+sidebar: sidebar 
+keywords: linux, host, iscsi, connection, node, target, storage, cluster, establish, session, start the iscsi sessions with the target 
+summary: 'L"host Linux deve disporre di una connessione iSCSI con ciascun nodo (destinazione) nel cluster di storage. Le sessioni vengono stabilite dall"host.' 
+---
+= Avviare le sessioni iSCSI con la destinazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'host Linux deve disporre di una connessione iSCSI con ciascun nodo (destinazione) nel cluster di storage. Le sessioni vengono stabilite dall'host.
+
+.A proposito di questa attività
+In ONTAP, l'host iSCSI deve disporre di percorsi per ciascun nodo del cluster. DM-multipath seleziona i percorsi migliori da utilizzare. Se i percorsi non funzionano, DM-multipath seleziona percorsi alternativi.
+
+.Fasi
+. Avviare il servizio iSCSI dal prompt dei comandi dell'host Linux:
++
+`service iscsid force-start`
+
+. Scopri la destinazione iSCSI:
++
+`iscsiadm --mode discovery --op update --type sendtargets --portal targetIP`
+
++
+L'indirizzo IP di ciascuna destinazione rilevata viene visualizzato su una riga separata.
+
+. Stabilire sessioni iSCSI effettuando l'accesso a ciascuna destinazione:
++
+`iscsiadm --mode node -l all`
+
+. È possibile visualizzare un elenco delle sessioni iSCSI attive:
++
+`iscsiadm --mode session`
+
+

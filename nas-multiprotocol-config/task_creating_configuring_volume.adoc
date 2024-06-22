@@ -1,0 +1,56 @@
+---
+permalink: nas-multiprotocol-config/task_creating_configuring_volume.html 
+sidebar: sidebar 
+keywords: create, flexvol, volume, data, default, security, style, inherit, security, style, root, volume, location, namespace, storage, virtual, machine, svm, create and configure a volume 
+summary: 'È necessario creare un volume FlexVol per contenere i dati. È possibile modificare lo stile di protezione predefinito del volume, ereditato dallo stile di protezione del volume root. È inoltre possibile modificare la posizione predefinita del volume nello spazio dei nomi, che si trova nel volume root della macchina virtuale di storage (SVM).' 
+---
+= Creare e configurare un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario creare un volume FlexVol per contenere i dati. È possibile modificare lo stile di protezione predefinito del volume, ereditato dallo stile di protezione del volume root. È anche possibile modificare la posizione predefinita del volume nello spazio dei nomi, che si trova nel volume root della macchina virtuale di storage (SVM).
+
+.Fasi
+. Accedere alla finestra *Volumes*.
+. Fare clic su *Crea* > *Crea FlexVol*.
++
+Viene visualizzata la finestra di dialogo Create Volume (Crea volume).
+
+. Se si desidera modificare il nome predefinito, che termina con un indicatore di data e ora, specificare un nuovo nome, ad esempio `vol1`.
+. Selezionare un aggregato per il volume.
+. Specificare le dimensioni del volume.
+. Fare clic su *Create* (Crea).
++
+Qualsiasi nuovo volume creato in System Manager viene montato per impostazione predefinita sul volume root utilizzando il nome del volume come nome della giunzione. Quando si configurano le condivisioni CIFS, si utilizzano il percorso di giunzione e il nome della giunzione, mentre i client NFS utilizzano il percorso di giunzione e il nome della giunzione per il montaggio del volume.
+
+. *Opzionale*: Se non si desidera che il volume si trovi nella directory principale di SVM, modificare la posizione del nuovo volume nello spazio dei nomi esistente:
++
+.. Accedere alla finestra *namespace*.
+.. Selezionare *SVM* dal menu a discesa.
+.. Fare clic su *Mount*.
+.. Nella finestra di dialogo *Mount Volume*, specificare il volume, il nome del percorso di giunzione e il percorso di giunzione su cui si desidera montare il volume.
+.. Verificare il nuovo percorso di giunzione nella finestra *namespace*.
++
+Se si desidera organizzare alcuni volumi in un volume principale denominato "`data`", è possibile spostare il nuovo volume "`vol1`" dal volume root al volume "`data`".
+
++
+image::../media/namespace_1_before_nas_mp.gif[Questo grafico è descritto dal testo circostante.]
+
+
+
+. Esaminare lo stile di sicurezza del volume e modificarlo, se necessario:
++
+.. Nella finestra *Volume*, selezionare il volume appena creato e fare clic su *Edit* (Modifica).
++
+Viene visualizzata la finestra di dialogo Edit Volume (Modifica volume), che mostra lo stile di protezione corrente del volume, ereditato dallo stile di protezione del volume root SVM.
+
+.. Selezionare lo stile di sicurezza desiderato e fare clic su *Salva e chiudi*.
++
+image::../media/volume_edit_security_style_unix_to_ntfs_nas_mp.gif[Questo grafico è descritto dal testo circostante.]
+
+
+
+

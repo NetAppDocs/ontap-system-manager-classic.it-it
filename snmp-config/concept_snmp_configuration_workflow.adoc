@@ -1,0 +1,16 @@
+---
+permalink: snmp-config/concept_snmp_configuration_workflow.html 
+sidebar: sidebar 
+keywords: configure, configuring, snmp, enabling, enable, optional, snmpv1, snmpv2c, snmpv3, user, traphost, test, poll, trap, snmp configuration workflow 
+summary: 'La configurazione di SNMP implica l"abilitazione di SNMP, la configurazione opzionale di una community SNMPv1 o SNMPv2c, l"aggiunta opzionale di un utente SNMPv3, l"aggiunta di host SNMP trapezoidali e il test di polling e trap SNMP.' 
+---
+= Flusso di lavoro della configurazione SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configurazione di SNMP implica l'abilitazione di SNMP, la configurazione opzionale di una community SNMPv1 o SNMPv2c, l'aggiunta opzionale di un utente SNMPv3, l'aggiunta di host SNMP trapezoidali e il test di polling e trap SNMP.
+
+image::../media/snmp_config_workflow.gif[La figura mostra un diagramma di flusso del flusso di lavoro di configurazione SNMP. Le fasi del flusso di lavoro corrispondono agli argomenti.]

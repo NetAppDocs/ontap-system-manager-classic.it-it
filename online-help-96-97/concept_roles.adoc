@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_roles.html 
+sidebar: sidebar 
+keywords: system, manager, role, create, user, access, control, online, help 
+summary: È possibile utilizzare System Manager per creare ruoli utente con accesso controllato. 
+---
+= Gestione dei ruoli con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestione di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare ruoli utente con accesso controllato.
+
+
+
+== Aggiungere ruoli
+
+È possibile utilizzare System Manager per aggiungere un ruolo di controllo dell'accesso e specificare il comando o la directory dei comandi a cui gli utenti del ruolo possono accedere. È inoltre possibile controllare il livello di accesso del ruolo al comando o alla directory dei comandi ed è possibile specificare una query che si applica al comando o alla directory dei comandi.
+
+.Fasi
+. Fare clic su *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Nel riquadro *Management*, fare clic su *Roles*.
+. Nella finestra *ruoli*, fare clic su *Aggiungi*.
+. Nella finestra di dialogo *Aggiungi ruolo*, digitare il nome del ruolo e aggiungere gli attributi del ruolo.
+. Fare clic su *Aggiungi*.
+
+
+
+
+== Modificare i ruoli
+
+È possibile utilizzare System Manager per modificare l'accesso di un ruolo di controllo dell'accesso a un comando o a una directory di comandi e per limitare l'accesso di un utente solo a una serie specificata di comandi. È inoltre possibile rimuovere l'accesso di un ruolo alla directory dei comandi predefinita.
+
+.Fasi
+. Fare clic su *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Nel riquadro *Management*, fare clic su *Roles*.
+. Nella finestra *ruoli*, selezionare il ruolo che si desidera modificare, quindi fare clic su *Modifica*.
+. Nella finestra di dialogo *Modifica ruolo*, modificare gli attributi del ruolo, quindi fare clic su *Modifica*.
+. Verificare le modifiche apportate nella finestra *ruoli*.
+
+
+
+
+== Ruoli e autorizzazioni
+
+L'amministratore del cluster può limitare l'accesso di un utente solo a una serie specificata di comandi creando un ruolo di controllo degli accessi limitato e assegnando quindi il ruolo a un utente.
+
+È possibile gestire i ruoli di controllo degli accessi nei seguenti modi:
+
+* Creando un ruolo di controllo degli accessi e specificando il comando o la directory dei comandi a cui gli utenti del ruolo possono accedere.
+* Controllando il livello di accesso del ruolo per il comando o la directory dei comandi, quindi specificando una query che si applica alla directory dei comandi o dei comandi.
+* Modificando l'accesso di un ruolo di controllo dell'accesso a una directory di comandi o comandi.
+* Visualizzando informazioni sui ruoli di controllo dell'accesso, ad esempio il nome del ruolo, il comando o la directory dei comandi a cui un ruolo può accedere, il livello di accesso e la query.
+* Eliminando un ruolo di controllo degli accessi.
+* Limitando l'accesso di un utente solo a una serie specificata di comandi.
+* Visualizzando le API ONTAP e i relativi comandi dell'interfaccia a riga di comando (CLI).
+
+
+
+
+== Finestra ruoli
+
+È possibile utilizzare la finestra ruoli per gestire i ruoli associati agli account utente.
+
+
+
+=== Pulsanti di comando
+
+* *Aggiungi*
++
+Apre la finestra di dialogo Aggiungi ruolo, che consente di creare un ruolo di controllo dell'accesso e di specificare il comando o la directory dei comandi a cui gli utenti del ruolo possono accedere.
+
+* *Modifica*
++
+Apre la finestra di dialogo Modifica ruolo, che consente di aggiungere o modificare gli attributi del ruolo.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei ruoli
+
+L'elenco dei ruoli fornisce un elenco dei ruoli disponibili per essere assegnati agli utenti.
+
+
+
+=== Area attributi ruolo
+
+Nell'area dei dettagli vengono visualizzati gli attributi del ruolo, ad esempio il comando o la directory dei comandi a cui il ruolo selezionato può accedere, il livello di accesso e la query che si applica alla directory dei comandi o dei comandi.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/authentication/index.html["Autenticazione amministratore e RBAC"^]

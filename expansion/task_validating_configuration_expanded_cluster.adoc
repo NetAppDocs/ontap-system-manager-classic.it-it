@@ -1,0 +1,73 @@
+---
+permalink: expansion/task_validating_configuration_expanded_cluster.html 
+sidebar: sidebar 
+keywords: expand, cluster, validate, configuration, config, advisor, command, health, replication, ring, validate the configuration of the expanded cluster 
+summary: Dopo aver espanso il cluster, è necessario convalidare la configurazione eseguendo Config Advisor e utilizzando alcuni comandi che verificano lo stato del cluster e gli anelli di replica del cluster. 
+---
+= Convalidare la configurazione del cluster espanso
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver espanso il cluster, è necessario convalidare la configurazione eseguendo Config Advisor e utilizzando alcuni comandi che verificano lo stato del cluster e gli anelli di replica del cluster.
+
+.Fasi
+. Controllare lo stato della configurazione eseguendo Config Advisor:
++
+.. Avviare Config Advisor, quindi fare clic su *Raccogli dati*.
++
+Config Advisor visualizza tutti i problemi rilevati.
+
+.. Se si riscontrano problemi, correggerli ed eseguire nuovamente lo strumento.
+
+
+. Verificare che tutti i nodi del cluster siano in buono stato utilizzando `cluster show` comando.
++
+[listing]
+----
+cluster-1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+cluster1-3            true    true
+cluster1-4            true    true
+4 entries were displayed.
+----
+. Assicurarsi che gli anelli di replica del cluster abbiano lo stesso epoch, epoch del database e numeri di transazioni del database su tutti i nodi del cluster:
++
+Il modo più semplice per confrontare i numeri delle transazioni consiste nel visualizzarli per un nome di unità alla volta.
+
++
+.. Impostare il livello di privilegio su Advanced (avanzato) utilizzando `set -privilege advanced` comando.
+.. Visualizzare le informazioni di squillo del cluster relative al nome della prima unità utilizzando `cluster ring show` con il `-unitname mgmt` E verificare che tutti i nodi abbiano lo stesso numero nelle colonne Epoch, DB Epoch e DB Trnxs.
++
+[listing]
+----
+cluster-1::*> cluster ring show -unitname mgmt
+Node      UnitName Epoch    DB Epoch DB Trnxs Master    Online
+--------- -------- -------- -------- -------- --------- ---------
+cluster1-1
+          mgmt     2        2        959      cluster1-1
+                                                        master
+cluster1-2
+          mgmt     2        2        959      cluster1-2
+                                                        secondary
+cluster1-3
+          mgmt     2        2        959      cluster1-3
+                                                        master
+cluster1-4
+          mgmt     2        2        959      cluster1-3
+                                                        secondary
+4 entries were displayed.
+----
+.. Ripetere il comando con `-unitname vldb` parametro.
+.. Ripetere il comando con `-unitname vifmgr` parametro.
+.. Ripetere il comando con `-unitname bcomd` parametro.
+.. Ripetere il comando con `-unitname crs` parametro.
+.. Restituire il livello di privilegio ad admin utilizzando `set -privilege admin` comando.
+
+
+

@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_resizing_volumes.html 
+sidebar: sidebar 
+keywords: resize, volume, capacity, snapshot, copy, online, help 
+summary: Quando un volume raggiunge una capacità quasi completa, è possibile aumentare le dimensioni del volume, eliminare alcune copie Snapshot o regolare la riserva Snapshot. È possibile utilizzare la procedura guidata di ridimensionamento del volume in System Manager per fornire più spazio libero. 
+---
+= Ridimensionare i volumi con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando un volume raggiunge una capacità quasi completa, è possibile utilizzare Gestore di sistema ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) per aumentare le dimensioni del volume, eliminare alcune copie Snapshot o regolare la riserva Snapshot. È possibile utilizzare la procedura guidata di ridimensionamento del volume in System Manager per fornire più spazio libero.
+
+.A proposito di questa attività
+* Per un volume configurato per crescere automaticamente, è possibile modificare il limite di crescita automatica del volume in base alle dimensioni aumentate del volume.
+* Non è possibile ridimensionare un volume di protezione dati se la relazione di mirroring è interrotta o se è stata eseguita un'operazione di risincronizzazione inversa sul volume.
++
+È invece necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume che si desidera ridimensionare.
+. Fare clic su *altre azioni* > *Ridimensiona*.
+. Digitare o selezionare le informazioni come richiesto dalla procedura guidata.
+. Confermare i dettagli, quindi fare clic su *fine* per completare la procedura guidata.
+. Verificare le modifiche apportate allo spazio disponibile e allo spazio totale del volume nella finestra *Volumes*.
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

@@ -1,0 +1,28 @@
+---
+permalink: volume-disaster-recovery/concept_volume_disaster_recovery_workflow.html 
+sidebar: sidebar 
+keywords: volume, disaster recovery, workflow, activating, activate, destination, configuring, configure, access, reactivate, reactivating, original, source, volume disaster recovery workflow 
+summary: 'Il workflow di disaster recovery del volume include l"attivazione del volume di destinazione, la configurazione del volume di destinazione per l"accesso ai dati e la riattivazione del volume di origine originale.' 
+---
+= Workflow di disaster recovery dei volumi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il workflow di disaster recovery del volume include l'attivazione del volume di destinazione, la configurazione del volume di destinazione per l'accesso ai dati e la riattivazione del volume di origine originale.
+
+image::../media/snapmirror_failover_resync_workflow_eg.gif[Questa illustrazione è un diagramma di flusso del flusso di lavoro di failover e risync di SnapMirror Intercluster. Le fasi del flusso di lavoro corrispondono agli argomenti.]
+
+Sono disponibili ulteriori informazioni per aiutarti a gestire le relazioni di disaster recovery a livello di volume e altri metodi di disaster recovery per proteggere la disponibilità delle tue risorse di dati.
+
+* xref:../volume-backup-snapvault/index.html[Backup del volume con SnapVault]
++
+Descrive come configurare rapidamente le relazioni dei vault di backup tra volumi che si trovano in diversi cluster ONTAP.
+
+* xref:../volume-restore-snapvault/index.html[Gestione del ripristino dei volumi con SnapVault]
++
+Descrive come ripristinare rapidamente un volume da un vault di backup in ONTAP.
+
+

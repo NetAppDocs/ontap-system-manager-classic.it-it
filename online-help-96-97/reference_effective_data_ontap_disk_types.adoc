@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/reference_effective_data_ontap_disk_types.html 
+sidebar: sidebar 
+keywords: ontap, disk, type, online, help 
+summary: 'A partire da Data ONTAP 8.1, alcuni tipi di dischi ONTAP sono considerati equivalenti ai fini della creazione e dell"aggiunta di aggregati e della gestione delle riserve. ONTAP assegna un tipo di disco effettivo per ciascun tipo di disco. È possibile combinare HDD con lo stesso tipo di disco effettivo.' 
+---
+= Utilizzare il tipo di disco ONTAP effettivo per combinare HDD con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da Data ONTAP 8.1, alcuni tipi di dischi ONTAP sono considerati equivalenti ai fini della creazione e dell'aggiunta di aggregati e della gestione delle riserve. ONTAP assegna un tipo di disco effettivo per ciascun tipo di disco. È possibile utilizzare Gestore di sistema ONTAP classic (disponibile nel 9.7 e nelle versioni precedenti) per combinare HDD con lo stesso tipo di disco effettivo.
+
+Quando il `raid.disktype.enable` l'opzione è impostata su `off`, È possibile combinare determinati tipi di HDD nello stesso aggregato. Quando il `raid.disktype.enable` l'opzione è impostata su `on`, Il tipo di disco effettivo è lo stesso del tipo di disco ONTAP. Gli aggregati possono essere creati utilizzando un solo tipo di disco. Il valore predefinito per `raid.disktype.enable` l'opzione è `off`.
+
+A partire da Data ONTAP 8.2, l'opzione `raid.mix.hdd.disktype.capacity` deve essere impostato su `on` Per combinare dischi di tipo BSAS, FSAS e ATA. L'opzione `raid.mix.hdd.disktype.performance` deve essere impostato su `on` Per combinare dischi di tipo FCAL e SAS.
+
+La seguente tabella mostra come i tipi di disco si associano al tipo di disco effettivo:
+
+|===
+| Tipo di disco ONTAP | Tipo di disco effettivo 
+
+
+ a| 
+FCAL
+ a| 
+SAS
+
+
+
+ a| 
+SAS
+ a| 
+SAS
+
+
+
+ a| 
+ATA
+ a| 
+FSAS
+
+
+
+ a| 
+BSA
+ a| 
+FSAS
+
+
+
+ a| 
+FCAL e SAS
+ a| 
+SAS
+
+
+
+ a| 
+MSATA
+ a| 
+MSATA
+
+
+
+ a| 
+FSAS
+ a| 
+FSAS
+
+|===

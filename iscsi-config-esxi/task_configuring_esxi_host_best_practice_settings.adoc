@@ -1,0 +1,23 @@
+---
+permalink: iscsi-config-esxi/task_configuring_esxi_host_best_practice_settings.html 
+sidebar: sidebar 
+keywords: ensure, host, multipath, practice, setting, esxi, loss, iscsi, storage, failover, event, configure, configure the esxi host best practice settings 
+summary: 'È necessario assicurarsi che le impostazioni relative al multipathing host e alle Best practice siano corrette in modo che l"host ESXi possa gestire correttamente la perdita di una connessione iSCSI o di un evento di failover dello storage.' 
+---
+= Configurare le impostazioni delle Best practice per l'host ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario assicurarsi che le impostazioni relative al multipathing host e alle Best practice siano corrette in modo che l'host ESXi possa gestire correttamente la perdita di una connessione iSCSI o di un evento di failover dello storage.
+
+.Fasi
+. Dalla pagina iniziale di VMware vSphere Web Client, fare clic su *vCenter* > *hosts*.
+. Fare clic con il pulsante destro del mouse sull'host, quindi selezionare *Actions* > *NetApp VSC* > *Set recommended values*.
+. Nella finestra di dialogo *NetApp Recommended Settings* (Impostazioni consigliate NetApp), assicurarsi che tutte le opzioni siano selezionate, quindi fare clic su *OK*.
++
+VCenter Web Client visualizza l'avanzamento dell'attività.
+
+

@@ -1,0 +1,42 @@
+---
+permalink: smb-config/index.html 
+sidebar: sidebar 
+keywords: content, describe, smb, cifs, access, volume, exist, storage, virtual, machine, svm, system manager classic 
+summary: 'Utilizzando l"interfaccia classica di Gestore di sistema ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente l"accesso SMB/CIFS a un nuovo volume su una macchina virtuale di storage (SVM) nuova o esistente' 
+---
+= Panoramica della configurazione SMB/CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia classica di Gestore di sistema ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente l'accesso SMB/CIFS a un nuovo volume su una macchina virtuale di storage (SVM) nuova o esistente.
+
+Utilizzare questa procedura per configurare l'accesso a un volume nel modo seguente:
+
+* Si desidera utilizzare le Best practice, non esplorare tutte le opzioni disponibili.
+* La rete dati utilizza l'IPSpace predefinito, il dominio di trasmissione predefinito e il gruppo di failover predefinito.
++
+Se la rete dati è piatta, l'utilizzo di questi oggetti predefiniti garantisce il corretto failover delle LIF in caso di errore di collegamento. Se non si utilizzano gli oggetti predefiniti, fare riferimento a. https://docs.netapp.com/us-en/ontap/networking/index.html["Documentazione sulla gestione della rete"^] Per informazioni su come configurare il failover del percorso LIF.
+
+* Per proteggere il nuovo volume verranno utilizzate le autorizzazioni NTFS.
+
+
+Per ulteriori informazioni sulla gamma di funzionalità del protocollo SMB ONTAP, consultare link:https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Panoramica di riferimento SMB"^].
+
+
+
+== Altri modi per farlo in ONTAP
+
+|===
+
+
+| Per eseguire queste attività con... | Fare riferimento a... 
+
+
+| System Manager riprogettato (disponibile con ONTAP 9.7 e versioni successive) | link:https://docs.netapp.com/us-en/ontap/task_nas_provision_windows_smb.html["Provisioning dello storage NAS per i server Windows utilizzando SMB"^] 
+
+
+| L'interfaccia della riga di comando di ONTAP | link:https://docs.netapp.com/us-en/ontap/smb-config/index.html["Panoramica della configurazione SMB con la CLI"^] 
+|===

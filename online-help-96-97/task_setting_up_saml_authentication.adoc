@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_setting_up_saml_authentication.html 
+sidebar: sidebar 
+keywords: set, up, saml, authentication, security, assertion, markup, idp, online, help, system, manager,  language, secure, identity, provide, 
+summary: 'È possibile impostare l"autenticazione SAML (Security Assertion Markup Language) in modo che gli utenti remoti vengano autenticati tramite un provider di identità sicuro (IdP) prima di accedere a System Manager.' 
+---
+= Configurare l'autenticazione SAML con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per impostare l'autenticazione SAML (Security Assertion Markup Language). Gli utenti remoti vengono autenticati tramite un provider di identità sicuro (IdP) prima di accedere a System Manager.
+
+image::../media/mfa_workflow.gif[workflow mfa]
+
+
+
+== Abilitare l'autenticazione SAML
+
+È possibile utilizzare System Manager per configurare l'autenticazione SAML (Security Assertion Markup Language) in modo che gli utenti remoti possano accedere utilizzando un provider di identità sicuro (IdP).
+
+.Prima di iniziare
+* È necessario configurare l'IdP che si intende utilizzare per l'autenticazione remota.
++
+[NOTE]
+====
+Consultare la documentazione fornita dall'IdP configurato.
+
+====
+* È necessario disporre dell'URI dell'IdP.
+
+
+.A proposito di questa attività
+I seguenti IDP sono stati convalidati con System Manager:
+
+* Servizi di federazione di Active Directory
+* Cisco DUO (compatibile con le seguenti versioni di ONTAP:)
++
+** 9.7P21 e versioni successive 9,7
+** 9.8P17 e versioni successive 9,8
+** 9,9.1P13 e versioni successive 9,9
+** 9.10.1P9 e versioni successive 9,10
+** 9.11.1P4 e versioni successive 9,11
+** 9.12.1 e versioni successive
+
+
+* Shibboleth
+
+
+[NOTE]
+====
+Una volta attivata l'autenticazione SAML, solo gli utenti remoti possono accedere alla GUI di System Manager. Gli utenti locali non possono accedere alla GUI di System Manager dopo l'attivazione dell'autenticazione SAML.
+
+====
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Authentication*.
+. Selezionare la casella di controllo *Enable SAML Authentication* (attiva autenticazione SAML).
+. Configurare System Manager per l'utilizzo dell'autenticazione SAML:
++
+.. Immettere l'URI dell'IdP.
+.. Inserire l'indirizzo IP del sistema host.
+.. *Opzionale:* se necessario, modificare il certificato del sistema host.
+
+
+. Fare clic su *Recupera metadati host* per recuperare l'URI host e le informazioni sui metadati host.
+. Copiare l'URI host o i dettagli dei metadati host, accedere all'IdP, quindi specificare l'URI host o i dettagli dei metadati host e le regole di trust nella finestra IdP.
++
+[NOTE]
+====
+Consultare la documentazione fornita dall'IdP configurato.
+
+====
+. Fare clic su *Save* (Salva).
++
+Viene visualizzata la finestra di login IdP.
+
+. Accedere a System Manager utilizzando la finestra di accesso IdP.
++
+Una volta configurato l'IdP, se l'utente tenta di accedere utilizzando FQDN (Fully Qualified Domain Name), IPv6 o una LIF di gestione del cluster, il sistema modifica automaticamente l'indirizzo IP nell'indirizzo IP del sistema host specificato durante la configurazione IdP.
+
+
+
+
+
+== Disattiva l'autenticazione SAML
+
+È possibile disattivare l'autenticazione SAML (Security Assertion Markup Language) se si desidera disattivare l'accesso remoto a System Manager o modificare la configurazione SAML.
+
+.A proposito di questa attività
+La disattivazione dell'autenticazione SAML non elimina la configurazione SAML.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Authentication*.
+. Deselezionare la casella di controllo *Enable SAML Authentication* (attiva autenticazione SAML).
+. Fare clic su *Save* (Salva).
++
+System Manager viene riavviato.
+
+. Accedere a System Manager utilizzando le credenziali del cluster.
+
+
+*Informazioni correlate*
+
+xref:task_accessing_cluster_by_using_system_manager_brower_based_gui.adoc[Accesso a un cluster utilizzando l'interfaccia grafica basata su browser di Gestione di sistema di ONTAP]

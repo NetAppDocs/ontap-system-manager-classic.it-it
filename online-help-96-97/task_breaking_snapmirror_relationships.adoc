@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_breaking_snapmirror_relationships.html 
+sidebar: sidebar 
+keywords: snapmirror, break, relationship, dp, rw, online, help 
+summary: 'È necessario interrompere una relazione SnapMirror se un"origine SnapMirror diventa non disponibile e si desidera che le applicazioni client possano accedere ai dati dalla destinazione mirror.' 
+---
+= Interrompere le relazioni di SnapMirror con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per interrompere una relazione SnapMirror. È necessario interrompere una relazione SnapMirror se un'origine SnapMirror diventa non disponibile e si desidera che le applicazioni client possano accedere ai dati dalla destinazione mirror. Una volta interrotta la relazione di SnapMirror, il tipo di volume di destinazione passa da "data Protection" (DP) a "Read/write" (RW).
+
+.Prima di iniziare
+* La destinazione di SnapMirror deve essere in stato di inattività o di inattività.
+* Il volume di destinazione deve essere montato sullo spazio dei nomi SVM (Storage Virtual Machine) di destinazione.
+
+
+.A proposito di questa attività
+* È possibile utilizzare il volume di destinazione per fornire i dati durante la riparazione o la sostituzione dell'origine, l'aggiornamento dell'origine e il ripristino della configurazione originale dei sistemi.
+* È possibile interrompere le relazioni di SnapMirror tra i sistemi ONTAP e i sistemi storage SolidFire.
+* Se si sta interrompendo una relazione di un volume FlexGroup, è necessario aggiornare la pagina per visualizzare lo stato aggiornato della relazione.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror che si desidera interrompere.
+. Fare clic su *operazioni* > *interruzione*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Interrompi*.
+
+
+.Risultati
+La relazione di SnapMirror per la protezione dei dati è stata interrotta. Il tipo di volume di destinazione cambia da protezione dati (DP), sola lettura, a lettura/scrittura (RW). Il sistema memorizza la copia Snapshot di base per la relazione del mirror per la protezione dei dati per un utilizzo successivo.
+
+*Informazioni correlate*
+
+xref:reference_protection_window.adoc[Finestra di protezione]

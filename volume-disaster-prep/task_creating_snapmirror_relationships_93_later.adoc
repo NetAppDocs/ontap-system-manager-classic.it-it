@@ -1,0 +1,70 @@
+---
+permalink: volume-disaster-prep/task_creating_snapmirror_relationships_93_later.html 
+sidebar: sidebar 
+keywords: create, snapmirror, relationship, source, volume, cluster, destination, peer, data, recovery, disaster, create the snapmirror relationship, Beginning with ontap 9.3 
+summary: È necessario creare una relazione SnapMirror tra il volume di origine su un cluster e il volume di destinazione sul cluster peered per la replica dei dati per il disaster recovery. 
+---
+= Creazione della relazione SnapMirror (a partire da ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario creare una relazione SnapMirror tra il volume di origine su un cluster e il volume di destinazione sul cluster peered per la replica dei dati per il disaster recovery.
+
+.Prima di iniziare
+* L'aggregato di destinazione deve disporre di spazio disponibile.
+* Entrambi i cluster devono essere configurati e configurati in modo appropriato per soddisfare i requisiti del proprio ambiente in termini di accesso utente, autenticazione e accesso client.
+
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *source*.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Selezionare il volume per il quale si desidera creare una relazione mirror, quindi fare clic su *azioni* > *Protect*.
+. Nella sezione *tipo di relazione*, selezionare *Mirror* dall'elenco a discesa *tipo di relazione*.
+. Nella pagina *Volumes: Protect Volumes*, fornire le seguenti informazioni:
++
+.. Selezionare *Mirror* come tipo di relazione.
+.. Selezionare il cluster di destinazione, la SVM di destinazione e il suffisso per il nome del volume di destinazione.
++
+Solo le SVM in peering e le SVM consentite sono elencate nelle SVM di destinazione.
+
+.. Fare clic su image:../media/advanced_options_icon_disaster.gif["Icona Opzioni avanzate"].
+.. Nella finestra di dialogo *Opzioni avanzate*, verificare che `MirrorAllSnapshots` è impostato come criterio di protezione.
++
+`DPDefault` e. `MirrorLatest` Sono gli altri criteri di protezione predefiniti disponibili per le relazioni SnapMirror.
+
+.. Selezionare un programma di protezione.
++
+Per impostazione predefinita, il `hourly` pianificazione selezionata.
+
+.. Verificare che sia selezionato *Sì* per inizializzare la relazione SnapVault.
++
+Tutte le relazioni di protezione dei dati vengono inizializzate per impostazione predefinita. L'inizializzazione della relazione SnapMirror garantisce che il volume di destinazione disponga di una linea di base per iniziare a proteggere il volume di origine.
+
+.. Fare clic su *Apply* (Applica) per salvare le modifiche.
++
+image::../media/snapmirror_advanced_options_93.gif[Finestra Opzioni avanzate]
+
+
+
+. Fare clic su *Save* (Salva) per creare la relazione SnapMirror.
+. Verificare che lo stato della relazione di SnapMirror sia in `Snapmirrored` stato.
++
+.. Accedere alla finestra *Volumes*, quindi selezionare il volume per il quale è stata creata la relazione SnapMirror.
+.. Fare doppio clic sul volume per visualizzare i dettagli del volume, quindi fare clic su *PROTECTION* per visualizzare lo stato di protezione dei dati del volume.
+
+
++
+image::../media/snapmirror_9_3.gif[Screenshot dello stato di SnapMirror]
+
+
+
+
+
+== Cosa fare in seguito
+
+È necessario prendere nota delle impostazioni del volume di origine, ad esempio thin provisioning, deduplica, compressione e crescita automatica. È possibile utilizzare queste informazioni per verificare le impostazioni del volume di destinazione quando si rompe la relazione SnapMirror.

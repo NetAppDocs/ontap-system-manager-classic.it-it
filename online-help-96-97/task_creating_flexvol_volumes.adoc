@@ -1,0 +1,233 @@
+---
+permalink: online-help-96-97/task_creating_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: flexvol, create, volume, online, help 
+summary: È possibile creare un volume FlexVol per i dati utilizzando la finestra di dialogo Crea volume in Gestore di sistema. È sempre necessario creare un volume separato per i dati piuttosto che memorizzare i dati nel volume root. 
+---
+= Creazione di volumi FlexVol con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare un volume FlexVol per i dati utilizzando la finestra di dialogo Crea volume in Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti). È sempre necessario creare un volume separato per i dati piuttosto che memorizzare i dati nel volume root.
+
+.Prima di iniziare
+* Il cluster deve contenere un aggregato non root e una SVM (Storage Virtual Machine).
+* Per creare volumi di lettura/scrittura, è necessario aver configurato i protocolli per la SVM e aver installato la licenza SnapMirror o la licenza SnapVault.
++
+Se i protocolli non sono stati configurati ma è stata installata una di queste licenze, è possibile creare solo volumi di protezione dati (DP).
+
+* Per creare un volume crittografato, è necessario aver installato la licenza di crittografia del volume utilizzando System Manager e aver attivato "`key-manager setup`" utilizzando l'interfaccia a riga di comando (CLI).
++
+Dopo aver attivato "`key-manager setup`", è necessario aggiornare il browser Web.
+
+
+
+.A proposito di questa attività
+* È possibile attivare la qualità del servizio (QoS) dello storage solo per un volume di lettura/scrittura (rw).
+* Quando si crea un volume DP sulla SVM di origine della sincronizzazione in una configurazione MetroCluster, il volume non viene replicato sulla SVM di destinazione della sincronizzazione.
+* Quando si crea un volume DP in una configurazione MetroCluster, il volume di origine non viene replicato (mirrorato o vault) nella SVM di destinazione.
+* In una configurazione MetroCluster, Gestione sistema visualizza solo i seguenti aggregati per la creazione dei volumi:
++
+** In modalità normale, quando si creano volumi su SVM di origine sincrona o SVM di servizio dati nel sito primario, vengono visualizzati solo gli aggregati che appartengono al cluster nel sito primario.
+** In modalità switchover, quando si creano volumi su SVM di destinazione di sincronizzazione o SVM di servizio dati nel sito sopravvissuto, vengono visualizzati solo gli aggregati di switchover.
+
+
+* Non è possibile crittografare un volume in Cloud Volumes ONTAP.
+* Se la crittografia è attivata sul volume di origine e nel cluster di destinazione è in esecuzione una versione del software ONTAP precedente a ONTAP 9.3, la crittografia viene disattivata per impostazione predefinita nel volume di destinazione.
+
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Fare clic su *Crea* > *Crea FlexVol*.
+. Cercare e selezionare la SVM in cui si desidera creare il volume.
++
+Viene visualizzata la finestra di dialogo Create Volume (Crea volume). La finestra di dialogo contiene le seguenti schede:
+
++
+** Generale
+** Efficienza dello storage
+** SnapLock
+** Qualità del servizio
+** Protezione
+
+
+. Nella scheda *Generale*, attenersi alla seguente procedura:
++
+.. Specificare un nome per il volume FlexVol.
+.. Fare clic sul pulsante *FabricPool* per specificare che il volume è un volume FabricPool.
+.. Fare clic su *Choose* per selezionare un aggregato.
++
+Se il volume è un volume FabricPool FlexVol, è possibile selezionare solo aggregati abilitati per FabricPool e solo aggregati non abilitati per FabricPool se il volume non è un volume FabricPool FlexVol. Se si sceglie un aggregato crittografato (NAE), il volume che si sta creando erediterà la crittografia dell'aggregato.
+
+.. Selezionare un tipo di storage.
+.. Specificare le dimensioni del volume e le unità di misura.
+.. Indicare la quantità di spazio da riservare per le copie Snapshot.
+.. Selezionare un'opzione di riserva di spazio dal menu a discesa *riserva di spazio*.
+.. Selezionare la casella di controllo *Volume Encryption* per attivare la crittografia per il volume. Questa opzione è disponibile solo se è stata attivata la licenza Volume Encryption e se la piattaforma corrispondente è in grado di supportare la crittografia.
+
+
+. Nella scheda *efficienza dello storage*, attenersi alla seguente procedura:
++
+.. Selezionare il tipo di storage per il quale si desidera creare il volume.
++
+Selezionare *Data Protection* se si sta creando un volume di destinazione SnapMirror. Viene fornito l'accesso in sola lettura a questo volume.
+
+.. Specificare il criterio di tiering per il volume.
+.. Specificare le dimensioni del volume e la percentuale delle dimensioni totali del volume che si desidera riservare per le copie Snapshot.
++
+Lo spazio predefinito riservato alle copie Snapshot è pari allo zero percento per i volumi SAN e VMware. Per i volumi NAS, il valore predefinito è 5%.
+
+.. Selezionare *Default*, *thin provisioning* o *thick provisioning* per il volume.
++
+Quando il thin provisioning è attivato, lo spazio viene allocato al volume dall'aggregato solo quando i dati vengono scritti nel volume.
+
++
+[NOTE]
+====
+*** Per i sistemi storage AFF, il valore del thin provisioning è "predefinito" e per altri sistemi storage, il valore del thick provisioning è "predefinito".
+*** Per gli aggregati abilitati a FabricPool, il valore del thin provisioning è "Default".
+
+
+====
+.. Specificare se si desidera attivare la deduplica sul volume.
++
+System Manager utilizza la pianificazione di deduplica predefinita. Se le dimensioni del volume specificato superano il limite richiesto per l'esecuzione della deduplica, il volume viene creato e la deduplica non viene attivata.
+
++
+Per sistemi con personalità ottimizzata per All Flash, compressione inline e `auto` la pianificazione della deduplica è attivata per impostazione predefinita.
+
+
+
+. Nella scheda *qualità del servizio*, attenersi alla seguente procedura:
++
+.. Selezionare la casella di controllo *Gestisci qualità del servizio dello storage* se si desidera attivare la qualità del servizio dello storage per il volume FlexVol per gestire le performance del carico di lavoro.
+.. Creare un nuovo gruppo di criteri di qualità del servizio di storage o selezionare un gruppo di criteri esistente per controllare le prestazioni di input/output (i/o) del volume FlexVol:
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Creare un nuovo gruppo di criteri
+ a| 
+... Selezionare *nuovo gruppo di criteri*.
+... Specificare il nome del gruppo di criteri.
+... Specificare il limite minimo di throughput.
++
+**** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In System Manager 9.6, è possibile impostare il limite minimo di throughput per il gruppo di criteri.
+**** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+**** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+... Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+**** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+**** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS, B/s, KB/s, MB/s e così via.
+**** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
+
+
+
+
+
+ a| 
+Selezionare un gruppo di criteri esistente
+ a| 
+... Selezionare *Gruppo di criteri esistente*, quindi fare clic su *Scegli* per selezionare un gruppo di criteri esistente dalla finestra di dialogo Seleziona gruppo di criteri.
+... Specificare il limite minimo di throughput.
++
+**** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In System Manager 9.6, è possibile impostare il limite minimo di throughput per il gruppo di criteri.
+**** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+**** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+... Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+**** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+**** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS, B/s, KB/s, MB/s e così via.
+**** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
+
++
+Se il gruppo di criteri è assegnato a più di un oggetto, il throughput massimo specificato viene condiviso tra gli oggetti.
+
+
+
+|===
+
+
+. Nella scheda *protezione*, attenersi alla seguente procedura:
++
+.. Specificare se si desidera attivare *Volume Protection*.
++
+Un volume FlexGroup non FabricPool può essere protetto con un volume FabricPool FlexGroup.
+
++
+Un volume FabricPool FlexGroup può essere protetto con un volume FlexGroup non FabricPool.
+
+.. Selezionare il tipo di replica *Replication*:
+
+
++
+|===
+| Se è stato selezionato il tipo di replica come... | Eseguire questa operazione... 
+
+
+ a| 
+Asincrono
+ a| 
+.. *Opzionale:* se non si conoscono il tipo di replica e il tipo di relazione, fare clic su *Aiutami a scegliere*, specificare i valori, quindi fare clic su *Applica*.
+.. Selezionare il tipo di relazione.
++
+Il tipo di relazione può essere mirror, vault o mirror e vault.
+
+.. Selezionare un cluster e una SVM per il volume di destinazione.
++
+Se il cluster selezionato esegue una versione del software ONTAP precedente a ONTAP 9.3, vengono elencate solo le SVM con peering. Se il cluster selezionato esegue ONTAP 9.3 o versione successiva, vengono elencate le SVM in peering e le SVM consentite.
+
+.. Se necessario, modificare il suffisso del nome del volume.
+
+
+
+
+ a| 
+Sincrono
+ a| 
+.. *Opzionale:* se non si conoscono il tipo di replica e il tipo di relazione, fare clic su *Aiutami a scegliere*, specificare i valori, quindi fare clic su *Applica*.
+.. Selezionare il criterio di sincronizzazione.
++
+Il criterio di sincronizzazione può essere StrictSync o Sync.
+
+.. Selezionare un cluster e una SVM per il volume di destinazione.
++
+Se il cluster selezionato esegue una versione del software ONTAP precedente a ONTAP 9.3, vengono elencate solo le SVM con peering. Se il cluster selezionato esegue ONTAP 9.3 o versione successiva, vengono elencate le SVM in peering e le SVM consentite.
+
+.. Se necessario, modificare il suffisso del nome del volume.
+
+
+|===
+. Fare clic su *Create* (Crea).
+. Verificare che il volume creato sia incluso nell'elenco dei volumi nella finestra *Volume*.
++
+Il volume viene creato con la sicurezza in stile UNIX e le autorizzazioni UNIX 700 "`read write execute`" per il proprietario.
+
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

@@ -1,0 +1,50 @@
+---
+permalink: smb-config/task_creating_share_setting_its_permissions.html 
+sidebar: sidebar 
+keywords: windows, user, access, volume, create, cifs, restrict, share, modify, control, list, scl, share, create a share and set its permissions 
+summary: 'Prima che gli utenti Windows possano accedere a un volume, è necessario creare una condivisione CIFS sul volume e limitare l"accesso alla condivisione modificando l"elenco di controllo di accesso (ACL) per la condivisione.' 
+---
+= Creare una condivisione e impostarne le autorizzazioni
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima che gli utenti Windows possano accedere a un volume, è necessario creare una condivisione CIFS sul volume e limitare l'accesso alla condivisione modificando l'elenco di controllo di accesso (ACL) per la condivisione.
+
+.A proposito di questa attività
+A scopo di test, è necessario consentire l'accesso solo agli amministratori. In seguito, dopo aver verificato che il volume è accessibile, è possibile consentire l'accesso a più client.
+
+.Fasi
+. Accedere alla finestra *Shares*.
+. Creare una condivisione in modo che i client SMB possano accedere al volume:
++
+.. Fare clic su *Create Share* (Crea condivisione).
+.. Nella finestra di dialogo *Crea condivisione*, fare clic su *Sfoglia*, espandere la gerarchia dello spazio dei nomi, quindi selezionare il volume creato in precedenza.
+.. *Opzionale*: Se si desidera che il nome della condivisione sia diverso dal nome del volume, modificare il nome della condivisione.
+.. Fare clic su *Create* (Crea).
+
+
++
+La condivisione viene creata con un ACL predefinito impostato su controllo completo per il gruppo Everyone.
+
+. *Opzionale*: Limitare l'accesso alla condivisione modificando l'ACL della condivisione:
++
+.. Selezionare la condivisione, quindi fare clic su *Modifica*.
+.. Nella scheda *Permissions*, selezionare il gruppo *Everyone*, quindi fare clic su *Remove*.
+.. Fare clic su *Aggiungi*, quindi immettere il nome di un gruppo di amministratori definito nel dominio Active Directory di Windows che include SVM.
+.. Dopo aver selezionato il nuovo gruppo di amministratori, selezionare tutte le autorizzazioni.
+.. Fare clic su *Save and Close* (Salva e chiudi).
+
+
++
+Le autorizzazioni di accesso alla condivisione aggiornate sono elencate nel pannello Share Access Control (controllo accesso alla condivisione).
+
+
+
+
+
+== Cosa fare in seguito
+
+Verificare l'accesso come amministratore di Windows.

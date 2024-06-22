@@ -1,0 +1,236 @@
+---
+permalink: iscsi-config-windows/reference_completing_iscsi_configuration_worksheet.html 
+sidebar: sidebar 
+keywords: iscsi, identifier, network, address, storage, configuration, information, perform, iscsi, task, complete, complete the iscsi configuration worksheet 
+summary:  Sono necessari identificatori iSCSI, indirizzi di rete e informazioni di configurazione dello storage per eseguire le attività di configurazione iSCSI. 
+---
+= Completare il foglio di lavoro per la configurazione iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sono necessari identificatori iSCSI, indirizzi di rete e informazioni di configurazione dello storage per eseguire le attività di configurazione iSCSI.
+
+
+
+== Identificatori iSCSI
+
+|===
+| Nome del nodo iSCSI (IQN) dell'iniziatore (host) 
+
+
+ a| 
+Alias di destinazione (opzionale)
+
+|===
+
+
+== Indirizzi di rete di destinazione
+
+La macchina virtuale per lo storage (SVM) è la destinazione iSCSI.
+
+È necessaria una subnet con due indirizzi IP per le LIF dei dati iSCSI per ciascun nodo del cluster. Per l'alta disponibilità, sono necessarie due reti separate. Gli indirizzi IP specifici vengono assegnati da ONTAP quando si creano le LIF come parte della creazione della SVM.
+
+Se possibile, separare il traffico iSCSI su reti fisiche separate o su VLAN.
+
+image::../media/network_fc_or_iscsi_express_iscsi_windows.gif[La figura mostra quattro nodi,two switches,and a host. Each node has two LIFs]
+
+Subnet per LIF:
+
+|===
+| Nodo o LIF con porta a switch | Indirizzo IP | Maschera di rete | Gateway | ID VLAN | Porta home 
+
+
+ a| 
+Nodo 1 / LIF allo switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 2 / LIF allo switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 3/LIF allo switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 4/LIF allo switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 1/LIF allo switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 2/LIF allo switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 3/LIF allo switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nodo 4/LIF allo switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+== Configurazione dello storage
+
+Se l'aggregato e la SVM sono già stati creati, registrare i nomi qui; in caso contrario, è possibile crearli come richiesto:
+
+|===
+| Da nodo a LUN proprio 
+
+
+ a| 
+Nome dell'aggregato
+
+
+
+ a| 
+Nome SVM
+
+|===
+
+
+== Informazioni sul LUN
+
+|===
+| Dimensione del LUN 
+
+
+ a| 
+Sistema operativo host
+
+
+
+ a| 
+LUN name (opzionale)
+
+
+
+ a| 
+Descrizione del LUN (opzionale)
+
+|===
+
+
+== Informazioni SVM
+
+Se non si utilizza una SVM esistente, sono necessarie le seguenti informazioni per crearne una nuova:
+
+[cols="1a,1a"]
+|===
+2+| Nome SVM 
+
+
+ a| 
+IPSpace di SVM
+
+
+
+ a| 
+Aggregato per il volume root SVM
+
+
+
+ a| 
+Nome utente SVM (opzionale)
+
+
+
+ a| 
+Password SVM (opzionale)
+
+
+
+ a| 
+LIF di gestione SVM (opzionale)
+
+
+
+ a| 
+ a| 
+Subnet:
+
+
+
+ a| 
+ a| 
+Indirizzo IP:
+
+
+
+ a| 
+ a| 
+Maschera di rete:
+
+
+
+ a| 
+ a| 
+Gateway:
+
+
+
+ a| 
+ a| 
+Nodo principale:
+
+
+
+ a| 
+ a| 
+Porta home:
+
+|===

@@ -1,0 +1,83 @@
+---
+permalink: online-help-96-97/task_restoring_volume_vault_relationship.html 
+sidebar: sidebar 
+keywords: system, manager, restore, volume, vault, relationship, online, help, snapshot, copy 
+summary: È possibile utilizzare System Manager per ripristinare le copie Snapshot in un volume di origine o in altri volumi se i dati di origine sono corrotti e non sono più utilizzabili. È possibile sostituire i dati originali con le copie Snapshot nel volume di destinazione. 
+---
+= Ripristinare una relazione di un volume in un vault con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per ripristinare le copie Snapshot in un volume di origine o in altri volumi se i dati di origine sono corrotti e non sono più utilizzabili. È possibile sostituire i dati originali con le copie Snapshot nel volume di destinazione.
+
+.Prima di iniziare
+* La licenza SnapMirror deve essere attivata sia sul sistema storage di origine che sul sistema storage di destinazione o sui nodi che contengono il volume di origine e il volume di destinazione.
+* Il cluster di origine e il cluster di destinazione devono essere in una relazione di pari livello.
+* L'aggregato di origine o qualsiasi altro aggregato selezionato per l'operazione di ripristino deve essere un aggregato a 64 bit.
+* Se si effettua la connessione da un cluster che esegue ONTAP 9.2 o versioni precedenti a un cluster remoto su cui è abilitata l'autenticazione SAML, l'autenticazione basata su password deve essere attivata anche sul cluster remoto.
+
+
+.A proposito di questa attività
+* Non è possibile ripristinare un volume che si trova in una relazione di vault tra una macchina virtuale di storage di origine (SVM) e una SVM di destinazione in una configurazione MetroCluster.
+* È possibile ripristinare una relazione di vault tra le SVM di origine della sincronizzazione in una configurazione MetroCluster.
+* È possibile ripristinare una relazione di vault da un volume su una SVM di origine della sincronizzazione a una SVM predefinita.
+* È possibile ripristinare una relazione di vault da un volume su una SVM predefinita a un volume DP su una SVM di origine sincronizzata.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del vault, quindi fare clic su *Operations* > *Restore*.
+. Nella finestra di dialogo *Restore*, ripristinare i dati nel volume di origine nella relazione del vault o selezionare qualsiasi altro volume:
++
+|===
+| Se si desidera ripristinare i dati in... | Eseguire questa operazione... 
+
+
+ a| 
+Il volume di origine
+ a| 
+.. Selezionare *Volume di origine*.
+.. Passare alla fase 6.
+
+
+
+
+ a| 
+Qualsiasi altro volume
+ a| 
+Selezionare *Altro volume*, quindi selezionare il cluster e SVM dall'elenco.
+
+|===
+. Ripristinare i dati su un nuovo volume o selezionare un volume esistente:
++
+|===
+| Se si desidera ripristinare i dati in... | Eseguire questa operazione... 
+
+
+ a| 
+Un nuovo volume
+ a| 
+Se si desidera modificare il nome predefinito, visualizzato nel formato `destination_SVM_name_destination_volume_name_` ripristinare, specificare un nuovo nome, quindi selezionare l'aggregato contenente per il volume.
+
+
+
+ a| 
+Un volume esistente
+ a| 
+Selezionare l'opzione *Select Volume* (Seleziona volume).
+
+È necessario selezionare un volume diverso dal volume di origine o un volume di lettura/scrittura contenente alcuni dati e una copia Snapshot comune.
+
+Vengono elencati solo i volumi con lo stesso attributo di lingua del volume di origine.
+
+|===
+. Selezionare l'ultima copia Snapshot o la copia Snapshot specifica che si desidera ripristinare.
+. Selezionare la casella di controllo di conferma per ripristinare il volume dalla copia Snapshot.
+. *Opzionale:* selezionare la casella di controllo *attiva compressione di rete* per comprimere i dati trasferiti durante l'operazione di ripristino.
+. Fare clic su *Restore* (Ripristina).
+
+
+*Informazioni correlate*
+
+xref:reference_protection_window.adoc[Finestra di protezione]

@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_changing_deduplication_schedule.html 
+sidebar: sidebar 
+keywords: change, deduplication, schedule, online, help, system, manager 
+summary: È possibile utilizzare System Manager per modificare la pianificazione della deduplica scegliendo di eseguire la deduplica manualmente, automaticamente o in base a una pianificazione specificata. 
+---
+= Modificare la pianificazione della deduplica con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare la pianificazione della deduplica scegliendo di eseguire la deduplica manualmente, automaticamente o in base a una pianificazione specificata.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume di lettura/scrittura per il quale si desidera modificare la pianificazione della deduplica.
+. Fare clic su *Edit* (Modifica), quindi sulla scheda *Storage Efficiency* (efficienza dello storage).
+. Modificare la pianificazione della deduplica secondo necessità.
+. Fare clic su *Save and Close* (Salva e chiudi).
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

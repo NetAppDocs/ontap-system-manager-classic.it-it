@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/task_resizing_flexcache_volumes.html 
+sidebar: sidebar 
+keywords: system, manager, flexcache, resize, volume, online, help 
+summary: A partire da System Manager 9.6, è possibile ridimensionare un volume FlexCache ridimensionando le risorse esistenti o aggiungendo nuove risorse. 
+---
+= Ridimensionamento dei volumi FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile ridimensionare un volume FlexCache ridimensionando le risorse esistenti o aggiungendo nuove risorse.
+
+.Prima di iniziare
+* Per ridimensionare un volume FlexCache, è necessario disporre di spazio libero sufficiente sugli aggregati esistenti.
+* Per espandere un volume FlexCache, l'aggregato deve disporre di spazio libero sufficiente per l'espansione.
+
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume FlexCache che si desidera ridimensionare, quindi fare clic su *altre azioni* > *Ridimensiona*.
+. Nella finestra *Ridimensiona volume FlexCache*, specificare le dimensioni in cui si desidera ridimensionare il volume FlexCache.
++
+Per impostazione predefinita, gli aggregati esistenti vengono utilizzati per ridimensionare il volume FlexCache. A partire da System Manager 9.6, le dimensioni massime consentite per il volume vengono visualizzate accanto al campo delle dimensioni.
+
++
+[NOTE]
+====
+Se si desidera espandere il volume FlexCache aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif[""] (opzioni avanzate). Fare riferimento a. link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Specifica delle opzioni avanzate per i volumi FlexCache"].
+
+====
+. Fare clic su *Save* (Salva) per ridimensionare il volume FlexCache.
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

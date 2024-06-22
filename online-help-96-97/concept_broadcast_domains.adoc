@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_broadcast_domains.html 
+sidebar: sidebar 
+keywords: system, manager, create, manage, broadcast, domain, online, help, edit, settings, port, delete 
+summary: È possibile utilizzare System Manager per creare e gestire domini di broadcast. 
+---
+= Gestire i domini di broadcast con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per creare e gestire i domini di broadcast, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Modificare le impostazioni del dominio di trasmissione
+
+È possibile utilizzare System Manager per modificare gli attributi di un dominio di trasmissione, ad esempio il nome, la dimensione MTU e le porte associate al dominio di trasmissione.
+
+.A proposito di questa attività
+* Non è necessario modificare le dimensioni MTU del dominio di broadcast a cui è assegnata la porta di gestione e0M.
+* Non è possibile utilizzare System Manager per modificare i domini di broadcast nell'IPSpace del cluster.
++
+È necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+
+
+.Fasi
+. Fare clic su *Network* > *Broadcast Domains*.
+. Selezionare il dominio di trasmissione che si desidera modificare, quindi fare clic su *Modifica*.
+. Nella finestra di dialogo *Modifica dominio di trasmissione*, modificare gli attributi del dominio di trasmissione come richiesto.
+. Fare clic su *Save and Close* (Salva e chiudi).
+
+
+
+
+== Eliminare i domini di broadcast
+
+È possibile eliminare un dominio di trasmissione utilizzando System Manager quando non è più necessario il dominio di trasmissione.
+
+.Prima di iniziare
+Nessuna subnet deve essere associata al dominio di trasmissione che si desidera eliminare.
+
+.A proposito di questa attività
+* Quando si elimina un dominio di trasmissione, le porte associate al dominio di trasmissione vengono assegnate all'IPSpace predefinito e le impostazioni MTU delle porte non vengono modificate.
+* Non è possibile utilizzare System Manager per eliminare i domini di broadcast presenti nell'IPSpace del cluster.
++
+È necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+
+
+.Fasi
+. Fare clic su *Network* > *Broadcast Domains*.
+. Selezionare il dominio di trasmissione che si desidera eliminare, quindi fare clic su *Delete* (Elimina).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+*Informazioni correlate*
+
+xref:reference_network_window.adoc[Finestra Network (rete)]
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Gestione della rete"]

@@ -1,0 +1,28 @@
+---
+permalink: online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html 
+sidebar: sidebar 
+keywords: flexcache, volume, online, help, advanced, options, specify 
+summary: A partire da Gestore di sistema 9.6, quando si modifica un volume FlexCache, è possibile specificare le opzioni avanzate che si desidera associare al volume FlexCache. 
+---
+= Specifica delle opzioni avanzate per un volume FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da Gestore di sistema 9.6, quando si modifica un volume FlexCache, è possibile specificare le opzioni avanzate che si desidera associare al volume FlexCache.
+
+.Fasi
+. *Opzionale:* nella finestra *Modifica volume FlexCache*, fare clic su image:../media/advanced_options.gif[""] per specificare le opzioni avanzate.
++
+Viene visualizzata la finestra Advanced Options (Opzioni avanzate). Contiene sezioni (le intestazioni nella colonna di sinistra), in cui è possibile specificare varie opzioni.
+
+. *Opzionale:* nella sezione *Dettagli generali*, è possibile modificare le autorizzazioni per il volume.
+. Nella sezione *aggregati*, è possibile attivare il pulsante di commutazione *Seleziona aggregati* per ignorare le impostazioni predefinite delle Best practice e selezionare le proprie scelte da un elenco di aggregati.
+. Nella sezione *efficienza dello storage*, è possibile attivare la compressione e la deduplica sul volume.
++
+La deduplica non è attivata per impostazione predefinita per i volumi FlexCache. System Manager utilizza la pianificazione di deduplica predefinita se le dimensioni del volume specificato superano il limite richiesto per l'esecuzione della deduplica.
+
+. Fare clic su *Apply* (Applica) per aggiornare le modifiche.
+

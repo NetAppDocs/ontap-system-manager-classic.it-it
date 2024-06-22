@@ -1,0 +1,14 @@
+---
+permalink: nfs-config/task_creating_protocol_enabled_svm.html 
+sidebar: sidebar 
+keywords: nfs-enabled, svm, create, creating, nfs, volume, export, policy, root, client, access, create a new nfs-enabled svm 
+summary: 'La configurazione di una SVM abilitata per NFS implica la creazione di una nuova SVM con un volume NFS e l"esportazione, l"apertura della policy di esportazione predefinita del volume root SVM e la verifica dell"accesso NFS da un host di amministrazione UNIX. È quindi possibile configurare l"accesso al client NFS.' 
+---
+= Creare una nuova SVM abilitata per NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configurazione di una SVM abilitata per NFS implica la creazione di una nuova SVM con un volume NFS e l'esportazione, l'apertura della policy di esportazione predefinita del volume root SVM e la verifica dell'accesso NFS da un host di amministrazione UNIX. È quindi possibile configurare l'accesso al client NFS.

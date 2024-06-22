@@ -1,0 +1,32 @@
+---
+permalink: nfs-config-esxi/task_configuring_your_network_for_best_performance.html 
+sidebar: sidebar 
+keywords: ethernet, network, performance, configuration, value, configure, configure your network for best performance 
+summary: Le reti Ethernet variano notevolmente in termini di performance. È possibile massimizzare le prestazioni della rete selezionando valori di configurazione specifici. 
+---
+= Configura la tua rete per ottenere le migliori performance
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le reti Ethernet variano notevolmente in termini di performance. È possibile massimizzare le prestazioni della rete selezionando valori di configurazione specifici.
+
+.Fasi
+. Collegare le porte host e storage alla stessa rete.
++
+Si consiglia di collegarsi agli stessi switch.
+
+. Selezionare le porte più veloci disponibili.
++
+Le porte da 10 GbE o superiori sono le migliori. Le porte 1 GbE sono il minimo.
+
+. Abilitare i frame jumbo se lo si desidera e se supportati dalla rete.
++
+I frame Jumbo devono avere un MTU di 9000 per gli host e i sistemi storage ESXi e 9216 per la maggior parte degli switch. Tutti i dispositivi di rete nel percorso dati, inclusi NIC ESXi, NIC storage e switch, devono supportare frame jumbo e devono essere configurati per i valori MTU massimi.
+
++
+Per ulteriori informazioni, vedere link:https://docs.netapp.com/us-en/ontap/performance-admin/check-network-settings-data-switches-task.html["Controllare le impostazioni di rete sugli switch dati"^] e la documentazione del vendor dello switch.
+
+

@@ -1,0 +1,37 @@
+---
+permalink: nfs-config/task_configuring_verifying_client_access_add_vol_existing_nfs_svm.html 
+sidebar: sidebar 
+keywords: client, access, unix, file, permission, administration, host, add, export, system, manager, group, volume, configure and verify nfs client access, add an nfs volume to an nfs-enabled svm 
+summary: 'Quando si è pronti, è possibile concedere ai client selezionati l"accesso alla condivisione impostando le autorizzazioni per i file UNIX su un host di amministrazione UNIX e aggiungendo una regola di esportazione in System Manager. Quindi, verificare che gli utenti o i gruppi interessati possano accedere al volume.' 
+---
+= Configurare e verificare l'accesso al client NFS (aggiunta di un volume NFS a una SVM abilitata per NFS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si è pronti, è possibile concedere ai client selezionati l'accesso alla condivisione impostando le autorizzazioni per i file UNIX su un host di amministrazione UNIX e aggiungendo una regola di esportazione in System Manager. Quindi, verificare che gli utenti o i gruppi interessati possano accedere al volume.
+
+.Fasi
+. Decidere quali client e utenti o gruppi avranno accesso alla condivisione.
+. Su un host di amministrazione UNIX, utilizzare l'utente root per impostare la proprietà e le autorizzazioni UNIX sul volume.
+. In System Manager, aggiungere regole ai criteri di esportazione per consentire ai client NFS di accedere alla condivisione.
++
+.. Selezionare la macchina virtuale di storage (SVM) e fare clic su *SVM Settings* (Impostazioni SVM).
+.. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+.. Selezionare il criterio di esportazione con lo stesso nome del volume.
+.. Nella scheda *regole di esportazione*, fare clic su *Aggiungi* e specificare un set di client.
+.. Selezionare *2* come *Rule Index* in modo che questa regola venga eseguita dopo la regola che consente l'accesso all'host di amministrazione.
+.. Selezionare *NFSv3*.
+.. Specificare i dettagli di accesso desiderati e fare clic su *OK.*
++
+È possibile fornire l'accesso completo in lettura/scrittura ai client digitando la subnet `10.1.1.0/24` Come *Client Specification* (specifica client) e selezionando tutte le caselle di controllo Access (accesso) ad eccezione di *Allow Superuser Access* (Consenti accesso superutente).
+
++
+image::../media/export_rule_for_clients_nfs_nfs.gif[Questa schermata è descritta dal testo precedente.]
+
+
+
+. Su un client UNIX, accedere come uno degli utenti che ora ha accesso al volume e verificare che sia possibile montare il volume e creare un file.
+

@@ -1,0 +1,80 @@
+---
+permalink: online-help-96-97/concept_high_availability.html 
+sidebar: sidebar 
+keywords: high, availability, system, manager, hardware, redundancy, nondisruptive, operations, fault, tolerance 
+summary: 'È possibile utilizzare System Manager per creare coppie ad alta disponibilità (ha) che forniscono la ridondanza hardware necessaria per operazioni senza interruzioni e tolleranza agli errori.' 
+---
+= Crea coppie ad alta disponibilità con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare coppie ad alta disponibilità (ha) che forniscono la ridondanza hardware necessaria per operazioni senza interruzioni e tolleranza agli errori.
+
+
+
+== Finestra High Availability
+
+La finestra High Availability (alta disponibilità) fornisce una rappresentazione grafica dello stato di alta disponibilità (ha), dello stato di interconnessione e dello stato di takeover o giveback di tutte le coppie ha in ONTAP. È anche possibile avviare manualmente un'operazione di Takeover o giveback utilizzando la finestra High Availability.
+
+È possibile visualizzare dettagli quali lo stato di Takeover o giveback e lo stato di interconnessione facendo clic sull'immagine ha Pair.
+
+Il colore indica lo stato della coppia ha:
+
+* Verde: Indica che la coppia ha e l'interconnessione sono configurate in modo ottimale e sono disponibili per il takeover o il giveback.
++
+Il verde indica anche lo stato di takeover in Progress, giveback in Progress e waiting for giveback.
+
+* Rosso: Indica uno stato di downgrade, ad esempio un errore di takeover.
+* Giallo: Indica che lo stato di interconnessione è inattivo.
+
+
+Quando più coppie ha in un cluster sono coinvolte simultaneamente nelle operazioni di failover dello storage, lo stato del cluster visualizzato si basa sullo stato e sulla severità della coppia ha. Durante la visualizzazione dello stato del cluster viene preso in considerazione il seguente ordine di severità: Takeover in corso, giveback in corso, in attesa di giveback.
+
+
+
+=== Azioni
+
+È possibile eseguire attività come takeover o giveback in base allo stato dei nodi nella coppia ha.
+
+* Takeover `node_name`
++
+Consente di eseguire un'operazione di takeover quando è necessaria la manutenzione sul nodo partner.
+
+* Giveback `node_name`
++
+Consente di eseguire un'operazione di giveback quando il nodo partner sostituito è in attesa di giveback o si trova in uno stato di giveback parziale.
+
+* Attiva o disattiva il giveback automatico
++
+Attiva o disattiva l'operazione di giveback automatico.
+
++
+[NOTE]
+====
+Il giveback automatico è attivato per impostazione predefinita.
+
+====
+
+
+
+
+=== Pulsanti di comando
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
++
+[NOTE]
+====
+Le informazioni visualizzate nella finestra High Availability vengono aggiornate automaticamente ogni 60 secondi.
+
+====
+
+
+*Informazioni correlate*
+
+xref:task_monitoring_ha_pairs.adoc[Monitoraggio delle coppie ha]

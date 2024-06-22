@@ -1,0 +1,348 @@
+---
+permalink: online-help-96-97/concept_quotas.html 
+sidebar: sidebar 
+keywords: system, manager, quota, online, help, view, activate, deactivate, information, types, targets, default, limits, space, files, manage, tree, group 
+summary: È possibile utilizzare System Manager per creare, modificare ed eliminare le quote. 
+---
+= Gestione delle quote con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per creare, modificare ed eliminare le quote, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Creare quote
+
+Le quote consentono di limitare o tenere traccia dello spazio su disco e del numero di file utilizzati da un utente, un gruppo o un qtree. È possibile utilizzare la procedura guidata Aggiungi quota in System Manager per creare una quota e applicarla a un volume o qtree specifico.
+
+.A proposito di questa attività
+Utilizzando System Manager, il valore minimo che è possibile specificare per il limite massimo e il limite massimo sul numero di file che la quota può possedere è 1000. Se si desidera specificare un valore inferiore a 1000, utilizzare l'interfaccia della riga di comando (CLI).
+
+.Fasi
+. Fare clic su *Storage* > *quote*.
+. Dal menu a discesa nel campo *SVM*, selezionare la macchina virtuale di storage (SVM) su cui si desidera creare una quota.
+. Nella scheda *quote definite dall'utente*, fare clic su *Crea*.
++
+Viene visualizzata la creazione guidata quota.
+
+. Digitare o selezionare le informazioni come richiesto dalla procedura guidata.
+. Confermare i dettagli, quindi fare clic su *fine* per completare la procedura guidata.
+
+
+
+
+=== Cosa fare in seguito
+
+È possibile utilizzare il nome utente locale o il RID per creare le quote utente. Se si crea la quota utente o la quota di gruppo utilizzando il nome utente o il nome del gruppo, viene visualizzato il ``/etc/passwd``e il``/etc/group``il file deve essere aggiornato, rispettivamente.
+
+
+
+== Eliminare le quote
+
+È possibile utilizzare System Manager per eliminare una o più quote in caso di modifica dei requisiti e delle limitazioni di storage degli utenti.
+
+.Fasi
+. Fare clic su *Storage* > *quote*.
+. Dal menu a discesa nel campo *SVM*, selezionare la macchina virtuale di storage (SVM) su cui risiedono le quote che si desidera eliminare.
+. Selezionare una o più quote da eliminare, quindi fare clic su *Elimina*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+
+
+== Modificare i limiti di quota
+
+È possibile utilizzare System Manager per modificare la soglia di spazio su disco, il limite massimo e il limite minimo sulla quantità di spazio su disco che la destinazione della quota può utilizzare, nonché il limite massimo e il limite massimo sul numero di file che la destinazione della quota può possedere.
+
+.Fasi
+. Fare clic su *Storage* > *quote*.
+. Dal menu a discesa nel campo *SVM*, selezionare la macchina virtuale di storage (SVM) in cui risiede la quota che si desidera modificare.
+. Selezionare la quota che si desidera modificare e fare clic su *Modifica limiti*.
+. Nella finestra di dialogo *Edit Limits* (Modifica limiti), modificare le impostazioni della quota in base alle esigenze.
++
+Cento (100) è il valore minimo che è possibile specificare per il limite massimo e il limite massimo sul numero di file che la quota può possedere. Se si desidera specificare un valore inferiore a 100, è necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+. Fare clic su *Save and Close* (Salva e chiudi).
+. Verificare le modifiche apportate alla quota selezionata nella scheda *quote definite dall'utente*.
+
+
+
+
+== Attivare o disattivare le quote
+
+È possibile utilizzare System Manager per attivare o disattivare le quote su uno o più volumi selezionati nel sistema di storage. È possibile attivare o disattivare le quote quando gli utenti e i relativi requisiti e limitazioni di storage cambiano.
+
+.Fasi
+. Fare clic su *Storage* > *quote*.
+. Dal menu a discesa nel campo SVM, selezionare la macchina virtuale di storage (SVM) su cui risiedono le quote che si desidera attivare o disattivare.
+. Nella scheda *quota Status on Volumes* (Stato quota sui volumi), selezionare uno o più volumi per i quali si desidera attivare o disattivare le quote.
+. Fare clic su *Activate* (attiva) o *Deactivate* (Disattiva), secondo necessità.
+. Se si sta disattivando una quota, selezionare la casella di controllo di conferma, quindi fare clic su *OK*.
+. Verificare lo stato della quota sui volumi nella colonna *Status*.
+
+
+
+
+== Ridimensionare le quote
+
+È possibile utilizzare la finestra di dialogo Ridimensiona quota in System Manager per regolare le quote attive nel volume specificato in modo che riflettano le modifiche apportate a una quota.
+
+.Prima di iniziare
+Le quote devono essere attivate per i volumi per i quali si desidera ridimensionare le quote.
+
+.Fasi
+. Fare clic su *Storage* > *quote*.
+. Nella scheda *quota Status on Volumes* della finestra *quota*, selezionare uno o più volumi per i quali si desidera ridimensionare le quote.
+. Fare clic su *Ridimensiona*.
+
+
+
+
+== Visualizzare le informazioni sulle quote
+
+È possibile utilizzare la finestra delle quote in System Manager per visualizzare i dettagli delle quote, ad esempio il volume e i qtree a cui viene applicata la quota, il tipo di quota, l'utente o il gruppo a cui viene applicata la quota e l'utilizzo dello spazio e del file.
+
+.Fasi
+. Fare clic su *Storage* > *quote*.
+. Dal menu a discesa nel campo *SVM*, selezionare la macchina virtuale di storage (SVM) su cui risiede la quota di cui si desidera visualizzare le informazioni.
+. Eseguire l'azione appropriata:
++
+[cols="1a,1a"]
+|===
+| Se... | Quindi... 
+
+
+ a| 
+Si desidera visualizzare i dettagli di tutte le quote create
+ a| 
+Fare clic sulla scheda *quote definite dall'utente*.
+
+
+
+ a| 
+Si desidera visualizzare i dettagli delle quote attualmente attive
+ a| 
+Fare clic sulla scheda *quota Report*.
+
+|===
+. Selezionare la quota a cui si desidera visualizzare le informazioni dall'elenco di quote visualizzato.
+. Esaminare i dettagli della quota.
+
+
+
+
+== Tipi di quote
+
+Le quote possono essere classificate in base agli obiettivi a cui sono applicate.
+
+Di seguito sono riportati i tipi di quote in base agli obiettivi a cui sono applicate:
+
+* *Quota utente*
++
+La destinazione è un utente.
+
++
+L'utente può essere rappresentato da un nome utente UNIX, un UID UNIX, un SID Windows, un file o una directory il cui UID corrisponde all'utente, un nome utente Windows in formato precedente a Windows 2000 e un file o una directory con un ACL di proprietà del SID dell'utente. È possibile applicarlo a un volume o a un qtree.
+
+* *Quota di gruppo*
++
+La destinazione è un gruppo.
+
++
+Il gruppo è rappresentato da un nome di gruppo UNIX, un GID o un file o una directory il cui GID corrisponde al gruppo. ONTAP non applica quote di gruppo basate su un ID Windows. È possibile applicare una quota a un volume o a un qtree.
+
+* *Quota Qtree*
++
+La destinazione è un qtree, specificato dal nome del percorso al qtree.
+
++
+È possibile determinare le dimensioni del qtree di destinazione.
+
+* *Quota predefinita*
++
+Applica automaticamente un limite di quota a un ampio set di destinazioni di quota senza creare quote separate per ciascuna destinazione.
+
++
+Le quote predefinite possono essere applicate a tutti e tre i tipi di destinazione delle quote (utenti, gruppi e qtree). Il tipo di quota è determinato dal valore del campo tipo.
+
+
+
+
+
+== Limiti di quota
+
+È possibile applicare un limite di spazio su disco o limitare il numero di file per ciascun tipo di quota. Se non si specifica un limite per una quota, non viene applicato alcun limite.
+
+Le quote possono essere morbide o difficili. Le quote morbide fanno sì che Data ONTAP invii una notifica quando vengono superati i limiti specificati, mentre le quote rigide impediscono il successo di un'operazione di scrittura quando vengono superati i limiti specificati.
+
+Le quote rigide impongono un limite massimo alle risorse di sistema; qualsiasi operazione che comporterebbe il superamento del limite fallisce. Le seguenti impostazioni creano le quote rigide:
+
+* Parametro disk limit
+* Parametro limite file
+
+
+Le quote morbide inviano un messaggio di avviso quando l'utilizzo delle risorse raggiunge un determinato livello, ma non influiscono sulle operazioni di accesso ai dati, in modo da poter intraprendere le azioni appropriate prima che la quota venga superata. Le seguenti impostazioni creano quote soft:
+
+* Soglia per il parametro Disk Limit
+* Parametro Soft Disk Limit
+* Parametro di limite dei file soft
+
+
+Le quote Threshold e Soft Disk consentono agli amministratori di ricevere più di una notifica su una quota. In genere, gli amministratori impostano il valore Threshold for Disk Limit (soglia per limite disco) su un valore solo leggermente inferiore al limite del disco, in modo che la soglia fornisca un "avviso finale" prima che la scrittura inizi a non riuscire.
+
+* *Limite di spazio su disco*
++
+Limite di spazio su disco applicato alle quote rigide.
+
+* *Limite di spazio su disco*
++
+Limite di spazio su disco applicato alle quote soft.
+
+* *Limite di soglia*
++
+Limite di spazio su disco applicato alle quote di soglia.
+
+* *Limite massimo di file*
++
+Il numero massimo di file su una quota rigida.
+
+* *Limite software file*
++
+Il numero massimo di file su una quota soft.
+
+
+
+
+
+== Gestione delle quote
+
+System Manager include diverse funzionalità che consentono di creare, modificare o eliminare le quote. È possibile creare una quota utente, di gruppo o ad albero e specificare limiti di quota a livello di disco e file. Tutte le quote sono stabilite in base al volume.
+
+Dopo aver creato una quota, è possibile eseguire le seguenti operazioni:
+
+* Attivare e disattivare le quote
+* Ridimensionare le quote
+
+
+
+
+== Finestra quote
+
+È possibile utilizzare la finestra quote per creare, visualizzare e gestire informazioni sulle quote.
+
+
+
+=== Schede
+
+* *Quote definite dall'utente*
++
+È possibile utilizzare la scheda *quote definite dall'utente* per visualizzare i dettagli delle quote create e per creare, modificare o eliminare le quote.
+
+* *Rapporto quota*
++
+È possibile utilizzare la scheda quota Report per visualizzare lo spazio e l'utilizzo dei file e per modificare i limiti di spazio e file delle quote attive.
+
+* *Stato quota sui volumi*
++
+È possibile utilizzare la scheda quota Status on Volumes (Stato quota sui volumi) per visualizzare lo stato di una quota, attivare o disattivare le quote e ridimensionare le quote.
+
+
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la creazione guidata quota, che consente di creare le quote.
+
+* *Modifica limiti*
++
+Apre la finestra di dialogo Edit Limits (Modifica limiti), che consente di modificare le impostazioni della quota selezionata.
+
+* *Elimina*
++
+Elimina la quota selezionata dall'elenco delle quote.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco delle quote definite dall'utente
+
+L'elenco delle quote visualizza il nome e le informazioni di archiviazione per ciascuna quota.
+
+* *Volume*
++
+Specifica il volume a cui viene applicata la quota.
+
+* *Qtree*
++
+Specifica il qtree associato alla quota. "`All Qtree`" indica che la quota è associata a tutti i qtree.
+
+* *Tipo*
++
+Specifica il tipo di quota: Utente, gruppo o struttura.
+
+* *Utente/Gruppo*
++
+Specifica un utente o un gruppo associato alla quota. "Tutti gli utenti" indica che la quota è associata a tutti gli utenti. "Tutti i gruppi" indica che la quota è associata a tutti i gruppi.
+
+* *Destinazione quota*
++
+Specifica il tipo di destinazione a cui è assegnata la quota. La destinazione può essere qtree, user o group.
+
+* *Limite di spazio massimo*
++
+Specifica il limite di spazio su disco applicato alle quote rigide.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Space Soft Limit*
++
+Specifica il limite di spazio su disco applicato alle quote soft.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Soglia*
++
+Specifica il limite di spazio su disco applicato alle quote di soglia.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Limite massimo del file*
++
+Specifica il numero massimo di file in una quota rigida.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Limite di software del file*
++
+Specifica il numero massimo di file in una quota soft.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco delle quote visualizza i dettagli delle quote, ad esempio l'errore di quota, l'utilizzo e i limiti dello spazio, l'utilizzo e i limiti dei file.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Gestione dello storage logico"^]

@@ -1,0 +1,30 @@
+---
+permalink: fc-config-windows/task_updating_hba_driver_firmware_bios.html 
+sidebar: sidebar 
+keywords: fc, host, bus, adapter, hba, windows, run, support, driver, firmware, bios, version, update, update the hba driver firmware and bios 
+summary: 'Se gli HBA (host bus adapter) FC nell"host Windows non utilizzano versioni supportate di driver, firmware e BIOS, è necessario aggiornarli.' 
+---
+= Aggiornare il driver HBA, il firmware e il BIOS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se gli HBA (host bus adapter) FC nell'host Windows non utilizzano versioni supportate di driver, firmware e BIOS, è necessario aggiornarli.
+
+.Prima di iniziare
+È necessario aver identificato le versioni del driver, del firmware e del BIOS supportate per la configurazione dallo strumento Interoperability Matrix.
+
+https://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"]
+
+.A proposito di questa attività
+Driver, firmware, BIOS e utility HBA sono forniti dai vendor HBA.
+
+.Fasi
+. Elencare il driver HBA installato, il firmware e le versioni del BIOS utilizzando l'utility HBA del proprio fornitore HBA.
+. Scaricare e installare i nuovi driver, firmware e BIOS secondo necessità dal sito di supporto del fornitore HBA.
++
+Le istruzioni di installazione e le eventuali utility di installazione richieste sono disponibili con il download.
+
+

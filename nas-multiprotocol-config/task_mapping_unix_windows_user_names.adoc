@@ -1,0 +1,89 @@
+---
+permalink: nas-multiprotocol-config/task_mapping_unix_windows_user_names.html 
+sidebar: sidebar 
+keywords: windows, unix, user, acconut, map, user, access, file, permission, ntfs, conversion, rule, default, user, map unix and windows user names 
+summary: Se il sito dispone di account utente Windows e UNIX, è necessario utilizzare la mappatura dei nomi per garantire che gli utenti Windows possano accedere ai file con autorizzazioni UNIX e per garantire che gli utenti UNIX possano accedere ai file con autorizzazioni NTFS. La mappatura dei nomi può comprendere qualsiasi combinazione di mappatura implicita, regole di conversione e utenti predefiniti. 
+---
+= Mappare i nomi utente UNIX e Windows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se il sito dispone di account utente Windows e UNIX, è necessario utilizzare la mappatura dei nomi per garantire che gli utenti Windows possano accedere ai file con autorizzazioni UNIX e per garantire che gli utenti UNIX possano accedere ai file con autorizzazioni NTFS. La mappatura dei nomi può comprendere qualsiasi combinazione di mappatura implicita, regole di conversione e utenti predefiniti.
+
+.A proposito di questa attività
+Utilizzare questa procedura solo se il sito dispone di account utente Windows e UNIX che non vengono mappati implicitamente, ovvero quando la versione minuscola di ciascun nome utente Windows corrisponde al nome utente UNIX. Questa operazione può essere eseguita utilizzando NIS, LDAP o utenti locali. Se si dispone di due set di utenti che non corrispondono, è necessario configurare la mappatura dei nomi.
+
+.Fasi
+. Decidere un metodo di mappatura dei nomi: Regole di conversione della mappatura dei nomi, mappature utente predefinite o entrambi, tenendo conto dei seguenti fattori:
++
+** Le regole di conversione utilizzano espressioni regolari per convertire un nome utente in un altro, il che è utile se si desidera controllare o tenere traccia dell'accesso a un singolo livello.
++
+Ad esempio, è possibile mappare gli utenti UNIX agli utenti Windows di un dominio e viceversa.
+
+** Gli utenti predefiniti consentono di assegnare un nome utente a tutti gli utenti che non sono mappati da mappature implicite o regole di conversione della mappatura dei nomi.
++
+Ogni SVM ha un utente UNIX predefinito chiamato "`pcuser`" ma non ha un utente Windows predefinito.
+
+
+
+. Accedere alla finestra *SVM*.
+. Selezionare la SVM che si desidera configurare.
+. Fare clic sulla scheda *Impostazioni SVM*.
+. *Opzionale*: Creare una mappatura dei nomi che converte gli account utente UNIX in account utente Windows e viceversa:
++
+.. Nel riquadro *host Users and Groups* (utenti e gruppi host), fare clic su *Name Mapping* (mappatura nome).
+.. Fare clic su *Aggiungi*, mantenere la direzione predefinita *da Windows a UNIX*, quindi creare un'espressione regolare che produca una credenziale UNIX quando un utente Windows tenta di accedere a un file che utilizza le autorizzazioni per i file UNIX.
++
+Utilizzare la seguente voce per convertire qualsiasi utente Windows nel dominio ENG in un utente UNIX con lo stesso nome. Il modello `ENG\\(.+)` Trova qualsiasi nome utente Windows con il prefisso `ENG\\`e la sostituzione `\1` Crea la versione UNIX rimuovendo tutto tranne il nome utente.
+
++
+image::../media/name_mappings_1_windows_to_unix.gif[Schermata di una voce da Windows a UNIX]
+
+.. Fare clic su**Aggiungi**, selezionare la direzione *da UNIX a Windows*, quindi creare il mapping corrispondente che produce una credenziale Windows quando un utente UNIX tenta di accedere a un file che dispone delle autorizzazioni per i file NTFS.
++
+Utilizzare la seguente voce per convertire ogni utente UNIX in un utente Windows con lo stesso nome nel dominio ENG. Il modello `(.+)` Trova qualsiasi nome UNIX e la sostituzione `ENG\\\1` Crea la versione di Windows inserendo `ENG\\` prima del nome utente.
+
++
+image::../media/name_mappings_2_unix_to_windows.gif[Schermata di una voce da UNIX a Windows]
+
+.. Poiché la posizione di ciascuna regola determina l'ordine di applicazione delle regole, è necessario esaminare il risultato e confermare che l'ordine corrisponde alle proprie aspettative.
++
+image::../media/name_mappings_3_outcome.gif[Questo grafico è spiegato dal testo che lo circonda.]
+
+.. Ripetere i passaggi da 5b a 5d per mappare tutti i domini e i nomi sulla SVM.
+
+
+. *Opzionale*: Creare un utente Windows predefinito:
++
+.. Creare un account utente Windows in LDAP, NIS o gli utenti locali di SVM.
++
+Se si utilizzano utenti locali, è possibile creare un account in *Windows* nel riquadro host Users and Groups (utenti e gruppi host).
+
+.. Impostare l'utente Windows predefinito selezionando *NFS* > *Edit* nel pannello *Protocols* e immettendo il nome utente.
+
+
++
+È possibile creare un utente Windows locale denominato "`unixusers`" e impostarlo come utente Windows predefinito.
+
+. *Opzionale*: Configurare l'utente UNIX predefinito se si desidera un utente diverso dal valore predefinito, ovvero l'utente "`pcuser`".
++
+.. Creare un account utente UNIX in LDAP, NIS o gli utenti locali di SVM.
++
+Se si utilizzano utenti locali, è possibile creare un account in *UNIX* nel pannello host Users and Groups (utenti e gruppi host).
+
+.. Impostare l'utente UNIX predefinito selezionando *CIFS* > *Opzioni* nel riquadro *protocolli* e immettendo il nome utente.
+
+
++
+È possibile creare un utente UNIX locale denominato "`winusers`" e impostarlo come utente UNIX predefinito.
+
+
+
+
+
+== Cosa fare in seguito
+
+Se sono stati configurati utenti predefiniti, quando si configurano le autorizzazioni dei file in un secondo momento nel flusso di lavoro, è necessario impostare le autorizzazioni per l'utente Windows predefinito e per l'utente UNIX predefinito.

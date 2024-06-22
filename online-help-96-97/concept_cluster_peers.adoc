@@ -1,0 +1,306 @@
+---
+permalink: online-help-96-97/concept_cluster_peers.html 
+sidebar: sidebar 
+keywords: cluster, peer, data, replication, snapmirror, snapvault, flexcache, syncmirror, configuration, system, manager, modify, passphrase, lif, configure, remote, change, encryption, status, online, help 
+summary: I cluster peered sono necessari per la replica dei dati utilizzando la tecnologia SnapMirror e la tecnologia SnapVault e per la replica dei dati utilizzando i volumi FlexCache e la tecnologia SyncMirror nelle configurazioni MetroCluster. È possibile utilizzare System Manager per eseguire il peer di due cluster in modo che i cluster in peered possano coordinare e condividere le risorse tra di essi. 
+---
+= Peer di cluster con Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per eseguire il peer di due cluster in modo che i cluster peered possano coordinare e condividere le risorse tra di essi. I cluster peered sono necessari per la replica dei dati utilizzando la tecnologia SnapMirror e la tecnologia SnapVault e per la replica dei dati utilizzando i volumi FlexCache e la tecnologia SyncMirror nelle configurazioni MetroCluster.
+
+
+
+== Generare una passphrase di peering
+
+A partire da System Manager 9.6, è possibile generare una passphrase per l'IPSpace del cluster locale e utilizzare la stessa passphrase nel cluster remoto quando si creano relazioni di peering.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster Peers*.
+. Fare clic su *generate peering Passphrase* (genera password peering).
++
+Viene visualizzata la finestra di dialogo generate peering Passphrase (genera password peering).
+
+. Compilare i seguenti campi:
++
+** *IPSpace*: Selezionare IPSpace dal menu a discesa.
+** *Passphrase Valid* (validità passphrase): Selezionare dal menu a discesa la durata per la quale si desidera che la passphrase sia valida.
+** *Permessi SVM*: Selezionare una delle seguenti opzioni:
++
+*** *Tutte le SVM* indicano che tutte le SVM sono autorizzate ad accedere al cluster.
+*** *SVM selezionati* per indicare SVM specifiche a cui è consentito l'accesso al cluster. Evidenziare i nomi SVM nel campo che si desidera specificare.
+
+
+
+
+. *Opzionale:* selezionare la casella di controllo se la versione effettiva del cluster remoto è precedente a ONTAP 9.6. In caso contrario, il peering del cluster non viene generato.
+. Fare clic su *generate* per generare la passphrase.
++
+Per una generazione corretta, viene visualizzato un messaggio che identifica la passphrase.
+
+. Se si desidera inviare tramite email o copiare la passphrase, eseguire una delle seguenti operazioni:
++
+** Fare clic su *Email passphrase details* (Invia dettagli
+** Fare clic su *Copia passphrase*.
+
+
+
+
+
+
+== Modificare la passphrase peer del cluster
+
+È possibile modificare la passphrase fornita durante la creazione del peer del cluster.
+
+.Fasi
+. [[step1]]fare clic su *Configurazione* > *Cluster Peers*.
+. Selezionare il cluster peered e fare clic su *Edit* (Modifica)
++
+Viene visualizzato il menu a discesa.
+
+. Fare clic su *Local Cluster Passphrase* (Password cluster locale).
++
+Viene visualizzata la finestra di dialogo Edit Local Cluster Passphrase (Modifica password cluster locale).
+
+. [[step4]]nel campo *Inserisci passphrase*, immettere una nuova passphrase, quindi fare clic su *Applica*.
++
+[NOTE]
+====
+La lunghezza minima richiesta della passphrase è di otto caratteri.
+
+====
++
+La passphrase viene modificata immediatamente. Tuttavia, potrebbe verificarsi un ritardo prima che venga visualizzato lo stato di autenticazione corretto.
+
+. Accedere al cluster remoto ed eseguire i passaggi link:#step1["1"] attraverso link:#step4["4"] per modificare la passphrase nel cluster remoto.
++
+Lo stato di autenticazione per il cluster locale viene visualizzato come `ok_and_offer` fino a quando non si modifica la passphrase nel cluster remoto.
+
+
+
+
+
+== Modificare le LIF configurate per il cluster remoto
+
+È possibile utilizzare System Manager per modificare le interfacce logiche IPSpace e Intercluster (LIFF) configurate per il cluster remoto. È possibile aggiungere nuovi indirizzi IP dell'intercluster o rimuovere quelli esistenti.
+
+.Prima di iniziare
+Per creare la relazione peer del cluster, è necessario disporre di almeno un indirizzo IP dell'intercluster.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Selezionare il cluster peered e fare clic su *Edit* (Modifica)
++
+Viene visualizzato il menu a discesa.
+
+. Fare clic su *Peer Cluster Network Parameters*.
++
+Viene visualizzata la finestra di dialogo Edit Peer Network Parameters (Modifica parametri di rete peer).
+
+. Se necessario, modificare i seguenti campi:
++
+** *IPSpace*: Selezionare IPSpace dal menu a discesa.
+** *LIF intercluster*: Consente di aggiungere o rimuovere gli indirizzi IP intercluster. È possibile aggiungere più indirizzi IP separandoli con virgole.
+
+
+. Fare clic su *Modify* (Modifica).
+. Verificare le modifiche apportate nella finestra *Cluster Peers*.
+
+
+
+
+== Modificare lo stato della crittografia peering
+
+È possibile utilizzare System Manager per modificare lo stato della crittografia peering per il cluster selezionato.
+
+.A proposito di questa attività
+Lo stato della crittografia può essere attivato o disattivato. È possibile modificare lo stato da attivato a disattivato o da disattivato a attivato selezionando *Modifica crittografia*.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster Peers*.
+. Selezionare il cluster peered e fare clic su *Edit* (Modifica)
++
+Viene visualizzato il menu a discesa.
+
+. Fare clic su *Change Encryption* (Modifica crittografia).
++
+Questa azione non è disponibile se lo stato di crittografia è "`N/A`".
+
++
+Viene visualizzata la finestra di dialogo Change Encryption (Modifica crittografia). Il pulsante di commutazione indica lo stato corrente della crittografia.
+
+. Far scorrere il pulsante di commutazione per modificare lo stato della crittografia peering e procedere.
++
+** Se lo stato di crittografia corrente è "`None`", è possibile attivare la crittografia facendo scorrere il pulsante di commutazione per modificare lo stato in "`tls_psk`".
+** Se lo stato di crittografia corrente è "`tls_psk`", è possibile disattivare la crittografia facendo scorrere il pulsante di commutazione per modificare lo stato in "`None`".
+
+
+. Dopo aver attivato o disattivato la crittografia peering, è possibile generare una nuova passphrase e fornirla nel cluster peered oppure applicare una passphrase esistente già generata nel cluster peered.
++
+[NOTE]
+====
+Se la passphrase utilizzata nel sito locale non corrisponde alla passphrase utilizzata nel sito remoto, la relazione di peering del cluster non funzionerà correttamente.
+
+====
++
+Selezionare una delle seguenti opzioni:
+
++
+** *Generare una passphrase*: Passare a. link:#step6["passaggio 6"].
+** *Già dispone di una passphrase*: Passare a. link:#step9["passaggio 9"].
+
+
+. [[step6]]se si sceglie *genera una passphrase*, completare i campi necessari:
++
+** *IPSpace*: Selezionare IPSpace dal menu a discesa.
+** *Passphrase Valid* (validità passphrase): Selezionare dal menu a discesa la durata per la quale si desidera che la passphrase sia valida.
+** *Permessi SVM*: Selezionare una delle seguenti opzioni:
++
+*** *Tutte le SVM* per indicare che tutte le SVM sono autorizzate ad accedere al cluster.
+*** *SVM selezionati* per indicare SVM specifiche a cui è consentito l'accesso al cluster. Evidenziare i nomi SVM nel campo che si desidera specificare.
+
+
+
+
+. *Opzionale:* selezionare la casella di controllo se la versione effettiva del cluster remoto è precedente a ONTAP 9.6. In caso contrario, la passphrase non viene generata.
+. Fare clic su *Apply* (Applica).
++
+La passphrase viene generata per la relazione e visualizzata. È possibile copiare la passphrase o inviarla tramite e-mail.
+
++
+Lo stato di autenticazione per il cluster locale viene visualizzato come `ok_and_offer` per il periodo di validità della passphrase selezionato fino a quando non viene specificata la passphrase nel cluster remoto.
+
+. [[step9]]se è già stata generata una nuova passphrase nel cluster remoto, eseguire i seguenti passaggi secondari:
++
+.. Fare clic su *già una passphrase*.
+.. Immettere nel campo *Passphrase* la stessa passphrase generata nel cluster remoto.
+.. Fare clic su *Apply* (Applica).
+
+
+
+
+
+
+== Eliminare le relazioni peer del cluster
+
+Se la relazione non è più necessaria, è possibile utilizzare System Manager per eliminare una relazione peer del cluster. È necessario eliminare la relazione di peering del cluster da ciascuno dei cluster nella relazione peer.
+
+.Fasi
+. [[step1]]fare clic su *Configurazione* > *Cluster Peers*.
+. Selezionare il peer del cluster per il quale si desidera eliminare la relazione, quindi fare clic su *Delete* (Elimina).
+. [[step3]]selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+. Accedere al cluster remoto ed eseguire i passaggi link:#step1["1"] attraverso link:#step3["3"] per eliminare la relazione peer tra il cluster locale e il cluster remoto.
++
+Lo stato della relazione peer viene visualizzato come "`Unhealthy`" fino a quando la relazione non viene eliminata sia dal cluster locale che dal cluster remoto.
+
+
+
+
+
+== Finestra Cluster Peers
+
+È possibile utilizzare la finestra Cluster Peers per gestire le relazioni dei cluster peer, che consente di spostare i dati da un cluster all'altro.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Cluster Peering (Crea peering cluster), che consente di creare una relazione con un cluster remoto.
+
+* *Modifica*
++
+Visualizza un menu a discesa con le seguenti opzioni:
+
++
+** *Local Cluster Passphrase*
++
+Apre la finestra di dialogo Edit Local Cluster Passphrase (Modifica passphrase cluster locale), che consente di immettere una nuova passphrase per convalidare il cluster locale.
+
+** *Peer Cluster Network Parameters*
++
+Apre la finestra di dialogo Edit Peer Cluster Network Parameters (Modifica parametri di rete del cluster peer), che consente di modificare l'IPSpace e aggiungere o rimuovere gli indirizzi IP LIF tra cluster.
+
++
+È possibile aggiungere più indirizzi IP separati da virgole.
+
+** *Cambia crittografia*
++
+Apre la finestra di dialogo Change Encryption (Modifica crittografia) per il cluster peer selezionato. Durante la modifica della crittografia della relazione peered, è possibile generare una nuova passphrase o fornire una passphrase già generata nel cluster peered remoto.
+
++
+Questa azione non è disponibile se lo stato di crittografia è "`N/A`".
+
+
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete Cluster Peer Relationship (Elimina relazione peer cluster), che consente di eliminare la relazione peer cluster selezionata.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+* *Gestisci permessi SVM*
++
+Consente alle SVM di accettare automaticamente le richieste di peering SVM.
+
+* *Genera passphrase di peering*
++
+Consente di generare una passphrase per l'IPSpace del cluster locale specificando IPSpace, la durata della validità della passphrase e le SVM a cui viene concessa l'autorizzazione.
+
++
+Per eseguire il peering, nel cluster remoto viene utilizzata la stessa passphrase.
+
+
+
+
+
+=== Elenco di cluster peer
+
+* *Cluster peer*
++
+Specifica il nome del cluster peer nella relazione.
+
+* *Disponibilità*
++
+Specifica se il cluster peer è disponibile per la comunicazione.
+
+* *Stato autenticazione*
++
+Specifica se il cluster peer è autenticato o meno.
+
+* *IPSpace cluster locale*
++
+Visualizza IPSpace associato alla relazione peer del cluster locale.
+
+* *Peer Cluster Intercluster IP Addresses*
++
+Visualizza gli indirizzi IP associati alla relazione peer tra cluster.
+
+* *Ora ultimo aggiornamento*
++
+Visualizza l'ora dell'ultima modifica del cluster peer.
+
+* *Crittografia*
++
+Visualizza lo stato della crittografia della relazione di peering.
+
++
+[NOTE]
+====
+A partire da System Manager 9.6, il peering viene crittografato per impostazione predefinita quando si stabilisce una relazione di peering tra due cluster
+
+====
++
+** *N/A*: La crittografia non è applicabile alla relazione.
+** *Nessuno*: La relazione di peering non è crittografata.
+** *tls_psk*: La relazione di peering è crittografata.
+
+
+

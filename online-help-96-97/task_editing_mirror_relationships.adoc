@@ -1,0 +1,324 @@
+---
+permalink: online-help-96-97/task_editing_mirror_relationships.html 
+sidebar: sidebar 
+keywords: system, manager, edit, mirror, relationships, online, help 
+summary: È possibile utilizzare System Manager per modificare una relazione mirror selezionando una policy o una pianificazione esistente nel cluster o creando una policy o una pianificazione. 
+---
+= Gestire le relazioni mirror con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per gestire le relazioni mirror, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti). È possibile aggiornare, creare, interrompere, inizializzare, ristabilire, eliminare e modificare le relazioni mirror, oltre a riprendere le relazioni mirror rinunciate.
+
+
+
+== Eliminare le relazioni
+
+È possibile utilizzare System Manager per eliminare una relazione di mirroring e terminare in modo permanente la relazione di mirroring tra i volumi di origine e di destinazione. Quando si elimina una relazione mirror, la copia Snapshot di base sul volume di origine viene eliminata.
+
+.A proposito di questa attività
+Si consiglia di interrompere la relazione mirror prima di eliminarla.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror che si desidera eliminare e fare clic su *Delete* (Elimina).
+. Selezionare le caselle di controllo di conferma per eliminare la relazione mirror e rilasciare le copie Snapshot di base, quindi fare clic su *Delete* (Elimina).
+
+
+.Risultati
+La relazione viene eliminata e la copia Snapshot di base sul volume di origine viene eliminata.
+
+
+
+== Risincronizzare le relazioni
+
+È possibile utilizzare System Manager per ristabilire una relazione mirror interrotta in precedenza. È possibile eseguire un'operazione di risincronizzazione per eseguire il ripristino da un disastro che ha disattivato il volume di origine.
+
+.Prima di iniziare
+Il cluster di origine e il cluster di destinazione, la SVM di origine e la SVM di destinazione devono essere in relazioni tra pari.
+
+.A proposito di questa attività
+* Quando si esegue un'operazione di risincronizzazione, i contenuti della destinazione mirror vengono sovrascritti dai contenuti del volume di origine.
++
+[NOTE]
+====
+** Per i volumi di conformità SnapLock, tutte le modifiche dei dati nel file system attivo in riferimento alla copia Snapshot comune vengono conservate in una copia Snapshot bloccata fino al tempo di scadenza impostato per il volume corrente.
++
+Se il tempo di scadenza del volume è passato o non è stato impostato, la copia Snapshot e la copia Snapshot comune vengono bloccate per una durata di 30 giorni. Tutte le copie Snapshot intermedie tra la copia Snapshot comune e l'ultima copia Snapshot bloccata vengono eliminate.
+
+** Per tutti i volumi diversi dai volumi di conformità SnapLock, l'operazione di risincronizzazione potrebbe causare la perdita di dati più recenti scritti nel volume di destinazione dopo la creazione della copia Snapshot di base.
+
+
+====
+* Se il campo Last Transfer Error (ultimo errore di trasferimento) nella finestra Protection (protezione) consiglia un'operazione di risincronizzazione, interrompere prima la relazione e quindi eseguire l'operazione di risincronizzazione.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror che si desidera risincronizzare.
+. Fare clic su *Operations* > *Resync*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Resync*.
+
+
+
+
+== Riprendere le relazioni a cui è stato messo in quiescenza
+
+È possibile utilizzare System Manager per riprendere una relazione mirror quiescente. Quando si riprende la relazione, viene ripristinato il normale trasferimento dei dati alla destinazione mirror e tutte le attività mirror vengono riavviate.
+
+.A proposito di questa attività
+Se è stata interrotta una relazione mirror interrotta dall'interfaccia della riga di comando (CLI), non è possibile riprendere la relazione da System Manager. Per riprendere la relazione, è necessario utilizzare la CLI.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror che si desidera riprendere.
+. Fare clic su *operazioni* > *Riprendi*.
+. Selezionare la casella di controllo di conferma e fare clic su *Riprendi*.
+
+
+.Risultati
+Il trasferimento dei dati alla destinazione mirror riprende per la relazione mirror selezionata.
+
+
+
+== Aggiornare le relazioni
+
+È possibile utilizzare System Manager per avviare un aggiornamento mirror non pianificato della destinazione. Potrebbe essere necessario eseguire un aggiornamento manuale per evitare la perdita di dati dovuta a un'imminente interruzione dell'alimentazione, manutenzione pianificata o migrazione dei dati.
+
+.Prima di iniziare
+La relazione mirror deve essere in uno stato SnapMirrored.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror per cui si desidera aggiornare i dati e fare clic su *Operations* > *Update*.
+. Scegliere una delle seguenti opzioni:
++
+** Selezionare *on demand* per eseguire un trasferimento incrementale dalla copia Snapshot comune recente tra i volumi di origine e di destinazione.
+** Selezionare *Select Snapshot copy* (Seleziona copia istantanea) e specificare la copia Snapshot che si desidera trasferire.
+
+
+. *Opzionale:* selezionare *limita larghezza di banda di trasferimento a* per limitare la larghezza di banda di rete utilizzata per i trasferimenti e specificare la velocità massima di trasferimento.
+. Fare clic su *Aggiorna*.
+. Verificare lo stato del trasferimento nella scheda *Dettagli*.
+
+
+
+
+== Interrompere le relazioni
+
+È possibile utilizzare System Manager per interrompere una destinazione mirror per stabilizzarla prima di creare una copia Snapshot. L'operazione di quiesce consente di terminare i trasferimenti mirror attivi e di disattivare i trasferimenti futuri per la relazione di mirroring.
+
+.A proposito di questa attività
+È possibile interrompere solo le relazioni di mirroring che si trovano nello stato SnapMirrored.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror che si desidera interrompere.
+. Fare clic su *operazioni* > *Quiesce*.
+. Selezionare la casella di controllo di conferma e fare clic su *Quiesce*.
+
+
+
+
+== Inizializzare le relazioni
+
+Quando si avvia una relazione mirror, è necessario inizializzarla. L'inizializzazione di una relazione consiste in un trasferimento completo dei dati baseline dal volume di origine alla destinazione. È possibile utilizzare System Manager per inizializzare una relazione mirror se la relazione non è già stata inizializzata durante la creazione.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror che si desidera inizializzare.
+. Fare clic su *operazioni* > *Inizializza*.
+. Selezionare la casella di controllo di conferma e fare clic su *Inizializza*.
+. Verificare lo stato della relazione mirror nella finestra *Protection*.
+
+
+.Risultati
+Una copia Snapshot viene creata e trasferita alla destinazione. Questa copia Snapshot viene utilizzata come riferimento per le successive copie Snapshot incrementali.
+
+
+
+== Modificare le relazioni
+
+È possibile utilizzare System Manager per modificare una relazione mirror selezionando una policy o una pianificazione esistente nel cluster o creando una policy o una pianificazione.
+
+.A proposito di questa attività
+* Non è possibile modificare una relazione di mirroring creata tra un volume in Data ONTAP 8.2.1 e un volume in ONTAP 8.3 o versioni successive.
+* Non è possibile modificare i parametri di una policy o di una pianificazione esistente.
+* È possibile modificare il tipo di relazione di una relazione di mirror flessibile della versione, di una relazione di vault o di una relazione di mirror e vault modificando il tipo di policy.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror per la quale si desidera modificare la policy o la pianificazione, quindi fare clic su *Modifica*.
+. Nella finestra di dialogo *Modifica relazione*, selezionare un criterio esistente o crearne uno:
++
+|===
+| Se si desidera... | Effettuare le seguenti operazioni... 
+
+
+ a| 
+Selezionare un criterio esistente
+ a| 
+Fare clic su *Sfoglia*, quindi selezionare un criterio esistente.
+
+
+
+ a| 
+Creare un criterio
+ a| 
+.. Fare clic su *Crea policy*.
+.. Specificare un nome per il criterio.
+.. Impostare la priorità per i trasferimenti pianificati.
++
+Low (basso) indica che il trasferimento ha la priorità minore e viene di solito pianificato dopo i trasferimenti con priorità normale. Per impostazione predefinita, la priorità è impostata su normale.
+
+.. Selezionare la casella di controllo *Transfer All Source Snapshot Copies* (Trasferisci tutte le copie Snapshot di origine) per includere la regola "`all_source_Snapshot`" nel criterio mirror, che consente di eseguire il backup di tutte le copie Snapshot dal volume di origine.
+.. Selezionare la casella di controllo *Enable Network Compression* (Abilita compressione di rete) per comprimere i dati trasferiti.
+.. Fare clic su *Create* (Crea).
+
+
+|===
+. Specificare una pianificazione per la relazione:
++
+|===
+| Se... | Effettuare le seguenti operazioni... 
+
+
+ a| 
+Si desidera assegnare una pianificazione esistente
+ a| 
+Dall'elenco delle pianificazioni, selezionare una pianificazione esistente.
+
+
+
+ a| 
+Si desidera creare una pianificazione
+ a| 
+.. Fare clic su *Crea pianificazione*.
+.. Specificare un nome per la pianificazione.
+.. Selezionare *Basic* o *Advanced*.
++
+*** Basic specifica solo il giorno della settimana, l'ora e l'intervallo di trasferimento.
+*** Advanced crea un programma in stile cron.
+
+
+.. Fare clic su *Create* (Crea).
+
+
+
+
+ a| 
+Non si desidera assegnare una pianificazione
+ a| 
+Selezionare *Nessuno*.
+
+|===
+. Fare clic su *OK* per salvare le modifiche.
+
+
+
+
+== Creare relazioni mirrorate da una SVM di destinazione
+
+È possibile utilizzare System Manager per creare una relazione mirror dalla macchina virtuale di storage di destinazione (SVM) e per assegnare una policy e una pianificazione alla relazione mirror. La copia mirror consente una rapida disponibilità dei dati in caso di danneggiamento o perdita dei dati sul volume di origine.
+
+.Prima di iniziare
+* Il cluster di origine deve eseguire ONTAP 8.2.2 o versione successiva.
+* La licenza SnapMirror deve essere attivata sul cluster di origine e di destinazione.
++
+[NOTE]
+====
+Per alcune piattaforme, non è obbligatorio che la licenza SnapMirror sia attivata per il cluster di origine se il cluster di destinazione dispone della licenza SnapMirror e della licenza DPO (Data Protection Optimization) attivate.
+
+====
+* Durante il mirroring di un volume, se si seleziona un volume SnapLock come origine, la licenza SnapMirror e la licenza SnapLock devono essere installate nel cluster di destinazione.
+* Il cluster di origine e il cluster di destinazione devono essere in una relazione di pari livello.
+* La SVM di destinazione deve disporre di spazio disponibile.
+* Deve esistere un volume di origine di tipo Read/Write (rw).
+* I volumi FlexVol devono essere online e di tipo Read/write.
+* Il tipo di aggregato SnapLock deve essere dello stesso tipo.
+* Se si effettua la connessione da un cluster che esegue ONTAP 9.2 o versioni precedenti a un cluster remoto su cui è attivata l'autenticazione SAML (Security Assertion Markup Language), l'autenticazione basata su password deve essere attivata sul cluster remoto.
+
+
+.A proposito di questa attività
+* System Manager non supporta una relazione a cascata.
++
+Ad esempio, un volume di destinazione in una relazione non può essere il volume di origine in un'altra relazione.
+
+* Non è possibile creare una relazione mirror tra una SVM di origine della sincronizzazione e una SVM di destinazione della sincronizzazione in una configurazione MetroCluster.
+* È possibile creare una relazione mirror tra le SVM di origine della sincronizzazione in una configurazione MetroCluster.
+* È possibile creare una relazione mirror da un volume su una SVM di origine della sincronizzazione a un volume su una SVM di servizio dati.
+* È possibile creare una relazione mirror da un volume su una SVM di servizio dati a un volume di protezione dati (DP) su una SVM di origine sincronizzazione.
+* È possibile creare una relazione mirror solo tra volumi SnapLock dello stesso tipo.
++
+Ad esempio, se il volume di origine è un volume aziendale SnapLock, anche il volume di destinazione deve essere un volume aziendale SnapLock. È necessario assicurarsi che la SVM di destinazione disponga di aggregati dello stesso tipo di SnapLock.
+
+* Il volume di destinazione creato per una relazione mirror non è dotato di thin provisioning.
+* È possibile proteggere un massimo di 25 volumi in un'unica selezione.
+* Non è possibile creare una relazione mirror tra i volumi SnapLock se il cluster di destinazione esegue una versione di ONTAP precedente alla versione di ONTAP in esecuzione nel cluster di origine.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Nella finestra *Relazioni volume*, fare clic su *Crea*.
+. Nella finestra di dialogo *Browse SVM* (Sfoglia SVM), selezionare un SVM per il volume di destinazione.
+. Nella finestra di dialogo *Crea relazione di protezione*, selezionare *Mirror* dall'elenco a discesa *Relationship Type* (tipo di relazione).
+. Specificare il cluster, la SVM e il volume di origine.
++
+Se il cluster specificato esegue una versione del software ONTAP precedente a ONTAP 9.3, vengono elencate solo le SVM in peering. Se il cluster specificato esegue ONTAP 9.3 o versione successiva, vengono elencate le SVM in peering e le SVM consentite.
+
+. Per i volumi FlexVol, specificare un suffisso del nome del volume.
++
+Il suffisso del nome del volume viene aggiunto ai nomi del volume di origine per generare i nomi del volume di destinazione.
+
+. Fare clic su *Sfoglia*, quindi modificare il criterio mirror.
+. Selezionare una pianificazione per la relazione dall'elenco delle pianificazioni esistenti.
+. Selezionare *Inizializza relazione* per inizializzare la relazione mirror.
+. Abilitare gli aggregati abilitati a FabricPool, quindi selezionare un criterio di tiering appropriato.
+. Fare clic su *Create* (Crea).
+
+
+.Risultati
+Se si sceglie di creare un volume di destinazione, viene creato un volume di destinazione di tipo _dp_, con l'attributo language impostato in modo che corrisponda all'attributo language del volume di origine.
+
+Viene creata una relazione di mirroring tra il volume di origine e il volume di destinazione. La copia Snapshot di base viene trasferita al volume di destinazione se si è scelto di inizializzare la relazione.
+
+
+
+== Risincronizzazione inversa delle relazioni mirror
+
+È possibile utilizzare System Manager per ristabilire una relazione mirror precedentemente interrotta. In un'operazione di risincronizzazione inversa, si invertono le funzioni del volume di origine e del volume di destinazione.
+
+.Prima di iniziare
+Il volume di origine deve essere online.
+
+.A proposito di questa attività
+* È possibile utilizzare il volume di destinazione per fornire i dati durante la riparazione o la sostituzione del volume di origine, l'aggiornamento del volume di origine e il ripristino della configurazione originale dei sistemi.
+* Quando si esegue la risincronizzazione inversa, i contenuti dell'origine mirror vengono sovrascritti dai contenuti del volume di destinazione.
++
+[NOTE]
+====
+** Per i volumi di conformità SnapLock, tutte le modifiche dei dati nel file system attivo in riferimento alla copia Snapshot comune vengono conservate in una copia Snapshot bloccata fino al tempo di scadenza impostato per il volume corrente.
++
+Se il tempo di scadenza del volume è passato o non è stato impostato, la copia Snapshot e la copia Snapshot comune vengono bloccate per una durata di 30 giorni. Tutte le copie Snapshot intermedie tra la copia Snapshot comune e l'ultima copia Snapshot bloccata vengono eliminate.
+
+** Per tutti i volumi diversi dai volumi di conformità SnapLock, l'operazione di risincronizzazione potrebbe causare la perdita di dati più recenti scritti nel volume di origine dopo la creazione della copia Snapshot di base.
+
+
+====
+* Quando si esegue la risincronizzazione inversa, il criterio mirror della relazione viene impostato su DPDefault e il programma mirror viene impostato su Nessuno.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione di mirroring che si desidera invertire.
+. Fare clic su *operazioni* > *risincronizzazione inversa*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Reverse Resync* (risincronizzazione inversa).
+
+
+*Informazioni correlate*
+
+xref:reference_protection_window.adoc[Finestra di protezione]

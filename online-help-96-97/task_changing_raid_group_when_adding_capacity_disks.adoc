@@ -1,0 +1,46 @@
+---
+permalink: online-help-96-97/task_changing_raid_group_when_adding_capacity_disks.html 
+sidebar: sidebar 
+keywords: change, raid, group, add, capacity, disk, online, help, hdd 
+summary: 'Durante l"aggiunta di dischi di capacità (HDD) a un aggregato, è possibile modificare il gruppo RAID a cui si desidera aggiungere i dischi utilizzando System Manager.' 
+---
+= Modificare il gruppo RAID quando si aggiungono dischi di capacità con Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Durante l'aggiunta di dischi di capacità (HDD) a un aggregato, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare il gruppo RAID a cui si desidera aggiungere i dischi.
+
+.A proposito di questa attività
+* Se il tipo RAID è RAID-DP e si aggiungono dischi di tipo FSAS o MSATA di dimensioni pari o superiori a 10 TB, è possibile aggiungerli solo a. `Specific RAID group`e non a. `New RAID group` oppure `All RAID groups`.
++
+I dischi vengono aggiunti dopo il ridimensionamento delle dimensioni dei dischi in base alle dimensioni degli aggregati esistenti.
+
+* Se il gruppo RAID è RAID-TEC e si aggiungono dischi di tipo FSAS o MSATA di dimensioni pari o superiori a 10 TB, è possibile aggiungerli a. `All RAID groups`, `New RAID group`, e. `Specific RAID group`.
++
+I dischi vengono aggiunti dopo il ridimensionamento delle dimensioni dei dischi in base alle dimensioni degli aggregati esistenti.
+
+
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Nella finestra *Storage Tier*, selezionare l'aggregato a cui si desidera aggiungere dischi di capacità, quindi fare clic su menu:altre azioni[Aggiungi capacità].
+. Nella finestra di dialogo *Aggiungi capacità*, attenersi alla seguente procedura:
++
+.. Fare clic su *Cambia*.
+.. Nella finestra di dialogo *Change RAID Configuration* (Modifica configurazione RAID), specificare il gruppo RAID a cui si desidera aggiungere i dischi di capacità.
++
+È possibile modificare il valore predefinito `All RAID groups` in entrambi i casi `Specific RAID group` oppure `New RAID group`.
+
+.. Fare clic su *Save* (Salva).
+
+
+

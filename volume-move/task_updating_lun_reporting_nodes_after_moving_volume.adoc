@@ -1,0 +1,40 @@
+---
+permalink: volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, move, lun, ha, pair, remote, node, lun, map, slm, reporting-node, partner, lun reporting nodes 
+summary: 'Se il volume spostato conteneva LUN e il volume si trova ora su una coppia ha diversa, rimuovere tutti i nodi remoti dall"elenco dei nodi di reporting della mappa LUN selettiva (SLM). La mappa del LUN contiene quindi solo il nodo proprietario e il partner ha, il che garantisce l"utilizzo solo di percorsi LUN ottimizzati.' 
+---
+= Aggiornare i nodi di reporting LUN dopo lo spostamento di un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se il volume spostato conteneva LUN e il volume si trova ora su una coppia ha diversa, rimuovere tutti i nodi remoti dall'elenco dei nodi di reporting della mappa LUN selettiva (SLM). La mappa del LUN contiene quindi solo il nodo proprietario e il partner ha, il che garantisce l'utilizzo solo di percorsi LUN ottimizzati.
+
+.A proposito di questa attività
+Questa procedura è necessaria solo se il volume viene spostato dalla coppia ha a una coppia ha diversa. Se il volume si trova su un nodo diverso della stessa coppia ha, è possibile ignorare questa procedura.
+
+.Fasi
+. Rimuovere tutti i nodi remoti dall'elenco dei nodi di reporting utilizzando `lun mapping remove-reporting-nodes` con il `-remote-nodes` parametro.
++
+[listing]
+----
+cluster1::> lun mapping remove-reporting-nodes -vserver SVM1 -volume vol1 -igroup ig1 -remote-nodes true
+----
+. Verificare che la mappa LUN contenga solo il nodo Owner e il relativo partner utilizzando `lun mapping show` con il `-fields reporting-nodes` parametro.
++
+[listing]
+----
+cluster1::> lun mapping show -vserver SVM1 -volume vol1 -fields reporting-nodes
+vserver  path        igroup   reporting-nodes
+-------- ----------- -------- ---------------------------------------------
+SVM1     /vol/vol1   ig1      cluster1-3,cluster1-4
+----
+. Rimuovere le voci obsolete del dispositivo per il sistema operativo host.
+. Eseguire nuovamente la scansione dall'host per aggiornare i percorsi disponibili dell'host.
++
+Consultare la documentazione dell'host per istruzioni specifiche su come eseguire nuovamente la scansione degli host.
+
+

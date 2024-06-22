@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_configuring_nvme_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: configure, nvme, protocol, svm, system, manager, namespaces, online, help 
+summary: 'È possibile configurare il protocollo NVMe su una macchina virtuale di storage (SVM) utilizzando System Manager. È quindi possibile creare spazi dei nomi e assegnarli a un sottosistema NVMe e a un host.' 
+---
+= Configurare il protocollo NVMe sulle SVM con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per configurare il protocollo NVMe su una macchina virtuale di storage (SVM). È quindi possibile creare spazi dei nomi e assegnarli a un sottosistema NVMe e a un host.
+
+.A proposito di questa attività
+SVM con NVMe non deve avere altri protocolli. Se si seleziona NVMe, gli altri protocolli verranno disattivati. È inoltre possibile configurare NVMe durante la creazione di SVM.
+
+.Fasi
+. Se il protocollo NVMe non è stato configurato durante la creazione di SVM, fare clic su *Storage* > *SVM*
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *NVMe*.
+. Fare clic sul collegamento per configurare il protocollo, secondo necessità.
++
+[NOTE]
+====
+Se sono attivati altri protocolli, è necessario deselezionarli per rendere NVMe disponibile per la selezione. NVMe non può essere combinato con altri protocolli.
+
+====
+. Nel riquadro *Edit Storage Virtual Machine* (Modifica macchina virtuale dello storage), fare clic su *Resource Allocation* (allocazione risorse).
+. Nella scheda *allocazione risorse*, è possibile scegliere di non delegare la creazione del volume oppure selezionare un aggregato per il provisioning automatico dei volumi.
+. Fare clic sulla scheda *Services* per configurare i dettagli di Name Service Switch.
+. Fare clic su *Save and Close* (Salva e chiudi)
++
+Il protocollo NVMe viene configurato sulla SVM. Una volta configurato il protocollo, è possibile avviare o arrestare il servizio utilizzando *Impostazioni SVM*
+
+
+
+*Informazioni correlate*
+
+xref:concept_setting_up_nvme.adoc[Impostazione di NVMe]

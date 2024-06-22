@@ -1,0 +1,37 @@
+---
+permalink: iscsi-config-esxi/task_deciding_where_to_provision_volume.html 
+sidebar: sidebar 
+keywords: provision, volume, lun, add, exist, storage, virtual, machine, svm, iscsi, decide where to provision the volume 
+summary: Prima di eseguire il provisioning di un volume per contenere le LUN, è necessario decidere se aggiungere il volume a una macchina virtuale di storage esistente o creare una nuova SVM per il volume. Potrebbe inoltre essere necessario configurare iSCSI su una SVM esistente. 
+---
+= Decidere dove eseguire il provisioning del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di eseguire il provisioning di un volume per contenere le LUN, è necessario decidere se aggiungere il volume a una SVM (Storage Virtual Machine) esistente o se creare una nuova SVM per il volume. Potrebbe inoltre essere necessario configurare iSCSI su una SVM esistente.
+
+.A proposito di questa attività
+Se una SVM esistente è già configurata con i protocolli necessari e dispone di LIF accessibili dall'host, è più semplice utilizzare la SVM esistente.
+
+È possibile creare una nuova SVM per separare i dati o l'amministrazione da altri utenti del cluster di storage. Non c'è alcun vantaggio nell'utilizzo di SVM separate solo per separare protocolli diversi.
+
+
+
+== Procedura
+
+* Se si desidera eseguire il provisioning dei volumi su una SVM già configurata per iSCSI, verificare che il servizio iSCSI sia in esecuzione.
++
+link:task_verifying_iscsi_is_running_on_existing_vserver.html["Verificare che il servizio iSCSI sia in esecuzione su una SVM esistente"]
+
+* Se si desidera eseguire il provisioning di volumi su una SVM esistente con iSCSI abilitato ma non configurato, configurare iSCSI sulla SVM esistente.
++
+link:task_configuring_iscsi_fc_creating_lun_on_existing_svm.html["Configurazione di iSCSI su una SVM esistente"]
+
++
+Questo accade quando non si segue questa procedura per creare la SVM durante la configurazione di un protocollo diverso.
+
+* Se si desidera eseguire il provisioning dei volumi su una nuova SVM, link:task_creating_svm.html["Creare una nuova SVM"].
+

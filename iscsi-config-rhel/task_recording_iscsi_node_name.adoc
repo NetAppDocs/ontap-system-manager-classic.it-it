@@ -1,0 +1,27 @@
+---
+permalink: iscsi-config-rhel/task_recording_iscsi_node_name.html 
+sidebar: sidebar 
+keywords: record, iscsi, initiator, node, linux, host, configure, storage, system, record the iscsi node name 
+summary: 'È necessario registrare il nome del nodo iSCSI Initiator sull"host Linux in modo che sia disponibile al momento della configurazione del sistema di storage.' 
+---
+= Registrare il nome del nodo iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario registrare il nome del nodo iSCSI Initiator sull'host Linux in modo che sia disponibile al momento della configurazione del sistema di storage.
+
+.Fasi
+. Utilizzare un editor di testo per aprire `/etc/iscsi/initiatorname.iscsi` file contenente i nomi dei nodi.
+. Annotare il nome del nodo o copiarlo in un file di testo.
++
+Il nome del nodo iSCSI Initiator è simile al seguente:
+
++
+[listing]
+----
+iqn.1994-05.com.redhat:127
+----
+

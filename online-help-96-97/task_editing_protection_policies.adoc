@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_editing_protection_policies.html 
+sidebar: sidebar 
+keywords: edit, protection, policies, online, help, system, manager 
+summary: È possibile utilizzare System Manager per modificare un criterio di protezione e applicarlo a una relazione di protezione dei dati. 
+---
+= Modifica delle policy di protezione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare System Manager per modificare un criterio di protezione e applicarlo a una relazione di protezione dei dati.
+
+.A proposito di questa attività
+I criteri di protezione non vengono visualizzati a livello di cluster.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la macchina virtuale di storage (SVM), quindi fare clic su *Impostazioni SVM*.
+. Nel riquadro *Criteri*, fare clic su *Criteri di protezione*.
+. Selezionare il criterio di protezione che si desidera modificare, quindi fare clic su *Modifica*.
+. Modificare la priorità di trasferimento, quindi attivare o disattivare la compressione di rete.
+. Per un criterio mirror asincrono, eseguire il backup di tutte le copie Snapshot di origine.
+. Per una policy del vault o una policy del vault mirror, modificare l'etichetta SnapMirror e il numero di conservazione.
++
+Non è possibile rimuovere l'etichetta SM_created per un criterio di vault mirror.
+
+. Fare clic su *Save* (Salva).
+

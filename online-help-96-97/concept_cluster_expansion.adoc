@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/concept_cluster_expansion.html 
+sidebar: sidebar 
+keywords: cluster, expanision, system, manager, storage, size, capabilities, add, node, configure, network, online, help 
+summary: È possibile utilizzare System Manager per aumentare le dimensioni e le funzionalità dello storage aggiungendo nodi compatibili al cluster e configurando i dettagli della rete del nodo. È inoltre possibile visualizzare il riepilogo dei nodi. 
+---
+= Espansione del cluster con Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per aumentare le dimensioni e le funzionalità dello storage aggiungendo nodi compatibili al cluster e configurando i dettagli della rete del nodo. È inoltre possibile visualizzare il riepilogo dei nodi.
+
+Quando si accede a System Manager, System Manager rileva automaticamente i nodi compatibili cablati ma non aggiunti al cluster e richiede di aggiungere i nodi. È possibile aggiungere nodi compatibili quando System Manager rileva i nodi oppure aggiungerli manualmente in un secondo momento.
+
+
+
+== Aggiungere nodi a un cluster
+
+È possibile utilizzare System Manager per aumentare le dimensioni e le funzionalità del sistema storage aggiungendo nodi a un cluster esistente.
+
+.Prima di iniziare
+* I nuovi nodi compatibili devono essere cablati al cluster.
++
+Nella finestra Network (rete) vengono elencate solo le porte del dominio di trasmissione predefinito.
+
+* Tutti i nodi del cluster devono essere attivi e in esecuzione.
+* Tutti i nodi devono essere della stessa versione.
+
+
+.Fasi
+. Aggiungere i nuovi nodi compatibili al cluster:
++
+|===
+| Se sei... | Eseguire questa operazione... 
+
+
+ a| 
+Non connesso a System Manager
+ a| 
+.. Accedere a System Manager.
++
+[NOTE]
+====
+I nuovi nodi compatibili vengono rilevati automaticamente da System Manager al momento dell'accesso. System Manager richiede di aggiungere i nuovi nodi compatibili al cluster.
+
+====
+.. Fare clic su *Aggiungi nodi al cluster*.
+.. Modificare il nome dei nodi.
+.. Specificare le licenze del nodo.
+.. Fare clic su *Invia e continua*.
+
+
+
+
+ a| 
+Accesso a System Manager
+ a| 
+.. Fare clic su *Configuration* > *Cluster* > *Expansion*.
++
+System Manager ricerca i nuovi nodi aggiunti. Se vengono visualizzate delle avvertenze, è necessario correggerle prima di procedere. Se vengono rilevati nuovi nodi compatibili, passare alla fase successiva.
+
+.. Modificare il nome dei nodi.
+.. Specificare le licenze del nodo.
+.. Fare clic su *Invia e continua*.
+
+
+|===
+
+
+
+
+== Configurare i dettagli di rete dei nodi
+
+È possibile utilizzare System Manager per configurare le impostazioni LIF di gestione dei nodi e Service Processor per i nodi appena aggiunti.
+
+.Prima di iniziare
+* È necessario che sia presente un numero sufficiente di porte nello spazio IPSpace predefinito per la creazione di LIF.
+* Tutte le porte devono essere attive.
+
+
+.Fasi
+. Configurare la gestione dei nodi:
++
+.. Inserire l'indirizzo IP nel campo *IP Address* (Indirizzo IP).
+.. Selezionare la porta per la gestione dei nodi nel campo *Port*.
+.. Inserire i dettagli della netmask e del gateway.
+
+
+. Configurare le impostazioni del Service Processor:
++
+.. Selezionare la casella di controllo *Ignora valori predefiniti* per sovrascrivere i valori predefiniti.
+.. Inserire l'indirizzo IP, la netmask e i dettagli del gateway.
+
+
+. Fare clic su *Submit and Proceed* (Invia e procedi) per completare la configurazione di rete dei nodi.
+. Verificare i dettagli dei nodi nella pagina *Riepilogo*.
+
+
+
+
+=== Cosa fare in seguito
+
+* Se il cluster è protetto, è necessario creare il numero richiesto di LIF di intercluster nei nuovi nodi aggiunti per evitare il peering parziale e la protezione non corretta.
+* Se i protocolli dati SAN sono abilitati nel cluster, è necessario creare il numero richiesto di LIF DATI SAN per la distribuzione dei dati.
+
+
+*Informazioni correlate*
+
+xref:task_creating_network_interfaces.adoc[Creazione di interfacce di rete]

@@ -1,0 +1,92 @@
+---
+permalink: expansion/task_verifying_planned_configuration.html 
+sidebar: sidebar 
+keywords: expand, cluster, ensure, follow, plan, configuration, support, require, license, exist, ontap, verify, verify the planned configuration 
+summary: 'Prima di espandere un cluster, è necessario assicurarsi che la configurazione pianificata sia supportata, che esistano le licenze richieste, che il sito sia pronto, che gli switch del cluster supportino l"espansione e che i nodi esistenti utilizzino la stessa versione di ONTAP 9.' 
+---
+= Verificare la configurazione pianificata
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di espandere un cluster, è necessario assicurarsi che la configurazione pianificata sia supportata, che esistano le licenze richieste, che il sito sia pronto, che gli switch del cluster supportino l'espansione e che i nodi esistenti utilizzino la stessa versione di ONTAP 9.
+
+.Prima di iniziare
+È necessario disporre di due set di credenziali: Il nome utente e la password necessari per accedere al cluster come amministratore, il nome utente e la password necessari per accedere al sito di supporto NetApp.
+
+.Fasi
+. Verificare la configurazione pianificata:
++
+.. Verificare che la piattaforma dei nuovi controller possa essere combinata con i controller esistenti del cluster.
+.. Verificare che il cluster espanso non superi i limiti di sistema per le piattaforme.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+.. Se il cluster è configurato per LA SAN, verificare che il cluster espanso non superi i limiti di configurazione per FC, FCoE e iSCSI.
++
+https://docs.netapp.com/us-en/ontap/san-config/index.html["Configurazione SAN"^]
+
+
+
++
+Se questi requisiti non vengono soddisfatti, non è possibile procedere con l'espansione.
+
+. Assicurarsi che le licenze coprano i nuovi nodi:
++
+.. Sul cluster esistente, visualizzare le licenze utilizzando `system license show` comando.
++
+[listing]
+----
+cluster1::> system license show
+
+Serial Number: 9-99-999999
+Owner: cluster1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+Base              site    Cluster Base License  -
+NFS               license NFS License           -
+CIFS              license CIFS License          -
+...
+----
+.. Esaminare l'output per identificare le licenze bloccate dal nodo (identificate dal tipo) `license`) che sarà necessario per i nodi aggiuntivi.
+.. Assicurarsi che le licenze incluse con i nodi aggiuntivi siano coerenti con le licenze esistenti del cluster con blocco a nodo.
++
+http://mysupport.netapp.com/licenses["Ricerca licenze software NetApp"^]
+
+
+
++
+Se non si dispone delle licenze richieste per i nodi aggiuntivi, è necessario acquistare licenze aggiuntive prima di procedere.
+
+. Verificare che il sito sia pronto per tutte le nuove apparecchiature.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
++
+Se il sito non è pronto, è necessario prepararlo prima di continuare l'espansione.
+
+. Verificare che gli switch esistenti supportino i controller aggiuntivi.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
++
+Se il cluster è senza switch o se gli switch esistenti non supportano i nodi aggiuntivi, è necessario ottenere gli switch del cluster, che è possibile installare in seguito durante il processo di espansione.
+
+. Verificare che tutti i nodi del cluster esistente eseguano la stessa versione di ONTAP 9, inclusa la stessa release secondaria e la stessa patch, se applicabile, utilizzando `cluster image show` comando.
++
+[listing]
+----
+cluster1::> cluster image show
+                 Current                 Installation
+Node             Version                 Date
+---------------- ----------------------- ------------
+cluster1-1       8.3RC1                  12/15/2014 17:37:26
+cluster1-2       8.3RC1                  12/15/2014 17:37:42
+2 entries were displayed.
+----
++
+Prendere nota della versione del software ONTAP per riferimento più avanti in questo flusso di lavoro.
+
+

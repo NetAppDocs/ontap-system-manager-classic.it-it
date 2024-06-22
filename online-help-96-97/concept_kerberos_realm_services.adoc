@@ -1,0 +1,168 @@
+---
+permalink: online-help-96-97/concept_kerberos_realm_services.html 
+sidebar: sidebar 
+keywords: online, help, kerberos, realm, service, system, manager, svm, edit, security, strong, nfs, authentication, microsoft, ntlm, ntlm v2, client 
+summary: È possibile utilizzare System Manager per creare e gestire i servizi di autenticazione Kerberos. 
+---
+= Gestisci i servizi di autenticazione Kerberos con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare e gestire i servizi di autenticazione Kerberos.
+
+
+
+== Creare una configurazione di area di autenticazione Kerberos
+
+Se si desidera utilizzare l'autenticazione Kerberos per l'accesso al client, è necessario configurare la macchina virtuale di storage (SVM) in modo che utilizzi un'area Kerberos esistente. È possibile utilizzare System Manager per creare una configurazione del realm Kerberos, che consente alle SVM di utilizzare i servizi di sicurezza Kerberos per NFS.
+
+.Prima di iniziare
+* La licenza CIFS deve essere installata se si utilizzano le condivisioni CIFS e la licenza NFS deve essere installata se si utilizza un server LDAP.
+* Active Directory (Windows 2003 o Windows 2008) con FUNZIONALITÀ DI crittografia DES MD5 deve essere disponibile.
+* È necessario impostare il fuso orario e sincronizzare l'ora nel cluster configurando NTP.
++
+In questo modo si evitano gli errori di autenticazione e si garantisce che i timestamp nei file di log siano coerenti in tutto il cluster.
+
+
+
+.A proposito di questa attività
+Durante la creazione di un'area di autenticazione Kerberos, è necessario impostare i seguenti attributi nella procedura guidata Crea area di autenticazione Kerberos:
+
+* Area di autenticazione Kerberos
+* Indirizzo IP KDC e numero di porta
++
+Il numero di porta predefinito è 88.
+
+* Vendor del KDC (Key Distribution Center) Kerberos
+* Indirizzo IP del server amministrativo se il fornitore KDC non è Microsoft
+* Indirizzo IP del server delle password
+* Nome del server Active Directory e indirizzo IP se il fornitore KDC è Microsoft
+
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *servizi*, fare clic su *Realm Kerberos*.
+. Nella finestra *Kerberos Realm*, fare clic su *Create* (Crea).
+. Digitare o selezionare le informazioni come richiesto dalla procedura guidata.
+. Confermare i dettagli, quindi fare clic su *fine* per completare la procedura guidata.
+
+
+
+
+== Modificare una configurazione di area di autenticazione Kerberos
+
+È possibile utilizzare System Manager per modificare la configurazione di un realm Kerberos a livello di SVM (Storage Virtual Machine).
+
+.A proposito di questa attività
+È possibile modificare i seguenti attributi utilizzando la procedura guidata Modifica area di autenticazione Kerberos:
+
+* L'indirizzo IP e il numero di porta del KDC
+* L'indirizzo IP del server amministrativo se il fornitore KDC non è Microsoft
+* L'indirizzo IP del server delle password
+* Il nome del server Active Directory e l'indirizzo IP se il fornitore KDC è Microsoft
+
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *servizi*, fare clic su *Realm Kerberos*.
+. Nella finestra *Kerberos Realm*, selezionare la configurazione dell'area di autenticazione Kerberos che si desidera modificare, quindi fare clic su *Modifica*.
+. Digitare o selezionare le informazioni come richiesto dalla procedura guidata.
+. Confermare i dettagli, quindi fare clic su *fine* per completare la procedura guidata.
+
+
+
+
+== Eliminare le configurazioni del realm Kerberos
+
+È possibile utilizzare System Manager per eliminare una configurazione di area di autenticazione Kerberos.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *servizi*, fare clic su *Realm Kerberos*.
+. Nella finestra *Kerberos Realm*, selezionare una o più configurazioni di aree Kerberos da eliminare, quindi fare clic su *Delete*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+
+
+== Utilizza Kerberos con NFS per una sicurezza elevata
+
+È possibile utilizzare Kerberos per fornire un'autenticazione avanzata tra le SVM e i client NFS per fornire una comunicazione NFS sicura. La configurazione di NFS con Kerberos aumenta l'integrità e la sicurezza delle comunicazioni client NFS con il sistema storage.
+
+
+
+== Autenticazione Kerberos per CIFS
+
+Con l'autenticazione Kerberos, al momento della connessione al server CIFS, il client negozia il massimo livello di sicurezza possibile. Tuttavia, se il client non può utilizzare l'autenticazione Kerberos, per l'autenticazione con il server CIFS vengono utilizzati Microsoft NTLM o NTLM V2.
+
+
+
+== Finestra Kerberos Realm
+
+È possibile utilizzare la finestra Kerberos Realm per fornire l'autenticazione tra le macchine virtuali di storage (SVM) e i client NFS per garantire una comunicazione NFS sicura.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la creazione guidata area di autenticazione Kerberos, che consente di configurare un'area di autenticazione Kerberos per recuperare le informazioni dell'utente.
+
+* *Modifica*
++
+Apre la procedura guidata Modifica area di autenticazione Kerberos, che consente di modificare una configurazione area di autenticazione Kerberos in base ai requisiti per l'autenticazione e l'autorizzazione SVM.
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete Kerberos Realm(s) (Elimina aree di autenticazione Kerberos), che consente di eliminare la configurazione dell'area di autenticazione Kerberos.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco Realm Kerberos
+
+Fornisce informazioni dettagliate sui reami Kerberos, in formato tabulare.
+
+* *Realm*
++
+Specifica il nome dell'area di autenticazione Kerberos.
+
+* *Fornitore KDC*
++
+Specifica il nome del fornitore del centro di distribuzione Kerberos (KDC).
+
+* *Indirizzo IP KDC*
++
+Specifica l'indirizzo IP KDC utilizzato dalla configurazione.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area dei dettagli visualizza informazioni quali l'indirizzo IP e il numero di porta KDC, il fornitore KDC, l'indirizzo IP e il numero di porta del server amministrativo, il server Active Directory e l'indirizzo IP del server della configurazione Kerberos selezionata.
+
+*Informazioni correlate*
+
+xref:task_setting_time_zone_for_cluster.adoc[Impostazione del fuso orario per un cluster]
+
+link:https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["Report tecnico NetApp 4067: NFS in NetApp ONTAP"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19384-tr-4616.pdf["Report tecnico NetApp 4616: NFS Kerberos in ONTAP con Microsoft Active Directory"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19423-tr-4835.pdf["Report tecnico di NetApp 4835: Come configurare LDAP in ONTAP"^]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Gestione NFS"^]

@@ -1,0 +1,45 @@
+---
+permalink: online-help-96-97/task_performing_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, perform, switchback, system, manager, online, help 
+summary: 'A partire da System Manager 9.6, è possibile eseguire un"operazione di switchback che ripristina il controllo sul sito MetroCluster originale (sito B) dopo che il sistema ha completato correttamente un"operazione di switchover.' 
+---
+= Esecuzione di uno switchback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile eseguire un'operazione di switchback che ripristina il controllo sul sito MetroCluster originale (sito B) dopo che il sistema ha completato correttamente un'operazione di switchover.
+
+.Prima di iniziare
+Prima di eseguire un'operazione di switchback, è necessario completare le seguenti attività:
+
+* È necessario preparare i siti MetroCluster in xref:task_performing_negotiated_planned_switchover.adoc[Esecuzione di uno switchover negoziato (pianificato)] oppure xref:task_performing_unplanned_switchover.adoc[Esecuzione di uno switchover non pianificato].
+* Se si sono verificati errori durante l'operazione di riparazione, seguire le istruzioni visualizzate per risolverli.
+* Se lo stato del sito remoto viene visualizzato come "`preparazione per lo switchback`", gli aggregati sono ancora in fase di risincronizzazione. Attendere che lo stato del sito remoto indichi che è pronto per lo switchback.
+
+
+.A proposito di questa attività
+Se un'operazione di switchover ha esito positivo, viene visualizzata la finestra operazioni di switchover e switchback MetroCluster. La finestra mostra lo stato di entrambi i siti e fornisce un messaggio che indica che l'operazione è stata eseguita correttamente.
+
+.Fasi
+. Fare clic su *Switchback from Site A to Site B* (passa da sito A sito B) per avviare l'operazione di switchback.
++
+Un messaggio di avviso indica che l'operazione di switchback sta restituendo il controllo MetroCluster al sito B e che il processo potrebbe richiedere del tempo.
+
+. Per continuare, fare clic su *Sì*.
+. Una volta completato il processo di switchback, eseguire una delle seguenti fasi secondarie:
++
+** Se l'operazione di switchback ha esito positivo, fare clic su *Done* (fine) per confermare il completamento delle operazioni MetroCluster.
++
+[NOTE]
+====
+Fino a quando non si conferma il completamento dell'operazione di switchback, System Manager continua a visualizzare un messaggio che indica che l'operazione è stata completata. Non è possibile avviare un'altra operazione o monitorare le successive operazioni di switchover o switchback fino a quando non si conferma il completamento dell'operazione di switchback.
+
+====
+** Se l'operazione di switchback non riesce, nella parte superiore dell'area di stato vengono visualizzati messaggi di errore. Apportare le correzioni necessarie e fare clic su *Cambia da sito A a sito B* per riprovare il processo.
+
+
+

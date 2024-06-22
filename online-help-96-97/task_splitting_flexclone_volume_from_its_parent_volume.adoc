@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_splitting_flexclone_volume_from_its_parent_volume.html 
+sidebar: sidebar 
+keywords: split, flexclone, volume, parent, online, help, disk, space 
+summary: 'È possibile utilizzare System Manager classic (disponibile in ONTAP 9.7 e versioni precedenti) per separare un volume FlexClone dal volume di origine. Dopo la divisione, il volume FlexClone diventa un normale volume FlexVol. Continua a utilizzare lo spazio su disco del volume di origine e l"efficienza dello storage viene preservata.' 
+---
+= Suddividere un volume FlexClone dal volume principale con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare System Manager classic (disponibile in ONTAP 9.7 e versioni precedenti) per separare un volume FlexClone dal volume di origine. Dopo la divisione, il volume FlexClone diventa un normale volume FlexVol. Continua a utilizzare lo spazio su disco del volume di origine e l'efficienza dello storage viene preservata.
+
+.Prima di iniziare
+Il volume FlexClone deve essere online.
+
+.A proposito di questa attività
+Per i sistemi _non_ AFF, l'operazione di suddivisione dei cloni elimina tutte le copie Snapshot esistenti del clone. Vengono eliminate anche le copie Snapshot richieste per gli aggiornamenti di SnapMirror. Pertanto, eventuali aggiornamenti di SnapMirror successivi potrebbero non riuscire.
+
+È possibile sospendere l'operazione di suddivisione dei cloni se è necessario eseguire altre operazioni sul volume. Una volta completata l'altra operazione, è possibile riprendere il processo di suddivisione dei cloni.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume FlexClone che si desidera separare dal volume di origine.
+. Fare clic su *altre azioni* > *Clone* > *Split*.
+. Confermare i dettagli del volume FlexClone per l'operazione di suddivisione dei cloni, quindi fare clic su *Avvia divisione* nella finestra di dialogo di conferma.
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

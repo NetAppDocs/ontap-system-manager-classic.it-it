@@ -1,0 +1,18 @@
+---
+permalink: online-help-96-97/concept_storage_tiers.html 
+sidebar: sidebar 
+keywords: system, manager, storage, tiers, aggregates, security, requirements, backup, performance, data, sharing, online, help 
+summary: È possibile utilizzare System Manager per creare aggregati per supportare i diversi requisiti di sicurezza, i requisiti di backup, i requisiti di performance e i requisiti di condivisione dei dati degli utenti. 
+---
+= Tier di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare System Manager per creare aggregati per supportare i diversi requisiti di sicurezza, i requisiti di backup, i requisiti di performance e i requisiti di condivisione dei dati degli utenti.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestione di dischi e aggregati"]

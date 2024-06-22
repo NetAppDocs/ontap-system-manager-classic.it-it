@@ -1,0 +1,44 @@
+---
+permalink: fc-config-rhel/task_zoning_fc_switches_by_host_lif_wwpns.html 
+sidebar: sidebar 
+keywords: zoning, fc, switch, enable, host, connect, storage, limit, number, path, zone, management, interface, zone the fc switches by the host and lif wwpns 
+summary: 'La suddivisione in zone degli switch FC consente agli host di connettersi allo storage e limita il numero di percorsi. Gli switch vengono posizionati in zone utilizzando l"interfaccia di gestione degli switch.' 
+---
+= Zone gli switch FC in base all'host e alle WWPN LIF
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La suddivisione in zone degli switch FC consente agli host di connettersi allo storage e limita il numero di percorsi. Gli switch vengono posizionati in zone utilizzando l'interfaccia di gestione degli switch.
+
+.Prima di iniziare
+* È necessario disporre delle credenziali di amministratore per gli switch.
+* È necessario conoscere la WWPN di ciascuna porta iniziatore host e di ogni LIF FC per la macchina virtuale di storage (SVM) in cui è stata creata la LUN.
+
+
+.A proposito di questa attività
+Per ulteriori informazioni sulla suddivisione in zone degli switch, consultare la documentazione del vendor dello switch.
+
+È necessario eseguire la zona in base alla WWPN e non alla porta fisica. Ciascuna porta dell'iniziatore deve trovarsi in una zona separata con tutte le porte di destinazione corrispondenti.
+
+I LUN vengono mappati a un sottoinsieme degli iniziatori nell'igroup per limitare il numero di percorsi dall'host al LUN.
+
+* Per impostazione predefinita, ONTAP utilizza la mappa LUN selettiva per rendere il LUN accessibile solo attraverso i percorsi sul nodo che possiede il LUN e il suo partner ha.
+* È comunque necessario mettere in zona tutte le LIF FC su ogni nodo per la mobilità del LUN nel caso in cui il LUN venga spostato in un altro nodo del cluster.
+* Quando si sposta un volume o un LUN, è necessario modificare l'elenco Selective LUN Map Reporting-Nodes (nodi report mappa LUN selettiva) prima di procedere allo spostamento.
+
+
+La figura seguente mostra un host connesso a un cluster a quattro nodi. Sono presenti due zone, una indicata dalle linee continue e una dalle linee tratteggiate. Ciascuna zona contiene un iniziatore dall'host e una LIF da ciascun nodo di storage.
+
+image::../media/scm_en_drw_dual_fabric_zoning_fc_rhel.gif[L'immagine mostra un host,two FC switches,and four storage nodes. Lines represent the two zones.]
+
+È necessario utilizzare le WWPN delle LIF di destinazione, non le WWPN delle porte FC fisiche sui nodi di storage. Le WWPN LIF sono tutte nella gamma `2x:xx:00:a0:98:xx:xx:xx`, dove `x` qualsiasi cifra esadecimale. Le WWPN delle porte fisiche sono tutte comprese nel raggio d'azione `50:0a:09:8x:xx:xx:xx:xx`.
+
+.Fasi
+. Accedere al programma di amministrazione dello switch FC, quindi selezionare l'opzione di configurazione dello zoning.
+. Creare una nuova zona che includa il primo iniziatore e tutte le LIF FC che si connettono allo stesso switch FC dell'iniziatore.
+. Creare zone aggiuntive per ciascun iniziatore FC nell'host.
+. Salvare le zone, quindi attivare la nuova configurazione di zoning.
+

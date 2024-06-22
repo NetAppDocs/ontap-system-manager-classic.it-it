@@ -1,0 +1,157 @@
+---
+permalink: online-help-96-97/concept_svm_user_accounts.html 
+sidebar: sidebar 
+keywords: system, manager, create, manage, online, help, storage, virtual, machine, svm, user, account, password, change, lock, unlock , command, button 
+summary: 'È possibile utilizzare System Manager per creare e gestire gli account utente SVM (Storage Virtual Machine).' 
+---
+= Creazione e gestione degli account utente SVM con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare e gestire gli account utente delle macchine virtuali di storage (SVM).
+
+
+
+== Aggiungere account utente SVM
+
+È possibile utilizzare System Manager per aggiungere un account utente SVM (Storage Virtual Machine) e specificare un metodo di accesso utente per accedere al sistema di storage.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Dettagli utente SVM*, fare clic su *utenti*.
+. Fare clic su *Aggiungi*.
+. Specificare un nome utente e una password per la connessione al sistema di storage e confermare la password.
+. Aggiungere uno o più metodi di accesso utente, quindi fare clic su *Aggiungi*.
++
+Viene automaticamente incluso un metodo di accesso per il nuovo account vsadmin che utilizza HTTP come applicazione e viene autenticato con un certificato.
+
+
+
+
+
+== Modificare la password per gli account utente SVM
+
+È possibile utilizzare System Manager per reimpostare la password di un account utente SVM (Storage Virtual Machine).
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Dettagli utente SVM*, fare clic su *utenti*.
+. Selezionare l'account utente per il quale si desidera modificare la password, quindi fare clic su *Reset Password* (Ripristina password).
+. Nella finestra di dialogo *Reset Password*, digitare la nuova password, confermare la nuova password, quindi fare clic su *Change* (Modifica).
+
+
+
+
+== Modificare gli account utente SVM
+
+È possibile utilizzare System Manager per modificare un account utente SVM (Storage Virtual Machine) modificando i metodi di accesso utente per accedere al sistema di storage.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Dettagli utente SVM*, fare clic su *utenti*.
+. Selezionare l'account utente che si desidera modificare, quindi fare clic su *Modifica*.
+. Modificare uno o più metodi di accesso utente, quindi fare clic su *Modify* (Modifica).
+
+
+
+
+== Bloccare o sbloccare gli account utente SVM
+
+È possibile utilizzare System Manager per bloccare o sbloccare gli account utente SVM (Storage Virtual Machine).
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Dettagli utente SVM*, fare clic su *utenti*.
+. Nella finestra *utenti*, selezionare l'account utente per il quale si desidera modificare lo stato dell'account, quindi fare clic su *blocco* o *sblocco*, a seconda delle esigenze.
+
+
+
+
+== Finestra utenti
+
+È possibile utilizzare la finestra utenti per gestire gli account utente, reimpostare la password di un utente e visualizzare informazioni su tutti gli account utente.
+
+
+
+=== Pulsanti di comando
+
+* *Aggiungi*
++
+Apre la finestra di dialogo Add User (Aggiungi utente), che consente di aggiungere account utente.
+
+* *Modifica*
++
+Apre la finestra di dialogo Modify User (Modifica utente), che consente di modificare i metodi di accesso utente.
+
++
+[NOTE]
+====
+Si consiglia di utilizzare un singolo ruolo per tutti i metodi di accesso e autenticazione di un account utente.
+
+====
+* *Elimina*
++
+Consente di eliminare un account utente selezionato.
+
+* *Cambia password*
++
+Apre la finestra di dialogo Change Password (Modifica password), che consente di reimpostare la password di un utente selezionato.
+
+* *Blocco*
++
+Blocca l'account utente.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco utenti
+
+L'area sotto l'elenco degli utenti visualizza informazioni dettagliate sull'utente selezionato.
+
+* *Utente*
++
+Visualizza il nome dell'account utente.
+
+* *Account bloccato*
++
+Visualizza se l'account utente è bloccato.
+
+
+
+
+
+=== Area User Login Methods
+
+* *Applicazione*
++
+Visualizza il metodo di accesso che un utente può utilizzare per accedere al sistema di storage. I metodi di accesso supportati includono:
+
++
+** Console di sistema (console)
+** HTTP(S) (http)
+** API ONTAP (ontapi)
+** Service Processor (service-processor)
+** SSH (ssh)
+
+
+* *Autenticazione*
++
+Visualizza il metodo di autenticazione predefinito supportato, ovvero "`password`".
+
+* *Ruolo*
++
+Visualizza il ruolo di un utente selezionato.
+
+

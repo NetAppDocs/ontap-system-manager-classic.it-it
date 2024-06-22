@@ -1,0 +1,36 @@
+---
+permalink: fc-config-windows/task_verifying_that_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, host, write, data, verify that the host can write to and read from the lun 
+summary: 'Prima di utilizzare il LUN, verificare che l"host sia in grado di scrivere i dati sul LUN e di leggerli.' 
+---
+= Verificare che l'host sia in grado di scrivere e leggere dal LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di utilizzare il LUN, verificare che l'host sia in grado di scrivere i dati sul LUN e di leggerli.
+
+.Prima di iniziare
+Il LUN deve essere inizializzato e formattato con un file system.
+
+.A proposito di questa attività
+Se il nodo del cluster di storage su cui viene creata la LUN può essere eseguito il failover nel nodo partner, è necessario verificare la lettura dei dati mentre si verifica il failover del nodo. Questo test potrebbe non essere possibile se il cluster di storage è in uso in produzione.
+
+Se uno dei test non riesce, verificare che il servizio FC sia in esecuzione e controllare i percorsi FC verso il LUN.
+
+.Fasi
+. Sull'host, copiare uno o più file nel LUN.
+. Copiare di nuovo i file in un'altra cartella sul disco originale.
+. Confrontare i file copiati con l'originale.
++
+È possibile utilizzare `comp` Al prompt dei comandi di Windows per confrontare due file.
+
+. *Opzionale:* eseguire il failover del nodo del cluster di storage contenente il LUN e verificare che sia ancora possibile accedere ai file sul LUN.
+. Utilizzare il DSM nativo per visualizzare i percorsi al LUN e verificare di disporre del numero di percorsi previsto.
++
+Vengono visualizzati due percorsi per il nodo del cluster di storage su cui viene creata la LUN e due percorsi per il nodo partner.
+
+

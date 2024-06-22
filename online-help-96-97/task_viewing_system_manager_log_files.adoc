@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_viewing_system_manager_log_files.html 
+sidebar: sidebar 
+keywords: view, ontap, system, manager, log, file, online, help 
+summary: 'In caso di problemi durante l"utilizzo di System Manager, è possibile inviare i file di log al supporto tecnico per risolvere i problemi. I file di log di Gestione sistema si trovano nella directory mlog insieme ai file di log di ONTAP.' 
+---
+= Visualizzare i file di log di Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si riscontrano problemi durante l'utilizzo di Gestione di sistema ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti), è possibile inviare i file di registro per risolvere i problemi, se richiesto dal supporto NetApp. I file di log di System Manager si trovano in `mlog` Insieme ai file di log di ONTAP.
+
+.Fasi
+. Identificare il nodo che ospita la LIF di gestione del cluster.
+. Immettere il seguente URL in un browser Web: `+https://cluster-mgmt-LIF/spi+`
++
+`cluster-mgmt-LIF` È l'indirizzo IP della LIF di gestione del cluster.
+
+. Digitare le credenziali di amministratore del cluster, quindi fare clic su *OK*.
+. Nella finestra *Data ONTAP - accesso al file del volume root*, fare clic sul collegamento *logs* del nodo che ospita la LIF di gestione del cluster.
+. Passare a. `mlog` Directory per accedere ai file di log di System Manager.
++
+A seconda del tipo di problema riscontrato, potrebbero essere necessari i seguenti file di log:
+
++
+** `sysmgr.log`
++
+Questo file contiene i registri più recenti per System Manager.
+
+** `mgwd.log`
+** `php.log`
+** `apache_access.log`
+** `messages.log`
+
+
+
+
+
+
+== Come funziona la registrazione del sistema
+
+La registrazione del sistema è uno strumento essenziale per la risoluzione dei problemi delle applicazioni. Attivare la registrazione del sistema in modo che, in caso di problemi con un'applicazione, sia possibile individuare il problema. È possibile attivare la registrazione di System Manager in fase di runtime senza modificare il binario dell'applicazione.
+
+L'output del log può essere voluminoso e quindi può diventare difficile da gestire. System Manager consente di perfezionare l'output di registrazione selezionando il tipo di istruzioni di log da generare. Per impostazione predefinita, la registrazione del sistema è impostata SU INFO. È possibile scegliere uno dei seguenti livelli di log:
+
+* SPENTO
+* ERRORE
+* ATTENZIONE
+* INFO
+* DEBUG
+
+
+Questi livelli funzionano gerarchicamente. Un livello di log impostato su OFF indica che non sono presenti messaggi registrati.

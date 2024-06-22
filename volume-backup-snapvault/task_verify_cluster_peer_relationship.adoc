@@ -1,0 +1,52 @@
+---
+permalink: volume-backup-snapvault/task_verify_cluster_peer_relationship.html 
+sidebar: sidebar 
+keywords: set, up, volume, data, protection, snapvault, technology, verify, source, cluster, communicate, communicating, peer, relationship, svm, verify cluster peer relationship and svm peer relationship 
+summary: Prima di configurare un volume per la protezione dei dati utilizzando la tecnologia SnapVault, è necessario verificare che il cluster di origine e il cluster di destinazione siano peering e che comunichi tra loro attraverso la relazione peer. È inoltre necessario verificare che la SVM di origine e la SVM di destinazione siano collegate in peering e che comunichi tra loro attraverso la relazione peer. 
+---
+= Verificare la relazione peer del cluster e la relazione peer SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di configurare un volume per la protezione dei dati utilizzando la tecnologia SnapVault, è necessario verificare che il cluster di origine e il cluster di destinazione siano peering e che comunichi tra loro attraverso la relazione peer. È inoltre necessario verificare che la SVM di origine e la SVM di destinazione siano collegate in peering e che comunichi tra loro attraverso la relazione peer.
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *source*.
+
+
+
+== Procedura
+
+* Se si utilizza ONTAP 9.3 o versione successiva, attenersi alla seguente procedura per verificare la relazione peer del cluster e la relazione peer SVM:
++
+.. Fare clic su *Configuration* > *Cluster Peers*.
+.. Verificare che il cluster peered sia autenticato e disponibile.
++
+image::../media/cluster_pper_930_backup.gif[backup del cluster pper 930]
+
+.. Fare clic su *Configuration* > *SVM Peers*.
+.. Verificare che la SVM di destinazione sia in peering con la SVM di origine.
+
+
+* Se si utilizza ONTAP 9.2 o versioni precedenti, attenersi alla seguente procedura per verificare la relazione peer del cluster e la relazione peer SVM:
++
+.. Fare clic sulla scheda *configurazioni*.
+.. Nel riquadro *Cluster Details*, fare clic su *Cluster Peers*.
+.. Verificare che il cluster peered sia autenticato e disponibile.
++
+image::../media/cluster_peer_health_backup.gif[backup dello stato peer del cluster]
+
+.. Fare clic sulla scheda *SVM* e selezionare la SVM di origine.
+.. Nell'area *Peer Storage Virtual Machines* (macchine virtuali di storage peer), verificare che la SVM di destinazione sia peer con la SVM di origine.
++
+Se in quest'area non viene visualizzata alcuna SVM con peering, è possibile creare la relazione peer SVM durante la creazione della relazione SnapVault.
+
+
+
++
+xref:task_creating_snapvault_relationship_92_earlier.adoc[Creazione della relazione SnapVault (ONTAP 9.2 o versione precedente)]
+
+

@@ -1,0 +1,29 @@
+---
+permalink: fc-config-esxi/task_installing_virtual_storage_console_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: virutal, storage, console, vsc, vmware, vsphere, automate, configuration, provision, task, require, netapp, fc, storage, esxi, host, plug-in, vcenter, server, install virtual storage console 
+summary: Virtual Storage Console per VMware vSphere automatizza molte delle attività di configurazione e provisioning necessarie per utilizzare lo storage NetApp FC con un host ESXi. Virtual Storage Console è un plug-in di vCenter Server. 
+---
+= Installare Virtual Storage Console
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Virtual Storage Console per VMware vSphere automatizza molte delle attività di configurazione e provisioning necessarie per utilizzare lo storage NetApp FC con un host ESXi. Virtual Storage Console è un plug-in di vCenter Server.
+
+.Prima di iniziare
+È necessario disporre delle credenziali di amministratore sul server vCenter utilizzato per gestire l'host ESXi.
+
+.A proposito di questa attività
+* Virtual Storage Console viene installata come appliance virtuale che include Virtual Storage Console, vStorage API for Storage Awareness (VASA) Provider e Storage Replication Adapter (SRA) per le funzionalità di VMware vSphere.
+
+
+.Fasi
+. Scaricare la versione di Virtual Storage Console supportata per la configurazione, come mostrato nello strumento Interoperability Matrix.
++
+https://mysupport.netapp.com/site/global/dashboard["Supporto NetApp"]
+
+. Implementare l'appliance virtuale e configurarla seguendo la procedura descritta nella _Guida all'installazione e all'implementazione_.
+

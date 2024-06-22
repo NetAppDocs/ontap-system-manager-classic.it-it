@@ -1,0 +1,46 @@
+---
+permalink: fc-config-windows/task_discovering_new_disks.html 
+sidebar: sidebar 
+keywords: lun, storage, virtual, machine, svm, appear, disk, windows, host, automatic, discover, manual, rescan, discover new disk 
+summary: 'I LUN sulla macchina virtuale di storage (SVM) vengono visualizzati come dischi sull"host Windows. Tutti i nuovi dischi per LUN aggiunti al sistema non vengono rilevati automaticamente dall"host. È necessario eseguire una nuova scansione manuale dei dischi per rilevarli.' 
+---
+= Rilevare nuovi dischi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I LUN sulla macchina virtuale di storage (SVM) vengono visualizzati come dischi sull'host Windows. Tutti i nuovi dischi per LUN aggiunti al sistema non vengono rilevati automaticamente dall'host. È necessario eseguire una nuova scansione manuale dei dischi per rilevarli.
+
+.Fasi
+. Aprire l'utility Gestione computer di Windows:
++
+|===
+| Se si utilizza... | Selezionare... 
+
+
+ a| 
+Windows Server 2012
+ a| 
+*Strumenti* > *Gestione computer*
+
+
+
+ a| 
+Windows Server 2008
+ a| 
+*Start* > *Strumenti di amministrazione* > *Gestione computer*
+
+
+
+ a| 
+Windows Server 2016
+ a| 
+*Start* *> Strumenti di amministrazione* *> Gestione computer*
+
+|===
+. Espandere il nodo *Storage* nella struttura di navigazione.
+. Fare clic su *Disk Management* (Gestione disco).
+. Fare clic su *Action* > *Rescan Disks* (Esegui scansione dischi).
+

@@ -1,0 +1,27 @@
+---
+permalink: iscsi-config-rhel/task_configuring_logical_volumes_on_multipath_devices_creating_file_system.html 
+sidebar: sidebar 
+keywords: linux, host, access, iscsi, device, lun, partition, file, system, multipath, volume, file, system, configure, logical, creating, create, configure logical volumes on multipath devices and creating a file system 
+summary: 'Quando l"host Linux accede per la prima volta a un nuovo dispositivo SCSI (LUN), non sono presenti partizioni o file system. Se si desidera utilizzare un dispositivo multipath partizionato, è necessario prima partizionare i dispositivi SCSI sottostanti. È inoltre possibile creare volumi logici su dispositivi multipath e, facoltativamente, creare un file system.' 
+---
+= Configurare volumi logici su dispositivi multipath e creare un file system
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando l'host Linux accede per la prima volta a un nuovo dispositivo SCSI (LUN), non sono presenti partizioni o file system. Se si desidera utilizzare un dispositivo multipath partizionato, è necessario prima partizionare i dispositivi SCSI sottostanti. È inoltre possibile creare volumi logici su dispositivi multipath e, facoltativamente, creare un file system.
+
+.Prima di iniziare
+I dispositivi SCSI e i dispositivi multipath corrispondenti devono essere stati rilevati dall'host Linux.
+
+.A proposito di questa attività
+È necessario configurare un percorso DM-multipath minimo sui dispositivi SCSI. Qualsiasi configurazione oltre DM-multipath è opzionale. I seguenti passaggi sono linee guida generali se si desidera eseguire una configurazione aggiuntiva, ad esempio la partizione, la configurazione di volumi logici su dispositivi multipath e la creazione di un file system. Per ulteriori informazioni sui comandi Linux, consulta la documentazione e le pagine man di Red Hat Enterprise Linux.
+
+.Fasi
+. Per utilizzare un dispositivo multipath partizionato, eseguire prima la partizione dei dispositivi SCSI sottostanti utilizzando `fdisk` oppure `parted` utility.
+. Creare le partizioni multipath corrispondenti utilizzando `kpartx` utility.
+. Creare volumi logici sui dispositivi multipath corrispondenti utilizzando i comandi LVM (Logical Volume Manager).
+. Creare un file system, ad esempio Ext4 o XFS, su volumi logici o dispositivi multipath utilizzando `mkfs` utility.
+

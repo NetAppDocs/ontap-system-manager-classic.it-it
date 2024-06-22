@@ -1,0 +1,195 @@
+---
+permalink: online-help-96-97/concept_iscsi_protocol.html 
+sidebar: sidebar 
+keywords: iscsi, protocol, system, manager, configure, block, data, host, tcp, ip, online, help, initiate, disable, enable, dialog, box, security, authentication, default 
+summary: È possibile utilizzare System Manager per configurare il protocollo iSCSI che consente di trasferire i dati a blocchi agli host utilizzando il protocollo SCSI su TCP/IP. 
+---
+= Configurare il protocollo iSCSI con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per configurare il protocollo iSCSI che consente di trasferire i dati a blocchi agli host utilizzando il protocollo SCSI su TCP/IP.
+
+
+
+== Creare alias iSCSI
+
+Un alias iSCSI è un identificatore di facile utilizzo che viene assegnato a un dispositivo di destinazione iSCSI (in questo caso, il sistema di storage) per semplificare l'identificazione del dispositivo di destinazione nelle interfacce utente. È possibile utilizzare System Manager per creare un alias iSCSI.
+
+.A proposito di questa attività
+Un alias iSCSI è una stringa di 128 caratteri stampabili.un alias iSCSI non deve includere spazi.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nella scheda *Servizio* della finestra *iSCSI*, fare clic su *Modifica*.
+. Nella finestra di dialogo *Edit iSCSI Service Configuration* (Modifica configurazione servizio iSCSI), immettere un alias iSCSI nel campo *Target Alias* (Alias destinazione), quindi fare clic su *OK*.
+
+
+
+
+== Attivare o disattivare il servizio iSCSI sulle interfacce del sistema di storage
+
+È possibile utilizzare System Manager per controllare le interfacce di rete utilizzate per la comunicazione iSCSI attivando o disattivando le interfacce. Quando il servizio iSCSI è attivato, le connessioni e le richieste iSCSI vengono accettate sulle interfacce di rete abilitate per iSCSI, ma non sulle interfacce disabilitate.
+
+.Prima di iniziare
+È necessario terminare tutte le connessioni e le sessioni iSCSI in sospeso che utilizzano l'interfaccia. Per impostazione predefinita, il servizio iSCSI viene attivato su tutte le interfacce Ethernet dopo aver attivato la licenza iSCSI.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nell'area *interfacce iSCSI*, selezionare l'interfaccia su cui si desidera attivare o disattivare il servizio iSCSI.
+. Fare clic su *Enable* (attiva) o *Disable* (Disattiva), secondo necessità.
+
+
+
+
+== Aggiungere il metodo di sicurezza per gli iniziatori iSCSI
+
+È possibile utilizzare System Manager per aggiungere un iniziatore e specificare il metodo di protezione utilizzato per autenticare l'iniziatore.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nella finestra *iSCSI*, fare clic sulla scheda *Initiator Security*.
+. Fare clic su *Add* (Aggiungi) nell'area *Initiator Security* (protezione iniziatore).
+. Specificare il nome dell'iniziatore e il metodo di protezione per l'autenticazione dell'iniziatore.
++
+Per l'autenticazione CHAP, è necessario fornire il nome utente e la password, quindi confermare la password per le impostazioni in entrata. Per le impostazioni in uscita, queste informazioni di accesso sono facoltative.
+
+. Fare clic su *OK*.
+
+
+
+
+== Modificare le impostazioni di sicurezza predefinite
+
+È possibile utilizzare la finestra di dialogo Edit Default Security (Modifica protezione predefinita) di System Manager per modificare le impostazioni di sicurezza predefinite per gli iniziatori iSCSI collegati al sistema di storage.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nell'area *Default Security* della scheda *Initiator Security*, fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Modifica protezione predefinita*, modificare il tipo di protezione.
++
+Per l'autenticazione CHAP, è necessario fornire il nome utente e la password, quindi confermare la password per le impostazioni in entrata. Per le impostazioni in uscita, queste informazioni di accesso sono facoltative.
+
+. Fare clic su *OK*.
+
+
+
+
+== Modificare il metodo di autenticazione iSCSI Initiator predefinito
+
+È possibile utilizzare System Manager per modificare il metodo di autenticazione iSCSI predefinito, ovvero il metodo di autenticazione utilizzato per qualsiasi iniziatore non configurato con un metodo di autenticazione specifico.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nella scheda *Initiator Security*, fare clic su *Edit* (Modifica) nell'area *Default Security* (protezione predefinita).
+. Modificare il tipo di protezione.
++
+Per l'autenticazione CHAP, è necessario fornire il nome utente e la password, quindi confermare la password per le impostazioni in entrata. Per le impostazioni in uscita, queste informazioni di accesso sono facoltative.
+
+. Fare clic su *OK*.
+
+
+
+
+== Impostare la sicurezza predefinita per gli iniziatori iSCSI
+
+È possibile utilizzare System Manager per rimuovere le impostazioni di autenticazione per un iniziatore e utilizzare il metodo di protezione predefinito per autenticare l'iniziatore.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nella scheda *Initiator Security*, selezionare l'iniziatore per cui si desidera modificare l'impostazione di protezione.
+. Fare clic su *Set Default* (Imposta predefinito) nell'area *Initiator Security* (protezione iniziatore), quindi fare clic su *Set Default* (Imposta predefinito) nella finestra di dialogo di conferma.
+
+
+
+
+== Avviare o arrestare il servizio iSCSI
+
+È possibile utilizzare System Manager per avviare o arrestare il servizio iSCSI sul sistema storage.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Fare clic su *Start* o *Stop*, secondo necessità.
+
+
+
+
+== Visualizzare le informazioni di sicurezza dell'iniziatore
+
+È possibile utilizzare System Manager per visualizzare le informazioni di autenticazione predefinite e tutte le informazioni di autenticazione specifiche dell'iniziatore.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. Nella scheda *Initiator Security* della finestra *iSCSI*, esaminare i dettagli.
+
+
+
+
+== Finestra iSCSI
+
+È possibile utilizzare la finestra iSCSI per avviare o arrestare il servizio iSCSI, modificare il nome del nodo iSCSI di un sistema di storage e creare o modificare l'alias iSCSI di un sistema di storage. È inoltre possibile aggiungere o modificare l'impostazione di sicurezza di un iniziatore iSCSI connesso al sistema di storage.
+
+
+
+=== Schede
+
+* *Servizio*
++
+È possibile utilizzare la scheda *Servizio* per avviare o arrestare il servizio iSCSI, modificare il nome del nodo iSCSI di un sistema di storage e creare o modificare l'alias iSCSI di un sistema di storage.
+
+* *Sicurezza iniziatore*
++
+È possibile utilizzare la scheda *Initiator Security* per aggiungere o modificare l'impostazione di sicurezza di un iniziatore iSCSI connesso al sistema di storage.
+
+
+
+
+
+=== Pulsanti di comando
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit iSCSI Service Configurations (Modifica configurazioni servizio iSCSI), che consente di modificare il nome del nodo iSCSI e l'alias iSCSI del sistema di storage.
+
+* *Avvio*
++
+Avvia il servizio iSCSI.
+
+* *Stop*
++
+Interrompe il servizio iSCSI.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area dei dettagli visualizza informazioni sullo stato del servizio iSCSI, il nome del nodo di destinazione iSCSI e l'alias di destinazione iSCSI. È possibile utilizzare questa area per attivare o disattivare il servizio iSCSI su un'interfaccia di rete.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["Amministrazione SAN"^]

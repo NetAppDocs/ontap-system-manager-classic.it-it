@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_schedules.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, manage, schedule, storage 
+summary: È possibile utilizzare System Manager per creare e gestire le pianificazioni nel sistema storage. 
+---
+= Gestione delle pianificazioni con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare e gestire le pianificazioni nel sistema di storage.
+
+
+
+== Creare pianificazioni
+
+È possibile creare pianificazioni per l'esecuzione di un processo in un'ora specifica o in periodi regolari utilizzando System Manager.
+
+.A proposito di questa attività
+Quando si crea una pianificazione in una configurazione MetroCluster, è consigliabile creare una pianificazione equivalente anche nel cluster del sito sopravvissuto.
+
+.Fasi
+. Fare clic su *Protection* > *Schedules*.
+. Fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea pianificazione*, specificare il nome della pianificazione.
+. Crea una pianificazione in base alle tue esigenze:
++
+|===
+| Se si desidera creare... | Eseguire questa operazione... 
+
+
+ a| 
+Un programma giornaliero o specifico in determinati giorni
+ a| 
+Selezionare *base* e specificare i dettagli di pianificazione e ricorrenza (in ore e minuti).
+
+
+
+ a| 
+Un programma che viene eseguito a un intervallo specifico
+ a| 
+Selezionare *Interval* e specificare i dettagli di pianificazione e ricorrenza (in giorni, ore e minuti).
+
+
+
+ a| 
+Un programma che viene eseguito in un determinato periodo
+ a| 
+Selezionare *Avanzate* e specificare i dettagli di pianificazione e ricorrenza (in mesi, giorni, giorni feriali, ore e minuti).
+
+|===
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Modificare le pianificazioni
+
+È possibile apportare modifiche a una pianificazione cron creata in precedenza o a una pianificazione a intervalli se non soddisfa i requisiti utilizzando System Manager. È possibile modificare i dettagli della pianificazione, ad esempio giorni e ore ricorrenti, opzioni di intervallo e opzioni cron avanzate.
+
+.A proposito di questa attività
+Quando si modifica una pianificazione in una configurazione MetroCluster, è consigliabile modificare anche la pianificazione equivalente nel cluster di siti sopravvissuti.
+
+.Fasi
+. Fare clic su *Protection* > *Schedules*.
+. Selezionare la pianificazione che si desidera modificare e fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Schedule* (Modifica pianificazione), modificare la pianificazione eseguendo l'azione appropriata:
++
+|===
+| Se si seleziona l'opzione di pianificazione come... | Fare questo.. 
+
+
+ a| 
+Di base
+ a| 
+Specificare i giorni ricorrenti e i dettagli della pianificazione ricorrente.
+
+
+
+ a| 
+Intervallo
+ a| 
+Specificare le opzioni di intervallo in giorni, ore e minuti.
+
+
+
+ a| 
+Avanzato
+ a| 
+Specificare le opzioni avanzate di cron in mesi, giorni, giorni della settimana (se applicabile), ore e minuti.
+
+|===
+. Fare clic su *OK*.
+
+
+
+
+== Eliminare le pianificazioni
+
+[role="lead"]
+È possibile utilizzare System Manager per eliminare le pianificazioni che eseguono specifiche attività di gestione dello storage.
+
+.Fasi
+. Fare clic su *Protection* > *Schedules*.
+. Selezionare la pianificazione che si desidera eliminare e fare clic su *Delete* (Elimina).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+
+
+== Gestire le pianificazioni
+
+È possibile configurare molte attività (ad esempio, copie Snapshot del volume e repliche mirror) per l'esecuzione su pianificazioni specifiche. Le pianificazioni eseguite con pianificazioni specificate sono note come _cron_ schedules a causa della loro somiglianza con UNIX `cron` pianificazioni. Le pianificazioni eseguite a intervalli sono note come pianificazioni _interval_.
+
+È possibile gestire le pianificazioni nei seguenti modi:
+
+* Creazione di una pianificazione cron o di una pianificazione a intervalli
+* Visualizzazione di informazioni su tutti i programmi
+* Modifica di un programma cron o di un programma di intervalli
+* Eliminazione di una pianificazione cron o di una pianificazione a intervalli
++
+Non è possibile eliminare una pianificazione attualmente in uso da un processo in esecuzione.
+
+
+
+L'amministratore del cluster può eseguire tutte le attività di gestione delle pianificazioni.
+
+
+
+== Finestra programmi
+
+È possibile utilizzare la finestra Pianificazioni per gestire le attività pianificate, ad esempio la creazione, la visualizzazione delle informazioni, la modifica e l'eliminazione delle pianificazioni.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Schedule (Crea pianificazione), che consente di creare pianificazioni basate sul tempo e sugli intervalli.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Schedule (Modifica pianificazione), che consente di modificare i piani di lavoro selezionati.
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete Schedule (Elimina pianificazione), che consente di eliminare le pianificazioni selezionate.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco delle pianificazioni
+
+* *Nome*
++
+Specifica il nome della pianificazione.
+
+* *Tipo*
++
+Specifica il tipo di pianificazione basata sul tempo o sull'intervallo.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area Details (Dettagli) visualizza le informazioni relative all'esecuzione di un programma selezionato.

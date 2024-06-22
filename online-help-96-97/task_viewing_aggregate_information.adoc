@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_viewing_aggregate_information.html 
+sidebar: sidebar 
+keywords: view, aggregate, information, online, help, system, manager 
+summary: È possibile utilizzare la finestra aggregati in System Manager per visualizzare le informazioni su nome, stato e spazio relative a un aggregato. 
+---
+= Visualizzazione delle informazioni aggregate con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra aggregati in Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per visualizzare le informazioni relative a nome, stato e spazio relative a un aggregato.
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Fare clic sul nome dell'aggregato per visualizzare i dettagli dell'aggregato selezionato.
+

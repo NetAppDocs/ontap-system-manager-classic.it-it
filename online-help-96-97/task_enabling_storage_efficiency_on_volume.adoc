@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/task_enabling_storage_efficiency_on_volume.html 
+sidebar: sidebar 
+keywords: system, manager, enable, storage, efficiency, volume, deduplication, online, help 
+summary: 'È possibile utilizzare System Manager per abilitare l"efficienza dello storage e configurare deduplica e compressione dei dati o solo deduplica su un volume per risparmiare spazio di storage. Se non si è attivata l"efficienza dello storage al momento della creazione del volume, è possibile farlo in un secondo momento modificando il volume.' 
+---
+= Abilita l'efficienza dello storage su un volume con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per abilitare l'efficienza dello storage e configurare sia la deduplica che la compressione dei dati o solo la deduplica su un volume per risparmiare spazio di storage. Se non si è attivata l'efficienza dello storage al momento della creazione del volume, è possibile farlo in un secondo momento modificando il volume.
+
+.Prima di iniziare
+* Il volume deve essere online.
+* Se si desidera utilizzare una pianificazione di deduplica basata su policy, è necessario aver creato una policy di efficienza.
+
+
+.A proposito di questa attività
+* È possibile attivare la compressione in background solo se è stata attivata la deduplica in background.
+* È possibile attivare la compressione inline e la deduplica inline con o senza abilitare rispettivamente la compressione in background e la deduplica in background.
+* È possibile attivare la deduplica inline solo sui volumi contenuti in un aggregato con All Flash Optimized Personality e sui volumi contenuti in un aggregato di Flash Pool.
+* A partire da System Manager 9.6, è supportata la modifica dell'efficienza dello storage per i volumi FlexGroup DP.
+
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume per il quale si desidera abilitare l'efficienza dello storage, quindi fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Volume* (Modifica volume), fare clic su *Storage Efficiency* (efficienza dello storage).
+. Selezionare la casella di controllo *deduplica in background*.
+. Selezionare uno dei seguenti metodi per eseguire la deduplica:
++
+|===
+| Se si desidera eseguire la deduplica... | Quindi... 
+
+
+ a| 
+Basato su una policy di efficienza dello storage
+ a| 
+.. Assicurarsi che sia selezionata l'opzione *basata su policy*.
+.. Fare clic su *Choose*, quindi selezionare una policy di efficienza dello storage.
+.. Fare clic su *OK*.
+
+
+
+
+ a| 
+Quando necessario
+ a| 
+Selezionare l'opzione *on-demand*.
+
+|===
+. Selezionare la casella di controllo *compressione in background* per attivare la compressione in background.
++
+Non è possibile attivare la compressione in background per un volume contenuto in un aggregato con All Flash Optimized Personality.
+
+. Selezionare la casella di controllo *compressione in linea* per comprimere i dati durante la scrittura nel volume.
++
+Per impostazione predefinita, la compressione inline è attivata sui volumi contenuti in un aggregato con All Flash Optimized Personality.
+
+. Selezionare la casella di controllo *deduplica in linea* per eseguire la deduplica prima che i dati vengano scritti sul disco.
++
+Per impostazione predefinita, la deduplica inline è attivata sui volumi contenuti in un aggregato con All Flash Optimized Personality.
+
+. Fare clic su *Save and Close* (Salva e chiudi).
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

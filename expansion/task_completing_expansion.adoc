@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_completing_expansion.html 
+sidebar: sidebar 
+keywords: node, cluster, configuring, configure, autosupport, network, expansion, lun, path, complete, complete the expansion 
+summary: Una volta Uniti entrambi i nodi al cluster, è necessario completare la configurazione dei nuovi nodi aggiunti configurando AutoSupport e completando la rete SP. 
+---
+= Completare l'espansione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta Uniti entrambi i nodi al cluster, è necessario completare la configurazione dei nuovi nodi aggiunti configurando AutoSupport e completando la rete SP. Si convalida quindi il cluster espanso e si genera un messaggio AutoSupport per completare l'espansione. Se il cluster utilizza LA SAN, è necessario aggiornare i percorsi LUN.

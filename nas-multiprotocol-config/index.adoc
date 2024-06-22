@@ -1,0 +1,53 @@
+---
+permalink: nas-multiprotocol-config/index.html 
+sidebar: sidebar 
+keywords: smb, cifs, nfs, access, volume, exist, storage, virtual, machine, svm 
+summary: 'È possibile configurare rapidamente l"accesso SMB/CIFS e NFS a un nuovo volume su una macchina virtuale di storage (SVM) nuova o esistente.' 
+---
+= Panoramica della configurazione multiprotocollo SMB e NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia classica di Gestore di sistema di ONTAP (ONTAP 9.7 e versioni precedenti), è possibile configurare rapidamente l'accesso SMB e NFS a un nuovo volume su una macchina virtuale di storage (SVM) nuova o esistente.
+
+Utilizzare questa procedura per configurare l'accesso a un volume nel modo seguente:
+
+* L'accesso NFS avviene tramite NFSv3, non NFSv4 o NFSv4.1.
+* Si desidera utilizzare le Best practice, non esplorare tutte le opzioni disponibili.
+* La rete dati utilizza l'IPSpace predefinito, il dominio di trasmissione predefinito e il gruppo di failover predefinito.
++
+Se la rete dati è piatta, l'utilizzo di questi oggetti predefiniti garantisce il corretto failover delle LIF in caso di errore di collegamento. Se non si utilizzano gli oggetti predefiniti, fare riferimento a. link:https://docs.netapp.com/us-en/ontap/networking/index.html["Gestione della rete"^] Per informazioni su come configurare il failover del percorso LIF.
+
+* LDAP, se utilizzato, viene fornito da Active Directory.
+
+
+Per ulteriori informazioni sulla gamma di funzionalità del protocollo ONTAP NFS e SMB, consultare la seguente documentazione:
+
+* https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Gestione NFS"^]
+* https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gestione delle PMI"^]
+
+
+
+
+== Altri modi per farlo in ONTAP
+
+|===
+
+
+| Per eseguire queste attività con... | Fare riferimento a... 
+
+
+| System Manager riprogettato (disponibile con ONTAP 9.7 e versioni successive) | link:https://docs.netapp.com/us-en/ontap/task_nas_provision_nfs_and_smb.html["Provisioning dello storage NAS per Windows e Linux utilizzando sia NFS che SMB"^] 
+
+
+| L'interfaccia della riga di comando di ONTAP | link:https://docs.netapp.com/us-en/ontap/smb-config/index.html["Panoramica della configurazione SMB con la CLI"^]
+
+link:https://docs.netapp.com/us-en/ontap/nfs-config/index.html["Panoramica della configurazione di NFS con la CLI"^]
+
+link:https://docs.netapp.com/us-en/ontap/nfs-admin/security-styles-their-effects-concept.html["Quali sono gli stili di sicurezza e i loro effetti"^]
+
+link:https://docs.netapp.com/us-en/ontap/nfs-admin/case-sensitivity-file-directory-multiprotocol-concept.html["Distinzione tra maiuscole e minuscole dei nomi di file e directory in un ambiente multiprotocollo"^] 
+|===

@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_mirroring_aggregates.html 
+sidebar: sidebar 
+keywords: mirror, aggregate, system, manager, data, lun, array, online, help 
+summary: 'È possibile utilizzare System Manager per proteggere i dati e fornire una maggiore resilienza eseguendo il mirroring dei dati in tempo reale, all"interno di un singolo aggregato. Il mirroring degli aggregati rimuove i singoli punti di errore nella connessione a dischi e LUN di array.' 
+---
+= Eseguire il mirroring degli aggregati con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per proteggere i dati e fornire una maggiore resilienza mediante il mirroring dei dati in tempo reale, all'interno di un singolo aggregato. Il mirroring degli aggregati rimuove i singoli punti di errore nella connessione a dischi e LUN di array.
+
+.Prima di iniziare
+L'altro pool deve disporre di dischi liberi sufficienti per eseguire il mirroring dell'aggregato.
+
+.A proposito di questa attività
+Non è possibile eseguire il mirroring di un aggregato di Flash Pool quando l'origine della cache è un pool di storage.
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selezionare l'aggregato che si desidera eseguire il mirroring, quindi fare clic su menu:altre azioni[Mirror].
++
+[NOTE]
+====
+SyncMirror non è supportato sugli aggregati abilitati per FabricPool.
+
+====
+. Nella finestra di dialogo *Mirror this aggregate* (Esegui mirroring di questo aggregato), fare clic su *Mirror* (Esegui mirroring) per avviare il mirroring.
+

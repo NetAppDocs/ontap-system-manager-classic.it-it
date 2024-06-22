@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/index.html 
+sidebar: sidebar 
+keywords: system, manager, online, help, management, interface, understand, cluster 
+summary: 'System Manager è un"interfaccia di gestione grafica che consente di gestire i sistemi storage e gli oggetti storage (come dischi, volumi e aggregati) ed eseguire attività di gestione comuni relative ai sistemi storage da un browser Web. In qualità di amministratore del cluster, è possibile utilizzare System Manager per amministrare l"intero cluster e le relative risorse.' 
+---
+= Gestione dei cluster con OnCommand® System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+System Manager è un'interfaccia di gestione grafica basata su HTML5 che consente di gestire i sistemi storage e gli oggetti di storage (come dischi, volumi e aggregati) e di eseguire task di gestione comuni correlati ai sistemi storage da un browser web. System Manager è incluso nel software ONTAP come servizio Web, abilitato per impostazione predefinita e accessibile tramite un browser. In qualità di amministratore del cluster, è possibile utilizzare System Manager per amministrare l'intero cluster e le relative risorse.
+
+[NOTE]
+====
+Il nome di System Manager è stato modificato rispetto alle versioni precedenti. Le versioni 9.5 e precedenti erano denominate Gestione di sistema OnCommand. Le versioni 9.6 e successive sono ora denominate Gestione di sistema ONTAP.
+
+====
+System Manager consente di eseguire molte attività comuni, ad esempio:
+
+* Creare un cluster, configurare una rete e impostare i dettagli di supporto per il cluster.
+* Configurare e gestire oggetti storage come dischi, aggregati, volumi, qtree e quote.
+* Configurare protocolli come CIFS e NFS e fornire la condivisione dei file.
+* Configurare protocolli come FC, FCoE, NVMe e iSCSI per l'accesso a blocchi.
+* Creare e configurare componenti di rete come subnet, domini di broadcast, interfacce di gestione e dati e gruppi di interfacce.
+* Impostare e gestire le relazioni di mirroring e vaulting.
+* Eseguire operazioni di gestione del cluster, dei nodi di storage e delle macchine virtuali di storage (SVM).
+* Creare e configurare le SVM, gestire gli oggetti storage associati alle SVM e gestire i servizi SVM.
+* Monitorare e gestire le configurazioni ha in un cluster.
+* Configurare i Service Processor per accedere, gestire, monitorare e amministrare il nodo in remoto, indipendentemente dallo stato del nodo.
+
+
+
+
+== Icone della finestra del dashboard
+
+Quando si visualizza la dashboard del sistema di storage, potrebbero essere visualizzate le seguenti icone:
+
+|===
+| Icona | Nome | Descrizione 
+
+
+ a| 
+image:../media/statuswarning.gif["Immagine per l'avviso nella dashboard di System Manager"]
+ a| 
+Attenzione
+ a| 
+Ci sono problemi minori, ma nessuno che richiede un'attenzione immediata.
+
+
+
+ a| 
+image:../media/statuserror.gif["Immagine per errore nella dashboard di System Manager"]
+ a| 
+Errore
+ a| 
+Problemi che potrebbero causare downtime e quindi richiedere attenzione.
+
+
+
+ a| 
+image:../media/statuscritical.gif["Immagine critica nella dashboard di System Manager"]
+ a| 
+Critico
+ a| 
+Il sistema storage non fornisce dati o non può essere contattato. È necessaria un'attenzione immediata.
+
+
+
+ a| 
+image:../media/arrowright.gif["Immagine per la navigazione nella dashboard di System Manager"]
+ a| 
+Freccia di collegamento
+ a| 
+Se questa opzione viene visualizzata accanto a una voce di riga in un pannello della dashboard, facendo clic su di essa si accede a un'altra pagina da cui è possibile ottenere ulteriori informazioni sull'elemento di riga o apportare modifiche all'elemento di riga.
+
+|===

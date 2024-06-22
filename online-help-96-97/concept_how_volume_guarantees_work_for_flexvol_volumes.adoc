@@ -1,0 +1,43 @@
+---
+permalink: online-help-96-97/concept_how_volume_guarantees_work_for_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: volume, guarantee, work, flexvol, volume, space, preallocated, aggregate, online, help 
+summary: 'Le garanzie di volume (talvolta denominate garanzie di spazio) determinano il modo in cui lo spazio per un volume viene allocato dal relativo aggregato contenente, indipendentemente dal fatto che lo spazio sia preallocato o meno per il volume.' 
+---
+= Informazioni sulle garanzie dei volumi per FlexVol Volumes con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile impostare le garanzie di volume per i volumi FlexVol con System Manager classic (disponibile in ONTAP 9.7 e versioni precedenti). Le garanzie di volume (a volte denominate _garanzie di spazio_) determinano il modo in cui lo spazio per un volume viene allocato dal relativo aggregato contenente, se lo spazio è preallocato o meno per il volume.
+
+La garanzia è un attributo del volume.
+
+La garanzia viene impostata quando si crea un nuovo volume; è possibile modificare anche la garanzia per un volume esistente, a condizione che esista spazio libero sufficiente per onorare la nuova garanzia.
+
+I tipi di garanzia del volume possono essere `volume` (il tipo predefinito) o. `none`.
+
+* Un tipo di garanzia di `volume` alloca lo spazio nell'aggregato per l'intero volume quando si crea il volume, indipendentemente dal fatto che lo spazio sia ancora utilizzato per i dati.
++
+Lo spazio allocato non può essere fornito o allocato per qualsiasi altro volume in quell'aggregato.
+
+* Una garanzia di `none` alloca lo spazio dall'aggregato solo in base alle esigenze del volume.
++
+La quantità di spazio consumata dai volumi con questo tipo di garanzia aumenta man mano che i dati vengono aggiunti, invece di essere determinati dalla dimensione iniziale del volume, il che potrebbe lasciare inutilizzato lo spazio se i dati del volume non crescono fino a tale dimensione. La dimensione massima di un volume con una garanzia di `none` non è limitato dalla quantità di spazio libero nel suo aggregato. È possibile che la dimensione totale di tutti i volumi associati a un aggregato superi la quantità di spazio libero per l'aggregato, anche se la quantità di spazio effettivamente utilizzabile è limitata dalla dimensione dell'aggregato.
+
++
+Le operazioni di scrittura su LUN o file (inclusi LUN e file con spazio riservato) contenuti nel volume potrebbero non riuscire se l'aggregato contenente non dispone di spazio sufficiente per la scrittura.
+
+
+
+Quando lo spazio nell'aggregato viene allocato per a. `volume` garanzia per un volume esistente, che lo spazio non è più considerato libero nell'aggregato, anche se il volume non sta ancora utilizzando lo spazio. Le operazioni che consumano spazio libero nell'aggregato, come la creazione di copie Snapshot aggregate o la creazione di nuovi volumi nell'aggregato contenente, possono verificarsi solo se vi è spazio libero sufficiente in tale aggregato; a queste operazioni viene impedito di utilizzare lo spazio già allocato a un altro volume.
+
+Quando lo spazio libero in un aggregato è esaurito, solo le scritture su volumi o file in quell'aggregato con spazio preallocato sono garantite per avere successo.
+
+Le garanzie sono onorate solo per i volumi online. Se si porta un volume offline, lo spazio allocato ma non utilizzato per quel volume diventa disponibile per altri volumi in quell'aggregato. Quando si tenta di riportare il volume online, se lo spazio disponibile nell'aggregato non è sufficiente per soddisfare la propria garanzia, questo rimarrà offline. È necessario forzare il volume online, a questo punto la garanzia del volume verrà disattivata.
+
+*Informazioni correlate*
+
+http://www.netapp.com/us/media/tr-3965.pdf["Report tecnico NetApp 3965: Implementazione e implementazione del thin provisioning NetApp Data ONTAP 8.1 (7-Mode)"^]

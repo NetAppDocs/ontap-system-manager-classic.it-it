@@ -1,0 +1,45 @@
+---
+permalink: volume-disaster-prep/index.html 
+sidebar: sidebar 
+keywords: content, protect, source, volume, peer, ontap, cluster, preparation, disaster, recovery, configure, monitor, snapmirror, relationship, background, task, volume disaster recovery preparation overview 
+summary: È possibile proteggere rapidamente un volume di origine su un cluster Peered ONTAP in preparazione al disaster recovery. È consigliabile utilizzare questo contenuto se si desidera configurare e monitorare le relazioni di SnapMirror tra cluster peered per il disaster recovery dei volumi e non è necessario un background concettuale elevato per le attività. 
+---
+= Panoramica sulla preparazione del disaster recovery dei volumi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile proteggere rapidamente un volume di origine su un cluster Peered ONTAP in preparazione al disaster recovery. È consigliabile utilizzare questa procedura se si desidera configurare e monitorare le relazioni di SnapMirror tra i cluster peered per il disaster recovery dei volumi e non è necessario un background concettuale elevato per le attività.
+
+SnapMirror offre una protezione dei dati a livello di blocco e asincrona pianificata. SnapMirror replica le copie Snapshot e può replicare i volumi NAS o SAN su cui vengono eseguite la deduplica, la compressione dei dati o entrambi, inclusi i volumi contenenti qtree e LUN. Le informazioni di configurazione di SnapMirror sono memorizzate in un database che ONTAP replica in tutti i nodi del cluster.
+
+Utilizzare questa procedura se si desidera creare relazioni SnapMirror per il disaster recovery a livello di volume nel modo seguente:
+
+* Stai lavorando con cluster che eseguono ONTAP 9.
+* Sei un amministratore del cluster.
+* Sono state configurate la relazione peer del cluster e la relazione peer SVM.
++
+link:../peering/index.html["Configurazione del peering di cluster e SVM"]
+
+* La licenza SnapMirror è stata attivata sia sul cluster di origine che su quello di destinazione.
+* Si desidera utilizzare le policy e le pianificazioni predefinite e non creare policy personalizzate.
+* Si desidera utilizzare le Best practice, non esplorare tutte le opzioni disponibili (ONTAP 9.7 e versioni precedenti).
+
+
+
+
+== Altri modi per farlo in ONTAP
+
+|===
+
+
+| Per eseguire queste attività con... | Fare riferimento a... 
+
+
+| System Manager riprogettato (disponibile con ONTAP 9.7 e versioni successive) | link:https://docs.netapp.com/us-en/ontap/task_dp_prepare_mirror.html["Preparazione per il mirroring e il vaulting"^] 
+
+
+| L'interfaccia della riga di comando di ONTAP | link:https://docs.netapp.com/us-en/ontap/peering/create-cluster-relationship-93-later-task.html["Creazione di una relazione peer del cluster (ONTAP 9.3 e versioni successive)"^] 
+|===

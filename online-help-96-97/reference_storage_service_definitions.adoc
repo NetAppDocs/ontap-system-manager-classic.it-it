@@ -1,0 +1,123 @@
+---
+permalink: online-help-96-97/reference_storage_service_definitions.html 
+sidebar: sidebar 
+keywords: storage, service, definition, online, help, performance, factor 
+summary: ONTAP include servizi di storage predefiniti mappati ai corrispondenti fattori di performance minimi. 
+---
+= Definizioni dei servizi di storage per Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Gestore di sistema ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) include servizi di storage predefiniti che sono mappati ai corrispondenti fattori di performance minimi.
+
+L'insieme effettivo di servizi storage disponibili in un cluster o SVM è determinato dal tipo di storage che costituisce un aggregato nella SVM.
+
+La seguente tabella mostra come i fattori minimi di performance sono mappati ai servizi di storage predefiniti:
+
+|===
+| Servizio di storage | IOPS previsti (SLA) | IOPS di picco (SLO) | Volume minimo IOPS | Latenza stimata | Gli IOPS previsti sono applicati? 
+
+
+ a| 
+valore
+ a| 
+128 dollari per TB
+ a| 
+512 dollari per TB
+ a| 
+75
+ a| 
+17 ms.
+ a| 
+Su AFF: Sì
+
+Altrimenti: No
+
+
+
+ a| 
+performance
+ a| 
+2048 per TB
+ a| 
+4096 dollari per TB
+ a| 
+500
+ a| 
+2 ms.
+ a| 
+Sì
+
+
+
+ a| 
+estremo
+ a| 
+6144 dollari per TB
+ a| 
+12288 dollari per TB
+ a| 
+1000
+ a| 
+1 ms.
+ a| 
+Sì
+
+|===
+La seguente tabella definisce il livello di servizio dello storage disponibile per ciascun tipo di supporto o nodo:
+
+|===
+| Media o nodo | Livello di servizio dello storage disponibile 
+
+
+ a| 
+Disco
+ a| 
+valore
+
+
+
+ a| 
+Disco della macchina virtuale
+ a| 
+valore
+
+
+
+ a| 
+LUN FlexArray
+ a| 
+valore
+
+
+
+ a| 
+Ibrido
+ a| 
+valore
+
+
+
+ a| 
+Flash ottimizzato per la capacità
+ a| 
+valore
+
+
+
+ a| 
+Solid-state Drive (SSD) - non AFF
+ a| 
+valore
+
+
+
+ a| 
+Flash ottimizzata per le performance - SSD (AFF)
+ a| 
+estremi, performance, valore
+
+|===

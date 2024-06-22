@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/concept_using_space_reservation_with_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: space, reservation, flexvol, volume, online, help 
+summary: Utilizzando la prenotazione dello spazio, è possibile eseguire il provisioning dei volumi FlexVol. Il thin provisioning sembra fornire più storage di quanto sia effettivamente disponibile da un dato aggregato, purché non tutto lo storage sia attualmente in uso. 
+---
+= Utilizza le riserve di spazio con FlexVol Volumes con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti), è possibile utilizzare la riserva di spazio per eseguire il provisioning dei volumi FlexVol. Il thin provisioning sembra fornire più storage di quanto sia effettivamente disponibile da un dato aggregato, purché non tutto lo storage sia attualmente in uso.
+
+Il thick provisioning consente di accantonare una quantità sufficiente di storage dall'aggregato per garantire che qualsiasi blocco del volume possa essere scritto in qualsiasi momento.
+
+Gli aggregati possono fornire storage ai volumi contenuti da più di una macchina virtuale di storage (SVM). Se si utilizza il thin provisioning e si deve mantenere una separazione rigorosa tra le SVM (ad esempio, se si fornisce storage in un ambiente multi-tenancy), è necessario utilizzare volumi completamente allocati (thick provisioning) o assicurarsi che gli aggregati non siano condivisi tra i tenant.
+
+Quando la riserva di spazio è impostata su "`Default`", le impostazioni di riserva di spazio ONTAP si applicano ai volumi.
+
+*Informazioni correlate*
+
+http://www.netapp.com/us/media/tr-3563.pdf["Report tecnico di NetApp 3563: Il thin provisioning di NetApp aumenta l'utilizzo dello storage con l'allocazione on-demand"^]
+
+http://www.netapp.com/us/media/tr-3483.pdf["Report tecnico di NetApp 3483: Thin provisioning in un ambiente NetApp SAN o IP SAN Enterprise"^]

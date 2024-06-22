@@ -1,0 +1,69 @@
+---
+permalink: expansion/task_adding_nodes_to_cluster_using_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, increase, size, capabilities, capability, storage, node, automatic, ontap, add nodes to a cluster using system manager 
+summary: È possibile utilizzare System Manager per aumentare le dimensioni e le funzionalità del sistema storage aggiungendo nodi a un cluster esistente. Questa funzione viene attivata automaticamente in Gestione sistema quando la versione effettiva del cluster è ONTAP 9.2. 
+---
+= Aggiungere nodi a un cluster utilizzando System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare System Manager per aumentare le dimensioni e le funzionalità del sistema storage aggiungendo nodi a un cluster esistente. Questa funzione viene attivata automaticamente in Gestione sistema quando la versione effettiva del cluster è ONTAP 9.2.
+
+.Prima di iniziare
+* I nuovi nodi compatibili devono essere cablati al cluster.
++
+Nella finestra Network (rete) vengono elencate solo le porte del dominio di trasmissione predefinito.
+
+* Tutti i nodi del cluster devono essere attivi e in esecuzione.
+* Tutti i nodi devono essere della stessa versione.
+
+
+.Fase
+. Aggiungere i nuovi nodi compatibili al cluster:
++
+[cols="1,3"]
+|===
+
+
+| Se sei... | Eseguire questa operazione... 
+
+
+ a| 
+Non connesso a System Manager
+ a| 
+.. Accedere a System Manager.
++
+[NOTE]
+====
+I nuovi nodi compatibili vengono rilevati automaticamente da System Manager al momento dell'accesso. System Manager richiede di aggiungere i nuovi nodi compatibili al cluster.
+
+====
+.. Fare clic su *Aggiungi nodi al cluster*.
+.. Modificare il nome dei nodi.
+.. Specificare le licenze del nodo.
+.. Fare clic su *Invia e continua*.
+
+
+
+
+ a| 
+Accesso a System Manager
+ a| 
+.. A seconda della versione di System Manager in esecuzione, eseguire una delle seguenti operazioni:
++
+*** ONTAP 9.4 o versione precedente: Fare clic su *Configurazione* > *espansione cluster*.
+*** A partire da ONTAP 9,5: Fare clic su *Configurazione* > *Cluster* > *espansione*
+System Manager ricerca i nuovi nodi aggiunti. Se vengono visualizzate delle avvertenze, è necessario correggerle prima di procedere. Se vengono rilevati nuovi nodi compatibili, passare alla fase successiva.
+
+
+.. Modificare il nome dei nodi.
+.. Specificare le licenze del nodo.
+.. Fare clic su *Invia e continua*.
+
+
+|===
+

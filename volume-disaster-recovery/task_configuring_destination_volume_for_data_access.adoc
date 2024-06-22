@@ -1,0 +1,50 @@
+---
+permalink: volume-disaster-recovery/task_configuring_destination_volume_for_data_access.html 
+sidebar: sidebar 
+keywords: activating, activate, destination, volume, configure, data, access, nas, client, san, host, access, data, source, reactivate, configure the destination volume for data access 
+summary: 'Dopo aver attivato il volume di destinazione, è necessario configurare il volume per l"accesso ai dati. I client NAS e GLI host SAN possono accedere ai dati dal volume di destinazione fino alla riattivazione del volume di origine.' 
+---
+= Configurare il volume di destinazione per l'accesso ai dati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver attivato il volume di destinazione, è necessario configurare il volume per l'accesso ai dati. I client NAS e GLI host SAN possono accedere ai dati dal volume di destinazione fino alla riattivazione del volume di origine.
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *destination*.
+
+
+
+== Procedura
+
+* Ambiente NAS:
++
+.. Montare i volumi NAS nello spazio dei nomi utilizzando lo stesso percorso di giunzione in cui è stato montato il volume di origine nella SVM di origine.
+.. Applicare gli ACL appropriati alle condivisioni CIFS nel volume di destinazione.
+.. Assegnare i criteri di esportazione NFS al volume di destinazione.
+.. Applicare le regole di quota al volume di destinazione.
+.. Reindirizzare i client al volume di destinazione eseguendo le operazioni necessarie, ad esempio la modifica della risoluzione del nome DNS.
+.. Rimontare le condivisioni NFS e CIFS sui client.
+
+
+* Ambiente SAN:
++
+.. Mappare le LUN al gruppo iniziatore appropriato per rendere le LUN nel volume disponibili per i client SAN.
+.. Per iSCSI, creare sessioni iSCSI dagli iniziatori host SAN alle LIF SAN.
+.. Sul client SAN, eseguire una nuova scansione dello storage per rilevare i LUN connessi.
+
+
+
+
+
+
+== Cosa fare in seguito
+
+È necessario risolvere il problema che ha causato l'indisponibilità del volume di origine. Quando possibile, è necessario riportare il volume di origine in linea, quindi risincronizzare e riattivare il volume di origine.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro documentazione di ONTAP 9"]

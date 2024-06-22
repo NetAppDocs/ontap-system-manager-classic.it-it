@@ -1,0 +1,96 @@
+---
+permalink: online-help-96-97/concept_fc_fcoe_protocol.html 
+sidebar: sidebar 
+keywords: system, manager, configure, fc, fcoe, protocol, online, help, change, node, name, fibre, channel, san, start, stop 
+summary: È possibile utilizzare System Manager per configurare i protocolli FC/FCoE. 
+---
+= Configurare il protocollo FC/FCoE con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per configurare i protocolli FC/FCoE, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Avviare o arrestare il servizio FC o FCoE
+
+Il servizio FC consente di gestire gli adattatori di destinazione FC da utilizzare con i LUN. È possibile utilizzare System Manager per avviare il servizio FC per portare gli adattatori in linea e abilitare l'accesso ai LUN sul sistema storage. È possibile interrompere il servizio FC per portare gli adattatori FC offline e disattivare l'accesso ai LUN.
+
+.Prima di iniziare
+* La licenza FC deve essere installata.
+* Nel sistema di storage di destinazione deve essere presente un adattatore FC.
+
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *FC/FCoE*.
+. Fare clic su *Start* o *Stop*, secondo necessità.
+
+
+
+
+== Modificare il nome di un nodo FC o FCoE
+
+Se si sostituisce uno chassis del sistema storage e lo si riutilizza nella stessa SAN Fibre Channel, in alcuni casi il nome del nodo del sistema storage sostituito potrebbe essere duplicato. È possibile modificare il nome del nodo del sistema di storage utilizzando System Manager.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *FC/FCoE*.
+. Fare clic su *Edit* (Modifica).
+. Digitare il nuovo nome, quindi fare clic su *OK*.
+
+
+
+
+== Il protocollo FCoE
+
+Fibre Channel over Ethernet (FCoE) è un nuovo modello per la connessione degli host ai sistemi storage. Come il protocollo FC tradizionale, FCoE mantiene la gestione e i controlli FC esistenti, ma utilizza una rete Ethernet a 10 Gigabit come trasporto hardware.
+
+L'impostazione di una connessione FCoE richiede uno o più adattatori di rete convergenti (CNA) supportati nell'host, collegati a uno switch Ethernet Data Center bridging (DCB) supportato. Il CNA è un punto di consolidamento e funge da HBA e da adattatore Ethernet.
+
+In generale, è possibile configurare e utilizzare le connessioni FCoE nello stesso modo in cui si utilizzano le connessioni FC tradizionali.
+
+
+
+== Finestra FC/FCoE
+
+È possibile utilizzare la finestra FC/FCoE per avviare o arrestare il servizio FC.
+
+
+
+=== Pulsanti di comando
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Node Name (Modifica nome nodo), che consente di modificare il nome del nodo FC o FCoE.
+
+* *Avvio*
++
+Avvia il servizio FC/FCoE.
+
+* *Stop*
++
+Interrompe il servizio FC/FCoE.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Dettagli FC/FCoE
+
+L'area dei dettagli visualizza informazioni sullo stato del servizio FC/FCoE, sul nome del nodo e sugli adattatori FC/FCoE.
+
+*Informazioni correlate*
+
+xref:task_configuring_fc_fcoe_protocol_on_svms.adoc[Configurazione del protocollo FC e del protocollo FCoE su SVM]
+
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["Amministrazione SAN"^]

@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/reference_svm_dashboard_window.html 
+sidebar: sidebar 
+keywords: svm, dashboard, detail, online, help 
+summary: 'La dashboard fornisce informazioni cumulative a colpo d"occhio sulla vostra macchina virtuale di storage (SVM) e sulle sue performance. È possibile utilizzare la finestra Dashboard per visualizzare importanti informazioni relative alla SVM, ad esempio i protocolli configurati, i volumi che si stanno avvicinando alla capacità e le performance.' 
+---
+= Finestra del dashboard SVM in Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La finestra del dashboard in Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) fornisce informazioni cumulative a colpo d'occhio sulla macchina virtuale per lo storage (SVM) e sulle relative performance. È possibile utilizzare la finestra Dashboard per visualizzare importanti informazioni relative alla SVM, ad esempio i protocolli configurati, i volumi che si stanno avvicinando alla capacità e le performance.
+
+
+
+== Dettagli SVM
+
+Questa finestra visualizza i dettagli relativi alla SVM attraverso vari pannelli, ad esempio il pannello Protocol Status (Stato protocollo), Volumes aring Capacity (volumi), Applications (applicazioni) e performance panel (pannello delle performance).
+
+* *Protocol Status* (Stato protocollo)
++
+Fornisce una panoramica dei protocolli configurati per SVM. È possibile fare clic sul nome del protocollo per visualizzare la configurazione.
+
++
+Se un protocollo non è configurato o se non è disponibile una licenza di protocollo per SVM, è possibile fare clic sul nome del protocollo per configurare il protocollo o per aggiungere la licenza del protocollo.
+
+* *Volumi vicini alla capacità*
++
+Visualizza informazioni sui volumi che si stanno avvicinando all'utilizzo della capacità pari o superiore al 80% e che richiedono un'attenzione immediata o un'azione correttiva.
+
+* *Applicazioni*
++
+Visualizza le informazioni sulle prime cinque applicazioni di SVM. È possibile visualizzare le cinque applicazioni principali in base a IOPS (da basso a alto o da alto a basso) o capacità (da basso a alto o da alto a basso). Fare clic sul grafico a barre specifico per visualizzare ulteriori informazioni sull'applicazione. Per quanto riguarda la capacità, vengono visualizzati lo spazio totale, lo spazio utilizzato e lo spazio disponibile, mentre per gli IOPS vengono visualizzati i dettagli IOPS. Per le applicazioni L2/L3, vengono visualizzate anche le metriche di latenza.
+
++
+[NOTE]
+====
+La dimensione utilizzata visualizzata nella finestra delle applicazioni non corrisponde alla dimensione utilizzata nella CLI.
+
+====
++
+È possibile fare clic su *View details* (Visualizza dettagli) per aprire la finestra delle applicazioni dell'applicazione specifica. È possibile fare clic su *View All Applications* (Visualizza tutte le applicazioni) per visualizzare tutte le applicazioni per SVM.
+
++
+L'intervallo di refresh per il pannello delle applicazioni è di un minuto.
+
+* *Prestazioni SVM*
++
+Visualizza le metriche delle performance dei protocolli nella SVM, inclusi latenza e IOPS.
+
++
+Se le informazioni sulle prestazioni SVM non possono essere recuperate da ONTAP, non è possibile visualizzare il rispettivo grafico. In questi casi, System Manager visualizza il messaggio di errore specifico.
+
++
+L'intervallo di refresh per il pannello SVM Performance (prestazioni SVM) è di 15 secondi.
+
+

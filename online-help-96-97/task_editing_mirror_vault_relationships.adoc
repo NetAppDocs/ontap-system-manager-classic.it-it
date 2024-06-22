@@ -1,0 +1,344 @@
+---
+permalink: online-help-96-97/task_editing_mirror_vault_relationships.html 
+sidebar: sidebar 
+keywords: edit, mirror, vault, relationship, system, manager, online, help 
+summary: È possibile utilizzare System Manager per modificare una relazione di mirror e vault modificando la policy o la pianificazione selezionata. Tuttavia, non è possibile modificare i parametri di una policy o di una pianificazione esistente. 
+---
+= Gestire le relazioni di mirror e vault con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire le relazioni di vault e mirror. È possibile modificare, eliminare, inizializzare, aggiornare, interrompere, riprendere e interrompere le relazioni di mirroring e vault. È inoltre possibile eseguire operazioni di risincronizzazione o risincronizzazione inversa, oltre a creare relazioni di mirroring e vault da una SVM di destinazione.
+
+
+
+== Modificare le relazioni
+
+È possibile utilizzare System Manager per modificare una relazione di mirror e vault modificando la policy o la pianificazione selezionata. Tuttavia, non è possibile modificare i parametri di una policy o di una pianificazione esistente.
+
+.Prima di iniziare
+I cluster di origine e di destinazione devono essere in una relazione paritarie sana.
+
+.A proposito di questa attività
+È possibile modificare il tipo di relazione di una relazione di mirror flessibile della versione, di una relazione di vault o di una relazione di mirror e vault modificando il tipo di policy.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera modificare, quindi fare clic su *Modifica*.
+. Nella finestra di dialogo *Modifica relazione*, selezionare l'azione appropriata:
++
+|===
+| Se si desidera... | Effettuare le seguenti operazioni... 
+
+
+ a| 
+Selezionare un criterio esistente
+ a| 
+Fare clic su *Sfoglia*, quindi selezionare un criterio esistente.    È possibile selezionare un criterio con il numero massimo di etichette corrispondenti con il criterio Snapshot collegato al volume di origine.
+
+
+
+ a| 
+Creare una nuova policy
+ a| 
+.. Fare clic su *Crea policy*.
+.. Specificare un nome per il criterio.
+.. Impostare la priorità per i trasferimenti pianificati.
++
+Low (basso) indica che il trasferimento ha la priorità minore e viene di solito pianificato dopo i trasferimenti con priorità normale. Per impostazione predefinita, la priorità è impostata su normale.
+
+.. Selezionare la casella di controllo *Enable Network Compression* (Abilita compressione di rete) per comprimere i dati trasferiti.
+.. Specificare un'etichetta SnapMirror e il numero di conservazione della destinazione per la policy del vault.
++
+Per rendere effettiva la nuova etichetta SnapMirror, è necessario assicurarsi che sul volume di origine venga creata una copia Snapshot con la stessa etichetta.
+
+.. Fare clic su *Create* (Crea).
+
+
+|===
+. Specificare una pianificazione per la relazione:
++
+|===
+| Se... | Effettuare le seguenti operazioni... 
+
+
+ a| 
+Si desidera assegnare una pianificazione esistente
+ a| 
+Fare clic su *Browse* (Sfoglia), quindi selezionare una pianificazione esistente.
+
+
+
+ a| 
+Si desidera creare una nuova pianificazione
+ a| 
+.. Fare clic su *Crea pianificazione*.
+.. Specificare un nome per la pianificazione.
+.. Selezionare una delle seguenti opzioni:
++
+*** *Di base*
++
+È possibile selezionare questa opzione per specificare solo il giorno della settimana, l'ora e l'intervallo di trasferimento.
+
+*** *Avanzate*
++
+È possibile selezionare questa opzione per specificare una pianificazione in stile cron.
+
+
+
+.. Fare clic su *Create* (Crea).
+
+
+
+
+ a| 
+Non si desidera assegnare una pianificazione
+ a| 
+Selezionare *Nessuno*.
+
+|===
+. Fare clic su *OK*.
+
+
+
+
+== Aggiornare le relazioni manualmente
+
+È possibile utilizzare System Manager per avviare manualmente un aggiornamento incrementale non pianificato. Potrebbe essere necessario un aggiornamento manuale per evitare la perdita di dati dovuta a un'imminente interruzione dell'alimentazione, manutenzione pianificata o migrazione dei dati.
+
+.Prima di iniziare
+La relazione del mirror e del vault deve essere inizializzata e in uno stato SnapMirrored.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione mirror per la quale si desidera aggiornare i dati, quindi fare clic su *Operations* > *Update*.
+. Scegliere una delle seguenti opzioni:
++
+** Selezionare *come da policy* per eseguire un trasferimento incrementale dalla copia Snapshot comune recente tra i volumi di origine e di destinazione.
+** Selezionare *Select Snapshot copy* (Seleziona copia istantanea) e specificare la copia Snapshot che si desidera trasferire.
+
+
+. Selezionare *Limit transfer bandwidth to* (limita larghezza di banda di trasferimento a) per limitare la larghezza di banda di rete utilizzata per i trasferimenti, quindi specificare la velocità massima di trasferimento.
+. Fare clic su *Aggiorna*.
+. Verificare lo stato del trasferimento nella scheda *Dettagli*.
+
+
+
+
+== Inizializzare le relazioni
+
+È possibile utilizzare System Manager per inizializzare una relazione di mirror e vault se la relazione non è già stata inizializzata durante la creazione. Quando si inizializza una relazione, viene eseguito un trasferimento completo dei dati baseline dal volume di origine alla destinazione.
+
+.Prima di iniziare
+I cluster di origine e di destinazione devono essere in una relazione paritarie sana.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera inizializzare, quindi fare clic su *operazioni* > *Inizializza*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Inizializza*.
+. Verificare lo stato della relazione nella finestra *protezione*.
+
+
+.Risultati
+Una copia Snapshot viene creata e trasferita alla destinazione.
+
+Questa copia Snapshot viene utilizzata come riferimento per le successive copie Snapshot incrementali.
+
+
+
+== Creare una relazione da una SVM di destinazione
+
+È possibile utilizzare System Manager per creare una relazione di mirroring e vault dalla SVM (Storage Virtual Machine) di destinazione. La creazione di questa relazione consente di proteggere meglio i dati trasferendo periodicamente i dati dal volume di origine al volume di destinazione. Consente inoltre di conservare i dati per lunghi periodi creando backup del volume di origine.
+
+.Prima di iniziare
+* Il cluster di destinazione deve eseguire ONTAP 8.3.2 o versione successiva.
+* La licenza SnapMirror deve essere attivata sul cluster di origine e di destinazione.
++
+[NOTE]
+====
+Per alcune piattaforme, non è obbligatorio che la licenza SnapMirror sia attivata per il cluster di origine se il cluster di destinazione dispone della licenza SnapMirror e della licenza DPO (Data Protection Optimization) attivate.
+
+====
+* Il cluster di origine e il cluster di destinazione devono essere in una relazione di pari livello.
+* La SVM di destinazione deve disporre di spazio disponibile.
+* L'aggregato di origine e l'aggregato di destinazione devono essere aggregati a 64 bit.
+* Un volume di origine di tipo Read/Write (rw) deve già esistere.
+* Il tipo di aggregato SnapLock deve essere lo stesso.
+* Se si effettua la connessione da un cluster che esegue ONTAP 9.2 o versioni precedenti a un cluster remoto su cui è attivata l'autenticazione SAML, è necessario attivare l'autenticazione basata su password nel cluster remoto.
+
+
+.A proposito di questa attività
+* System Manager non supporta una relazione a cascata.
++
+Ad esempio, un volume di destinazione in una relazione non può essere il volume di origine in un'altra relazione.
+
+* Non è possibile creare una relazione di mirroring e vault tra una SVM di origine della sincronizzazione e una SVM di destinazione della sincronizzazione in una configurazione MetroCluster.
+* È possibile creare una relazione di mirroring e vault tra le SVM di origine della sincronizzazione in una configurazione MetroCluster.
+* È possibile creare una relazione di mirroring e vault da un volume su una SVM di origine di sincronizzazione a un volume di una SVM di servizio dati.
+* È possibile creare una relazione di mirroring e vault da un volume su una SVM di servizio dati a un volume DP su una SVM di origine sincronizzazione.
+* È possibile proteggere un massimo di 25 volumi in un'unica selezione.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Nella finestra *Relazioni*, fare clic su *Crea*.
+. Nella finestra di dialogo *Browse SVM* (Sfoglia SVM), selezionare un SVM per il volume di destinazione.
+. Nella finestra di dialogo *Crea relazione di protezione*, selezionare *Mirror and Vault* dall'elenco a discesa *tipo di relazione*.
+. Specificare il cluster, la SVM e il volume di origine.
++
+Se il cluster specificato esegue una versione del software ONTAP precedente a ONTAP 9.3, vengono elencate solo le SVM in peering. Se il cluster specificato esegue ONTAP 9.3 o versione successiva, vengono elencate le SVM in peering e le SVM consentite.
+
+. Inserire un suffisso del nome del volume.
++
+Il suffisso del nome del volume viene aggiunto ai nomi del volume di origine per generare i nomi del volume di destinazione.
+
+. *Opzionale:* fare clic su *Sfoglia*, quindi modificare il mirror e la policy del vault.
++
+È possibile selezionare il criterio con il numero massimo di etichette corrispondenti con il criterio Snapshot collegato al volume di origine.
+
+. Selezionare una pianificazione per la relazione dall'elenco delle pianificazioni esistenti.
+. *Opzionale:* selezionare *Inizializza relazione* per inizializzare la relazione.
+. Abilitare gli aggregati abilitati a FabricPool, quindi selezionare un criterio di tiering appropriato.
+. Fare clic su *Validate* (convalida) per verificare se i volumi selezionati hanno etichette corrispondenti.
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Risincronizzare le relazioni
+
+È possibile utilizzare System Manager per ristabilire una relazione di mirroring e vault interrotta in precedenza. È possibile eseguire un'operazione di risincronizzazione per eseguire il ripristino da un disastro che ha disattivato il volume di origine.
+
+.Prima di iniziare
+I cluster di origine e di destinazione e le macchine virtuali dello storage di origine e di destinazione (SVM) devono essere in relazioni tra pari.
+
+.A proposito di questa attività
+Prima di eseguire un'operazione di risincronizzazione, tenere presente quanto segue:
+
+* Quando si esegue un'operazione di risincronizzazione, il contenuto del volume di destinazione viene sovrascritto dal contenuto dell'origine.
++
+[NOTE]
+====
+L'operazione di risincronizzazione può causare la perdita di dati più recenti scritti nel volume di destinazione dopo la creazione della copia Snapshot di base.
+
+====
+* Se il campo Last Transfer Error (ultimo errore di trasferimento) nella finestra Protection (protezione) consiglia un'operazione di risincronizzazione, interrompere prima la relazione e quindi eseguire l'operazione di risincronizzazione.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera risincronizzare, quindi fare clic su *operazioni* > *risincronizzazione*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Resync*.
+
+
+
+
+== Risincronizzare le relazioni in senso inverso
+
+È possibile utilizzare System Manager per ristabilire una relazione di mirroring e vault precedentemente interrotta. In un'operazione di risincronizzazione inversa, le funzioni dei volumi di origine e di destinazione vengono invertite. È possibile utilizzare il volume di destinazione per fornire i dati durante la riparazione o la sostituzione dell'origine, l'aggiornamento dell'origine e il ripristino della configurazione originale dei sistemi.
+
+.Prima di iniziare
+Il volume di origine deve essere online.
+
+.A proposito di questa attività
+* Quando si esegue la risincronizzazione inversa, i contenuti del volume di origine vengono sovrascritti dai contenuti del volume di destinazione.
++
+[NOTE]
+====
+L'operazione di risincronizzazione inversa può causare la perdita di dati sul volume di origine.
+
+====
+* Quando si esegue la risincronizzazione inversa, la policy della relazione viene impostata su MirrorAndVault e la pianificazione viene impostata su Nessuno.
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera invertire, quindi fare clic su *operazioni* > *risincronizzazione inversa*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Reverse Resync* (risincronizzazione inversa).
+
+
+
+
+== Interrompere le relazioni
+
+È possibile utilizzare System Manager per interrompere una relazione di mirroring e vault se un volume di origine non è più disponibile e si desidera che le applicazioni client accedano ai dati dal volume di destinazione. È possibile utilizzare il volume di destinazione per fornire i dati durante la riparazione o la sostituzione del volume di origine, l'aggiornamento del volume di origine e il ripristino della configurazione originale dei sistemi.
+
+.Prima di iniziare
+* La relazione del mirror e del vault deve essere in stato di inattività o di inattività.
+* Il volume di destinazione deve essere montato sullo spazio dei nomi SVM (Storage Virtual Machine) di destinazione.
+
+
+.A proposito di questa attività
+È possibile interrompere le relazioni di mirroring tra i sistemi ONTAP e i sistemi storage SolidFire.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera interrompere, quindi fare clic su *operazioni* > *interruzione*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Interrompi*.
+
+
+.Risultati
+La relazione tra il mirror e il vault è interrotta. Il tipo di volume di destinazione cambia da DP (Data Protection) di sola lettura a lettura/scrittura. Il sistema memorizza la copia Snapshot di base per il mirror e la relazione del vault per un utilizzo successivo.
+
+
+
+== Riprendere le relazioni
+
+Se si dispone di un mirror e di una relazione del vault disattivati, è possibile utilizzare System Manager per riprendere la relazione. Quando si riprende la relazione, viene ripristinato il normale trasferimento dei dati al volume di destinazione e tutte le attività di protezione vengono riavviate.
+
+.A proposito di questa attività
+Se è stata interrotta una relazione di vault e mirror interrotta dall'interfaccia della riga di comando (CLI), non è possibile riprendere la relazione da System Manager. Per riprendere la relazione, è necessario utilizzare la CLI.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera riprendere, quindi fare clic su *operazioni* > *Riprendi*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Riprendi*.
+
+
+.Risultati
+Vengono ripristinati i normali trasferimenti di dati. Se è presente un trasferimento pianificato per la relazione, il trasferimento viene avviato dalla pianificazione successiva.
+
+
+
+== Eliminare le relazioni
+
+È possibile utilizzare System Manager per terminare una relazione di mirroring e vault tra un volume di origine e di destinazione e rilasciare le copie Snapshot dal volume di origine.
+
+.A proposito di questa attività
+* Si consiglia di interrompere la relazione del mirror e del vault prima di eliminare la relazione.
+* Per ricreare la relazione, è necessario eseguire l'operazione di risincronizzazione dal volume di origine utilizzando l'interfaccia della riga di comando (CLI).
+
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera eliminare e fare clic su *Delete* (Elimina).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
++
+È inoltre possibile selezionare la casella di controllo copie Snapshot della release base per eliminare le copie Snapshot di base utilizzate dal mirror e dalla relazione del vault sul volume di origine.
+
++
+Se la relazione non viene rilasciata, è necessario utilizzare la CLI per eseguire l'operazione di release sul cluster di origine per eliminare le copie Snapshot di base create per la relazione del mirror e del vault dal volume di origine.
+
+
+
+.Risultati
+La relazione viene eliminata e le copie Snapshot di base sul volume di origine vengono eliminate in modo permanente.
+
+
+
+== Interrompere le relazioni
+
+È possibile utilizzare System Manager per interrompere un volume di destinazione e stabilizzare la destinazione prima di creare una copia Snapshot. L'operazione di quiesce consente di terminare i trasferimenti di dati attivi e di disattivare i trasferimenti futuri per la relazione del mirror e del vault.
+
+.Prima di iniziare
+La relazione del mirror e del vault deve essere in uno stato SnapMirrored.
+
+.Fasi
+. Fare clic su *Protection* > *Volume Relares* (protezione* > *Relazioni volume*
+. Selezionare la relazione del mirror e del vault che si desidera interrompere, quindi fare clic su *operazioni* > *Quiesce*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Quiesce*.
+
+
+.Risultati
+Se non è in corso alcun trasferimento, lo stato del trasferimento viene visualizzato come `Quiesced`. Se è in corso un trasferimento, il trasferimento non viene modificato e lo stato del trasferimento viene visualizzato come `Quiescing` fino al completamento del trasferimento.

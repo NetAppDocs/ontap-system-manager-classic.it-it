@@ -1,0 +1,33 @@
+---
+permalink: smb-config/task_configuring_verifying_client_access.html 
+sidebar: sidebar 
+keywords: client, access, share, setting, ntfs, file, permission, windows, explorer, modify, share, acl, system, manager, affect, group, volume, configure, verify, vonfigure and verify cifs client access 
+summary: 'Quando si è pronti, è possibile concedere ai client selezionati l"accesso alla condivisione impostando i permessi del file NTFS in Esplora risorse e modificando l"ACL della condivisione in System Manager. Quindi, verificare che gli utenti o i gruppi interessati possano accedere al volume.' 
+---
+= Configurare e verificare l'accesso al client CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si è pronti, è possibile concedere ai client selezionati l'accesso alla condivisione impostando i permessi del file NTFS in Esplora risorse e modificando l'ACL della condivisione in System Manager. Quindi, verificare che gli utenti o i gruppi interessati possano accedere al volume.
+
+.Fasi
+. Decidere quali client e utenti o gruppi avranno accesso alla condivisione.
+. Su un client Windows, utilizzare un ruolo di amministratore per assegnare agli utenti o ai gruppi le autorizzazioni per i file e le cartelle.
++
+.. Accedere a un client Windows come amministratore con diritti amministrativi sufficienti per gestire le autorizzazioni NTFS.
+.. In Esplora risorse, fare clic con il pulsante destro del mouse sull'unità, quindi selezionare *Proprietà*.
+.. Selezionare la scheda *sicurezza* e regolare le impostazioni di protezione per i gruppi e gli utenti in base alle esigenze.
+
+
+. In System Manager, modificare l'ACL della condivisione per consentire agli utenti o ai gruppi Windows di accedere alla condivisione.
++
+.. Accedere alla finestra *Shares*.
+.. Selezionare la condivisione e fare clic su *Modifica*.
+.. Selezionare la scheda *Permissions* e assegnare agli utenti o ai gruppi l'accesso alla condivisione.
+
+
+. Su un client Windows, accedere come uno degli utenti che ora ha accesso alla condivisione e ai file e verificare di poter accedere alla condivisione e creare un file.
+

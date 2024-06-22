@@ -1,0 +1,37 @@
+---
+permalink: online-help-96-97/task_extending_expiry_date_snapshot_copies.html 
+sidebar: sidebar 
+keywords: extend, expiry, date, snapshot, copy, system, manager, online, help 
+summary: È possibile utilizzare System Manager per estendere la data di scadenza delle copie Snapshot in un volume. 
+---
+= Estendi la data di scadenza delle copie Snapshot con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per estendere la data di scadenza delle copie Snapshot in un volume.
+
+.Prima di iniziare
+La licenza SnapLock deve essere installata sul sistema.
+
+.A proposito di questa attività
+È possibile estendere la data di scadenza solo per le copie Snapshot in un volume di data Protection (DP) che è la destinazione in una relazione SnapLock for SnapVault.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare un volume.
+. Fare clic su *Mostra ulteriori dettagli* per visualizzare ulteriori informazioni sul volume.
+. Fare clic sulla scheda *copie Snapshot*.
++
+Viene visualizzato l'elenco delle copie Snapshot disponibili per il volume selezionato.
+
+. Selezionare la copia Snapshot che si desidera modificare, quindi fare clic su *Estendi data di scadenza*.
+. Nella finestra di dialogo *Estendi data di scadenza*, specificare la data di scadenza.
++
+I valori devono essere compresi tra 1 giorno e 70 anni o Infinite.
+
+. Fare clic su *OK*.
+

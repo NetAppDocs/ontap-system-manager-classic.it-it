@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/task_assigning_luns_to_storage_qos.html 
+sidebar: sidebar 
+keywords: qos, quality, service, assign, lun, storage, system, manager, lun, online, help, policy, group 
+summary: 'È possibile utilizzare System Manager per limitare il throughput delle LUN assegnandole ai gruppi di criteri di qualità del servizio (QoS) dello storage. È possibile assegnare la QoS dello storage per le nuove LUN o modificare i dettagli della QoS dello storage per le LUN già assegnate a un gruppo di criteri.' 
+---
+= Assegnare LUN alla QoS dello storage con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per limitare il throughput delle LUN assegnandole ai gruppi di criteri di qualità del servizio (QoS) dello storage. È possibile assegnare la QoS dello storage per le nuove LUN o modificare i dettagli della QoS dello storage per le LUN già assegnate a un gruppo di criteri.
+
+.A proposito di questa attività
+* Non è possibile assegnare la qualità del servizio di storage a un LUN se i seguenti oggetti di storage sono assegnati a un gruppo di criteri:
++
+** Volume d'origine del LUN
+** SVM (Parent Storage Virtual Machine) del LUN
+
+
+* È possibile assegnare allo storage QoS o modificare i dettagli QoS per un massimo di 10 LUN contemporaneamente.
+
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Nella scheda *LUN Management*, selezionare una o più LUN per cui si desidera assegnare la QoS dello storage.
+. Fare clic su *Storage QoS*.
+. Nella finestra di dialogo *Dettagli qualità del servizio*, selezionare la casella di controllo *Gestisci qualità del servizio di storage* se si desidera gestire le prestazioni del carico di lavoro del LUN.
++
+Se alcuni LUN selezionati sono già assegnati a un gruppo di criteri, le modifiche apportate potrebbero influire sulle prestazioni di tali LUN.
+
+. Creare un nuovo gruppo di criteri QoS dello storage o selezionare un gruppo di criteri esistente per controllare le prestazioni di input/output (i/o) del LUN:
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Creare un nuovo gruppo di criteri
+ a| 
+.. Selezionare *nuovo gruppo di criteri*.
+.. Specificare il nome del gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS e B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore e questo valore fa distinzione tra maiuscole e minuscole.
++
+L'unità specificata non influisce sul throughput massimo.
+
+
+
+
+
+
+
+ a| 
+Selezionare un gruppo di criteri esistente
+ a| 
+.. Selezionare *Gruppo di criteri esistente*, quindi fare clic su *Scegli* per selezionare un gruppo di criteri esistente dalla finestra di dialogo Seleziona gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS e B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore e questo valore fa distinzione tra maiuscole e minuscole.
+ +
+L'unità specificata non influisce sul throughput massimo.
+
+
++
+Se il gruppo di criteri è assegnato a più di un oggetto, il throughput massimo specificato viene condiviso tra gli oggetti.
+
+
+
+|===
+. *Opzionale:* fare clic sul collegamento che specifica il numero di LUN da rivedere nell'elenco dei LUN selezionati, quindi fare clic su *Discard* per rimuovere eventuali LUN dall'elenco.
++
+Il collegamento viene visualizzato solo quando sono selezionati più LUN.
+
+. Fare clic su *OK*.
+

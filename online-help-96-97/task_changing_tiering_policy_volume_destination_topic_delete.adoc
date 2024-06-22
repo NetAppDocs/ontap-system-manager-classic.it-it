@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_changing_tiering_policy_volume_destination_topic_delete.html 
+sidebar: sidebar 
+keywords: change, tiering, policy, system, manager, volume, online, help 
+summary: È possibile utilizzare System Manager per modificare la policy di tiering predefinita di un volume per controllare se i dati del volume vengono spostati nel Tier cloud quando i dati diventano inattivi. 
+---
+= Modificare la policy di tiering di un volume con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare il criterio di tiering predefinito di un volume per controllare se i dati del volume vengono spostati nel livello cloud quando i dati diventano inattivi.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume per il quale si desidera modificare il criterio di tiering, quindi fare clic su *altre azioni* > *Modifica policy di tiering*.
+. Selezionare la policy di tiering richiesta dall'elenco *Tiering Policy*, quindi fare clic su *Save*.
+

@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_cloning_nvme_namespace.html 
+sidebar: sidebar 
+keywords: system, manager, clone, nvme, namespace, nqn, online, help 
+summary: È possibile utilizzare System Manager per creare rapidamente un altro namespace della stessa configurazione scegliendo di clonare uno spazio dei nomi. È possibile mappare lo spazio dei nomi clonato a un altro NQN host. 
+---
+= Clonare uno spazio dei nomi NVMe con Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare rapidamente un altro namespace della stessa configurazione scegliendo di clonare uno spazio dei nomi. È possibile mappare lo spazio dei nomi clonato a un altro NQN host.
+
+.Prima di iniziare
+Per clonare uno spazio dei nomi, è necessario disporre di una licenza FlexClone.
+
+.A proposito di questa attività
+È possibile clonare uno spazio dei nomi con la mappatura host selezionata e associarlo a un altro sottosistema.
+
+.Fasi
+. Fare clic su *NVMe* > *NVMe namespace*.
+. Nella finestra *NVMe namespaces*, selezionare lo spazio dei nomi che si desidera clonare.
+. È possibile rinominare lo spazio dei nomi clonato se è necessario un nome specifico, ma non è necessario.
++
+La finestra di dialogo fornisce un nome predefinito dello spazio dei nomi da clonare.
+
+. Modificare la mappatura del sottosistema per lo spazio dei nomi clonato.
+. Fare clic su *OK*.
++
+Lo spazio dei nomi online mappato viene clonato all'interno della stessa SVM con un nome diverso. La mappatura dell'host non verrà clonata.
+
+

@@ -1,0 +1,39 @@
+---
+section: nas-multiprotocol-config
+title: Configurazione multiprotocollo SMB/CIFS e NFS
+entries:
+- title: Panoramica
+  url: "/nas-multiprotocol-config/index.html"
+- title: Workflow di configurazione multiprotocollo
+  url: "/nas-multiprotocol-config/concept_cifs_nfs_configuration_workflow.html"
+  entries:
+  - title: Creare un aggregato
+    url: "/nas-multiprotocol-config/task_creating_aggregate.html"
+  - title: Decidere dove eseguire il provisioning del nuovo volume
+    url: "/nas-multiprotocol-config/task_deciding_where_to_provision_new_volume.html"
+    entries:
+    - title: Creare una SVM di base
+      url: "/nas-multiprotocol-config/task_creating_new_svm.html"
+    - title: Aggiungere l'accesso CIFS e NFS a una SVM esistente
+      url: "/nas-multiprotocol-config/concept_adding_nas_access_to_existing_svm.html"
+    - title: Aprire la policy di esportazione del volume root SVM (creando una nuova
+        SVM abilitata per NFS)
+      url: "/nas-multiprotocol-config/task_opening_export_policy_svm_root_volume.html"
+    - title: Mappare il server SMB sul server DNS
+      url: "/nas-multiprotocol-config/task_mapping_smb_server_dns_server.html"
+    - title: Configurare LDAP (creare una nuova SVM abilitata per NFS)
+      url: "/nas-multiprotocol-config/task_configuring_ldap_new_svm.html"
+    - title: Mappare i nomi utente UNIX e Windows
+      url: "/nas-multiprotocol-config/task_mapping_unix_windows_user_names.html"
+  - title: Creare e configurare un volume
+    url: "/nas-multiprotocol-config/task_creating_configuring_volume.html"
+  - title: Creare una condivisione e impostarne le autorizzazioni
+    url: "/nas-multiprotocol-config/task_creating_share_setting_its_permissions.html"
+  - title: Creare una policy di esportazione per il volume
+    url: "/nas-multiprotocol-config/task_creating_export_policy_for_volume.html"
+  - title: Verificare l'accesso al client SMB
+    url: "/nas-multiprotocol-config/task_verifying_smb_client_access.html"
+  - title: Verificare l'accesso NFS da un host di amministrazione UNIX
+    url: "/nas-multiprotocol-config/task_verifying_nfs_access_from_unix_administration_host.html"
+  - title: Configurare e verificare l'accesso al client CIFS e NFS
+    url: "/nas-multiprotocol-config/task_configuring_verifying_client_access_new_svm.html"

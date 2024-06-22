@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_configuring_system_manager_options.html 
+sidebar: sidebar 
+keywords: system, manager, configure, system, manager, option, online, help 
+summary: È possibile attivare la registrazione e specificare il valore di timeout di inattività per System Manager. 
+---
+= Configurare le opzioni di Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile attivare la registrazione e specificare il valore del timeout di inattività per Gestione di sistema ONTAP Classic (disponibile in ONTAP 9.7 o versioni precedenti).
+
+.A proposito di questa attività
+È possibile configurare le opzioni dalla finestra di accesso di System Manager. Tuttavia, è necessario accedere all'applicazione per specificare il valore del timeout di inattività.
+
+.Fasi
+. Fare clic su *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Nel riquadro *Setup*, fare clic su *General*.
+. Specificare un livello di log.
+. Specificare il valore del timeout di inattività in minuti.
++
+[NOTE]
+====
+Questa opzione non è disponibile se è stata attivata l'autenticazione SAML (Security Assertion Markup Language).
+
+====
+. Fare clic su *OK*.
+

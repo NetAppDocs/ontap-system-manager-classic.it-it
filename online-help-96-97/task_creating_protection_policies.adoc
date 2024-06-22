@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_creating_protection_policies.html 
+sidebar: sidebar 
+keywords: create, protection, policies, online, help, system, manager 
+summary: È possibile utilizzare System Manager per creare policy di mirroring asincrone, policy di vault o policy di mirroring e vault e per applicare tali policy a una relazione di protezione dei dati. 
+---
+= Creare policy di protezione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare System Manager per creare policy di mirroring asincrone, policy di vault o policy di mirroring e vault e per applicare tali policy a una relazione di protezione dei dati.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la macchina virtuale di storage (SVM) per la quale si desidera creare un criterio di protezione, quindi fare clic su *Impostazioni SVM*.
+. Nel riquadro *Criteri*, fare clic su *Criteri di protezione*.
+. Fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea policy*, selezionare il tipo di policy che si desidera creare.
+. Specificare il nome del criterio e la priorità di trasferimento.
++
+Basso indica che il trasferimento ha la priorità minima e che il trasferimento viene pianificato dopo i normali trasferimenti con priorità. Per impostazione predefinita, la priorità è impostata su normale.
+
+. Per una policy di tipo mirror asincrono, selezionare la casella di controllo *Transfer All Source Snapshot Copies* (Trasferisci tutte le copie Snapshot di origine) per includere la regola "`all_source_Snapshot`" nel criterio mirror, che esegue il backup di tutte le copie Snapshot dal volume di origine.
+. Selezionare la casella di controllo *Enable Network Compression* (Abilita compressione di rete) per comprimere i dati trasferiti durante un trasferimento.
+. Fare clic su *Add Comments* (Aggiungi commenti) per aggiungere ulteriori commenti alla policy.
+. Per una policy di tipo vault o vault mirror, specificare un'etichetta SnapMirror e un conteggio di conservazione della destinazione.
+. Fare clic su *Create* (Crea).
+

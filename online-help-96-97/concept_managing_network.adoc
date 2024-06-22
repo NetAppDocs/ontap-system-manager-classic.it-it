@@ -1,0 +1,512 @@
+---
+permalink: online-help-96-97/concept_managing_network.html 
+sidebar: sidebar 
+keywords: system, manager, storage, create, manage, ipspace, broadcast, domain, subnet, network, interface, ethernet, port, fc, fcoe, adapter, online, help 
+summary: È possibile utilizzare System Manager per gestire la rete del sistema storage creando e gestendo IPspaces, domini di trasmissione, subnet, interfacce di rete, porte Ethernet, E adattatori FC/FCoE. 
+---
+= Gestione della rete con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire la rete del sistema di storage creando e gestendo spazi IP, domini di trasmissione, subnet, interfacce di rete, porte Ethernet, E adattatori FC/FCoE.
+
+
+
+== Finestra Network (rete)
+
+[role="lead"]
+È possibile utilizzare la finestra rete per visualizzare l'elenco dei componenti di rete, ad esempio subnet, interfacce di rete, porte Ethernet, domini di trasmissione, Adattatori FC/FCoE e NVMe e IPspaces e per creare, modificare o eliminare questi componenti nel sistema storage.
+
+
+
+=== Schede
+
+* *Subnet*
++
+Consente di visualizzare un elenco di sottoreti e di creare, modificare o eliminare le sottoreti dal sistema di storage.
+
+* *Interfacce di rete*
++
+Consente di visualizzare un elenco di interfacce di rete, creare, modificare o eliminare interfacce dal sistema di storage, migrare le LIF, modificare lo stato dell'interfaccia e inviare nuovamente l'interfaccia alla porta home.
+
+* *Porte Ethernet*
++
+Consente di visualizzare e modificare le porte di un cluster e di creare, modificare o eliminare gruppi di interfacce e porte VLAN.
+
+* *Domini di trasmissione*
++
+Consente di visualizzare un elenco di domini broadcast e di creare, modificare o eliminare domini dal sistema storage.
+
+* *Adattatori FC/FCoE e NVMe*
++
+Consente di visualizzare le porte di un cluster e modificare le impostazioni degli adattatori FC/FCoE e NVMe.
+
+* *IPspaces*
++
+Consente di visualizzare un elenco di IPspaces e domini di trasmissione e di creare, modificare o eliminare un IPSpace dal sistema di storage.
+
+
+
+
+
+=== Scheda Subnet (sottorete)
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Subnet (Crea subnet), che consente di creare nuove subnet contenenti informazioni di configurazione per la creazione di un'interfaccia di rete.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Subnet (Modifica subnet), che consente di modificare alcuni attributi di una subnet, ad esempio il nome, l'indirizzo di sottorete, l'intervallo di indirizzi IP e i dettagli del gateway.
+
+* *Elimina*
++
+Elimina la subnet selezionata.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco di subnet
+
+* *Nome*
++
+Specifica il nome della subnet.
+
+* *IP subnet/subnet mask*
++
+Specifica i dettagli dell'indirizzo di sottorete.
+
+* *Gateway*
++
+Specifica l'indirizzo IP del gateway.
+
+* *Disponibile*
++
+Specifica il numero di indirizzi IP disponibili nella subnet.
+
+* *Utilizzato*
++
+Specifica il numero di indirizzi IP utilizzati nella subnet.
+
+* *Conteggio totale*
++
+Specifica il numero totale di indirizzi IP (disponibili e utilizzati) nella subnet.
+
+* *Dominio di trasmissione*
++
+Specifica il dominio di trasmissione a cui appartiene la subnet.
+
+* *IPSpace*
++
+Specifica l'IPSpace a cui appartiene la subnet.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco delle subnet visualizza informazioni dettagliate sulla subnet selezionata, tra cui l'intervallo delle subnet e un grafico che mostra gli indirizzi IP disponibili, utilizzati e totali.
+
+
+
+=== Limitazioni della scheda Network Interfaces (interfacce di rete)
+
+* Per le LIF del cluster, le LIF di gestione dei nodi, le LIF VIP e le LIF BGP, non è possibile utilizzare System Manager per eseguire le seguenti operazioni:
++
+** Creare, modificare, eliminare, attivare o disattivare i LIF
+** Eseguire la migrazione dei file LIF o inviare nuovamente i file LIF alla porta home
+
+
+* Per le LIF di gestione del cluster, è possibile utilizzare System Manager per migrare le LIF o inviare nuovamente le LIF alla porta home.
++
+Tuttavia, non è possibile creare, modificare, eliminare, abilitare, Oppure disattivare i LIF.
+
+* Per le LIF tra cluster, è possibile utilizzare System Manager per creare, modificare, eliminare, attivare o disattivare le LIF.
++
+Tuttavia, non è possibile migrare i file LIF o inviare nuovamente i file LIF alla porta home.
+
+* Non è possibile creare, modificare o eliminare interfacce di rete nelle seguenti configurazioni:
++
+** Una configurazione MetroCluster
+** SVM configurate per il disaster recovery (DR).
+
+
+
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Network Interface (Crea interfaccia di rete), che consente di creare interfacce di rete e LIF di intercluster per fornire dati e gestire le SVM.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Network Interface (Modifica interfaccia di rete), che consente di abilitare l'accesso alla gestione per una LIF dati.
+
+* *Elimina*
++
+Elimina l'interfaccia di rete selezionata.
+
++
+Questo pulsante è attivato solo se la LIF dei dati è disattivata.
+
+* *Stato*
++
+Aprire il menu a discesa che consente di attivare o disattivare l'interfaccia di rete selezionata.
+
+* *Migrate*
++
+Consente di migrare una LIF di dati o una LIF di gestione del cluster a una porta diversa sullo stesso nodo o su un nodo diverso all'interno del cluster.
+
+* *Invia a casa*
++
+Consente di ospitare nuovamente LIF sulla porta home.
+
++
+Questo pulsante di comando è attivato solo quando l'interfaccia selezionata è ospitata su una porta non home e quando la porta home è disponibile.
+
++
+Questo pulsante di comando è disattivato quando un nodo del cluster non è attivo.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco delle interfacce
+
+Per visualizzare lo stato operativo dell'interfaccia, spostare il puntatore sull'icona colorata:
+
+* Verde indica che l'interfaccia è attivata.
+* Red specifica che l'interfaccia è disattivata.
+* *Nome interfaccia*
++
+Specifica il nome dell'interfaccia di rete.
+
+* *Storage Virtual Machine*
++
+Specifica la SVM a cui appartiene l'interfaccia.
+
+* *Indirizzo IP/WWPN*
++
+Specifica l'indirizzo IP o il nome della porta universale (WWPN) dell'interfaccia.
+
+* *Porta corrente*
++
+Specifica il nome del nodo e della porta su cui è ospitata l'interfaccia.
+
+* *Accesso al protocollo dati*
++
+Specifica il protocollo utilizzato per accedere ai dati.
+
+* *Accesso alla gestione*
++
+Specifica se l'accesso alla gestione è attivato sull'interfaccia.
+
+* *Subnet*
++
+Specifica la subnet a cui appartiene l'interfaccia.
+
+* *ruolo mx*
++
+Specifica il ruolo operativo dell'interfaccia, che può essere data, intercluster, cluster, gestione del cluster o gestione dei nodi.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco delle interfacce visualizza informazioni dettagliate sull'interfaccia selezionata: Proprietà di failover come la porta principale, la porta corrente, la velocità delle porte, la policy di failover, il gruppo di failover e lo stato di failover e proprietà generali come stato amministrativo, ruolo, IPSpace, dominio di trasmissione, maschera di rete, Gateway e stato DDNS.
+
+
+
+=== Scheda Ethernet Ports (Porte Ethernet)
+
+
+
+=== Pulsanti di comando
+
+* *Crea gruppo di interfacce*
++
+Apre la finestra di dialogo Create Interface Group (Crea gruppo di interfacce), che consente di creare gruppi di interfacce scegliendo le porte e determinando l'utilizzo delle porte e la distribuzione del traffico di rete.
+
+* *Crea VLAN*
++
+Apre la finestra di dialogo Create VLAN (Crea VLAN), che consente di creare una VLAN scegliendo una porta Ethernet o un gruppo di interfacce e aggiungendo tag VLAN.
+
+* *Modifica*
++
+Apre una delle seguenti finestre di dialogo:
+
++
+** Finestra di dialogo Edit Ethernet Port (Modifica porta Ethernet): Consente di modificare le impostazioni della porta Ethernet.
+** Finestra di dialogo Edit VLAN (Modifica VLAN): Consente di modificare le impostazioni della VLAN.
+** Finestra di dialogo Edit Interface Group (Modifica gruppo di interfacce): Consente di modificare i gruppi di interfacce.
+
+
++
+È possibile modificare solo le VLAN non associate a un dominio di trasmissione.
+
+* *Elimina*
++
+Apre una delle seguenti finestre di dialogo:
+
++
+** Finestra di dialogo Delete VLAN (Elimina VLAN): Consente di eliminare una VLAN.
+** Finestra di dialogo Delete Interface Group (Elimina gruppo di interfacce): Consente di eliminare un gruppo di interfacce.
+
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco delle porte
+
+Per visualizzare lo stato operativo della porta, spostare il puntatore sull'icona colorata:
+
+* Verde indica che la porta è attivata.
+* Red specifica che la porta è disattivata.
+* *Porta*
++
+Visualizza il nome della porta fisica, della porta VLAN o del gruppo di interfacce.
+
+* Nodo *
++
+Visualizza il nodo su cui si trova l'interfaccia fisica.
+
+* *Broadcast Domain*
++
+Visualizza il dominio di trasmissione della porta.
+
+* *IPSpace*
++
+Visualizza l'IPSpace a cui appartiene la porta.
+
+* *Tipo*
++
+Visualizza il tipo di interfaccia, ad esempio gruppo di interfacce, interfaccia fisica, vip o VLAN.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco delle porte visualizza informazioni dettagliate sulle proprietà della porta.
+
+* Scheda *Dettagli*
++
+Visualizza i dettagli amministrativi e operativi.
+
++
+Come parte dei dettagli operativi, la scheda visualizza lo stato di salute delle porte. Le porte possono essere integre o degradate. Una porta degradata è una porta su cui si verificano continue fluttuazioni di rete o una porta che non ha connettività con altre porte nello stesso dominio di trasmissione.
+
++
+Inoltre, la scheda visualizza anche il nome dell'interfaccia, i dettagli SVM e i dettagli dell'indirizzo IP delle interfacce di rete ospitate sulla porta selezionata. Indica inoltre se l'interfaccia si trova sulla porta home.
+
+* Scheda Performance (prestazioni)*
++
+Visualizza i grafici delle metriche delle prestazioni delle porte ethernet, inclusi tasso di errore e throughput.
+
++
+La modifica del fuso orario del client o del fuso orario del cluster influisce sui grafici delle metriche delle performance. Aggiornare il browser per visualizzare i grafici aggiornati.
+
+
+
+
+
+=== Scheda Broadcast Domain
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Broadcast Domain (Crea dominio di trasmissione), che consente di creare nuovi domini di trasmissione per contenere le porte.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Broadcast Domain (Modifica dominio di trasmissione), che consente di modificare gli attributi di un dominio di trasmissione, ad esempio il nome, la dimensione MTU e le porte associate.
+
+* *Elimina*
++
+Elimina il dominio di trasmissione selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Broadcast domain list
+
+* *Broadcast Domain*
++
+Specifica il nome del dominio di trasmissione.
+
+* *MTU*
++
+Specifica la dimensione MTU.
+
+* *IPSpace*
++
+Specifica IPSpace.
+
+* *Stato di aggiornamento combinato della porta*
++
+Specifica lo stato degli aggiornamenti delle porte quando si crea o si modifica un dominio di trasmissione. Gli eventuali errori negli aggiornamenti delle porte vengono visualizzati in una finestra separata, che è possibile aprire facendo clic sul collegamento associato.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco dei domini di trasmissione visualizza tutte le porte di un dominio di trasmissione. In un IPSpace non predefinito, se un dominio di trasmissione presenta porte con errori di aggiornamento, tali porte non vengono visualizzate nell'area dei dettagli. Per visualizzare lo stato operativo delle porte, spostare il puntatore sull'icona colorata:
+
+* Verde indica che la porta è attivata.
+* Red specifica che la porta è disattivata.
+
+
+
+
+=== Scheda adattatori FC/FCoE e NVMe
+
+
+
+=== Pulsanti di comando
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit FC/FCoE and NVMe Settings (Modifica impostazioni FC/FCoE e NVMe), che consente di modificare la velocità della scheda.
+
+* *Stato*
++
+Consente di portare l'adattatore online o offline.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco degli adattatori FC/FCoE e NVMe
+
+* *WWNN*
++
+Specifica l'identificatore univoco dell'adattatore FC/FCoE e NVMe.
+
+* *Nome nodo*
++
+Specifica il nome del nodo che utilizza la scheda di rete.
+
+* *Slot*
++
+Specifica lo slot che utilizza l'adattatore.
+
+* *WWPN*
++
+Specifica il nome della porta universale FC (WWPN) dell'adattatore.
+
+* *Stato*
++
+Specifica se lo stato della scheda è online o offline.
+
+* *Velocità*
++
+Specifica se le impostazioni della velocità sono automatiche o manuali.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco degli adattatori FC/FCoE e NVMe visualizza informazioni dettagliate sugli adattatori selezionati.
+
+* Scheda *Dettagli*
++
+Visualizza i dettagli dell'adattatore, ad esempio il tipo di supporto, l'indirizzo della porta, la velocità di collegamento dei dati, lo stato della connessione, lo stato del funzionamento, stato del fabric e velocità della scheda di rete.
+
+* Scheda Performance (prestazioni)*
++
+Visualizza i grafici delle metriche delle performance degli adattatori FC/FCoE e NVMe, inclusi IOPS e tempi di risposta.
+
++
+La modifica del fuso orario del client o del fuso orario del cluster influisce sui grafici delle metriche delle performance. Aggiornare il browser per visualizzare i grafici aggiornati.
+
+
+
+
+
+=== Scheda IPspaces
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create IPSpace (Crea IPSpace), che consente di creare un nuovo IPSpace.
+
+* *Modifica*
++
+Apre la finestra di dialogo Modifica IPSpace, che consente di rinominare un IPSpace esistente.
+
+* *Elimina*
++
+Elimina l'IPSpace selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== IPspaces
+
+* *Nome*
++
+Specifica il nome di IPSpace.
+
+* *Domini di trasmissione*
++
+Specifica il dominio di trasmissione.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco IPspaces visualizza l'elenco delle macchine virtuali di storage (SVM) nell'IPSpace selezionato.

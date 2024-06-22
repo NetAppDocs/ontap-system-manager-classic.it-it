@@ -1,0 +1,36 @@
+---
+permalink: peering/task_creating_intercluster_lifs.html 
+sidebar: sidebar 
+keywords: creating, create, intercluster, logical, interface, lif, enable, network, communicate, ipspace, peer, relationship, create intercluster lif, Beginning with ontap 9.3 
+summary: 'A partire da ONTAP 9.3, fino a ONTAP 9.7, è possibile utilizzare l"interfaccia "classica" di Gestione sistema di ONTAP per creare interfacce logiche intercluster (LIFF), che consentono alla rete del cluster di comunicare con un nodo. È necessario creare una LIF intercluster all"interno di ciascun IPSpace che verrà utilizzato per il peering, su ciascun nodo di ciascun cluster per il quale si desidera creare una relazione peer.' 
+---
+= Creazione di LIF tra cluster (a partire da ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da ONTAP 9.3, fino a ONTAP 9.7, è possibile utilizzare l'interfaccia _classic_ di Gestore di sistema di ONTAP per creare interfacce logiche (LIF) intercluster, che consentono alla rete del cluster di comunicare con un nodo. È necessario creare una LIF intercluster all'interno di ciascun IPSpace che verrà utilizzato per il peering, su ciascun nodo di ciascun cluster per il quale si desidera creare una relazione peer.
+
+.A proposito di questa attività
+Ad esempio, se si dispone di un cluster a quattro nodi che si desidera eseguire il peer con il cluster X su IPSpace A e il peer con il cluster Y su IPSpace Y, è necessario un totale di otto LIF intercluster; Quattro su IPSpace A (uno per nodo) e quattro su IPSpace Y (uno per nodo).
+
+È necessario eseguire questa procedura su entrambi i cluster per i quali si desidera creare una relazione peer.
+
+.Fasi
+. Fare clic su *Configuration* > *Advanced Cluster Setup*.
+. Nella finestra *Setup Advanced Cluster Features*, fare clic su *Proceed* (Procedi) accanto all'opzione *Cluster peering*.
+. Selezionare un IPSpace dall'elenco *IPSpace*.
+. Inserire l'indirizzo IP, la porta, la maschera di rete e i dettagli del gateway di ciascun nodo.
++
+image::../media/intercluster_lif_creation_93.gif[Questa immagine viene spiegata dal testo circostante.]
+
+. Fare clic su *Invia e continua*.
+
+
+
+
+== Cosa fare in seguito
+
+Inserire i dettagli del cluster nella finestra di peering del cluster per continuare con il peering del cluster.

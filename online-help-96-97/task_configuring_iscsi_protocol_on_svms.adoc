@@ -1,0 +1,123 @@
+---
+permalink: online-help-96-97/task_configuring_iscsi_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: system, manager, iscsi, protocol, svm, online, help, lif, portset 
+summary: 'È possibile configurare il protocollo iSCSI su una macchina virtuale di storage (SVM) per fornire l"accesso ai dati a livello di blocco utilizzando System Manager. È possibile creare LIF e portset iSCSI e quindi aggiungere i LIF ai portset. Le LIF vengono create sugli adattatori più adatti e vengono assegnate ai portset per garantire la ridondanza del percorso dati.' 
+---
+= Configurare il protocollo iSCSI sulle SVM con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per configurare il protocollo iSCSI su una macchina virtuale di storage (SVM) per fornire l'accesso ai dati a livello di blocco. È possibile creare LIF e portset iSCSI e quindi aggiungere i LIF ai portset. Le LIF vengono create sugli adattatori più adatti e vengono assegnate ai portset per garantire la ridondanza del percorso dati.
+
+.Prima di iniziare
+* La licenza iSCSI deve essere attivata sul cluster.
++
+Se il protocollo iSCSI non è attivato su SVM, è possibile utilizzare la finestra Edit Storage Virtual Machine (Modifica macchina virtuale dello storage) per attivare il protocollo per SVM.
+
+* Tutti i nodi del cluster devono essere integri.
+* Ogni nodo deve avere almeno due porte dati e lo stato della porta deve essere `up`.
+
+
+.A proposito di questa attività
+* È possibile configurare il protocollo iSCSI durante la creazione di SVM oppure in un secondo momento.
+* Gli aggregati SnapLock non sono considerati per la creazione automatica dei volumi.
+
+
+.Fasi
+. Se il protocollo iSCSI non è stato configurato durante la creazione di SVM, fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Protocols* (protocolli), fare clic su *iSCSI*.
+. *Opzionale:* nella sezione *accesso alla rete*, specificare un alias per la destinazione iSCSI.
++
+Il numero massimo di caratteri per un nome alias è 128. Se non si specifica un alias di destinazione, il nome SVM viene utilizzato come alias.
+
+. Specificare il numero di LIF iSCSI che è possibile assegnare a un singolo nodo.
++
+Il numero minimo di LIF per nodo è uno. Il numero massimo corrisponde al numero minimo di tutte le porte in `up` di tutti i nodi. Se il valore massimo è un numero dispari, il numero pari precedente viene considerato come il valore massimo. È possibile scegliere qualsiasi numero pari nell'intervallo di valori minimo e massimo.
+
++
+Un cluster a 4 nodi dispone di node1, node2 e node3 con sei porte ciascuna in `up` e node4 con sette porte in `up` stato. Il valore massimo effettivo per il cluster è 6.
+
++
+Se il numero di LIF che si desidera assegnare al nodo è superiore a due, è necessario assegnare almeno un portset a ciascun LIF.
+
+. Specificare i dettagli della rete, inclusi i dettagli della subnet, per creare le LIF iSCSI:
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Specificare l'indirizzo IP utilizzando una subnet
+ a| 
+.. Selezionare *utilizzando una subnet*.
+.. Nella finestra di dialogo Add Details (Aggiungi dettagli), selezionare la subnet da cui assegnare l'indirizzo IP.
++
+Per le LIF intercluster, vengono visualizzate solo le subnet associate all'IPSpace selezionato.
+
+.. Se si desidera assegnare un indirizzo IP specifico all'interfaccia, selezionare *Usa un indirizzo IP specifico*, quindi digitare l'indirizzo IP.
++
+L'indirizzo IP specificato viene aggiunto alla subnet se l'indirizzo IP non è già presente nell'intervallo di sottorete.
+
+.. Fare clic su *OK*.
+
+
+
+
+ a| 
+Specificare manualmente l'indirizzo IP senza utilizzare una subnet
+ a| 
+.. Selezionare *senza subnet*.
+.. Nella finestra di dialogo Add Details (Aggiungi dettagli), attenersi alla seguente procedura:
++
+... Specificare l'indirizzo IP e la maschera o il prefisso di rete.
+... Facoltativo: Specificare il gateway.
+... Se non si desidera utilizzare il valore predefinito per il campo destinazione, specificare un nuovo valore di destinazione.
++
+Se non si specifica un valore di destinazione, nel campo destinazione viene inserito il valore predefinito in base alla famiglia dell'indirizzo IP.
+
+
+
++
+Se non esiste un percorso, viene creato automaticamente un nuovo percorso in base al gateway e alla destinazione.
+
+.. Fare clic su *OK*.
+
+
+|===
+. Selezionare il dominio di trasmissione.
+. Selezionare il tipo di adattatore.
++
+Se nel cluster sono configurate schede NIC, selezionare *NIC*.
+
++
+Se nel cluster sono configurate schede CNS, selezionare *CNA*.
+
++
+Se ifgrps è configurato nel cluster, selezionare *Interface Group* (Gruppo interfaccia).
+
++
+[NOTE]
+====
+La porta ifgrp deve essere aggiunta nel dominio di trasmissione.
+
+====
+. *Opzionale:* eseguire il provisioning di un LUN per lo storage iSCSI durante la configurazione del protocollo iSCSI specificando le dimensioni del LUN, il tipo di sistema operativo per il LUN e i dettagli dell'iniziatore host.
+. Se si desidera verificare o modificare la configurazione delle LIF iSCSI generate automaticamente, selezionare *Rivedi o Modifica configurazione LIF (Advanced Settings)*.
++
+È possibile modificare solo il nome LIF e la porta home. Per impostazione predefinita, i portset sono impostati sul valore minimo. Specificare voci univoche. Se si specificano nomi LIF duplicati, System Manager aggiunge valori numerici al nome LIF duplicato.
+
++
+In base al set di porte selezionato, i LIF vengono distribuiti tra i portset utilizzando un metodo round-robin per garantire la ridondanza in caso di guasto del nodo o della porta.
+
+. Fare clic su *Invia e continua*.
+
+
+.Risultati
+Le LIF e i portset iSCSI vengono creati con la configurazione specificata. I LIF sono distribuiti tra i portset in base al portset selezionato. Il servizio iSCSI viene avviato se tutte le LIF sono state create correttamente.
+
+Se la creazione LIF non riesce, è possibile creare le LIF utilizzando la finestra Network Interfaces (interfacce di rete), collegare le LIF ai portset utilizzando la finestra LUN, quindi avviare il servizio iSCSI utilizzando la finestra iSCSI.

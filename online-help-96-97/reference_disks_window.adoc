@@ -1,0 +1,174 @@
+---
+permalink: online-help-96-97/reference_disks_window.html 
+sidebar: sidebar 
+keywords: command, button, disk, window, inventory, detail, online, help 
+summary: È possibile utilizzare la finestra dischi per visualizzare tutti i dischi nel sistema di storage. 
+---
+= Finestra dischi in Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra dischi in Gestione sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per visualizzare tutti i dischi nel sistema di storage.
+
+
+
+== Pulsanti di comando
+
+* *Assegna*
++
+Assegna o riassegna la proprietà dei dischi a un nodo.
+
++
+Questo pulsante è attivato solo se il tipo di contenitore dei dischi selezionati è non assegnato, spare o condiviso.
+
+* *Nessun ricambio*
++
+Cancella tutti i dati e formatta i dischi spare e le LUN degli array.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+== Schede
+
+
+
+== Riepilogo
+
+Visualizza informazioni dettagliate sui dischi nel cluster, incluse le dimensioni dei dischi di riserva e dei dischi assegnati. La scheda visualizza inoltre graficamente informazioni su dischi di riserva, aggregati e aggregati root per HDD e informazioni su dischi di riserva, dischi in un pool di storage, aggregati, aggregati di Flash Pool e aggregati root per dischi cache (SSD).
+
+Il pannello HDD non viene visualizzato per i sistemi con All Flash Optimized Personality.
+
+Il pannello dei dettagli fornisce informazioni aggiuntive sui dischi spare partizionati e non partizionati (tipo di disco, nodo, dimensione del disco, RPM, checksum, numero di dischi disponibili e capacità di riserva), in formato tabulare.
+
+
+
+== Inventario
+
+* *Nome*
++
+Visualizza il nome del disco.
+
+* *Tipo di container*
++
+Visualizza lo scopo per cui viene utilizzato il disco. I valori possibili sono aggregato, rotto, estero, manutenzione etichette, manutenzione, Condiviso, spare, non assegnato, volume, sconosciuto, E non supportato.
+
+* *Tipo di partizione*
++
+Visualizza il tipo di partizione del disco.
+
+* *Nome nodo*
++
+Visualizza il nome del nodo che contiene l'aggregato.
+
++
+Questo campo è disponibile solo a livello di cluster.
+
+* *Proprietario di casa*
++
+Visualizza il nome del nodo principale a cui è assegnato il disco.
+
+* *Attuale proprietario*
++
+Visualizza il nome del nodo attualmente proprietario del disco.
+
+* *Proprietario root*
++
+Visualizza il nome del nodo attualmente proprietario della partizione root di questo disco.
+
+* *Proprietario dei dati*
++
+Visualizza il nome del nodo attualmente proprietario della partizione dati di questo disco.
+
+* *Proprietario del Data1*
++
+Visualizza il nome del nodo attualmente proprietario della partizione data1 del disco.
+
+* *Data2 Proprietario*
++
+Visualizza il nome del nodo che attualmente possiede la partizione data2 del disco.
+
+* *Pool di storage*
++
+Visualizza il nome del pool di storage a cui è associato il disco.
+
+* *Tipo*
++
+Visualizza il tipo di disco.
+
+* *Versione firmware*
++
+Visualizza la versione del firmware del disco.
+
+* *Modello*
++
+Visualizza il modello del disco.
+
+* *GIRI/MIN*
++
+Visualizza la velocità effettiva del disco quando l'opzione è selezionata `raid.mix.hdd.rpm.capacity` è attivato e visualizza la velocità effettiva del disco quando l'opzione è attivata `raid.mix.hdd.rpm.capacity` è disattivato.
+
++
+Questo campo non è applicabile agli SSD.
+
+* *Dimensione effettiva*
++
+Visualizza lo spazio utilizzabile disponibile sul disco.
+
+* *Spazio fisico*
++
+Visualizza lo spazio fisico totale del disco.
+
+* *Ripiano*
++
+Visualizza lo shelf su cui si trovano i dischi fisici.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Baia*
++
+Visualizza l'alloggiamento all'interno dello shelf per il disco fisico.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Pool*
++
+Visualizza il nome del pool a cui è assegnato il disco selezionato.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *Checksum*
++
+Visualizza il tipo di checksum.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+* *ID vettore*
++
+Specifica le informazioni sui dischi che si trovano all'interno del supporto multi-disco specificato. L'ID è un valore a 64 bit.
+
++
+Questo campo è nascosto per impostazione predefinita.
+
+
+
+
+
+== Area dei dettagli dell'inventario
+
+L'area sotto la scheda Inventory (inventario) visualizza informazioni dettagliate sul disco selezionato, tra cui informazioni sull'aggregato o sul volume (se applicabile), l'ID del vendor, lo stato di azzeramento (in percentuale), il numero di serie del disco e i dettagli degli errori in caso di guasto del disco. Per i dischi condivisi, l'area Dettagli inventario visualizza i nomi di tutti gli aggregati, inclusi gli aggregati root e non root.
+
+*Informazioni correlate*
+
+xref:task_viewing_disk_information.adoc[Visualizzazione delle informazioni sul disco]

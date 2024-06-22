@@ -1,0 +1,205 @@
+---
+permalink: online-help-96-97/task_updating_cluster_name.html 
+sidebar: sidebar 
+keywords: system, manager, update, cluster, name, online, help 
+summary: È possibile utilizzare System Manager per modificare il nome di un cluster, se necessario. 
+---
+= Configurare il cluster con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per configurare il cluster, è possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+La configurazione del cluster comporta la raccolta delle informazioni di configurazione, la creazione di interfacce di gestione del cluster e dei nodi, l'aggiunta di licenze, la configurazione del tempo del cluster e il monitoraggio delle coppie ha.
+
+
+
+== Aggiornare il nome del cluster
+
+È possibile utilizzare System Manager per modificare il nome di un cluster, se necessario.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nel riquadro *Cluster Details* (Dettagli cluster), fare clic su *Update Cluster Name* (Aggiorna nome cluster).
+. Nella finestra di dialogo *Aggiorna nome cluster*, specificare un nuovo nome per il cluster, quindi fare clic su *Invia*.
+
+
+
+
+== Modificare la password del cluster
+
+È possibile utilizzare System Manager per reimpostare la password di un cluster.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nel riquadro *Cluster Details* (Dettagli cluster), fare clic su *Change Password* (Modifica password).
+. Nella finestra di dialogo *Cambia password*, specificare una nuova password, confermare la nuova password, quindi fare clic su *Cambia*.
+
+
+
+
+== Modificare le configurazioni DNS
+
+È possibile utilizzare System Manager per aggiungere informazioni sugli host per gestire centralmente le configurazioni DNS. È possibile modificare i dettagli DNS quando si desidera modificare i nomi di dominio o gli indirizzi IP.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nel riquadro *Cluster Details* (Dettagli cluster), fare clic su *Edit DNS Configuration* (Modifica configurazione DNS).
+. Nell'area *DNS Domain*, aggiungere o modificare i nomi di dominio DNS.
+. Nell'area *Server dei nomi*, aggiungere o modificare gli indirizzi IP.
+. Fare clic su *OK*.
+
+
+
+
+== Creare un'interfaccia logica di gestione del cluster
+
+È possibile utilizzare System Manager per creare un'interfaccia logica di gestione del cluster (LIF) per fornire una singola interfaccia di gestione per un cluster. È possibile utilizzare questa LIF per gestire tutte le attività del cluster.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nel riquadro *Cluster Details* (Dettagli cluster), fare clic su *Create Cluster-management LIF* (Crea LIF gestione cluster).
+. Nella finestra di dialogo *Create Cluster-Management LIF*, specificare un nome per la LIF di gestione del cluster.
+. Assegnare un indirizzo IP alla LIF di gestione del cluster:
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Specificare l'indirizzo IP utilizzando una subnet
+ a| 
+.. Selezionare *utilizzando una subnet*.
+.. Nella finestra di dialogo Add Details (Aggiungi dettagli), selezionare la subnet da cui assegnare l'indirizzo IP.
++
+Per un LIF intercluster, vengono visualizzate solo le subnet associate all'IPSpace selezionato.
+
+.. Se si desidera assegnare un indirizzo IP specifico a LIF, selezionare *Usa un indirizzo IP specifico*, quindi digitare l'indirizzo IP.
++
+L'indirizzo IP specificato viene aggiunto alla subnet se l'indirizzo IP non è già presente nell'intervallo di sottorete.
+
+.. Fare clic su *OK*.
+
+
+
+
+ a| 
+Specificare manualmente l'indirizzo IP senza utilizzare una subnet
+ a| 
+.. Selezionare *senza subnet*.
+.. Nella finestra di dialogo Add Details (Aggiungi dettagli), attenersi alla seguente procedura:
++
+... Specificare l'indirizzo IP e la maschera o il prefisso di rete.
+... Facoltativo: Specificare il gateway.
+... Se non si desidera utilizzare il valore predefinito per il campo destinazione, specificare un nuovo valore di destinazione.
++
+Se non si specifica un valore, nel campo destinazione viene inserito il valore predefinito in base alla famiglia dell'indirizzo IP.
+
+
+
++
+Se non esiste un percorso, viene creato automaticamente un nuovo percorso in base al gateway e alla destinazione.
+
+.. Fare clic su *OK*.
+
+
+|===
+. Selezionare le porte richieste dall'area *Port details* (Dettagli porta).
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Modificare il nome del nodo
+
+È possibile utilizzare System Manager per modificare il nome di un nodo quando richiesto.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nella scheda *Nodes*, selezionare il nodo che si desidera rinominare, quindi fare clic su *Edit Node Name* (Modifica nome nodo).
+. Nella finestra di dialogo *Edit Node Name* (Modifica nome nodo), digitare il nuovo nome del nodo, quindi fare clic su *Submit* (Invia).
+
+
+
+
+== Creare un'interfaccia logica di gestione dei nodi
+
+È possibile utilizzare System Manager per creare un'interfaccia logica di gestione dei nodi (LIF) dedicata per la gestione di un nodo specifico in un cluster. È possibile utilizzare questa LIF per gestire le attività di manutenzione del sistema del nodo.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nella scheda *Nodes*, selezionare il nodo per il quale si desidera creare una LIF di gestione dei nodi, quindi fare clic su *Create Node-Management LIF*.
+. Nella finestra di dialogo *Create Node-Management LIF*, specificare un nome per la LIF di gestione dei nodi.
+. Assegnare l'indirizzo IP alla LIF di gestione dei nodi:
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Specificare l'indirizzo IP utilizzando una subnet
+ a| 
+.. Selezionare *utilizzando una subnet*.
+.. Nella finestra di dialogo Add Details (Aggiungi dettagli), selezionare la subnet da cui assegnare l'indirizzo IP.
++
+Per un LIF intercluster, vengono visualizzate solo le subnet associate all'IPSpace selezionato.
+
+.. Se si desidera assegnare un indirizzo IP specifico a LIF, selezionare *Usa un indirizzo IP specifico*, quindi digitare l'indirizzo IP.
++
+L'indirizzo IP specificato viene aggiunto alla subnet se l'indirizzo IP non è già presente nell'intervallo di sottorete.
+
+.. Fare clic su *OK*.
+
+
+
+
+ a| 
+Specificare manualmente l'indirizzo IP senza utilizzare una subnet
+ a| 
+.. Selezionare *senza subnet*.
+.. Nella finestra di dialogo Add Details (Aggiungi dettagli), attenersi alla seguente procedura:
++
+... Specificare l'indirizzo IP e la maschera o il prefisso di rete.
+... Facoltativo: Specificare il gateway.
+... Se non si desidera utilizzare il valore predefinito per il campo destinazione, specificare un nuovo valore di destinazione.
++
+Se non si specifica un valore, nel campo destinazione viene inserito il valore predefinito in base alla famiglia dell'indirizzo IP.
+
+
+
++
+Se non esiste un percorso, viene creato automaticamente un nuovo percorso in base al gateway e alla destinazione.
+
+.. Fare clic su *OK*.
+
+
+|===
+. Selezionare le porte richieste dall'area *Dettagli porte*.
+. Fare clic su *Create* (Crea).
+
+
+
+
+=== Cosa fare in seguito
+
+Se si desidera eliminare una LIF di gestione dei nodi esistente, è necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+
+
+== Modificare le impostazioni AutoSupport
+
+È possibile utilizzare Gestione di sistema per modificare le impostazioni di AutoSupport e specificare un indirizzo e-mail da cui inviare le notifiche e-mail e aggiungere più nomi host di posta elettronica.
+
+.Fasi
+. Fare clic su *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* > *AutoSupport*.
+. Selezionare il nodo per il quale si desidera modificare le impostazioni AutoSupport, quindi fare clic su *Modifica*.
+. Nella scheda *destinatario e-mail*, digitare l'indirizzo e-mail da cui vengono inviate le notifiche e-mail, specificare i destinatari e il contenuto del messaggio per ciascun destinatario e-mail, quindi aggiungere gli host di posta.
++
+È possibile aggiungere fino a cinque indirizzi e-mail per ciascun host.
+
+. Nella scheda *altri*, selezionare un protocollo di trasporto per l'invio dei messaggi di posta elettronica, quindi specificare i dettagli del server proxy HTTP o HTTPS.
+. Fare clic su *OK*.
+

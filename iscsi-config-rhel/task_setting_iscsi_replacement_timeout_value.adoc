@@ -1,0 +1,26 @@
+---
+permalink: iscsi-config-rhel/task_setting_iscsi_replacement_timeout_value.html 
+sidebar: sidebar 
+keywords: support, multipath, modify, replacement, timeout, value, iscsi, configuration, file, set, set the iscsi replacement timeout value 
+summary: Per supportare il multipathing, è necessario modificare il valore di timeout di sostituzione nel file di configurazione iSCSI. 
+---
+= Impostare il valore di timeout per la sostituzione iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per supportare il multipathing, è necessario modificare il valore di timeout di sostituzione nel file di configurazione iSCSI.
+
+.Fase
+. Modificare il valore di timeout per la sostituzione in `/etc/iscsi/iscsid.conf` file dal valore predefinito 120 a 5.
++
+Il valore di timeout di sostituzione è simile a quello riportato nella `iscsid.conf`:
+
++
+[listing]
+----
+node.session.timeo.replacement_timeout = 5
+----
+

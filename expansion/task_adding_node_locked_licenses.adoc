@@ -1,0 +1,43 @@
+---
+permalink: expansion/task_adding_node_locked_licenses.html 
+sidebar: sidebar 
+keywords: cluster, feature, node-locked, license, entitle, functionality, add, add node-locked licenses 
+summary: Se il cluster dispone di funzionalità che utilizzano licenze bloccate dal nodo, è necessario assicurarsi che le licenze bloccate dal nodo siano installate per i nuovi nodi. 
+---
+= Aggiunta di licenze con blocco a nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se il cluster dispone di funzionalità che utilizzano licenze con blocco a nodo (che danno diritto solo a nodi specifici alla funzionalità concessa in licenza), è necessario assicurarsi che le licenze con blocco a nodo siano installate per i nuovi nodi. È necessario aggiungere le licenze prima che i nodi vengano Uniti al cluster.
+
+Completare questa attività se si utilizza l'interfaccia utente di _Classic_ System Manager con ONTAP 9.7 e versioni precedenti. Se si utilizza l'interfaccia utente di Gestione sistema con ONTAP 9.7 e versioni successive, vedere link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Abilitare le nuove funzioni aggiungendo le chiavi di licenza"].
+
+Per ulteriori informazioni sulla gestione delle licenze, vedere link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Panoramica sulla gestione delle licenze"].
+
+.Fasi
+. Aggiungere ogni chiave di licenza utilizzando `system license add` comando.
++
+[listing]
+----
+cluster1::> system license add -license-code AAAAAAAAAAAAAA
+----
+. Visualizzare le licenze esistenti utilizzando `system license show` comando.
++
+[listing]
+----
+cluster1::> system license show
+
+Serial Number: 9-99-999999
+Owner: cluster1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+Base              site    Cluster Base License  -
+NFS               license NFS License           -
+CIFS              license CIFS License          -
+...
+----
+. Esaminare l'output per assicurarsi che venga visualizzata una licenza bloccata dal nodo per tutti i numeri di serie, inclusi i numeri di serie per i nodi nuovi e esistenti.
+

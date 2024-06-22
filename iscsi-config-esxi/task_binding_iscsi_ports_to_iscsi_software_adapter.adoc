@@ -1,0 +1,31 @@
+---
+permalink: iscsi-config-esxi/task_binding_iscsi_ports_to_iscsi_software_adapter.html 
+sidebar: sidebar 
+keywords: port, create, iscsi, associate, software, adapter, support, multipath, bind, bind iscsi ports to the iscsi software adapter 
+summary: 'Le porte create per iSCSI devono essere associate all"adattatore software iSCSI per supportare il multipathing.' 
+---
+= Collegare le porte iSCSI all'adattatore software iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le porte create per iSCSI devono essere associate all'adattatore software iSCSI per supportare il multipathing.
+
+.Prima di iniziare
+* È necessario creare le porte VMkernel iSCSI.
+* L'adattatore software iSCSI deve essere attivato sull'host ESXi.
+
+
+.A proposito di questa attività
+È possibile collegare le porte iSCSI utilizzando il client vSphere.
+
+Per istruzioni dettagliate, consulta la sezione _VMware vSphere Storage_ per la tua versione di ESXi 5 di VMware.
+
+http://www.vmware.com["VMware"]
+
+.Fasi
+. Collegare la prima porta iSCSI all'adattatore software iSCSI utilizzando la scheda *Network Port Binding* della finestra di dialogo iSCSI software adapter *Adapter Details* (Dettagli adattatore) nel client vSphere.
+. Collegare la seconda porta iSCSI all'adattatore software iSCSI.
+

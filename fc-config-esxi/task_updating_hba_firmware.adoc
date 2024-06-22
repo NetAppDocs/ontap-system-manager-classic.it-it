@@ -1,0 +1,32 @@
+---
+permalink: fc-config-esxi/task_updating_hba_firmware.html 
+sidebar: sidebar 
+keywords: fc, host, bus, adapter, hba, esx, support, driver, firmware, bio, update, update the hba driver firmware and bios 
+summary: 'Se gli adattatori bus host FC dell"host ESX non utilizzano versioni supportate di driver, firmware e BIOS, è necessario aggiornarli.' 
+---
+= Aggiornare il driver HBA, il firmware e il BIOS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se gli HBA (host bus adapter) FC nell'host ESX non utilizzano versioni supportate di driver, firmware e BIOS, è necessario aggiornarli.
+
+.Prima di iniziare
+È necessario aver identificato le versioni del driver, del firmware e del BIOS supportate per la configurazione da https://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"].
+
+.A proposito di questa attività
+Driver, firmware, BIOS e utility HBA sono forniti dai vendor HBA.
+
+.Fasi
+. Elencare le versioni di driver, firmware e BIOS HBA installate utilizzando i comandi della console host ESXi per la versione di ESXi in uso.
+. Scaricare e installare i nuovi driver, firmware e BIOS secondo necessità dal sito di supporto del fornitore HBA.
++
+Le istruzioni di installazione e le eventuali utility di installazione richieste sono disponibili con il download.
+
+
+
+*Informazioni correlate*
+
+http://kb.vmware.com/kb/1002413["Articolo della Knowledge base di VMware 1002413: Identificazione del firmware di un HBA FC Qlogic o Emulex"]

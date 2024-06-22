@@ -1,0 +1,66 @@
+---
+permalink: online-help-96-97/task_tracing_file_access_to_diagnose_access_errors_on_svms.html 
+sidebar: sidebar 
+keywords: trace, file, access, diagnost, error, svm, system, manager, online, help 
+summary: 'A partire da System Manager 9.6, è possibile diagnosticare gli errori di accesso ai file CIFS o NFS su una macchina virtuale per lo storage (SVM).' 
+---
+= Traccia l'accesso ai file per diagnosticare gli errori di accesso sulle SVM con System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile diagnosticare gli errori di accesso ai file CIFS o NFS su una macchina virtuale per lo storage (SVM).
+
+.A proposito di questa attività
+È probabile che si verifichino problemi di accesso ai file, come ad esempio un errore "`accesso negato`", in caso di problemi di configurazione, autorizzazioni o mappatura utente della condivisione. È possibile utilizzare System Manager per risolvere i problemi di accesso ai file visualizzando i risultati della traccia di accesso per il file o la condivisione a cui un utente desidera accedere. System Manager mostra se il file o la condivisione dispone di permessi di lettura, scrittura o esecuzione effettivi e i motivi per cui l'accesso è o non è efficace.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM contenente i file o le condivisioni per cui sono stati ricevuti errori di accesso al file.
+. Fare clic su *accesso al file di traccia*.
++
+La finestra Trace file Access (accesso al file di traccia) per la SVM selezionata mostra i prerequisiti e i passaggi necessari per tracciare le autorizzazioni di accesso al file.
+
+. Fare clic su *Continue* (continua) per avviare il processo di analisi del file.
+. Selezionare il protocollo utilizzato per accedere ai file o alle condivisioni sulla SVM selezionata.
+. Nel campo *Nome utente*, immettere il nome dell'utente che stava tentando di accedere al file o alla condivisione.
+. *Opzionale:* fare clic image:../media/advanced_options.gif[""] per specificare ulteriori dettagli per limitare l'ambito della traccia.
++
+La finestra di dialogo Opzioni avanzate consente di specificare i seguenti dettagli:
+
++
+** *Client IP Address* (Indirizzo IP client): Specificare l'indirizzo IP del client.
+** *File*: Specificare il nome del file o il percorso del file da tracciare.
+** *Mostra in risultati traccia*: Specificare se si desidera visualizzare solo le voci di accesso negato o tutte le voci.
+Fare clic su *Apply* (Applica) per applicare i dettagli specificati e tornare alla finestra Trace file Access (accesso al file di traccia).
+
+
+. Fare clic su *Avvia traccia*.
++
+Il tracciato viene avviato e viene visualizzata una tabella dei risultati. La tabella rimane vuota fino a quando gli utenti non ricevono errori durante la richiesta di accesso al file. La tabella dei risultati viene aggiornata ogni 15 secondi e visualizza i messaggi in ordine cronologico inverso.
+
+. Informare l'utente o gli utenti interessati che devono provare ad accedere ai file entro i prossimi 60 minuti.
++
+I dettagli delle richieste di accesso negato al file vengono visualizzati nella tabella dei risultati quando si verificano errori per il nome utente specificato per la durata della traccia. La colonna motivi identifica i problemi che impediscono all'utente di accedere ai file e i motivi per cui si sono verificati.
+
+. *Opzionale:* nella colonna *motivi* della tabella dei risultati, fare clic su *Visualizza permessi* per visualizzare i permessi per il file a cui l'utente sta tentando di accedere.
++
+** Quando il risultato della traccia mostra un messaggio che indica che l'accesso non è consentito per "Synchronize", "Read Control", "Read Attributes", "Execute", "Read EA", Il messaggio "Write" (scrittura) o "Read" (lettura) indica che l'accesso desiderato non è stato concesso per il set di autorizzazioni elencato. Per visualizzare lo stato effettivo delle autorizzazioni, è necessario visualizzare le autorizzazioni utilizzando il collegamento fornito.
+** Se è stato specificato il protocollo CIFS, viene visualizzata la finestra di dialogo permessi effettivi di file e condivisione, in cui sono elencati i permessi di file e condivisione associati alla condivisione e al file a cui l'utente sta tentando di accedere.
+** Se è stato specificato il protocollo NFS, viene visualizzata la finestra di dialogo autorizzazioni file effettive, che elenca le autorizzazioni del file associate al file a cui l'utente sta tentando di accedere.
+Un segno di spunta indica che le autorizzazioni sono concesse e un "`X`" indica che le autorizzazioni non sono concesse.
+
+
++
+Fare clic su *OK* per tornare alla finestra di accesso al file di traccia.
+
+. *Opzionale:* la tabella dei risultati visualizza i dati di sola lettura. È possibile eseguire le seguenti azioni con i risultati della traccia:
++
+** Fare clic su *Copy to Clipboard* (Copia negli Appunti) per copiare i risultati negli Appunti.
+** Fare clic su *Export Trace Results* (Esporta risultati traccia) per esportare i risultati in un file CSV (comma-separatedvalues).
+
+
+. Per terminare l'operazione di traccia, fare clic su *Stop Tracing* (Interrompi traccia).
+

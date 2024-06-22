@@ -1,0 +1,108 @@
+---
+permalink: online-help-96-97/task_creating_luns.html 
+sidebar: sidebar 
+keywords: create, lun, system, manager, qtree, online, help 
+summary: 'È possibile utilizzare System Manager per creare LUN per un aggregato, un volume o un qtree esistente quando è disponibile spazio libero. È possibile creare un LUN in un volume esistente o un nuovo volume FlexVol per il LUN. È inoltre possibile abilitare la qualità del servizio (QoS) dello storage per gestire le performance del carico di lavoro.' 
+---
+= Creazione di LUN con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema di ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare LUN per un aggregato, un volume o un qtree esistente quando è disponibile spazio libero. È possibile creare un LUN in un volume esistente o un nuovo volume FlexVol per il LUN. È inoltre possibile abilitare la qualità del servizio (QoS) dello storage per gestire le performance del carico di lavoro.
+
+.A proposito di questa attività
+Se si specifica l'ID LUN, System Manager verifica la validità dell'ID LUN prima di aggiungerlo. Se non si specifica un ID LUN, il software ONTAP ne assegna automaticamente uno.
+
+Durante la selezione del tipo di multiprotocollo LUN, si dovrebbero prendere in considerazione le linee guida per l'utilizzo di ciascun tipo. Il tipo di multiprotocollo LUN, o tipo di sistema operativo, determina il layout dei dati sul LUN e le dimensioni minime e massime del LUN. Una volta creato il LUN, non è possibile modificare il tipo di sistema operativo host del LUN.
+
+In una configurazione MetroCluster, Gestione sistema visualizza solo i seguenti aggregati per la creazione di volumi FlexVol per il LUN:
+
+* In modalità normale, quando si creano volumi su SVM di origine sincrona o SVM di servizio dati nel sito primario, vengono visualizzati solo gli aggregati che appartengono al cluster nel sito primario.
+* In modalità switchover, quando si creano volumi su SVM di destinazione di sincronizzazione o SVM di servizio dati nel sito sopravvissuto, vengono visualizzati solo gli aggregati di switchover.
+
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Nella scheda *LUN Management*, fare clic su *Create* (Crea).
+. Cercare e selezionare una SVM in cui si desidera creare le LUN.
+. Nella procedura guidata *Crea LUN*, specificare il nome, la dimensione, il tipo, la descrizione del LUN, selezionare *riserva di spazio*, quindi fare clic su *Avanti*.
+. Creare un nuovo volume FlexVol per il LUN o selezionare un volume o qtree esistente, quindi fare clic su *Avanti*.
+. Aggiungere gruppi di iniziatori se si desidera controllare l'accesso host al LUN, quindi fare clic su *Avanti*.
+. Selezionare la casella di controllo *Manage Storage Quality of Service* (Gestisci qualità del servizio dello storage) se si desidera gestire le prestazioni del carico di lavoro del LUN.
+. Creare un nuovo gruppo di criteri QoS dello storage o selezionare un gruppo di criteri esistente per controllare le prestazioni di input/output (i/o) del LUN:
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Creare un nuovo gruppo di criteri
+ a| 
+.. Selezionare *nuovo gruppo di criteri*
+.. Specificare il nome del gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS e B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore e questo valore fa distinzione tra maiuscole e minuscole.
++
+L'unità specificata non influisce sul throughput massimo.
+
+
+
+
+
+
+
+ a| 
+Selezionare un gruppo di criteri esistente
+ a| 
+.. Selezionare *Gruppo di criteri esistente*, quindi fare clic su *Scegli* per selezionare un gruppo di criteri esistente dalla finestra di dialogo Seleziona gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS e B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore e questo valore fa distinzione tra maiuscole e minuscole.
++
+L'unità specificata non influisce sul throughput massimo.
+
+
+
++
+Se il gruppo di criteri è assegnato a più di un oggetto, il throughput massimo specificato viene condiviso tra gli oggetti.
+
+
+
+|===
+. Esaminare i dettagli specificati nella finestra *LUN summary* (Riepilogo LUN), quindi fare clic su *Next* (Avanti).
+. Confermare i dettagli, quindi fare clic su *fine* per completare la procedura guidata.
+
+
+*Informazioni correlate*
+
+xref:reference_luns_window.adoc[Finestra LUN]
+
+xref:concept_lun_multiprotocol_type_guidelines.adoc[Linee guida per l'utilizzo del tipo di multiprotocollo LUN]

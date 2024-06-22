@@ -1,0 +1,132 @@
+---
+permalink: online-help-96-97/concept_name_mapping.html 
+sidebar: sidebar 
+keywords: name, mapping, system, manager, specify, user, platform, online, help, command, button, rules 
+summary: È possibile utilizzare System Manager per specificare le voci di associazione dei nomi per mappare gli utenti da piattaforme diverse. 
+---
+= Mappatura dei nomi con Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema di ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per specificare le voci di mappatura dei nomi per mappare gli utenti da piattaforme diverse.
+
+
+
+== Regole di conversione del mapping dei nomi
+
+Un sistema ONTAP mantiene una serie di regole di conversione per ogni SVM. Ogni regola è composta da due parti: Un _pattern_ e un _replacement_. Le conversioni iniziano all'inizio dell'elenco appropriato ed eseguono una sostituzione in base alla prima regola di corrispondenza. Il modello è un'espressione regolare in stile UNIX. La sostituzione è una stringa contenente sequenze di escape che rappresentano sottoespressioni del modello, come in UNIX `sed` programma.
+
+
+
+== Finestra Name Mapping
+
+È possibile utilizzare la finestra mappatura nome per specificare le voci di mappatura dei nomi per mappare gli utenti da piattaforme diverse.
+
+
+
+=== Mappature dei nomi
+
+È possibile creare e utilizzare le mappature dei nomi per mappare gli utenti UNIX a utenti Windows, utenti Windows a utenti UNIX o utenti Kerberos a utenti UNIX.
+
+
+
+=== Pulsanti di comando
+
+* *Aggiungi*
++
+Apre la finestra di dialogo Add Name Mapping Entry (Aggiungi voce mappatura nome), che consente di creare un mapping dei nomi sulle macchine virtuali di storage (SVM).
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Name Mapping Entry (Modifica voce mappatura nome), che consente di modificare una mappatura nome sulle SVM.
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete Name Mapping Entries (Elimina voci associazione nomi), che consente di eliminare una voce di associazione nomi.
+
+* *Sostituzione*
++
+Apre la finestra di dialogo Swap Name Mapping Entries, che consente di scambiare le posizioni delle due voci di mappatura dei nomi selezionate.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei mapping dei nomi
+
+* *Posizione*
++
+Specifica la posizione della mappatura dei nomi nell'elenco delle priorità. Le mappature dei nomi vengono applicate nell'ordine in cui si verificano nell'elenco delle priorità.
+
+* *Modello*
++
+Specifica il modello di nome utente che deve essere associato.
+
+* *Sostituzione*
++
+Specifica il modello di sostituzione per il nome utente.
+
+* *Direzione*
++
+Specifica la direzione della mappatura dei nomi. I valori possibili sono krb_unix per la mappatura dei nomi Kerberos-to-UNIX, WIN_unix per la mappatura dei nomi Windows-to-UNIX e unix_WIN per la mappatura dei nomi UNIX-to-Windows.
+
+
+
+
+
+=== Pulsanti di comando
+
+* *Aggiungi*
++
+Apre la finestra di dialogo Add Group Mapping Entry (Aggiungi voce mappatura gruppo), che consente di creare un mapping di gruppo sulle SVM.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Group Mapping Entry (Modifica voce mappatura gruppo), che consente di modificare la mappatura del gruppo sulle SVM.
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete Group Mapping Entries (Elimina voci mappatura gruppo), che consente di eliminare una voce di mappatura gruppo.
+
+* *Sostituzione*
++
+Apre la finestra di dialogo Swap Group Mapping Entries (voci mappatura gruppo di scambio), che consente di scambiare le posizioni delle due voci di mappatura del gruppo selezionate.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco delle mappature di gruppo
+
+* *Posizione*
++
+Specifica la posizione della mappatura di gruppo nell'elenco delle priorità. Le mappature di gruppo vengono applicate nell'ordine in cui si verificano nell'elenco delle priorità.
+
+* *Modello*
++
+Specifica il modello di nome utente che deve essere associato.
+
+* *Sostituzione*
++
+Specifica il modello di sostituzione per i nomi utente.
+
+* *Direzione*
++
+Specifica la direzione della mappatura del gruppo. I valori possibili sono `krb_unix` Per un mapping di gruppi Kerberos-to-UNIX, `win_unix` Per il mapping di un gruppo da Windows a UNIX, e. `unix_win` Per un mapping di gruppi da UNIX a Windows.
+
+
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gestione SMB/CIFS"]

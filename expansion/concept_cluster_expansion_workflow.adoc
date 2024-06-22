@@ -1,0 +1,16 @@
+---
+permalink: expansion/concept_cluster_expansion_workflow.html 
+sidebar: sidebar 
+keywords: cluster, expansion, workflow 
+summary: Workflow di espansione del cluster 
+---
+= Workflow di espansione del cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'aggiunta di due nodi a un cluster esistente implica la verifica che il cluster sia pronto per l'espansione, la preparazione del cluster, l'installazione dei nuovi nodi e il completamento dell'espansione.
+
+image::../media/cluster_expansion_workflow.gif[Questa immagine viene spiegata dal testo circostante.]

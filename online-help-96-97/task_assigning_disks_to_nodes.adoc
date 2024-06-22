@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_assigning_disks_to_nodes.html 
+sidebar: sidebar 
+keywords: system, manager, assign, disk, node, online, help 
+summary: È possibile utilizzare System Manager per assegnare la proprietà di un disco non assegnato a un nodo specifico per aumentare la capacità di un aggregato o di un pool di storage. 
+---
+= Assegnare i dischi ai nodi con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per assegnare la proprietà di un disco non assegnato a un nodo specifico per aumentare la capacità di un aggregato o di un pool di storage.
+
+.A proposito di questa attività
+* È possibile assegnare i dischi se le seguenti condizioni sono vere:
++
+** Il tipo di contenitore dei dischi selezionati deve essere "`unassigned`".
+** I dischi devono essere collegati ai nodi di una coppia ha.
+** I dischi devono essere visibili al nodo.
+
+
+* Per le configurazioni MetroCluster, non è possibile utilizzare Gestione di sistema per assegnare i dischi.
++
+È necessario utilizzare l'interfaccia della riga di comando.
+
+
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Disks*.
+. Nella finestra *dischi*, selezionare la scheda *inventario*.
+. Selezionare i dischi che si desidera assegnare, quindi fare clic su *Assegna*.
+. Nella finestra di dialogo *Assegna dischi*, selezionare il nodo a cui si desidera assegnare i dischi.
+. Fare clic su *Assegna*.
+

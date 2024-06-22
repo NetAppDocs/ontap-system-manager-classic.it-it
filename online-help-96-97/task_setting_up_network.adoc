@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/task_setting_up_network.html 
+sidebar: sidebar 
+keywords: set, up, network, cluster, node, service, processor, dns, ntp, online, help 
+summary: Configurando una rete, è possibile gestire cluster, nodi e Service Processor. È inoltre possibile impostare i dettagli DNS e NTP utilizzando la finestra di rete. 
+---
+= Configurare una rete con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire cluster, nodi e processori di servizio mediante la configurazione di una rete. È inoltre possibile impostare i dettagli DNS e NTP utilizzando la finestra di rete.
+
+.Prima di iniziare
+È necessario aver configurato il cluster.
+
+.A proposito di questa attività
+* Solo i nodi attivi e in esecuzione sono elencati per la creazione del cluster.
++
+È possibile creare LIF per tali nodi.
+
+* È possibile disattivare l'intervallo di indirizzi IP e inserire singoli indirizzi IP per le reti di gestione del cluster, dei nodi e dei Service Processor.
+
+
+
+
+== Impostare una rete quando è attivato un intervallo di indirizzi IP
+
+È possibile configurare una rete attivando un intervallo di indirizzi IP. L'intervallo di indirizzi IP consente di inserire indirizzi IP che si trovano nello stesso intervallo di netmask o nel diverso intervallo di netmask.
+
+.Fasi
+. Inserire un intervallo di indirizzi IP nel campo *intervallo indirizzi IP*, quindi fare clic su *Applica*.
++
+|===
+| Opzione | Descrizione 
+
+
+ a| 
+Nella stessa netmask si dispone di un intervallo di indirizzi IP
+ a| 
+Immettere l'intervallo di indirizzi IP, quindi fare clic su *Apply* (Applica).
+
+Gli indirizzi IP vengono applicati in modo sequenziale alle reti di gestione dei cluster, dei nodi e dei Service Processor.
+
+
+
+ a| 
+Si dispone di un intervallo di indirizzi IP in diverse netmask
+ a| 
+Inserire ciascun intervallo di indirizzi IP su una riga separata, quindi fare clic su *Apply* (Applica).
+
+Il primo indirizzo IP applicato alla gestione del cluster e altri indirizzi IP vengono applicati in sequenza alle reti di gestione dei nodi e dei Service Processor.
+
+|===
++
+[NOTE]
+====
+Dopo aver inserito l'intervallo di indirizzi IP per la gestione del cluster, dei nodi e del Service Processor, non è necessario modificare manualmente i valori degli indirizzi IP in questi campi. Assicurarsi che tutti gli indirizzi IP siano indirizzi IPv4.
+
+====
+. Inserire i dettagli della netmask e del gateway.
+. Selezionare la porta per la gestione del cluster nel campo *Port*.
+. Se il campo *Port* nella gestione dei nodi non contiene *e0M*, inserire i dettagli della porta.
++
+[NOTE]
+====
+Per impostazione predefinita, il campo Port (porta) visualizza e0M.
+
+====
+. Per la gestione del Service Processor, se si sovrascrivono i valori predefiniti, assicurarsi di aver inserito i dettagli obbligatori del gateway.
+. Se è stato attivato il campo *Dettagli DNS*, immettere i dettagli del server DNS.
+. Se è stato attivato il campo *Dettagli NTP*, immettere i dettagli del server NTP.
++
+[NOTE]
+====
+La fornitura di dettagli del server NTP alternativo è facoltativa.
+
+====
+. Fare clic su *Invia*.
+
+
+
+
+=== Cosa fare in seguito
+
+Inserire le notifiche degli eventi nella pagina Support (supporto) per continuare con la configurazione del cluster.
+
+
+
+== Impostare una rete quando un intervallo di indirizzi IP è disattivato
+
+È possibile configurare una rete disattivando un intervallo di indirizzi IP e inserendo singoli indirizzi IP per la gestione del cluster, la gestione dei nodi e le reti dei provider di servizi.
+
+.A proposito di questa attività
+Nella pagina reti, se l'opzione *IP Address Range* (intervallo indirizzi IP) è disattivata, inserire singoli indirizzi IP per la gestione del cluster, la gestione dei nodi e le reti dei processori di servizio.
+
+.Fasi
+. Inserire l'indirizzo IP di gestione del cluster nel campo *Cluster Management IP Address*.
+. Inserire i dettagli della netmask per la gestione del cluster.
+. *Opzionale:* inserire i dettagli del gateway per la gestione del cluster.
+. Selezionare la porta per la gestione del cluster nel campo *Port*.
+. Se si desidera fornire i dettagli della netmask e del gateway per la gestione dei nodi, deselezionare la casella di controllo *Retain Netmask and Gateway Configuration of the Cluster Management*, quindi immettere i dettagli della netmask e del gateway.
+. Inserire gli indirizzi IP di gestione dei nodi nel campo *Node Management* (Gestione nodi).
+. Se il campo *Port* nella gestione dei nodi non contiene *e0M*, inserire i dettagli della porta.
++
+[NOTE]
+====
+Per impostazione predefinita, il campo Port (porta) visualizza e0M.
+
+====
+. Inserire la netmask di gestione del Service Processor e i dettagli del gateway.
+. Inserire gli indirizzi di gestione IP del Service Processor nel campo *Service Processor Management*.
+. Se è stato attivato il campo *Dettagli DNS*, immettere i dettagli del server DNS.
+. Se è stato attivato il campo *Dettagli NTP*, immettere i dettagli del server NTP.
++
+[NOTE]
+====
+La fornitura di dettagli del server NTP alternativo è facoltativa.
+
+====
+. Fare clic su *Invia*.
+
+
+
+
+=== Cosa fare in seguito
+
+Inserire le notifiche degli eventi nella pagina Support (supporto) per continuare con la configurazione del cluster.
+
+*Informazioni correlate*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/What_is_a_Service_Processor_and_how_do_I_use_it%3F["Che cos'è un Service Processor e come lo utilizzo?"]
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_configure_and_troubleshoot_NTP_on_clustered_Data_ONTAP_8.2_and_later_using_CLI["Come configurare e risolvere i problemi di NTP su Clustered Data ONTAP 8.2 e versioni successive utilizzando l'interfaccia CLI"]
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro documentazione di ONTAP 9"]
+
+xref:reference_network_window.adoc[Finestra Network (rete)]
+
+xref:reference_configuration_updates_window.adoc[Finestra Configuration Updates (aggiornamenti configurazione)]
+
+xref:reference_date_time_window.adoc[Finestra di data e ora]
+
+xref:reference_service_processors_window.adoc[Finestra Service Processor]

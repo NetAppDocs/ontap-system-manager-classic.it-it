@@ -1,0 +1,46 @@
+---
+permalink: nfs-config-esxi/task_deploying_netapp_nfs_plugin_for_vmware_vaai.html 
+sidebar: sidebar 
+keywords: plug-in, software, library, integrate, vmware, virtual, disk, libraries, install, esxi, host, nfs, improve, copy, offload, space, reservation, option, deploy, deploy the nfs plug-in for vmware vaai 
+summary: 'Il plug-in è una libreria software che integra le librerie di dischi virtuali VMware installate sull"host ESXi. Il download e l"installazione del plug-in NFS per VMware VAAI consentono di migliorare le performance delle operazioni di cloning utilizzando le opzioni di offload delle copie e di spazio riservato.' 
+---
+= Implementare il plug-in NFS per VMware VAAI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il plug-in è una libreria software che integra le librerie di dischi virtuali VMware installate sull'host ESXi. Il download e l'installazione del plug-in NFS per VMware VAAI consentono di migliorare le performance delle operazioni di cloning utilizzando le opzioni di offload delle copie e di spazio riservato.
+
+.A proposito di questa attività
+Per fornire un accesso coerente alle macchine virtuali che risiedono sull'host ESXi su cui si sta installando il plug-in NFS, è possibile migrare le macchine virtuali o installare il plug-in NFS durante la manutenzione pianificata.
+
+.Fasi
+. Scarica il plug-in NFS per VMware VAAI.
++
+https://mysupport.netapp.com/site/global/dashboard["Supporto NetApp"]
+
++
+È necessario scaricare il bundle online (`NetAppNasPlugIn.vib`) del plug-in più recente
+
+. Verificare che VAAI sia attivato su ciascun host ESXi.
++
+In VMware vSphere 5.0 e versioni successive, VAAI è attivato per impostazione predefinita.
+
+. In Virtual Storage Console, selezionare *Tools* (Strumenti) > *NFS VAAI Tools* (Strumenti VAAI NFS).
+. Fare clic su *Select file* (Seleziona file) per caricare `NetAppNasPlugIn.vib` file.
+. Fare clic su *carica*.
++
+Viene visualizzato un `uploaded successfully` messaggio.
+
+. Fare clic su *Installa sull'host*.
+. Selezionare gli host ESXi su cui si desidera installare il plug-in, fare clic su *Installa*, quindi fare clic su *OK*.
+. Riavviare l'host ESXi per attivare il plug-in.
++
+Dopo aver installato il plug-in, è necessario riavviare l'host ESXi prima del completamento dell'installazione.
+
++
+Non è necessario riavviare il sistema storage.
+
+

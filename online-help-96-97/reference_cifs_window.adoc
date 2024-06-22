@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/reference_cifs_window.html 
+sidebar: sidebar 
+keywords: cifs, window, configuration, tab, domain, symlink, branchcache, online, help 
+summary: È possibile utilizzare la finestra CIFS per configurare il server CIFS, gestire i controller di dominio, gestire le mappature UNIX simboliche e configurare BranchCache. 
+---
+= Finestra CIFS in Gestore di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra CIFS in Gestione sistema di ONTAP (disponibile in ONTAP 9.7 e versioni precedenti) per configurare il server CIFS, gestire i controller di dominio, gestire le mappature UNIX simboliche e configurare BranchCache.
+
+
+
+== Scheda Configuration (Configurazione)
+
+La scheda Configuration (Configurazione) consente di creare e gestire il server CIFS.
+
+* *Server*
++
+Specifica lo stato del server CIFS, il nome del server, la modalità di autenticazione, il nome del dominio Active Directory e lo stato di SMB multicanale.
+
+* *Home Directory*
++
+Specifica i percorsi della home directory e lo stile per determinare la modalità di mappatura dei nomi utente PC alle voci della home directory.
+
+* *Pulsanti di comando*
++
+** Setup (Configurazione)
++
+Apre l'installazione guidata CIFS, che consente di configurare CIFS sulla macchina virtuale di storage (SVM).
+
+** Opzioni
++
+Visualizza la finestra di dialogo Opzioni CIFS, che consente di attivare o disattivare la firma SMB 3.0, attivare o disattivare la crittografia SMB 3.0 e aggiungere server WINS (Windows Internet Name Service).
+
++
+La firma SMB impedisce che il traffico di rete tra il server CIFS e il client venga compromesso.
+
+** Eliminare
++
+Consente di eliminare il server CIFS.
+
+** Aggiornare
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+
+
+== Scheda Domain (dominio)
+
+La scheda Domain (dominio) consente di visualizzare e reimpostare i controller di dominio CIFS e di aggiungere o eliminare i controller di dominio preferiti. È inoltre possibile utilizzare questa scheda per gestire le configurazioni dei criteri di gruppo CIFS.
+
+* *Server*
++
+Visualizza le informazioni sui server di autenticazione rilevati e sui controller di dominio preferiti sulla SVM abilitata per CIFS.
+
++
+È inoltre possibile reimpostare le informazioni sui server rilevati, aggiungere un domain controller preferito, eliminare un domain controller o aggiornare l'elenco dei domain controller.
+
+* *Criteri di gruppo*
++
+Consente di visualizzare, attivare o disattivare le configurazioni dei criteri di gruppo sul server CIFS. È inoltre possibile ricaricare un criterio di gruppo se lo stato del criterio viene modificato.
+
+
+
+
+
+== Scheda link simbolici
+
+La scheda symlinks consente di gestire le mappature dei collegamenti simbolici UNIX per gli utenti CIFS.
+
+* *Mappature dei percorsi*
++
+Visualizza l'elenco delle mappature dei collegamenti simbolici per CIFS.
+
+* *Pulsanti di comando*
++
+** Creare
++
+Apre la finestra di dialogo Create New symlink Path Mappings (Crea nuovo mapping percorso simbolico), che consente di creare un mapping di collegamenti simbolici UNIX.
+
+** Modifica
++
+Apre la finestra di dialogo Edit symlink Path Mappings (Modifica mapping percorso collegamento simbolico), che consente di modificare la condivisione e il percorso CIFS.
+
+** Eliminare
++
+Consente di eliminare la mappatura del collegamento simbolico.
+
+** Aggiornare
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+
+
+== Scheda BranchCache
+
+La scheda BranchCache consente di configurare e gestire le impostazioni di BranchCache sulle SVM CIFS-enabled.
+
+È possibile visualizzare lo stato del servizio BranchCache, il percorso dell'archivio hash, le dimensioni dell'archivio hash, la modalità operativa, la chiave del server e la versione di BranchCache.
+
+* *Pulsanti di comando*
++
+** Setup (Configurazione)
++
+Apre la finestra di dialogo BranchCache Setup, che consente di configurare BranchCache per il server CIFS.
+
+** Modifica
++
+Apre la finestra di dialogo Modifica impostazioni BranchCache, che consente di modificare le proprietà della configurazione BranchCache.
+
+** Eliminare
++
+Consente di eliminare la configurazione BranchCache.
+
+** Aggiornare
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+*Informazioni correlate*
+
+xref:task_setting_up_cifs.adoc[Configurazione di CIFS]
+
+xref:task_editing_cifs_general_properties.adoc[Modifica delle proprietà generali per CIFS]
+
+xref:task_adding_home_directory_paths.adoc[Aggiunta di percorsi home directory]
+
+xref:task_deleting_home_directory_paths.adoc[Eliminazione dei percorsi della home directory]
+
+xref:task_resetting_cifs_domain_controllers.adoc[Ripristino dei controller di dominio CIFS]

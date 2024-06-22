@@ -1,0 +1,19 @@
+---
+section: volume-move
+title: Gestione dello spostamento dei volumi
+entries:
+- title: Panoramica
+  url: "/volume-move/index.html"
+- title: Workflow di spostamento del volume
+  url: "/volume-move/concept_volume_move_workflow.html"
+  entries:
+  - title: Pianificare il metodo e la tempistica dello spostamento di un volume
+    url: "/volume-move/task_planning_method_timing_volume_move.html"
+  - title: Spostare un volume utilizzando System Manager
+    url: "/volume-move/task_moving_volume_using_system_manager.html"
+  - title: Verificare i nodi di reporting LUN dopo lo spostamento di un volume
+    url: "/volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html"
+  - title: Aggiornare i nodi di reporting LUN dopo lo spostamento di un volume
+    url: "/volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html"
+  - title: Aggiornare il backup NDMP dopo lo spostamento di un volume
+    url: "/volume-move/task_updating_ndmp_backup_after_moving_volume.html"

@@ -1,0 +1,184 @@
+---
+permalink: online-help-96-97/concept_array_luns.html 
+sidebar: sidebar 
+keywords: system, manager, array, lun, aggregate, assign, online, help, classic 
+summary: È possibile utilizzare System Manager per assegnare LUN di array a un aggregato esistente e gestire LUN di array. 
+---
+= Gestione delle LUN degli array con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per assegnare le LUN degli array a un aggregato esistente e gestire le LUN degli array.
+
+
+
+== Assegnare LUN di array
+
+È possibile utilizzare System Manager per assegnare LUN di array non assegnati a un aggregato esistente per aumentare le dimensioni dell'aggregato.
+
+.A proposito di questa attività
+* È possibile assegnare i LUN degli array se sono soddisfatte le seguenti condizioni:
++
+** Il tipo di contenitore delle LUN dell'array selezionate deve essere "`unassigned`".
+** I dischi devono essere collegati ai nodi di una coppia ha.
+** I dischi devono essere visibili al nodo.
+
+
+* Per le configurazioni MetroCluster, non è possibile utilizzare Gestione di sistema per assegnare le LUN degli array come parti di ricambio.
++
+È necessario utilizzare l'interfaccia della riga di comando.
+
+
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Array LUN*.
+. Selezionare i LUN dell'array, quindi fare clic su *Assegna*.
+. Nella finestra di dialogo *Assign Array LUN*, selezionare il nodo al quale si desidera assegnare le LUN dell'array.
+. Fare clic su *Assegna*.
+
+
+
+
+== Riassegnare i LUN degli array spare ai nodi
+
+È possibile utilizzare System Manager per riassegnare la proprietà delle LUN array spare da un nodo all'altro per aumentare la capacità di un aggregato.
+
+.A proposito di questa attività
+* È possibile riassegnare i LUN degli array se sono soddisfatte le seguenti condizioni:
++
+** Il tipo di contenitore delle LUN dell'array selezionate deve essere "`spare`".
+** I dischi devono essere collegati ai nodi di una coppia ha.
+** I dischi devono essere visibili al nodo.
+
+
+* Per le configurazioni MetroCluster, non è possibile utilizzare Gestione sistema per riassegnare le LUN degli array come parti di ricambio.
++
+È necessario utilizzare l'interfaccia della riga di comando.
+
+
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Array LUN*.
+. Selezionare i LUN degli array spare che si desidera riassegnare, quindi fare clic su *Assign* (Assegna).
+. Nella finestra di dialogo *Avviso*, fare clic su *continua*.
+. Nella finestra di dialogo *Assign Array LUN*, selezionare il nodo a cui si desidera riassegnare i LUN degli array spare.
+. Fare clic su *Assegna*.
+
+
+
+
+== Azzeramento dei LUN degli array spare
+
+È possibile utilizzare System Manager per cancellare tutti i dati e formattare le LUN degli array spare scrivendo degli zeri nelle LUN degli array. Questi LUN array possono quindi essere utilizzati in nuovi aggregati.
+
+.A proposito di questa attività
+Quando si azzerano le LUN degli array spare, tutte le parti di ricambio del cluster, inclusi i dischi, vengono azzerate. È possibile azzerare le LUN degli array spare per un nodo specifico o per l'intero cluster.
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Array LUN*.
+. Fare clic su *Zero spare*.
+. Nella finestra di dialogo *Zero spare*, selezionare un nodo o "`All Nodes`" da cui si desidera azzerare i LUN dell'array.
+. Selezionare la casella di controllo *Azzeramento di tutte le unità di riserva non azzerate* per confermare l'operazione di azzeramento.
+. Fare clic su *Zero spare*.
+
+
+
+
+== Informazioni su dischi e LUN di array
+
+Un disco è l'unità di storage di base per i sistemi storage che utilizzano il software ONTAP per accedere agli shelf di dischi nativi. Un LUN array è l'unità di storage di base fornita dagli array di storage di terze parti ai sistemi storage che eseguono il software ONTAP.
+
+Il software ONTAP consente di assegnare la proprietà ai dischi e alle LUN degli array e di aggiungerli a un aggregato. Il software ONTAP offre inoltre diversi modi per gestire i dischi, tra cui la rimozione, la sostituzione e la pulizia. Poiché le LUN degli array vengono fornite da un array di storage di terze parti, è possibile utilizzare l'array di storage di terze parti per tutte le altre attività di gestione delle LUN degli array.
+
+È possibile creare un aggregato utilizzando dischi o LUN di array. Dopo aver creato l'aggregato, è possibile gestirlo utilizzando il software ONTAP nello stesso modo, sia che sia stato creato da dischi o LUN di array.
+
+
+
+== Finestra Array LUN (LUN array)
+
+La finestra Array LUN consente di assegnare la proprietà alle LUN degli array e aggiungerle a un aggregato.
+
+Il collegamento Array LUN (LUN array) nel riquadro di navigazione a sinistra viene visualizzato solo se sono presenti LUN di array spare o se è installata la licenza V_StorageAttach.
+
+
+
+=== Pulsanti di comando
+
+* *Assegna*
++
+Consente di assegnare o riassegnare la proprietà delle LUN degli array a un nodo.
+
+* *Nessun ricambio*
++
+Cancella tutti i dati e formatta i LUN e i dischi degli array spare.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Array LUN list (elenco LUN array)
+
+Visualizza informazioni come il nome, lo stato e il vendor di ogni LUN dell'array.
+
+* *Nome*
++
+Specifica il nome del LUN dell'array.
+
+* *Stato*
++
+Specifica lo stato del LUN dell'array.
+
+* *Venditore*
++
+Specifica il nome del vendor.
+
+* *Spazio usato*
++
+Specifica lo spazio utilizzato dal LUN dell'array.
+
+* *Dimensione totale*
++
+Specifica la dimensione del LUN dell'array.
+
+* *Container*
++
+Specifica l'aggregato a cui appartiene il LUN dell'array.
+
+* *Nome nodo*
++
+Specifica il nome del nodo a cui appartiene il LUN dell'array.
+
+* *Proprietario di casa*
++
+Visualizza il nome del nodo principale a cui è assegnata la LUN dell'array.
+
+* *Attuale proprietario*
++
+Visualizza il nome del nodo attualmente proprietario della LUN dell'array.
+
+* *Nome array*
++
+Specifica il nome della matrice.
+
+* *Pool*
++
+Visualizza il nome del pool a cui è assegnato il LUN dell'array selezionato.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco Array LUN (LUN array) visualizza informazioni dettagliate sul LUN dell'array selezionato.
+
+*Informazioni correlate*
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Requisiti e riferimenti per l'installazione della virtualizzazione FlexArray"]

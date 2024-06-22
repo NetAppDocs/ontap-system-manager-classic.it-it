@@ -1,0 +1,17 @@
+---
+section: volume-backup-snapvault
+title: Backup del volume con SnapVault
+entries:
+- title: Panoramica
+  url: "/volume-backup-snapvault/index.html"
+- title: Workflow di configurazione del backup di SnapVault
+  url: "/volume-backup-snapvault/concept_snapvault_configuration_workflow.html"
+  entries:
+  - title: Verificare la relazione peer del cluster e la relazione peer SVM
+    url: "/volume-backup-snapvault/task_verify_cluster_peer_relationship.html"
+  - title: Creare una relazione SnapVault (a partire da ONTAP 9.3)
+    url: "/volume-backup-snapvault/task_creating_snapvault_relationship_93_later.html"
+  - title: Creazione della relazione SnapVault (ONTAP 9.2 o versione precedente)
+    url: "/volume-backup-snapvault/task_creating_snapvault_relationship_92_earlier.html"
+  - title: Monitorare la relazione SnapVault
+    url: "/volume-backup-snapvault/task_monitoring_snapvault_relationship.html"

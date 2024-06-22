@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_subnets.html 
+sidebar: sidebar 
+keywords: system, manager, manage, subnet, online, help, edit, settings, modify, delete, ip, address 
+summary: È possibile utilizzare System Manager per gestire le subnet. 
+---
+= Gestire le subnet con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per gestire le subnet, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Modificare le impostazioni della subnet
+
+[role="lead"]
+È possibile utilizzare System Manager per modificare gli attributi della subnet, ad esempio il nome, l'indirizzo della subnet, l'intervallo di indirizzi IP e l'indirizzo del gateway della subnet.
+
+.A proposito di questa attività
+* Non è possibile utilizzare System Manager per modificare le subnet nell'IPSpace del cluster.
++
+È necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+* La modifica dell'indirizzo del gateway non aggiorna il percorso.
++
+Per aggiornare il percorso, è necessario utilizzare l'interfaccia CLI.
+
+
+
+.Fasi
+. Fare clic su *Network* > *Subnet*.
+. Selezionare la subnet che si desidera modificare, quindi fare clic su *Modifica*.
++
+È possibile modificare la subnet anche quando la LIF in tale subnet è ancora in uso.
+
+. Nella finestra di dialogo *Edit Subnet* (Modifica subnet), modificare gli attributi della subnet come richiesto.
+. Fare clic su *Save and Close* (Salva e chiudi).
+
+
+
+
+== Eliminare le subnet
+
+È possibile utilizzare System Manager per eliminare una subnet quando non è più necessaria la subnet e si desidera riallocare gli indirizzi IP assegnati alla subnet.
+
+.Prima di iniziare
+La subnet che si desidera eliminare non deve disporre di LIF che utilizzano gli indirizzi IP della subnet.
+
+.A proposito di questa attività
+Non è possibile utilizzare System Manager per eliminare le subnet in Cluster IPSpace. È necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+.Fasi
+. Fare clic su *Network* > *Subnet*.
+. Selezionare la subnet che si desidera eliminare, quindi fare clic su *Delete* (Elimina).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+*Informazioni correlate*
+
+xref:reference_network_window.adoc[Finestra Network (rete)]

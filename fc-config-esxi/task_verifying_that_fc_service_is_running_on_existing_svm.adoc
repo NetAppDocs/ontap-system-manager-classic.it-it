@@ -1,0 +1,35 @@
+---
+permalink: fc-config-esxi/task_verifying_that_fc_service_is_running_on_existing_svm.html 
+sidebar: sidebar 
+keywords: choose, exist, storage, virtual, machine, svm, fc, service, ontap, system, manager, logical, interface, lif, create, verify that the fc service is running on an existing svm 
+summary: Se si sceglie di utilizzare una macchina virtuale per lo storage esistente, è necessario verificare che il servizio FC sia in esecuzione sulla SVM utilizzando Gestore di sistema di ONTAP. È inoltre necessario verificare che le interfacce logiche FC siano già state create. 
+---
+= Verificare che il servizio FC sia in esecuzione su una SVM esistente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si sceglie di utilizzare una macchina virtuale per lo storage (SVM) esistente, è necessario verificare che il servizio FC sia in esecuzione sulla SVM utilizzando Gestore di sistema di ONTAP. È inoltre necessario verificare che le interfacce logiche FC (LIF) siano già state create.
+
+.Prima di iniziare
+È necessario aver selezionato una SVM esistente in cui si intende creare una nuova LUN.
+
+.Fasi
+. Accedere alla finestra *SVM*.
+. Selezionare la SVM richiesta.
+. Fare clic sulla scheda *Impostazioni SVM*.
+. Nel riquadro *Protocols* (protocolli), fare clic su *FC/FCoE*.
+. Verificare che il servizio FC sia in esecuzione.
++
+image::../media/vserver_service_fc_fcoe_running_fc_esxi.gif[L'immagine mostra il pannello FC/FCoE in System Manager con il servizio FC in esecuzione e quattro LIF FC.]
+
++
+Se il servizio FC non è in esecuzione, avviare il servizio FC o creare una nuova SVM.
+
+. Verificare che siano presenti almeno due LIF FC per ciascun nodo.
++
+Se sono presenti meno di due LIF FC per nodo, aggiornare la configurazione FC sulla SVM o creare una nuova SVM per FC.
+
+

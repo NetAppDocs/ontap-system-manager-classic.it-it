@@ -1,0 +1,94 @@
+---
+permalink: peering/task_preparing_for_cluster_peering.html 
+sidebar: sidebar 
+keywords: create, creating, cluster, peer, relationship, verify, time, synchronized, external, network, procotol, ntp, server, subnet, port, passphrase, prepare, prepare for cluster peering 
+summary: 'Prima di creare una relazione di peering del cluster utilizzando l"interfaccia "classic" di Gestore di sistema di ONTAP con ONTAP 9.7 o versione precedente, è necessario verificare che l"ora di ciascun cluster sia sincronizzata con un server NTP esterno e determinare le subnet, le porte e le passphrase che si desidera utilizzare.' 
+---
+= Preparatevi per il peering dei cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di creare una relazione di peering del cluster utilizzando l'interfaccia _classic_ di Gestore di sistema di ONTAP con ONTAP 9.7 o versione precedente, è necessario verificare che l'ora di ciascun cluster sia sincronizzata con un server NTP esterno e determinare le subnet, le porte e le passphrase che si desidera utilizzare.
+
+.Fasi
+. Se si utilizza ONTAP 9.2 o versioni precedenti, determinare la passphrase che si desidera utilizzare per ogni relazione peer del cluster.
++
+La passphrase deve contenere almeno otto caratteri.
+
++
+|===
+
+
+| Per il rapporto tra... | La passphrase è... 
+
+
+ a| 
+Quadro strumenti A e quadro strumenti B.
+ a| 
+
+|===
++
+A partire da ONTAP 9.3, è possibile generare la passphrase dal cluster remoto durante la creazione della relazione peer del cluster.
+
++
+link:task_creating_cluster_peer_relationship_starting_with_ontap_9_3.html["Creazione di una relazione peer del cluster (a partire da ONTAP 9.3)"]
+
+. Identificare le subnet, gli indirizzi IP e le porte da utilizzare per le LIF di intercluster.
++
+Per impostazione predefinita, l'indirizzo IP viene selezionato automaticamente dalla subnet. Se si desidera specificare manualmente l'indirizzo IP, assicurarsi che l'indirizzo IP sia già disponibile nella subnet o che possa essere aggiunto alla subnet in un secondo momento. Le informazioni sulle subnet sono disponibili nella scheda rete.
+
++
+Creare una tabella simile alla seguente per registrare le informazioni sui cluster.  Nella tabella seguente si presuppone che ciascun cluster abbia quattro nodi. Se un cluster ha più di quattro nodi, aggiungere righe per ottenere ulteriori informazioni.
+
++
+|===
+
+
+|  | Quadro strumenti A. | Cluster B 
+
+
+ a| 
+Subnet (ONTAP 9.2 o versione precedente)
+ a| 
+ a| 
+
+
+
+ a| 
+Indirizzo IP (a partire da ONTAP 9.3, opzionale per ONTAP 9.2 o versioni precedenti)
+ a| 
+ a| 
+
+
+
+ a| 
+Porta del nodo 1
+ a| 
+ a| 
+
+
+
+ a| 
+Porta del nodo 2
+ a| 
+ a| 
+
+
+
+ a| 
+Porta del nodo 3
+ a| 
+ a| 
+
+
+
+ a| 
+Porta del nodo 4
+ a| 
+ a| 
+
+|===
+

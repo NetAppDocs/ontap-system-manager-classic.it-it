@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_protection_policies.html 
+sidebar: sidebar 
+keywords: online, help, protection, policy, system, manager, create, edit, delete 
+summary: È possibile utilizzare System Manager per creare, modificare ed eliminare i criteri di protezione. 
+---
+= Gestione delle policy di protezione con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare, modificare ed eliminare i criteri di protezione.
+
+
+
+== Creare policy di protezione
+
+È possibile utilizzare System Manager per creare policy mirror asincrone a livello di cluster, policy di vault o policy di mirroring e vault e per applicare tali policy a una relazione di protezione dei dati a livello di cluster.
+
+.Fasi
+. Fare clic su *protezione* > *Criteri di protezione*.
+. Fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea policy*, selezionare il tipo di policy che si desidera creare.
+. Specificare il nome del criterio e la priorità di trasferimento.
++
+Basso indica che il trasferimento ha la priorità più bassa. I trasferimenti a bassa priorità vengono generalmente pianificati dopo i normali trasferimenti a priorità bassa. Per impostazione predefinita, la priorità di trasferimento è impostata su normale.
+
+. *Opzionale:* selezionare la casella di controllo *attiva compressione di rete* per comprimere i dati trasferiti durante un trasferimento di dati.
+. *Opzionale:* per un criterio di mirroring asincrono, selezionare la casella di controllo *Trasferisci tutte le copie Snapshot di origine* per includere la regola "`all_source_Snapshot`" nel criterio di mirroring, che esegue il backup di tutte le copie Snapshot dal volume di origine.
+. *Opzionale:* fare clic su *Aggiungi commenti* per aggiungere ulteriori commenti alla policy.
+. Per una policy del vault o una policy del vault mirror, specificare un'etichetta SnapMirror e un conteggio di conservazione della destinazione.
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Finestra dei criteri di protezione
+
+È possibile utilizzare la finestra Criteri di protezione per creare, gestire e visualizzare informazioni sui criteri di mirroring, vault e vault mirror.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Crea policy, che consente di creare una policy di vault mirror, vault o mirror.
+
+* *Modifica*
++
+Apre la finestra di dialogo Modifica policy, che consente di modificare un criterio.
+
+* *Elimina*
++
+Apre la finestra di dialogo Delete Policy (Elimina policy), che consente di eliminare una policy.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei criteri di protezione
+
+* *Nome*
++
+Visualizza il nome del criterio di protezione.
+
+* *Tipo*
++
+Visualizza il tipo di policy, che può essere Vault, Mirror Vault o Asynchronous Mirror.
+
+* *Commento*
++
+Visualizza la descrizione specificata per il criterio.
+
+* *Priorità trasferimento*
++
+Visualizza la priorità di trasferimento dei dati, ad esempio normale o bassa.
+
+
+
+
+
+=== Area dei dettagli
+
+* *Scheda Policy Details (Dettagli policy)*
++
+Visualizza i dettagli del criterio di protezione, ad esempio l'utente che ha creato il criterio, il numero di regole, il numero di conservazione e lo stato della compressione di rete.
+
+* *Scheda Policy Rules*
++
+Visualizza i dettagli delle regole applicate al criterio. La scheda Policy Rules (regole policy) viene visualizzata solo se il criterio selezionato contiene regole.
+
+

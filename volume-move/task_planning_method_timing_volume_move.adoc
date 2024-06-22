@@ -1,0 +1,67 @@
+---
+permalink: volume-move/task_planning_method_timing_volume_move.html 
+sidebar: sidebar 
+keywords: system, manager, volume, manual, cutover, lun, report, node, advance, procedure, command-line, interface, cli, plan, plan the method and timing of a volume move 
+summary: 'È possibile utilizzare l"interfaccia "classic" di Gestore di sistema di ONTAP con ONTAP 9.7 o versioni precedenti per spostare un volume e decidere se utilizzare un cutover manuale. Per aggiornare i nodi di reporting LUN, è necessario seguire una procedura avanzata nell"interfaccia della riga di comando (CLI). In alternativa, è anche possibile pianificare i tempi di spostamento di un volume.' 
+---
+= Pianificare il metodo e la tempistica dello spostamento di un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare l'interfaccia _classic_ di Gestore di sistema di ONTAP con ONTAP 9.7 o versioni precedenti per spostare un volume e decidere se utilizzare un cutover manuale. Per aggiornare i nodi di reporting LUN, è necessario seguire una procedura avanzata nell'interfaccia della riga di comando (CLI). In alternativa, è anche possibile pianificare i tempi di spostamento di un volume.
+
+.A proposito di questa attività
+Il volume di origine di una relazione SnapMirror o SnapVault può essere spostato durante il mirroring del volume. I servizi SnapMirror si trovano in una breve pausa durante la fase di cutover del lavoro di spostamento del volume.
+
+È possibile spostare anche il volume di destinazione. Nella fase iterativa, gli aggiornamenti di SnapMirror o SnapVault e le operazioni di spostamento del volume vengono eseguiti contemporaneamente. Quando si valuta se è possibile un cutover nella fase di cutover, la priorità tra il cutover e gli aggiornamenti di SnapMirror o SnapVault viene determinata in base all'ordine di arrivo. Fino al termine della prima operazione, le altre operazioni vengono bloccate.
+
+.Fasi
+. Decidi se hai bisogno di un cutover manuale.
++
+_Cutover_ è il momento in cui termina l'operazione di spostamento e ONTAP inizia a fornire i dati dal volume sul nuovo aggregato. Il cutover può essere eseguito automaticamente oppure è possibile attivare il cutover manualmente.
+
++
+Se la pratica standard della tua azienda richiede di controllare quando si verificano modifiche nel sistema storage, puoi eseguire manualmente il cutover finale dell'operazione di spostamento durante una finestra di manutenzione.
+
++
+Un cutover non richiede un'interruzione, ma è possibile utilizzare una finestra di manutenzione per controllare _quando_ si verifica.
+
++
+[NOTE]
+====
+L'operazione di spostamento del volume è senza interruzioni, indipendentemente dal fatto che si scelga il cutover automatico o manuale.
+
+====
+. Se il volume contiene LUN e il cluster contiene quattro o più nodi, utilizzare la CLI per aggiornare i nodi di reporting del LUN se il volume si sposta su una coppia ha diversa.
++
+Se il volume non contiene LUN o se il cluster contiene solo due nodi, è possibile ignorare questo passaggio.
+
+. *Opzionale:* pianificare un tempo utilizzando le seguenti considerazioni:
++
+** Un'operazione di spostamento del volume potrebbe richiedere più tempo del previsto, in quanto le operazioni di spostamento sono progettate per essere eseguite in background senza interruzioni, in modo da preservare l'accesso al client e le performance generali del sistema.
++
+Ad esempio, ONTAP rallenta le risorse disponibili per l'operazione di spostamento del volume.
+
+** Se si desidera che lo spostamento avvenga il più rapidamente possibile, è necessario selezionare un orario con meno attività del cluster, in particolare le seguenti attività:
++
+*** Operazioni di i/o sul volume
+*** Lavori che utilizzano risorse in background, ad esempio, quando l'utilizzo della CPU del controller è inferiore al 50%
+*** Lavori che utilizzano l'interconnessione del cluster
+
+
+** Non è possibile avviare uno spostamento se il volume è interessato dalle seguenti operazioni: Volume offline, limitazione o distruzione; SnapMirror risync, interruzione, O ripristinare e ripristinare Snapshot.
++
+Prima di iniziare lo spostamento, è necessario attendere il completamento di una di queste operazioni specifiche.
+
+** Durante l'operazione di spostamento del volume, non è possibile eseguire uno switchback MetroCluster, anche se può verificarsi uno switchover.
+** I switchback MetroCluster vengono bloccati quando sono in corso operazioni di spostamento del volume per i volumi appartenenti al sito di switchover. I switchback non vengono bloccati quando sono in corso operazioni di spostamento del volume per i volumi locali nel sito sopravvissuto.
+** I commutatori MetroCluster forzati possono verificarsi quando sono in corso operazioni di spostamento del volume.
+
+
+
+
+.Informazioni correlate
+link:task_verifying_lun_reporting_nodes_after_moving_volume.html["Verifica dei nodi di reporting LUN dopo lo spostamento di un volume"]

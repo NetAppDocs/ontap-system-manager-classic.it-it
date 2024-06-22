@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_moving_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: move, flexvol, volume, aggregate, system, manager, online, help 
+summary: 'È possibile spostare senza interruzioni un volume FlexVol in un aggregato diverso o in un nodo diverso per l"utilizzo della capacità e il miglioramento delle performance utilizzando Gestione di sistema.' 
+---
+= Sposta volumi FlexVol con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per spostare senza interruzioni un volume FlexVol in un aggregato diverso o in un nodo diverso per l'utilizzo della capacità e il miglioramento delle performance.
+
+.Prima di iniziare
+Se si sposta un volume di protezione dei dati, è necessario inizializzare le relazioni mirror di protezione dei dati prima di spostare il volume.
+
+.A proposito di questa attività
+* Quando si sposta un volume ospitato su un aggregato di Flash Pool, solo i dati memorizzati nel Tier HDD vengono spostati nell'aggregato di destinazione.
++
+I dati memorizzati nella cache associati al volume non vengono spostati nell'aggregato di destinazione. Pertanto, dopo lo spostamento del volume potrebbe verificarsi un peggioramento delle performance.
+
+* Non è possibile spostare volumi da un aggregato SnapLock.
+* Non è possibile spostare i volumi da una SVM configurata per il disaster recovery a un aggregato abilitato a FabricPool.
+
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selezionare l'aggregato che contiene il volume, quindi fare clic su menu:altre azioni[spostamento volume].
+. Digitare o selezionare le informazioni come richiesto dalla procedura guidata.
+. Confermare i dettagli, quindi fare clic su *fine* per completare la procedura guidata.
+

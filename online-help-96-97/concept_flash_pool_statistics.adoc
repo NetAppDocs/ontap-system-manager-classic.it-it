@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/concept_flash_pool_statistics.html 
+sidebar: sidebar 
+keywords: flash, pool, statistics, system, manager, ssd, tier, read, write, workload, aggregate, online, help 
+summary: È possibile utilizzare System Manager per visualizzare i carichi di lavoro di lettura e scrittura del Tier SSD in tempo reale per un aggregato Flash Pool selezionato. 
+---
+= Visualizza le statistiche di Flash Pool con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per visualizzare i carichi di lavoro di lettura e scrittura del Tier SSD in tempo reale per un aggregato di Flash Pool selezionato.
+
+
+
+== Finestra Flash Pool aggregate Statistics
+
+È possibile visualizzare i carichi di lavoro di lettura e scrittura del Tier SSD in tempo reale per un aggregato Flash Pool selezionato.
+
+Questa pagina non è disponibile per un cluster contenente nodi con personalità ottimizzata per All Flash.
+
+* *Visualizzazione delle statistiche per l'aggregato di Flash Pool*
++
+Dall'elenco degli aggregati di Flash Pool, è possibile selezionare l'aggregato di Flash Pool di cui si desidera visualizzare le statistiche.
+
+
+
+
+
+=== Carico di lavoro di lettura cache SSD
+
+Visualizza una vista grafica delle richieste di lettura totali inviate all'aggregato di Flash Pool in confronto alle operazioni di lettura eseguite dal Tier SSD.
+
+
+
+=== Carico di lavoro di scrittura cache SSD
+
+Visualizza una vista grafica delle richieste di scrittura totali inviate all'aggregato di Flash Pool in confronto alle operazioni di scrittura eseguite dal Tier SSD.

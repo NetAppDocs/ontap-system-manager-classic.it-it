@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_assigning_volumes_to_storage_qos.html 
+sidebar: sidebar 
+keywords: assign, volumes, storage, qos, online, help, flexgroup, online, help, quality, serice 
+summary: 'È possibile limitare il throughput dei volumi FlexVol e FlexGroup assegnandoli ai gruppi di criteri di qualità del servizio (QoS) dello storage. È possibile assegnare la QoS dello storage per i nuovi volumi oppure modificare i dettagli della QoS dello storage dei volumi già assegnati a un gruppo di criteri utilizzando System Manager.' 
+---
+= Assegnare volumi alla QoS dello storage con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per limitare il throughput dei volumi FlexVol e FlexGroup assegnandoli ai gruppi di criteri qualità del servizio (QoS) dello storage. È possibile assegnare la QoS dello storage per i nuovi volumi oppure modificare i dettagli della QoS dello storage dei volumi già assegnati a un gruppo di criteri utilizzando System Manager.
+
+.A proposito di questa attività
+* È possibile assegnare la QoS dello storage solo ai volumi di lettura/scrittura (rw) online.
+* Non è possibile assegnare la qualità del servizio di storage a un volume se i seguenti oggetti di storage sono assegnati a un gruppo di criteri:
++
+** SVM (Parent Storage Virtual Machine) del volume
+** LUN figlio del volume
+** File figlio del volume
+
+
+* È possibile assegnare allo storage QoS o modificare i dettagli QoS per un massimo di 10 volumi contemporaneamente.
+
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare uno o più volumi per i quali si desidera assegnare la QoS dello storage.
+. Fare clic su *altre azioni* > *Storage QoS*.
+. Nella finestra di dialogo *Dettagli della qualità del servizio*, selezionare la casella di controllo *Gestisci qualità del servizio dello storage* se si desidera gestire le prestazioni del carico di lavoro del volume FlexVol.
++
+Se alcuni volumi selezionati sono già assegnati a un gruppo di criteri, le modifiche apportate potrebbero influire sulle prestazioni di questi volumi.
+
+. Creare un nuovo gruppo di criteri di qualità del servizio di storage o selezionare un gruppo di criteri esistente per controllare le prestazioni di input/output (i/o) del volume FlexVol:
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Creare un nuovo gruppo di criteri
+ a| 
+.. Selezionare *nuovo gruppo di criteri*.
+.. Specificare il nome del gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per evitare che il carico di lavoro degli oggetti nel gruppo di criteri superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS, B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
+
+
+
+
+
+ a| 
+Selezionare un gruppo di criteri esistente
+ a| 
+.. Selezionare *Gruppo di criteri esistente*, quindi fare clic su *Scegli* per selezionare un gruppo di criteri esistente dalla finestra di dialogo Seleziona gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per evitare che il carico di lavoro degli oggetti nel gruppo di criteri superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS, B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore.
+  +
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
++
+Se il gruppo di criteri è assegnato a più di un oggetto, il throughput massimo specificato viene condiviso tra gli oggetti.
+
+
+
+|===
+. *Opzionale:* fare clic sul collegamento che specifica il numero di volumi se si desidera esaminare l'elenco dei volumi selezionati, quindi fare clic su *Discard* se si desidera rimuovere eventuali volumi dall'elenco.
++
+Il collegamento viene visualizzato solo quando sono selezionati più volumi.
+
+. Fare clic su *OK*.
+

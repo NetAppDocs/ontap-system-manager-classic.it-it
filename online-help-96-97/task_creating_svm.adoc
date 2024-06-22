@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_creating_svm.html 
+sidebar: sidebar 
+keywords: svm, create, storage, virtual, machine, online, help 
+summary: 'È possibile utilizzare la finestra Storage Virtual Machine (SVM) per creare SVM completamente configurate. Le SVM servono i dati dopo la creazione degli oggetti storage su queste SVM.' 
+---
+= Creare una SVM con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti), è possibile utilizzare la finestra SVM (Storage Virtual Machine) per creare SVM completamente configurate. Le SVM servono i dati dopo la creazione degli oggetti storage su queste SVM.
+
+.Prima di iniziare
+* Devi aver creato un aggregato e l'aggregato deve essere online.
+* È necessario assicurarsi che l'aggregato disponga di spazio sufficiente per il volume root SVM.
+
+
+.Fasi
+. Immettere un nome per la SVM.
+. Selezionare i protocolli dati per SVM:
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Abilitare il protocollo CIFS configurando il server CIFS utilizzando Active Directory
+ a| 
+.. Selezionare la casella *Active Directory*.
+.. Immettere il nome dell'amministratore di Active Directory.
+.. Inserire la password dell'amministratore di Active Directory.
+.. Immettere un nome per il server CIFS.
+.. Immettere un nome per il dominio Active Directory.
+.. A seconda delle esigenze, selezionare *One data LIF su questa SVM* o *One data LIF per nodo su questa casella SVM*.
+.. Fornire i dettagli LIF dei dati come indirizzo IP, netmask, gateway e porta.
+.. Fornire dettagli DNS.
+
+
+
+
+ a| 
+Abilitare il protocollo CIFS configurando il server CIFS utilizzando un gruppo di lavoro
+ a| 
+.. Selezionare la casella *Workgroup*.
+.. Immettere un nome per il gruppo di lavoro.
+.. Immettere un nome per il server CIFS.
+.. A seconda dei requisiti, selezionare la casella di controllo *One data LIF on this SVM* o *One data LIF per node on this SVM*.
+.. Fornire i dettagli LIF dei dati come indirizzo IP, netmask, gateway e porta.
+
+
+
+
+ a| 
+Abilitare il protocollo NFS
+ a| 
+.. Selezionare la casella *NFS*.
+.. A seconda dei requisiti, selezionare la casella di controllo *One data LIF on this SVM* o *One data LIF per node on this SVM*.
+.. Fornire i dettagli LIF dei dati come indirizzo IP, netmask, gateway e porta.
+
+
+
+
+ a| 
+Abilitare il protocollo iSCSI
+ a| 
+.. Selezionare la casella *iSCSI*.
+.. Fornire i dettagli LIF dei dati come indirizzo IP, netmask, gateway e porta.
+
+
+
+
+ a| 
+Attiva il protocollo FC/FCoE
+ a| 
+.. Selezionare la casella *FC/FCoE*.
+.. Selezionare le porte FC/FCoE per i protocolli FC o FCoE.
++
+[NOTE]
+====
+Ciascun nodo deve disporre di almeno una porta configurata correttamente per ciascun protocollo (FC e FCoE).
+
+====
+
+
+
+
+ a| 
+Attiva il protocollo NVMe
+ a| 
+.. Selezionare la casella *NVMe*.
+.. Selezionare le porte NVMe per i protocolli NVMe.
++
+[NOTE]
+====
+Per configurare NVMe, è necessario che in uno dei nodi sia disponibile almeno un adattatore compatibile con NVMe.        Inoltre, a partire da ONTAP 9.5, è necessario configurare almeno una LIF NVMe per ciascun nodo di una coppia ha associata alla SVM. È possibile creare un massimo di due LIF NVMe per ciascun nodo della coppia.
+
+====
+
+
+|===
+. *Opzionale:* fare clic sull'icona *Opzioni avanzate* e fornire i dettagli per configurare le opzioni avanzate come la lingua predefinita, lo stile di sicurezza, i dettagli del server CIFS e i dettagli NFS.
+. Fare clic su *Submit and Continue* (Invia e continua) per creare la SVM.
+
+
+
+
+== Cosa fare in seguito
+
+Se si fa clic su *Submit and Continue* (Invia e continua), verificare i dettagli forniti nella finestra Summary (Riepilogo), quindi fare clic su *Manage Your Cluster* (Gestisci il cluster) per avviare System Manager oppure fare clic su *Provision an Application* (Esegui provisioning di un'applicazione) per eseguire il provisioning delle applicazioni di storage oppure fare clic su *Export Configuration* (Esporta configurazione) per scaricare il

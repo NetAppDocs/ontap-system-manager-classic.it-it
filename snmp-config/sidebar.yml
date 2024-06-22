@@ -1,0 +1,21 @@
+---
+section: snmp-config
+title: Configurazione SNMP
+entries:
+- title: Panoramica
+  url: "/snmp-config/index.html"
+- title: Flusso di lavoro della configurazione SNMP
+  url: "/snmp-config/concept_snmp_configuration_workflow.html"
+  entries:
+  - title: Verificare che SNMP sia attivato
+    url: "/snmp-config/task_verifying_snmp_is_enabled.html"
+  - title: Aggiungere una community SNMP
+    url: "/snmp-config/task_adding_snmp_community.html"
+  - title: Aggiungere un utente di protezione SNMPv3
+    url: "/snmp-config/task_adding_snmpv3_security_user.html"
+  - title: Aggiungere un host trapSNMP
+    url: "/snmp-config/task_adding_snmp_traphost.html"
+  - title: Verificare i trap SNMP
+    url: "/snmp-config/task_testing_snmp_traps.html"
+  - title: Verificare il polling SNMP
+    url: "/snmp-config/task_testing_snmp_polling.html"

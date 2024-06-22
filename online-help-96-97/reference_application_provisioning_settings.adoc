@@ -1,0 +1,405 @@
+---
+permalink: online-help-96-97/reference_application_provisioning_settings.html 
+sidebar: sidebar 
+keywords: application, provisioning, setting, microsoft, sql, database, applications, san, mongodb, oracle, host, access, initiator, sap, hana, smb 
+summary: 'Quando si imposta un modello di base o avanzato per un database, un server o un desktop virtuale, è necessario fornire i dettagli a System Manager. Una volta eseguito il provisioning di un"applicazione, è possibile modificare i dettagli e specificare un ridimensionamento (solo per dimensioni maggiori). Questa sezione descrive i campi di ciascun modello. Vengono visualizzati solo i campi richiesti per il provisioning o la modifica delle impostazioni dell"applicazione specifica.' 
+---
+= Impostazioni di provisioning dell'applicazione in Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario fornire dettagli durante la configurazione di un modello di base o avanzato per un database, un server o un desktop virtuale in Gestione sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti). Una volta eseguito il provisioning di un'applicazione, è possibile modificare i dettagli e specificare un ridimensionamento (solo per dimensioni maggiori). Questa sezione descrive i campi di ciascun modello. Vengono visualizzati solo i campi richiesti per il provisioning o la modifica delle impostazioni dell'applicazione specifica.
+
+
+
+== Dettagli per applicazioni database Microsoft SQL su SAN
+
+Immettere le seguenti informazioni per eseguire il provisioning delle applicazioni database Microsoft SQL su SAN o modificare le impostazioni:
+
+* *Nome database*
++
+Obbligatorio: Il nome del database che si sta configurando; questa stringa viene utilizzata come prefisso durante il provisioning dello storage per ciascun database.
+
+* *Dimensione database*
++
+Obbligatorio: Le dimensioni del database, in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per database*
++
+Obbligatorio: Livello di servizio per il database.
+
+* *Dimensione registro*
++
+Obbligatorio: Le dimensioni del log del database in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per il registro*
++
+Obbligatorio: Livello di servizio per il log.
+
+* *Tempdb*
++
+Obbligatorio: Le dimensioni del database tempdb in MB, GB, TB o PB.
+
+* *Protocollo di esportazione*
++
+Obbligatorio: Il protocollo di esportazione è SAN
+
+* *Numero di core del server (sul server SQL)*
++
+Indica il numero di core CPU sul server di database con incrementi di 2.
+
+* *Span ha Controller Node*
++
+Specifica se gli oggetti storage devono essere creati in una coppia di nodi ad alta disponibilità.
+
+
+
+
+
+== Dettagli per il provisioning di un database SAP HANA
+
+* *Nodi SAP HANA attivi*
++
+Il numero di nodi SAP HANA attivi. Il numero massimo di nodi è 16.
+
+* *Dimensione della memoria per nodo HANA*
++
+Le dimensioni della memoria di un singolo nodo SAP HANA.
+
+* *Dimensione del disco dati per nodo HANA*
++
+Le dimensioni del disco dati per ciascun nodo.
+
++
+[NOTE]
+====
+Se impostato su 0, il campo relativo alle dimensioni della memoria viene utilizzato per calcolare le dimensioni dell'area dati.
+
+====
+
+
+
+
+== Dettagli per le applicazioni di database Microsoft SQL su SMB
+
+Per eseguire il provisioning delle applicazioni di database Microsoft SQL tramite SMB o modificare le impostazioni, immettere le seguenti informazioni:
+
+* *Nome database*
++
+Obbligatorio: Il nome del database che si sta configurando; questa stringa viene utilizzata come prefisso durante il provisioning dello storage per ciascun database.
+
+* *Dimensione database*
++
+Obbligatorio: Le dimensioni del database, in unità di MB, GB, TB o PB.
+
+* *Livello di servizio del database*
++
+Obbligatorio: Livello di servizio per il database.
+
+* *Numero di core del server (sul server SQL)*
++
+Indica il numero di core CPU sul server di database con incrementi di 2.
+
+* *Dimensione registro*
++
+Obbligatorio: Le dimensioni del log del database in unità di MB, GB, TB o PB.
+
+* *Log Service Level*
++
+Obbligatorio: Livello di servizio per il log.
+
+* *Provision per Tempdb*
++
+Obbligatorio: Indica se è stato eseguito il provisioning di tempdb.
+
+* *Protocollo di esportazione*
++
+Obbligatorio: Il protocollo di esportazione è SMB o SAN.
+
++
+SMB può essere scelto solo quando il cluster è concesso in licenza per CIFS, che è stato configurato per SVM.
+
+* *Consenti l'accesso all'utente*
++
+Obbligatorio: Il livello di accesso per l'applicazione.
+
+* *Permesso*
++
+Obbligatorio: Livello di autorizzazione per l'applicazione.
+
+
+
+
+
+== Dettagli di un account SQL Server
+
+Immettere le seguenti informazioni per fornire il controllo completo dell'accesso agli account SQL Server:
+
+[NOTE]
+====
+Viene concesso l'account di installazione `SeSecurityPrivilege`.
+
+====
+* *Account di servizio SQL Server*
++
+Obbligatorio: Account di dominio esistente; specificare come `domain\user`.
+
+* *Account servizio agente SQL Server*
++
+Facoltativo: Si tratta di un account di dominio se il servizio agente server SQL è configurato, specificare nel formato dominio/utente.
+
+
+
+
+
+== Dettagli per le applicazioni Oracle Database
+
+Immettere le seguenti informazioni per eseguire il provisioning delle applicazioni di database Oracle o modificare le impostazioni:
+
+* *Nome database*
++
+Obbligatorio: Il nome del database che si sta configurando; questa stringa viene utilizzata come prefisso durante il provisioning dello storage per ciascun database.
+
+* *Dimensione del file dati*
++
+Obbligatorio: Le dimensioni del file dati, in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per il file dati*
++
+Obbligatorio: Il livello di servizio per il file dati.
+
+* *Dimensione gruppo registro di ripetizione*
++
+Obbligatorio: Le dimensioni del gruppo di log di ripristino, in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per il gruppo di registri di ripristino*
++
+Obbligatorio: Livello di servizio per il gruppo di log di ripristino.
+
+* *Dimensione registro archivio*
++
+Obbligatorio: Le dimensioni del log di archiviazione, in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per il registro di archiviazione*
++
+Obbligatorio: Livello di servizio per il gruppo di archiviazione.
+
+* *Protocollo di esportazione*
++
+Il protocollo di esportazione: SAN o NFS
+
+* *Iniziatori*
++
+Un elenco separato da virgole degli iniziatori (WWPN o IQN) nel gruppo di iniziatori.
+
+* *Consenti l'accesso all'host*
++
+Il nome host a cui assegnare l'accesso all'applicazione.
+
+
+
+
+
+== Dettagli delle applicazioni MongoDB
+
+Immettere le seguenti informazioni per eseguire il provisioning delle applicazioni MongoDB o modificare le impostazioni:
+
+* *Nome database*
++
+Obbligatorio: Il nome del database che si sta configurando; questa stringa viene utilizzata come prefisso durante il provisioning dello storage per ciascun database.
+
+* *Dimensione set di dati*
++
+Obbligatorio: Le dimensioni del file dati, in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per set di dati*
++
+Obbligatorio: Il livello di servizio per il file dati.
+
+* *Fattore di replica*
++
+Obbligatorio: Il numero di repliche.
+
+* *Mapping per host primario*
++
+Obbligatorio: Il nome dell'host primario.
+
+* *Mapping per host Replica 1*
++
+Obbligatorio: Il nome della prima replica host.
+
+* *Mapping per Replica host 2*
++
+Obbligatorio: Nome della seconda replica host.
+
+
+
+
+
+== Dettagli delle applicazioni di Virtual Desktop
+
+Immettere le seguenti informazioni per eseguire il provisioning delle infrastrutture di desktop virtuale (VDI) o modificare le impostazioni:
+
+* *Dimensione media del desktop (utilizzata per IL desktop virtuale SAN)*
++
+Questo valore viene utilizzato per determinare le dimensioni del thin provisioning di ciascun volume in unità di MB, GB, TB o PB.
+
+* *Dimensione desktop*
++
+Questa opzione viene utilizzata per determinare le dimensioni dei volumi che devono essere forniti in unità di MB, GB, TB o PB.
+
+* *Livello di servizio ONTAP per desktop*
++
+Obbligatorio: Il livello di servizio per il file dati.
+
+* *Numero di desktop*
++
+Questo numero viene utilizzato per determinare il numero di volumi creati.
+
++
+[NOTE]
+====
+Questo non viene utilizzato per eseguire il provisioning delle macchine virtuali.
+
+====
+* *Selezionare Hypervisor*
++
+L'hypervisor utilizzato per questi volumi; l'hypervisor determina il protocollo datastore corretto. Le opzioni disponibili sono VMware, Hyper-V o XenServer/KVM.
+
+* *Desktop Persistence*
++
+Determina se il desktop è persistente o non persistente. Selezionando la persistenza del desktop vengono impostati i valori predefiniti per il volume, ad esempio le pianificazioni Snapshot e le policy di deduplica post-elaborazione. Le efficienze inline sono attivate per impostazione predefinita per tutti i volumi.
+
++
+[NOTE]
+====
+Queste policy possono essere modificate manualmente dopo il provisioning.
+
+====
+* *Prefisso datastore*
++
+Il valore immesso viene utilizzato per generare i nomi degli archivi dati e, se applicabile, il nome della policy di esportazione o del nome della condivisione.
+
+* *Protocollo di esportazione*
++
+Il protocollo di esportazione: SAN o NFS
+
+* *Iniziatori*
++
+Un elenco separato da virgole degli iniziatori (WWPN o IQN) nel gruppo di iniziatori.
+
+* *Consenti l'accesso all'host*
++
+Il nome host a cui assegnare l'accesso all'applicazione.
+
+
+
+
+
+== Dettagli iniziatore
+
+Per configurare l'iniziatore, immettere le seguenti informazioni:
+
+* *Gruppo iniziatore*
++
+È possibile selezionare un gruppo esistente o crearne uno nuovo.
+
+* *Nome gruppo iniziatore*
++
+Il nome del nuovo gruppo di iniziatori.
+
+* *Iniziatori*
++
+Un elenco separato da virgole degli iniziatori (WWPN o IQN) nel gruppo di iniziatori.
+
+
+
+I seguenti campi si applicano solo al provisioning di _SAP HANA_:
+
+* *Tipo di sistema operativo iniziatore*
++
+Il tipo di sistema operativo del nuovo gruppo di iniziatori.
+
+* *Portset FCP*
++
+Il portset FCP a cui è associato il gruppo iniziatore.
+
+
+
+
+
+== Host Access Configuration (Configurazione accesso host)
+
+Immettere le seguenti informazioni per configurare l'accesso host ai volumi:
+
+* *Configurazione esportazione volume*
++
+Selezionare il criterio di esportazione da applicare ai volumi durante la creazione. Le opzioni sono:
+
++
+** Consenti tutti
++
+Questa opzione implica la creazione di una regola di esportazione che consenta l'accesso in lettura/scrittura a qualsiasi client.
+
+** Crea policy personalizzate
++
+Questa opzione consente di specificare un elenco di indirizzi IP host per ricevere l'accesso in lettura/scrittura.
+
+
+
++
+[NOTE]
+====
+È possibile modificare la policy di esportazione dei volumi in un secondo momento utilizzando i flussi di lavoro di System Manager.
+
+====
+* *Indirizzi IP host*
++
+Elenco di indirizzi IP separati da virgole.
+
++
+[NOTE]
+====
+Per i sistemi basati su NFS, viene creata una nuova policy di esportazione utilizzando il prefisso del datastore e viene creata una regola per consentire l'accesso all'elenco di indirizzi IP.
+
+====
+
+
+
+
+== Dettagli dell'applicazione
+
+Una volta aggiunta l'applicazione, è possibile visualizzare le impostazioni di configurazione nella scheda *Panoramica* della finestra Dettagli applicazione. Altri dettagli, come accesso e permessi NFS o CIFS, vengono visualizzati a seconda del tipo di applicazione che è stata configurata.
+
+* *Tipo*
++
+Si tratta del tipo di applicazione generale, database o infrastruttura virtuale che è stato creato.
+
+* *SVM*
++
+Il nome della macchina virtuale del server su cui è stata creata l'applicazione.
+
+* *Dimensione*
++
+La dimensione totale del volume.
+
+* *Disponibile*
++
+La quantità di spazio attualmente disponibile nel volume.
+
+* *Protezione*
++
+Il tipo di protezione dei dati configurato.
+
+
+
+È possibile espandere i riquadri *componenti* e *volumi* per i dettagli delle performance relativi allo spazio utilizzato, agli IOPS e alla latenza.
+
+[NOTE]
+====
+La dimensione utilizzata visualizzata nel riquadro dei componenti è diversa da quella utilizzata visualizzata nella CLI.
+
+====

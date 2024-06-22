@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_renaming_snapshot_copies.html 
+sidebar: sidebar 
+keywords: rename, snapshot, copy, system, manager, online, help 
+summary: È possibile utilizzare System Manager per rinominare una copia Snapshot per organizzare e gestire le copie Snapshot. 
+---
+= Rinominare le copie Snapshot con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per rinominare una copia Snapshot e organizzare e gestire le copie Snapshot.
+
+.A proposito di questa attività
+Non è possibile rinominare le copie Snapshot (assegnate allo stato WORM) di un volume SnapLock DP che si trova in una relazione SnapVault.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Fare clic sul volume desiderato.
+. Fare clic sul collegamento *Mostra ulteriori dettagli* per visualizzare ulteriori informazioni sul volume.
+. Fare clic sulla scheda *copie Snapshot*.
++
+Viene visualizzato l'elenco delle copie Snapshot disponibili per il volume selezionato.
+
+. Selezionare la copia Snapshot che si desidera rinominare, quindi fare clic su *altre azioni* > *Rinomina*.
+. Specificare un nuovo nome, quindi fare clic su *Rinomina*.
++
+I caratteri validi sono caratteri ASCII, numeri, trattini (-), caratteri di sottolineatura (_), punti (.), e il simbolo più (+).
+
+. Verificare il nome della copia Snapshot nella scheda *Snapshot Copies* della finestra *Volumes*.
+
+
+*Informazioni correlate*
+
+xref:reference_volumes_window.adoc[Finestra Volumes (volumi]

@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_deleting_svms.html 
+sidebar: sidebar 
+keywords: system, manager, delete, svm, online, help, storage, virtual, machine 
+summary: 'È possibile utilizzare System Manager per eliminare le macchine virtuali di storage (SVM) che non sono più necessarie dalla configurazione del sistema di storage.' 
+---
+= Eliminare le SVM con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per eliminare le macchine virtuali di storage (SVM) che non sono più necessarie dalla configurazione del sistema storage.
+
+.Prima di iniziare
+È necessario aver completato le seguenti attività:
+
+. Disabilitati le copie Snapshot, i mirror DP (Data Protection) e i mirror LS (load-sharing) per tutti i volumi
++
+[NOTE]
+====
+Per disattivare i mirror LS, è necessario utilizzare l'interfaccia della riga di comando (CLI).
+
+====
+. Eliminazione manuale di tutti gli igroups appartenenti alla SVM in caso di eliminazione delle SVM
+. Eliminazione di tutti i portset
+. Eliminazione di tutti i volumi nella SVM, incluso il volume root
+. Dismappare i LUN, portarli fuori linea ed eliminarli
+. Il server CIFS è stato eliminato se si stanno eliminando le SVM
+. Eliminazione di account utente e ruoli personalizzati associati a SVM
+. Sono stati eliminati tutti i sottosistemi NVMe associati alla SVM utilizzando la CLI.
+. SVM arrestato
+
+
+.A proposito di questa attività
+Quando si eliminano le SVM, vengono eliminati anche i seguenti oggetti associati alla SVM:
+
+* LIF, gruppi di failover LIF e gruppi di routing LIF
+* Policy di esportazione
+* Policy di efficienza
+
+
+Se si eliminano le SVM configurate per l'utilizzo di Kerberos o si modificano le SVM per utilizzare un Service Principal Name (SPN) diverso, l'entità del servizio originale della SVM non viene automaticamente eliminata o disattivata dall'area Kerberos. È necessario eliminare o disattivare manualmente l'entità. Per eliminare o disattivare l'entità, è necessario disporre del nome utente e della password dell'amministratore dell'area di autenticazione Kerberos.
+
+Se si desidera spostare i dati da una SVM a un'altra SVM prima di eliminare la prima SVM, è possibile utilizzare la tecnologia SnapMirror.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM che si desidera eliminare, quindi fare clic su *Elimina*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+

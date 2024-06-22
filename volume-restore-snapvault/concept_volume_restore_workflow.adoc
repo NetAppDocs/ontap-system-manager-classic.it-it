@@ -1,0 +1,28 @@
+---
+permalink: volume-restore-snapvault/concept_volume_restore_workflow.html 
+sidebar: sidebar 
+keywords: source, volume, data, corrupt, restore, snapvault, backup, destination, restoring, exist, operation, volume restore workflow 
+summary: 'Quando il volume di origine non è disponibile o i dati sono corrotti, è possibile eseguire un ripristino da un backup SnapVault. Il ripristino di un volume da un backup SnapVault comporta la selezione del volume di destinazione SnapVault, il ripristino su un nuovo volume o su un volume esistente e la verifica dell"operazione di ripristino.' 
+---
+= Workflow di ripristino del volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando il volume di origine non è disponibile o i dati sono corrotti, è possibile eseguire un ripristino da un backup SnapVault. Il ripristino di un volume da un backup SnapVault comporta la selezione del volume di destinazione SnapVault, il ripristino su un nuovo volume o su un volume esistente e la verifica dell'operazione di ripristino.
+
+image::../media/volume_restore_workflow.gif[La figura mostra un diagramma di flusso del flusso di lavoro di ripristino del volume SnapVault. I passaggi del flusso di lavoro corrispondono agli argomenti.">]
+
+Sono disponibili ulteriori informazioni per gestire le relazioni di backup di SnapVault e utilizzare altri metodi di protezione dei dati per proteggere la disponibilità delle risorse dati.
+
+* xref:../volume-disaster-prep/index.html[Preparazione al disaster recovery dei volumi]
++
+Viene descritto come configurare rapidamente un volume di destinazione su un cluster ONTAP diverso in preparazione del disaster recovery.
+
+* xref:../volume-disaster-recovery/index.html[Disaster recovery dei volumi]
++
+Descrive come attivare rapidamente un volume di destinazione da un cluster ONTAP diverso dopo un disastro, nonché come ripristinare la relazione SnapMirror al suo stato originale riattivando il volume di origine dopo il ripristino.
+
+

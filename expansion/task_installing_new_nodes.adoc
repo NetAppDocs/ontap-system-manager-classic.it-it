@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_installing_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, install, controller, configure, node-management, run, ontap, repurpose, hardware-level, ha, address, maintenance, mode, join, install the new node 
+summary: Una volta preparato il cluster, è necessario installare i controller e configurare le LIF di gestione dei nodi. 
+---
+= Installare i nuovi nodi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta preparato il cluster, è necessario installare i controller e configurare le LIF di gestione dei nodi. Se i controller non eseguono la stessa versione di ONTAP del cluster esistente, o vengono riutilizzati e non dispongono di ha a livello hardware, è necessario risolvere questi problemi in modalità manutenzione. Infine, è possibile unire i nodi al cluster.

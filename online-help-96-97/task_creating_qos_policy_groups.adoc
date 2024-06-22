@@ -1,0 +1,89 @@
+---
+permalink: online-help-96-97/task_creating_qos_policy_groups.html 
+sidebar: sidebar 
+keywords: online, help, create, qos, policy, groups, system, manager, quality, service 
+summary: 'È possibile utilizzare System Manager per creare gruppi di policy di qualità del servizio (QoS) dello storage per limitare il throughput dei carichi di lavoro e monitorare le performance dei carichi di lavoro.' 
+---
+= Gestisci i gruppi di policy QoS con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare gruppi di policy di qualità del servizio (QoS) per limitare il throughput dei carichi di lavoro e monitorare le performance dei carichi di lavoro.
+
+
+
+== Creare gruppi di policy QoS
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policy*, fare clic su *QoS Policy Groups*.
+. Nella finestra *QoS Policy Groups*, fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea gruppo di criteri*, specificare un nome di gruppo per il criterio.
+. Specificare il limite minimo di throughput.
++
+** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+. Specificare il limite massimo di throughput.
++
+** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS e B/s, KB/s, MB/s e così via.
+** Se non si specifica il limite massimo di throughput, il sistema visualizza automaticamente "`Unlimited`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
+
+. Fare clic su *OK*.
+
+
+
+
+== Eliminare i gruppi di policy QoS
+
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per eliminare un gruppo di criteri di qualità del servizio dello storage non più necessario.
+
+.Prima di iniziare
+È necessario aver disassegnato tutti gli oggetti di storage assegnati al gruppo di criteri.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policy*, fare clic su *QoS Policy Groups*.
+. Nella finestra *QoS Policy Groups*, selezionare il gruppo di criteri che si desidera eliminare, quindi fare clic su *Delete* (Elimina).
+. Nella finestra di dialogo di conferma, fare clic su *Delete* (Elimina).
+
+
+
+
+== Modificare i gruppi di policy QoS
+
+È possibile utilizzare la finestra di dialogo Modifica gruppo di criteri in Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare il nome e il throughput massimo di un gruppo di criteri di qualità del servizio (QoS) dello storage esistente.
+
+.A proposito di questa attività
+* In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+* Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policy*, fare clic su *QoS Policy Groups*.
+. Selezionare il gruppo di criteri QoS che si desidera modificare, quindi fare clic su *Edit* (Modifica).
++
+** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS e B/s, KB/s, MB/s e così via.
+** Se non si specifica il limite massimo di throughput, il valore viene impostato su Unlimited e l'unità specificata non influisce sul throughput massimo.
+
+
+. Nella finestra di dialogo *Modifica gruppo di criteri*, modificare i dettagli del gruppo di criteri QoS, quindi fare clic su *Salva*.
+

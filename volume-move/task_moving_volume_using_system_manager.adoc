@@ -1,0 +1,91 @@
+---
+permalink: volume-move/task_moving_volume_using_system_manager.html 
+sidebar: sidebar 
+keywords: move, volume, system, manager, destination, aggregate, operation, monitor, job, move a volume using system manager 
+summary: 'Utilizzando l"interfaccia "classic" di Gestore di sistema di ONTAP con ONTAP 9.7 o versioni precedenti, è possibile spostare un volume selezionando un volume e l"aggregato di destinazione, avviando l"operazione di spostamento del volume e monitorando facoltativamente il processo di spostamento del volume. Quando si utilizza System Manager, l"operazione di spostamento del volume termina automaticamente.' 
+---
+= Spostare un volume utilizzando System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia _classic_ di Gestore di sistema di ONTAP con ONTAP 9.7 o versioni precedenti, è possibile spostare un volume selezionando un volume e l'aggregato di destinazione, avviando l'operazione di spostamento del volume e monitorando facoltativamente il processo di spostamento del volume. Quando si utilizza System Manager, l'operazione di spostamento del volume termina automaticamente.
+
+.Prima di iniziare
+Prima dell'operazione di spostamento del volume e dopo l'operazione di spostamento del volume, dovresti aver esaminato lo spazio disponibile sull'aggregato di origine e sull'aggregato di destinazione.
+
+.A proposito di questa attività
+Un'operazione di spostamento del volume è supportata solo all'interno dello stesso cluster. Inoltre, l'aggregato in cui si sta spostando il volume e l'aggregato da cui si sta spostando il volume devono trovarsi nella stessa SVM (Storage Virtual Machine). Lo spostamento di un volume non interrompe l'accesso al client.
+
+.Fasi
+. Accedere alla finestra *Volumes*.
+. Selezionare il volume che si desidera spostare, quindi fare clic su *azioni* > *Sposta*.
+. Selezionare l'aggregato di destinazione, quindi avviare l'operazione di spostamento del volume:
++
+.. Selezionare un aggregato di destinazione dall'elenco dei possibili aggregati, che include solo gli aggregati che hanno la capacità richiesta.
++
+È necessario esaminare lo spazio disponibile, lo spazio totale, il tipo di RAID e il tipo di storage degli aggregati. Ad esempio, se l'obiettivo è quello di modificare le caratteristiche delle performance del volume, puoi concentrarti sugli aggregati con il tipo di storage desiderato.
+
+.. Fare clic su *Move* (Sposta), quindi fare nuovamente clic su *Move* (Sposta) per confermare che si desidera procedere con l'operazione di spostamento del volume.
++
+Quando viene visualizzata la finestra di dialogo Move Volume (Sposta volume), lasciare aperta la finestra di dialogo se si desidera monitorare il lavoro di spostamento del volume.
+
+
+
+. *Opzionale:* [[step4-monitor]]monitorare il lavoro di spostamento del volume:
++
+.. Nella finestra di dialogo *Move Volume* (Sposta volume), fare clic sul collegamento al *Job ID* del job di spostamento del volume.
+.. Individuare il lavoro di spostamento del volume, quindi esaminare le informazioni nella colonna *Status*.
++
+Il lavoro può trovarsi in una qualsiasi delle diverse fasi, ad esempio il trasferimento della linea di base iniziale dei dati o l'avvio di un tentativo di cutover.
+
++
+image::../media/volume_move_3_job_cutover.gif[Questa immagine viene spiegata dal testo circostante.]
+
+.. Fare clic su *Refresh* nella finestra *Jobs* per visualizzare lo stato aggiornato del lavoro.
++
+image::../media/volume_move_4_job_is_successful.gif[Questa immagine viene spiegata dal testo circostante.]
+
++
+Lo stato del lavoro cambia in `Complete: Successful` al termine dell'operazione di spostamento del volume.
+
+
+
+. Se il lavoro di spostamento del volume entra nella fase di cutover rinviato, eseguire un cutover manuale.
++
+.. Dalla finestra *Volumes* (volumi), selezionare il volume per il quale è stato avviato il lavoro di spostamento del volume.
+.. Avviare il cutover per il volume:
++
+|===
+
+
+| Se si esegue... | Eseguire questa procedura... 
+
+
+ a| 
+ONTAP 9,3 o versione successiva
+ a| 
+... Espandere il volume e fare clic sul collegamento *Mostra ulteriori dettagli* per visualizzare ulteriori informazioni sul volume.
+... Nella scheda *Panoramica*, fare clic su *Cutover*.
+
+
+
+
+ a| 
+ONTAP 9,2 o versione precedente
+ a| 
+Nella scheda *Volume Move Details* (Dettagli spostamento volume), fare clic su *Cutover*.
+
+|===
+.. Nella finestra di dialogo *Cutover*, fare clic su *Advanced Options* (Opzioni avanzate).
+.. Specificare l'azione di cutover e la durata del cutover.
++
+image::../media/vol_move_cutover.gif[Questa immagine viene spiegata dal testo circostante.]
+
+.. Fare clic su *OK*.
+
+
+. Ripetere <<step4-monitor,Passaggio 4>>.
+

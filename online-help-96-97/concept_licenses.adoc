@@ -1,0 +1,268 @@
+---
+permalink: online-help-96-97/concept_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, view, manage, delete, software, licenses, cluster, node, types, entitlement, risk, 
+summary: È possibile utilizzare System Manager per visualizzare, gestire o eliminare qualsiasi licenza software installata su un cluster o nodo. 
+---
+= Gestione delle licenze con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per visualizzare, gestire o eliminare qualsiasi licenza software installata su un cluster o nodo.
+
+
+
+== Eliminare le licenze
+
+È possibile utilizzare la finestra Licenses (licenze) di System Manager per eliminare qualsiasi licenza software installata su un cluster o su un nodo.
+
+Per informazioni sulla gestione delle licenze con ONTAP 9.8 e versioni successive, consultare le seguenti informazioni:
+
+* link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Panoramica sulla gestione delle licenze (solo amministratori del cluster)"^]
+* https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Abilitare le nuove funzioni aggiungendo le chiavi di licenza"^]
+
+
+.Prima di iniziare
+La licenza software che si desidera eliminare non deve essere utilizzata da alcun servizio o funzione.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Licenses*.
+. Nella finestra *Licenses*, eseguire l'azione appropriata:
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Eliminare un pacchetto di licenza specifico su un nodo o una licenza master
+ a| 
+Fare clic sulla scheda *Dettagli*.
+
+
+
+ a| 
+Eliminare un pacchetto di licenza specifico in tutti i nodi del cluster
+ a| 
+Fare clic sulla scheda *pacchetti*.
+
+|===
+. Selezionare il pacchetto di licenza software che si desidera eliminare, quindi fare clic su *Delete* (Elimina).
++
+È possibile eliminare un solo pacchetto di licenza alla volta.
+
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+.Risultati
+La licenza software viene eliminata dal sistema di storage. La licenza eliminata viene rimossa anche dall'elenco delle licenze nella finestra Licenses (licenze).
+
+
+
+== Tipi di licenza e rischio di diritto
+
+La comprensione dei vari tipi di licenza e dei rischi associati ai diritti consente di gestire i rischi associati alle licenze in un cluster.
+
+
+
+=== Tipi di licenza
+
+Un pacchetto può avere uno o più dei seguenti tipi di licenze installate nel cluster:
+
+* Licenza con blocco a nodo o licenza standard
++
+Viene rilasciata una licenza con blocco a nodo per un nodo con un numero di serie di sistema specifico (noto anche come _numero di serie del controller_). Questa licenza è valida solo per il nodo con il numero di serie corrispondente.
+
++
+L'installazione di una licenza con blocco a nodo dà diritto a un nodo alla funzionalità concessa in licenza. Affinché il cluster utilizzi la funzionalità concessa in licenza, è necessario che almeno un nodo sia concesso in licenza per tale funzionalità. L'utilizzo della funzionalità concessa in licenza su un nodo che non dispone di diritti per la funzionalità potrebbe essere fuori conformità.
+
++
+ONTAP 8.2 e versioni successive trattano una licenza installata prima di Data ONTAP 8.2 come licenza standard. Pertanto, in ONTAP 8.2 e versioni successive, tutti i nodi del cluster dispongono automaticamente della licenza standard per il pacchetto di cui fa parte la funzionalità precedentemente concessa in licenza.
+
+* Licenza master o di sito
++
+Una licenza master o di sito non è legata a un numero seriale di sistema specifico. Quando si installa una licenza di sito, tutti i nodi del cluster hanno diritto alla funzionalità concessa in licenza.
+
++
+Se il cluster dispone di una licenza master e si rimuove un nodo dal cluster, il nodo non dispone della licenza del sito e il nodo non ha più diritto alla funzionalità concessa in licenza. Se si aggiunge un nodo a un cluster che dispone di una licenza master, il nodo avrà automaticamente diritto alla funzionalità concessa dalla licenza del sito.
+
+* Licenza demo o temporanea
++
+Una licenza demo o temporanea scade dopo un certo periodo di tempo. Questa licenza consente di provare alcune funzionalità software senza acquistare alcun diritto. Una licenza temporanea è una licenza a livello di cluster e non è legata a un numero seriale specifico di un nodo.
+
++
+Se il cluster dispone di una licenza temporanea per un pacchetto e si rimuove un nodo dal cluster, il nodo non dispone della licenza di valutazione.
+
+* Licenza di capacità (solo ONTAP Select e FabricPool)
++
+Un'istanza di ONTAP Select viene concessa in licenza in base alla quantità di dati che l'utente desidera gestire. Ad esempio, l'utente potrebbe acquistare una licenza da 10 TB per consentire a ONTAP Select di gestire fino a 10 TB di dati. Se al sistema è collegata una capacità di storage superiore a quella concessa in licenza a ONTAP Select, ONTAP Select non funzionerà. Per impostazione predefinita, la capacità massima dello storage che può essere collegata a un'istanza di ONTAP Select è di 2 TB fino all'acquisto e all'installazione di una licenza di capacità (ad esempio, una licenza di capacità da 5 TB, una licenza di capacità da 10 TB e così via).
+
++
+A partire da ONTAP 9.2, gli aggregati abilitati per FabricPool richiedono una licenza di capacità da utilizzare con un Tier di storage di terze parti (ad esempio, AWS). La licenza di capacità FabricPool definisce la quantità di dati che possono essere memorizzati nello storage a Tier cloud.
+
+
+
+
+
+=== Rischio di diritto
+
+Il rischio di un diritto è dovuto all'installazione non uniforme di una licenza con blocco a nodo. Se la licenza con blocco a nodo è installata su tutti i nodi, non vi è alcun rischio di diritto.
+
+Il livello di rischio di diritto può essere elevato, medio, nessun rischio o rischio sconosciuto a seconda di determinate condizioni:
+
+* Rischio elevato
++
+** Se si utilizza un nodo specifico, ma la licenza bloccata dal nodo non è installata su tale nodo
+** Se la licenza demo installata sul cluster scade e si verifica un utilizzo su qualsiasi nodo
+
+
++
+[NOTE]
+====
+Se una licenza di sito è installata su un cluster, il rischio di diritto non è mai elevato.
+
+====
+* Rischio medio
++
+Se non è installata una licenza del sito e la licenza bloccata dal nodo non è installata uniformemente sui nodi di un cluster
+
+* Nessun rischio
++
+Non vi è alcun rischio di diritto se una licenza bloccata da nodo è installata su tutti i nodi o se una licenza di sito è installata sul cluster, indipendentemente dall'utilizzo.
+
+* Sconosciuto
++
+Il rischio è sconosciuto se l'API non è in grado di recuperare i dati relativi al rischio di diritto associato a un cluster o ai nodi nel cluster.
+
+
+
+
+
+== Finestra delle licenze
+
+Il sistema storage viene fornito dalla fabbrica con software preinstallato. Se si desidera aggiungere o rimuovere una licenza software dopo aver ricevuto il sistema di storage, è possibile utilizzare la finestra Licenses (licenze).
+
+[NOTE]
+====
+System Manager non monitora le licenze di valutazione e non fornisce alcun avviso quando una licenza di valutazione sta per scadere. Una licenza di valutazione è una licenza temporanea che scade dopo un certo periodo di tempo.
+
+====
+
+
+=== Pulsanti di comando
+
+* *Aggiungi*
++
+Apre la finestra Add License (Aggiungi licenza), che consente di aggiungere nuove licenze software.
+
+* *Elimina*
++
+Elimina la licenza software selezionata dall'elenco delle licenze software.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Scheda Packages (pacchetti)
+
+Visualizza informazioni sui pacchetti di licenza installati sul sistema storage.
+
+* *Pacchetto*
++
+Visualizza il nome del pacchetto di licenza.
+
+* *Rischio di titolarità*
++
+Indica il livello di rischio dovuto a problemi di licenza per un cluster. Il livello di rischio di diritto può essere elevato (image:../media/high_risk_entitlementrisk.gif[""]), a medio rischio (image:../media/medium_risk_entitlementrisk.gif[""]), nessun rischio (image:../media/no_risk_entitlementrisk.gif[""]), sconosciuto (image:../media/unknown_risk_entitlementrisk.gif[""]), o senza licenza (-).
+
+* *Descrizione*
++
+Visualizza il livello di rischio in seguito a problemi di licenza per un cluster.
+
+
+
+
+
+=== Area dei dettagli del pacchetto di licenze
+
+L'area sotto l'elenco dei pacchetti di licenza visualizza informazioni aggiuntive sul pacchetto di licenza selezionato. Quest'area include informazioni sul cluster o sul nodo su cui è installata la licenza, il numero di serie della licenza, l'utilizzo della settimana precedente, l'eventuale installazione della licenza, la data di scadenza della licenza e se si tratta di una licenza legacy.
+
+
+
+=== Scheda Dettagli
+
+Visualizza informazioni aggiuntive sui pacchetti di licenza installati sul sistema storage.
+
+* *Pacchetto*
++
+Visualizza il nome del pacchetto di licenza.
+
+* *Cluster/nodo*
++
+Visualizza il cluster o il nodo su cui è installato il pacchetto di licenza.
+
+* *Numero di serie*
++
+Visualizza il numero di serie del pacchetto di licenza installato sul cluster o sul nodo.
+
+* *Tipo*
++
+Visualizza il tipo di pacchetto di licenza, che può essere il seguente:
+
++
+** Temporaneo: Specifica che la licenza è una licenza temporanea, valida solo durante il periodo di dimostrazione.
+** Master: Specifica che la licenza è una licenza master, installata su tutti i nodi del cluster.
+** Node Locked (nodo bloccato): Specifica che la licenza è una licenza bloccata dal nodo, installata su un singolo nodo del cluster.
+** Capacità:
++
+*** Per ONTAP Select, specifica che la licenza è una licenza di capacità, che definisce la quantità totale di capacità dati che l'istanza è autorizzata a gestire.
+*** Per FabricPool, specifica che la licenza è una licenza di capacità, che definisce la quantità di dati che possono essere gestiti nello storage di terze parti collegato (ad esempio, AWS).
+
+
+
+
+* *Stato*
++
+Visualizza lo stato del pacchetto di licenza, che può essere il seguente:
+
++
+** Valutazione: Specifica che la licenza installata è una licenza di valutazione.
+** Installed (installata): Specifica che la licenza installata è una licenza acquistata valida.
+** ATTENZIONE: Specifica che la licenza installata è una licenza acquistata valida e si sta avvicinando alla capacità massima.
+** Applicazione: Specifica che la licenza installata è una licenza acquistata valida e ha superato la data di scadenza.
+** Waiting for License (in attesa di licenza): Specifica che la licenza non è stata ancora installata.
+
+
+* *Legacy*
++
+Visualizza se la licenza è una licenza legacy.
+
+* *Capacità massima*
++
+** Per ONTAP Select, Visualizza la quantità massima di storage che è possibile collegare all'istanza di ONTAP Select.
+** Per FabricPool, Visualizza la quantità massima di storage dell'archivio a oggetti di terze parti che può essere utilizzata come storage a Tier cloud.
+
+
+* *Capacità corrente*
++
+** Per ONTAP Select, Visualizza la quantità totale di storage attualmente collegata all'istanza di ONTAP Select.
+** Per FabricPool, Visualizza la quantità totale di storage dell'archivio a oggetti di terze parti attualmente utilizzato come storage a Tier cloud.
+
+
+* *Data di scadenza*
++
+Visualizza la data di scadenza del pacchetto di licenza software.
+
+
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Amministrazione del sistema"]
+
+xref:task_creating_cluster.adoc[Creazione di un cluster]

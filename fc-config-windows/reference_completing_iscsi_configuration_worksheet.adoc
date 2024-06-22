@@ -1,0 +1,205 @@
+---
+permalink: fc-config-windows/reference_completing_iscsi_configuration_worksheet.html 
+sidebar: sidebar 
+keywords: require, fc, initiator, target, wwpn, storage, configuration, information, perform, fc, task, complete the fc configuration worksheet 
+summary: Per eseguire le attività di configurazione FC, sono necessarie le WWPN di destinazione e le informazioni di configurazione dello storage FC. 
+---
+= Completare il foglio di lavoro di configurazione FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per eseguire le attività di configurazione FC, sono necessarie le WWPN di destinazione e le informazioni di configurazione dello storage FC.
+
+
+
+== WWPN host FC
+
+|===
+| Porta | PN. WWN 
+
+
+ a| 
+Porta iniziatore (host) collegata allo switch FC 1
+ a| 
+
+
+
+ a| 
+Porta Initiator (host) collegata allo switch FC 2
+ a| 
+
+|===
+
+
+== WWPN di destinazione FC
+
+Sono necessarie due LIF di dati FC per ciascun nodo del cluster. Le WWPN vengono assegnate da ONTAP quando si creano le LIF come parte della creazione della SVM (Storage Virtual Machine).
+
+image::../media/network_fc_or_iscsi_express_fc_windows.gif[La figura mostra quattro nodi,two switches,and a host. Each node has two LIFs]
+
+|===
+| LIF | PN. WWN 
+
+
+ a| 
+Nodo 1 LIF con porta collegata allo switch FC 1
+ a| 
+
+
+
+ a| 
+Nodo 2 LIF con porta collegata allo switch FC 1
+ a| 
+
+
+
+ a| 
+Nodo 3 LIF con porta connessa allo switch FC 1
+ a| 
+
+
+
+ a| 
+Nodo 4 LIF con porta connessa allo switch FC 1
+ a| 
+
+
+
+ a| 
+Nodo 1 LIF con porta connessa allo switch FC 2
+ a| 
+
+
+
+ a| 
+Nodo 2 LIF con porta connessa allo switch FC 2
+ a| 
+
+
+
+ a| 
+Nodo 3 LIF con porta connessa allo switch FC 2
+ a| 
+
+
+
+ a| 
+Nodo 4 LIF con porta connessa allo switch FC 2
+ a| 
+
+|===
+
+
+== Configurazione dello storage
+
+Se l'aggregato e la SVM sono già stati creati, registrare i nomi qui; in caso contrario, è possibile crearli come richiesto:
+
+|===
+| Da nodo a LUN proprio 
+
+
+ a| 
+Nome dell'aggregato
+
+
+
+ a| 
+Nome SVM
+
+|===
+
+
+== Informazioni sul LUN
+
+|===
+| Dimensione del LUN 
+
+
+ a| 
+Sistema operativo host
+
+
+
+ a| 
+LUN name (opzionale)
+
+
+
+ a| 
+Descrizione del LUN (opzionale)
+
+|===
+
+
+== Informazioni SVM
+
+Se non si utilizza una SVM esistente, sono necessarie le seguenti informazioni per crearne una nuova:
+
+[cols="1a,1a"]
+|===
+2+| Nome SVM 
+
+
+ a| 
+IPSpace di SVM
+
+
+
+ a| 
+Aggregato per il volume root SVM
+
+
+
+ a| 
+Nome utente SVM (opzionale)
+
+
+
+ a| 
+Password SVM (opzionale)
+
+
+
+ a| 
+LIF di gestione SVM (opzionale)
+
+
+
+ a| 
+ a| 
+Subnet:
+
+
+
+ a| 
+ a| 
+Indirizzo IP:
+
+
+
+ a| 
+ a| 
+Maschera di rete:
+
+
+
+ a| 
+ a| 
+Gateway:
+
+
+
+ a| 
+ a| 
+Nodo principale:
+
+
+
+ a| 
+ a| 
+Porta home:
+
+|===

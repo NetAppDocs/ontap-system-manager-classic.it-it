@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/concept_what_compatible_spare_disks_are.html 
+sidebar: sidebar 
+keywords: system, manager, compatible, spare, disk, hdd, compacity, raid, online, help 
+summary: 'In System Manager, i dischi di riserva compatibili corrispondono alle proprietà degli altri dischi nell"aggregato. Se si desidera aumentare le dimensioni di un aggregato esistente aggiungendo HDD (dischi di capacità) o modificando il tipo RAID di un aggregato da RAID4 a RAID-DP, l"aggregato deve contenere un numero sufficiente di dischi di riserva compatibili.' 
+---
+= Dischi di riserva compatibili in Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti), i dischi di riserva compatibili corrispondono alle proprietà degli altri dischi nell'aggregato. Se si desidera aumentare le dimensioni di un aggregato esistente aggiungendo HDD (dischi di capacità) o modificando il tipo RAID di un aggregato da RAID4 a RAID-DP, l'aggregato deve contenere un numero sufficiente di dischi di riserva compatibili.
+
+Le proprietà del disco che devono corrispondere sono il tipo di disco, la dimensione del disco (può essere un disco di dimensioni maggiori nel caso in cui non sia disponibile la stessa dimensione del disco), l'RPM del disco, il checksum, il proprietario del nodo, il pool, e le proprietà dei dischi condivisi. Se si utilizzano dischi di dimensioni superiori, è necessario tenere presente che si verifica un ridimensionamento dei dischi e che le dimensioni di tutti i dischi vengono ridotte alla dimensione minima. I dischi condivisi esistenti vengono abbinati a dischi non condivisi di dimensioni superiori e i dischi non condivisi vengono convertiti in dischi condivisi e aggiunti come dischi di riserva.
+
+Se per il gruppo RAID sono abilitate le opzioni di mixing RAID, come la combinazione del tipo di disco e il mixing degli RPM del disco, Il tipo di disco e gli RPM dei dischi esistenti dell'aggregato vengono abbinati al tipo di disco effettivo e agli RPM effettivi dei dischi di riserva per ottenere dischi di riserva compatibili.
+
+*Informazioni correlate*
+
+xref:task_adding_capacity_disks.adoc[Aggiunta di dischi di capacità]
+
+xref:task_editing_aggregates.adoc[Modifica degli aggregati]

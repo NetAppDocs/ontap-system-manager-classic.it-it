@@ -1,0 +1,16 @@
+---
+permalink: peering/concept_creating_peer_relationship_between_clusters_92_earlier.html 
+sidebar: sidebar 
+keywords: relationship, define, network, connection, enable, cluster, svm, exchange, data, secure, peer, relationship, peer, configure peer relationship, ontap 9.2 and earlier 
+summary: 'Utilizzando l"interfaccia "classic" di Gestore di sistema di ONTAP con ONTAP 9.2 o una versione precedente di ONTAP 9, è possibile creare relazioni peer SVM.' 
+---
+= Configurare le relazioni peer (ONTAP 9.2 e versioni precedenti)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzando l'interfaccia _classic_ di Gestore di sistema di ONTAP con ONTAP 9.2 o una versione precedente di ONTAP 9, è possibile creare relazioni peer SVM.
+
+Una relazione peer definisce le connessioni di rete che consentono a cluster e SVM di scambiare dati in modo sicuro. È necessario creare una relazione peer del cluster prima di creare una relazione peer SVM.

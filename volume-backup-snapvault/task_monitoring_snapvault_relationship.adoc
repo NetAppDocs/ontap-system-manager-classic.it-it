@@ -1,0 +1,51 @@
+---
+permalink: volume-backup-snapvault/task_monitoring_snapvault_relationship.html 
+sidebar: sidebar 
+keywords: periodically, monitor, status, snapvault, relationship, ensure, data, back, up, volume, schedule, monitor the snapvault relationship 
+summary: È necessario monitorare periodicamente lo stato delle relazioni SnapVault per assicurarsi che venga eseguito il backup dei dati sul volume di destinazione in base alla pianificazione specificata. 
+---
+= Monitorare la relazione SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario monitorare periodicamente lo stato delle relazioni SnapVault per assicurarsi che venga eseguito il backup dei dati sul volume di destinazione in base alla pianificazione specificata.
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *destination*.
+
+.Fasi
+. A seconda della versione di System Manager in esecuzione, eseguire una delle seguenti operazioni:
++
+** ONTAP 9.4 o versione precedente: Fare clic su *protezione* > *relazioni*.
+** A partire da ONTAP 9.5: Fare clic su *protezione* > *Relazioni volume*.
+
+
+. Selezionare la relazione SnapVault tra i volumi di origine e di destinazione, quindi verificare lo stato nella scheda *Dettagli* inferiore.
++
+Vengono visualizzati lo stato di salute della relazione SnapVault, gli eventuali errori di trasferimento e il ritardo:
+
++
+** Deve essere visualizzato il campo is healthy `Yes`.
++
+Per la maggior parte degli errori di trasferimento dei dati, viene visualizzato il campo `No`. In alcuni casi di guasto, tuttavia, il campo continua a essere visualizzato `Yes`. Controllare gli errori di trasferimento nella sezione Dettagli per assicurarsi che non si siano verificati errori di trasferimento dei dati.
+
+** Deve essere visualizzato il campo Relationship state (Stato relazione) `Snapmirrored`.
+** Il tempo di ritardo non deve superare l'intervallo di pianificazione del trasferimento.
++
+Ad esempio, se la pianificazione del trasferimento è giornaliera, il tempo di ritardo non deve essere superiore a un giorno.
+
++
+È necessario risolvere eventuali problemi nelle relazioni SnapVault. Le procedure di troubleshooting per le relazioni di SnapMirror sono applicabili anche alle relazioni di SnapVault.
+
++
+http://www.netapp.com/us/media/tr-4015.pdf["Report tecnico di NetApp 4015: Configurazione e Best practice di SnapMirror per ONTAP 9.1, 9.2"^]
+
++
+image::../media/monitor_sv.gif[monitorare sv]
+
+
+
+

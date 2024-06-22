@@ -1,0 +1,88 @@
+---
+permalink: volume-backup-snapvault/task_creating_snapvault_relationship_92_earlier.html 
+sidebar: sidebar 
+keywords: create, snapvault, relationship, source, volume, cluster, destination, peer, backup, create the snapvault relationship, ontap 9.2 or earlier 
+summary: Per creare un backup SnapVault, è necessario creare una relazione SnapVault tra il volume di origine su un cluster e il volume di destinazione sul cluster peered. 
+---
+= Creazione della relazione SnapVault (ONTAP 9.2 o versione precedente)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per creare un backup SnapVault, è necessario creare una relazione SnapVault tra il volume di origine su un cluster e il volume di destinazione sul cluster peered.
+
+.Prima di iniziare
+* È necessario disporre del nome utente e della password dell'amministratore del cluster per il cluster di destinazione.
+* L'aggregato di destinazione deve disporre di spazio disponibile.
+
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *source*.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Fare clic sulla scheda *Volumes* (volumi).
+. Selezionare il volume di cui si desidera eseguire il backup, quindi fare clic su *Protect* (protezione).
+. Nella finestra di dialogo *Crea relazione di protezione*, selezionare *Vault* dall'elenco a discesa *tipo di relazione*.
+. Nella sezione *Destination Volume* (Volume di destinazione), selezionare il cluster peered.
+. Specificare la SVM per il volume di destinazione:
++
+|===
+| Se SVM è... | Quindi... 
+
+
+ a| 
+Con peering
+ a| 
+Selezionare la SVM in peered dall'elenco.
+
+
+
+ a| 
+Non peered
+ a| 
+.. Selezionare la SVM.
+.. Fare clic su *Authenticate*.
+.. Immettere le credenziali dell'amministratore del cluster in peered, quindi fare clic su *Create* (Crea).
+
+
+|===
+. Creare un nuovo volume di destinazione:
++
+.. Selezionare l'opzione *New Volume* (nuovo volume).
+.. Utilizzare il nome del volume predefinito o immettere un nuovo nome per il volume.
+.. Selezionare l'aggregato di destinazione.
+.. Assicurarsi che la casella di controllo *Enable dedupe* (attiva deduplica) sia selezionata.
+
+
++
+image::../media/dest_vol_snapvault.gif[dest vol SnapVault (volume dest)]
+
+. Nella sezione *Dettagli configurazione*, selezionare `XDPDefault` come policy di protezione.
+. Selezionare un programma di protezione dall'elenco dei programmi.
+. Assicurarsi che la casella di controllo *Inizializza relazione* sia selezionata per trasferire la copia Snapshot di base, quindi fare clic su *Crea*
++
+image::../media/config_details_snapvault.gif[dettagli della configurazione SnapVault]
+
++
+La procedura guidata crea la relazione con la pianificazione e la policy del vault specificate. La relazione viene inizializzata avviando un trasferimento di base dei dati dal volume di origine al volume di destinazione.
+
++
+La sezione Status (Stato) mostra lo stato di ciascun lavoro.
+
++
+image::../media/create_snapvault_success.gif[creare il successo di SnapVault]
+
+. Verificare che lo stato di relazione della relazione SnapVault sia in `Snapmirrored` stato.
++
+.. Selezionare il volume dall'elenco Volumes (volumi), quindi fare clic su *Data Protection* (protezione dati).
+.. Nella scheda in basso *Data Protection*, verificare che la relazione SnapMirror creata sia elencata e che lo stato della relazione sia `Snapmirrored` e il tipo è `Vault`.
++
+image::../media/data_protection_window_sv.gif[sv. finestra di data protection]
+
+
+
+

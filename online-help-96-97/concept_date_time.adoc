@@ -1,0 +1,48 @@
+---
+permalink: online-help-96-97/concept_date_time.html 
+sidebar: sidebar 
+keywords: date, time, settings, cluster, system, manager, online, help 
+summary: È possibile utilizzare System Manager per gestire le impostazioni di data e ora di un cluster. 
+---
+= Gestisci le impostazioni di data e ora di un cluster con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per gestire le impostazioni di data e ora di un cluster, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Finestra di data e ora
+
+La finestra Data e ora consente di visualizzare le impostazioni di data e ora correnti del sistema di storage e di modificarle quando necessario.
+
+
+
+=== Pulsanti di comando
+
+* *Modifica*
++
+Apre la finestra di dialogo Modifica data e ora, che consente di modificare i server di riferimento orario.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area dei dettagli visualizza informazioni relative a data, ora, fuso orario, servizio NTP e server di riferimento orario per il sistema storage.
+
+*Informazioni correlate*
+
+xref:task_setting_time_zone_for_cluster.adoc[Impostazione del fuso orario per un cluster]
+
+xref:task_setting_up_network_when_ip_address_range_is_disabled.adoc[Impostazione di una rete quando un intervallo di indirizzi IP è disattivato]
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Amministrazione del sistema"]

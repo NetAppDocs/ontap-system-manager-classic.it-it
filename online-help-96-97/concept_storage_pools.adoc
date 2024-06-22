@@ -1,0 +1,288 @@
+---
+permalink: online-help-96-97/concept_storage_pools.html 
+sidebar: sidebar 
+keywords: system, manager, storage, pools, ssd, flash, pool, aggregates, online, help, create, 
+summary: È possibile utilizzare System Manager per creare pool di storage per consentire la condivisione di SSD da parte di più aggregati di Flash Pool. 
+---
+= Gestione dei pool di storage con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare pool di storage per consentire la condivisione di SSD da parte di più aggregati di Flash Pool.
+
+
+
+== Creare un pool di storage
+
+Un pool di storage è una raccolta di SSD (dischi cache). È possibile utilizzare System Manager per combinare gli SSD per creare un pool di storage, che consente di condividere gli SSD e gli SSD spare tra una coppia ha per l'allocazione a due o più aggregati di Flash Pool contemporaneamente.
+
+.Prima di iniziare
+* Entrambi i nodi della coppia ha devono essere attivi e in esecuzione per allocare SSD e dischi di riserva SSD attraverso un pool di storage.
+* I pool di storage devono avere almeno 3 SSD.
+* Tutti gli SSD in un pool di storage devono essere di proprietà della stessa coppia ha.
+
+
+.A proposito di questa attività
+System Manager applica la regola hot spare per i gruppi RAID SSD quando si utilizzano SSD per aggiungere dischi a un pool di storage. Ad esempio, se sono presenti 10 SSD nel gruppo SSD RAID e l'opzione `raid.min_spare_count` è impostato su `1` A livello di nodo, System Manager lascia 1 SSD come hot spare e utilizza gli altri 9 SSD per le operazioni relative agli SSD.
+
+Non è possibile utilizzare SSD partizionati quando si crea un pool di storage utilizzando System Manager.
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Storage Pools*.
+. Nella finestra *Storage Pools*, fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea pool di storage*, specificare il nome del pool di storage, la dimensione del disco e il numero di dischi.
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Aggiungere dischi a un pool di storage
+
+È possibile aggiungere SSD a un pool di storage esistente e aumentarne le dimensioni della cache utilizzando System Manager.
+
+.Prima di iniziare
+Entrambi i nodi della coppia ha devono essere attivi e in esecuzione per allocare SSD e dischi di riserva SSD attraverso un pool di storage.
+
+.A proposito di questa attività
+* Gli SSD aggiunti a un pool di storage vengono distribuiti in modo proporzionale tra gli aggregati utilizzando la cache del pool di storage e lo spazio libero del pool di storage.
+* System Manager applica la regola hot spare per i gruppi RAID SSD quando si utilizzano SSD per aggiungere dischi a un pool di storage.
++
+Ad esempio, se sono presenti 10 SSD nel gruppo SSD RAID e l'opzione `raid.min_spare_count` è impostato su `1` A livello di nodo, System Manager lascia 1 SSD come hot spare e utilizza gli altri 9 SSD per le operazioni relative agli SSD.
+
+* Non è possibile utilizzare SSD partizionati quando si aggiungono dischi a un pool di storage utilizzando System Manager.
+
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Storage Pools*.
+. Nella finestra *Storage Pools*, selezionare il pool di storage, quindi fare clic su *Add Disks* (Aggiungi dischi).
+. Nella finestra di dialogo *Aggiungi dischi*, specificare il numero di dischi che si desidera aggiungere.
+. Fare clic su *Avanti*.
+. Nella finestra di dialogo *Summary*, esaminare come la cache viene distribuita tra vari aggregati e lo spazio libero del pool di storage.
+. Fare clic su *Aggiungi*.
+
+
+
+
+== Eliminare i pool di storage
+
+È possibile eliminare un pool di storage quando la cache del pool di storage non è ottimale o quando non è più utilizzata da aggregati o aggregati di Flash Pool. È possibile eliminare un pool di storage utilizzando la finestra di dialogo Delete Storage Pool (Elimina pool di storage) in System Manager.
+
+.Prima di iniziare
+Il pool di storage non deve essere utilizzato da alcun aggregato.
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Storage Pools*.
+. Nella finestra *Storage Pools*, selezionare il pool di storage che si desidera eliminare, quindi fare clic su *Delete*.
+. Nella finestra di dialogo *Delete Storage Pool* (Elimina pool di storage), fare clic su *Delete* (Elimina).
+
+
+
+
+== Utilizzare i pool di storage SSD
+
+Per consentire la condivisione degli SSD da parte di più aggregati di Flash Pool, è possibile aggiungere gli SSD a un _pool di storage_. Dopo aver aggiunto un SSD a un pool di storage, non è più possibile gestire l'SSD come entità standalone. È necessario utilizzare il pool di storage per assegnare o allocare lo storage fornito dall'SSD.
+
+È possibile creare pool di storage per una coppia di ha (High Availability) specifica. Quindi, è possibile aggiungere unità di allocazione da quel pool di storage a uno o più aggregati di Flash Pool di proprietà della stessa coppia ha. Proprio come i dischi devono essere di proprietà dello stesso nodo proprietario di un aggregato prima che i dischi possano essere allocati ad esso, i pool di storage possono fornire storage solo agli aggregati di Flash Pool di proprietà di uno dei nodi proprietari del pool di storage.
+
+Se è necessario aumentare la quantità di cache di Flash Pool nel sistema, è possibile aggiungere più SSD a un pool di storage, fino alle dimensioni massime del gruppo RAID per il tipo RAID delle cache di Flash Pool che utilizzano il pool di storage. Quando si aggiunge un SSD a un pool di storage esistente, si aumenta la dimensione delle unità di allocazione del pool di storage, comprese le unità di allocazione già allocate a un aggregato di Flash Pool.
+
+È possibile utilizzare un solo SSD libero per un pool di storage, in modo che se un SSD in quel pool di storage non diventa disponibile, ONTAP può utilizzare l'SSD libero per ricostruire le partizioni dell'SSD guasto. Non è necessario riservare alcuna unità di allocazione come capacità di riserva; ONTAP può utilizzare solo un SSD completo e non partizionato come ricambio per gli SSD in un pool di storage.
+
+Dopo aver aggiunto un SSD a un pool di storage, non è possibile rimuovere l'SSD, così come non è possibile rimuovere i dischi da un aggregato. Se si desidera utilizzare nuovamente gli SSD in un pool di storage come dischi discreti, è necessario distruggere tutti gli aggregati di Flash Pool a cui sono state allocate le unità di allocazione del pool di storage, quindi distruggere il pool di storage.
+
+
+
+== Requisiti e Best practice per l'utilizzo dei pool di storage SSD
+
+Alcune tecnologie non possono essere combinate con aggregati di Flash Pool che utilizzano pool di storage SSD.
+
+Non è possibile utilizzare le seguenti tecnologie con gli aggregati di Flash Pool che utilizzano i pool di storage SSD per lo storage della cache:
+
+* MetroCluster
+* Funzionalità SyncMirror
++
+Gli aggregati mirrorati possono coesistere con gli aggregati di Flash Pool che utilizzano pool di storage; tuttavia, non è possibile eseguire il mirroring degli aggregati di Flash Pool.
+
+* SSD fisici
++
+Gli aggregati di Flash Pool possono utilizzare pool di storage SSD o SSD fisici, ma non entrambi.
+
+
+
+I pool di storage SSD devono essere conformi alle seguenti regole:
+
+* I pool di storage SSD possono contenere solo SSD; non è possibile aggiungere HDD a un pool di storage SSD.
+* Tutti gli SSD in un pool di storage SSD devono essere di proprietà della stessa coppia ad alta disponibilità (ha).
+* Non è possibile utilizzare SSD partizionati per la partizione dei dati root in un pool di storage.
+
+
+Se si fornisce storage da un singolo pool di storage a due cache con diversi tipi RAID e si espande la dimensione del pool di storage oltre la dimensione massima del gruppo RAID per RAID4, le partizioni aggiuntive nelle unità di allocazione RAID4 non vengono utilizzate. Pertanto, è consigliabile mantenere omogenei i tipi di RAID della cache per un pool di storage.
+
+Non è possibile modificare il tipo RAID di gruppi RAID della cache allocati da un pool di storage. È possibile impostare il tipo RAID per la cache prima di aggiungere le prime unità di allocazione e non modificare il tipo RAID in un secondo momento.
+
+Quando si crea un pool di storage o si aggiungono SSD a un pool di storage esistente, è necessario utilizzare SSD delle stesse dimensioni. Se si verifica un guasto e non esiste un SSD libero delle dimensioni corrette, ONTAP può utilizzare un SSD più grande per sostituire l'SSD guasto. Tuttavia, l'SSD più grande ha le dimensioni giuste per corrispondere alle dimensioni degli altri SSD nel pool di storage, con conseguente perdita di capacità SSD.
+
+È possibile utilizzare un solo SSD libero per un pool di storage. Se il pool di storage fornisce unità di allocazione agli aggregati di Flash Pool di proprietà di entrambi i nodi della coppia ha, allora l'SSD libero può essere di proprietà di entrambi i nodi. Tuttavia, se il pool di storage fornisce unità di allocazione solo agli aggregati di Flash Pool di proprietà di uno dei nodi della coppia ha, allora lo spare SSD deve essere di proprietà dello stesso nodo.
+
+
+
+== Considerazioni su quando utilizzare i pool di storage SSD
+
+I pool di storage SSD offrono molti vantaggi, ma introducono anche alcune restrizioni di cui dovresti essere consapevole quando decidi se utilizzare i pool di storage SSD o gli SSD dedicati.
+
+I pool di storage SSD hanno senso solo quando forniscono cache a due o più aggregati di Flash Pool. I pool di storage SSD offrono i seguenti vantaggi:
+
+* Maggiore utilizzo dello storage per gli SSD utilizzati negli aggregati di Flash Pool
++
+I pool di storage SSD riducono la percentuale complessiva di SSD necessari per la parità, consentendo di condividere SSD di parità tra due o più aggregati di Flash Pool.
+
+* Possibilità di condividere le parti di ricambio tra i partner ha
++
+Poiché il pool di storage è effettivamente di proprietà della coppia ha, un ricambio, di proprietà di uno dei partner ha, può funzionare come ricambio per l'intero pool di storage SSD, se necessario.
+
+* Migliore utilizzo delle performance SSD
++
+Le elevate performance offerte dagli SSD possono supportare l'accesso da entrambi i controller in una coppia ha.
+
+
+
+Questi vantaggi devono essere valutati rispetto ai costi dell'utilizzo dei pool di storage SSD, che includono i seguenti elementi:
+
+* Isolamento degli errori ridotto
++
+La perdita di un singolo SSD influisce su tutti i gruppi RAID che includono una delle sue partizioni. In questa situazione, ogni aggregato di Flash Pool che ha una cache allocata dal pool di storage SSD che contiene l'SSD interessato ha uno o più gruppi RAID in ricostruzione.
+
+* Isolamento delle performance ridotto
++
+Se la cache di Flash Pool non è dimensionata correttamente, potrebbe esserci un conflitto per la cache tra gli aggregati di Flash Pool che la condividono. Questo rischio può essere mitigato con il dimensionamento corretto della cache e i controlli QoS.
+
+* Riduzione della flessibilità di gestione
++
+Quando si aggiunge storage a un pool di storage, si aumentano le dimensioni di tutte le cache di Flash Pool che includono una o più unità di allocazione da quel pool di storage; non è possibile determinare come viene distribuita la capacità extra.
+
+
+
+
+
+== Considerazioni sull'aggiunta di SSD a un pool di storage esistente rispetto alla creazione di uno nuovo
+
+Puoi aumentare le dimensioni della cache SSD in due modi: Aggiungendo SSD a un pool di storage SSD esistente o creando un nuovo pool di storage SSD. Il metodo migliore dipende dalla configurazione e dai piani per lo storage.
+
+La scelta tra la creazione di un nuovo pool di storage e l'aggiunta di capacità di storage a uno esistente è simile alla decisione di creare un nuovo gruppo RAID o aggiungere storage a uno esistente:
+
+* Se si aggiunge un numero elevato di SSD, la creazione di un nuovo pool di storage offre una maggiore flessibilità perché è possibile allocare il nuovo pool di storage in modo diverso da quello esistente.
+* Se si aggiungono solo pochi SSD e non si aumenta la dimensione del gruppo RAID delle cache Flash Pool esistenti, l'aggiunta di SSD al pool di storage esistente consente di ridurre i costi di parità e di riserva e di allocare automaticamente il nuovo storage.
+
+
+Se il pool di storage fornisce unità di allocazione agli aggregati di Flash Pool le cui cache hanno tipi RAID diversi e si espande la dimensione del pool di storage oltre la dimensione massima del gruppo RAID RAID4, le nuove partizioni aggiunte nelle unità di allocazione RAID4 non saranno utilizzate.
+
+
+
+== Perché aggiungere dischi ai pool di storage
+
+È possibile aggiungere SSD a un pool di storage esistente e aumentarne le dimensioni della cache. Quando si aggiungono SSD a un pool di storage con unità di allocazione già allocate agli aggregati di Flash Pool, si aumentano le dimensioni della cache di ciascuno di questi aggregati e la cache totale del pool di storage.
+
+Se le unità di allocazione del pool di storage non sono ancora allocate, l'aggiunta di SSD a tale pool di storage non influisce sulle dimensioni della cache SSD.
+
+Quando si aggiungono SSD a un pool di storage esistente, gli SSD devono essere di proprietà di un nodo o dell'altro della stessa coppia ha che possedeva già gli SSD esistenti nel pool di storage. È possibile aggiungere SSD di proprietà di entrambi i nodi della coppia ha.
+
+
+
+== Come funziona il pool di storage
+
+Un _pool di storage_ è una raccolta di SSD. È possibile combinare SSD per creare un pool di storage, che consente di condividere le unità SSD e SSD di riserva in più aggregati di Flash Pool, allo stesso tempo.
+
+I pool di storage sono costituiti da unità di allocazione, che è possibile utilizzare per fornire SSD e SSD di riserva agli aggregati o per aumentare le dimensioni degli SSD esistenti.
+
+Dopo aver aggiunto un SSD a un pool di storage, non è più possibile utilizzare l'SSD come disco singolo. È necessario utilizzare il pool di storage per assegnare o allocare lo storage fornito dall'SSD.
+
+
+
+== Finestra dei pool di storage
+
+È possibile utilizzare la finestra Storage Pools per creare, visualizzare e gestire una cache dedicata di SSD, nota anche come _storage Pools_. Questi pool di storage possono essere associati a un aggregato non root per fornire cache SSD e a un aggregato Flash Pool per aumentarne le dimensioni.
+
+Questa pagina non è disponibile per un cluster contenente nodi con personalità ottimizzata per All Flash.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Create Storage Pool (Crea pool di storage), che consente di creare un pool di storage.
+
+* *Aggiungi dischi*
++
+Apre la finestra di dialogo Add Disks (Aggiungi dischi), che consente di aggiungere dischi cache a un pool di storage.
+
+* *Elimina*
++
+Elimina il pool di storage selezionato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei pool di storage
+
+* *Nome*
++
+Visualizza il nome del pool di storage.
+
+* *Cache totale*
++
+Visualizza le dimensioni totali della cache del pool di storage.
+
+* *Cache di riserva*
++
+Visualizza le dimensioni della cache disponibile del pool di storage.
+
+* *Cache utilizzata (%)*
++
+Visualizza la percentuale delle dimensioni della cache utilizzata del pool di storage.
+
+* *Unità di allocazione*
++
+Visualizza l'unità di allocazione minima delle dimensioni totali della cache che è possibile utilizzare per aumentare le dimensioni del pool di storage.
+
+* *Proprietario*
++
+Visualizza il nome della coppia ha o del nodo a cui è associato il pool di storage.
+
+* *Stato*
++
+Visualizza lo stato del pool di storage, che può essere normale, degradato, creazione, eliminazione, riassegnazione, O in crescita.
+
+* *È in buona salute*
++
+Visualizza se il pool di storage è integro o meno.
+
+
+
+
+
+=== Scheda Dettagli
+
+Visualizza informazioni dettagliate sul pool di storage selezionato, come nome, stato, tipo di storage, numero di dischi, cache totale, cache spare, dimensione della cache utilizzata (in percentuale) e unità di allocazione. La scheda visualizza anche i nomi degli aggregati forniti dal pool di storage.
+
+
+
+=== Scheda Disks (dischi)
+
+Visualizza informazioni dettagliate sui dischi nel pool di storage selezionato, ad esempio nomi, tipi di dischi, dimensioni utilizzabili e dimensioni totali.
+
+*Informazioni correlate*
+
+xref:task_provisioning_storage_by_creating_flash_pool_aggregate_manually.adoc[Provisioning dello storage mediante la creazione manuale di un aggregato Flash Pool]
+
+xref:task_provisioning_cache_by_adding_disks.adoc[Provisioning della cache con l'aggiunta di SSD]
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestione di dischi e aggregati"]

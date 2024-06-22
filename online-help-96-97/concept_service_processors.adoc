@@ -1,0 +1,156 @@
+---
+permalink: online-help-96-97/concept_service_processors.html 
+sidebar: sidebar 
+keywords: service, processors, monitor, manage, storage, system, manager, temperature, voltage, current, fan, speed, online, help, isolate, management, network, traffic, sp, bmc, e0m, interface, subnet, performance, routing, ip, address, edit 
+summary: È possibile utilizzare un Services Processor per monitorare e gestire i parametri del sistema storage, ad esempio temperatura, tensione, corrente e velocità delle ventole, tramite System Manager. 
+---
+= Utilizza un Service Processor con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare un processore di servizi con Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per monitorare e gestire i parametri del sistema storage come temperatura, tensione, corrente e velocità delle ventole.
+
+
+
+== Isolare il traffico di rete di gestione
+
+Si consiglia di configurare SP/BMC e l'interfaccia di gestione e0M su una subnet dedicata al traffico di gestione. L'esecuzione del traffico dati sulla rete di gestione può causare il peggioramento delle performance e problemi di routing.
+
+La porta Ethernet di gestione della maggior parte dei controller di storage (indicata dall'icona di una chiave a tubo sul retro dello chassis) è collegata a uno switch Ethernet interno. Lo switch interno fornisce la connettività a SP/BMC e all'interfaccia di gestione e0M, che è possibile utilizzare per accedere al sistema di storage tramite protocolli TCP/IP come Telnet, SSH e SNMP.
+
+Se si intende utilizzare sia il dispositivo di gestione remota che e0M, è necessario configurarli sulla stessa subnet IP. Poiché si tratta di interfacce a bassa larghezza di banda, la procedura migliore consiste nel configurare SP/BMC ed e0M su una subnet dedicata al traffico di gestione.
+
+Se non è possibile isolare il traffico di gestione o se la rete di gestione dedicata è insolitamente grande, si consiglia di mantenere il volume di traffico di rete il più basso possibile. Un traffico broadcast o multicast in entrata eccessivo può compromettere le prestazioni di SP/BMC.
+
+[NOTE]
+====
+Alcuni storage controller, come AFF A800, dispongono di due porte esterne, una per BMC e l'altra per e0M. Per questi controller, non è necessario configurare BMC ed e0M sulla stessa subnet IP.
+
+====
+
+
+== Assegnare gli indirizzi IP ai Service Processor
+
+È possibile utilizzare System Manager per assegnare gli indirizzi IP a tutti i Service Processor contemporaneamente e per utilizzare questi Service Processor per monitorare e gestire i vari parametri di sistema dei sistemi storage.
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Configuration Updates*.
+. Nella finestra *Service Processor*, fare clic su *Global Settings* (Impostazioni globali).
+. Nella finestra di dialogo *Impostazioni globali*, scegliere l'origine per l'assegnazione degli indirizzi IP:
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Assegnare automaticamente gli indirizzi IP da un server DHCP
+ a| 
+Selezionare *DHCP*.
+
+
+
+ a| 
+Assegnare indirizzi IP da una subnet
+ a| 
+Selezionare *Subnet*.
+
+
+
+ a| 
+Fornire manualmente gli indirizzi IP
+ a| 
+Selezionare *assegnazione manuale*.
+
+|===
+. Fare clic su *Save* (Salva).
+
+
+
+
+== Modificare le impostazioni del Service Processor
+
+È possibile modificare gli attributi del Service Processor, ad esempio l'indirizzo IP, la maschera di rete o la lunghezza del prefisso e l'indirizzo del gateway, utilizzando System Manager. È inoltre possibile allocare indirizzi IP ai Service Processor che non dispongono di indirizzi IP assegnati.
+
+.A proposito di questa attività
+* È possibile modificare manualmente le impostazioni di un Service Processor a cui è stato assegnato un indirizzo IP.
+* Non è possibile modificare le impostazioni di un Service Processor a cui è stato assegnato un indirizzo IP tramite un server DHCP o una subnet.
+
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Service Processor*.
+. Nella finestra *Service Processor*, selezionare il Service Processor che si desidera modificare, quindi fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Service Processor* (Modifica processore di servizio), apportare le modifiche desiderate, quindi fare clic su *Save and Close* (Salva e chiudi).
+
+
+
+
+== Comprendere il Service Processor
+
+Un Service Processor è una risorsa indipendente dal sistema nel sistema di storage che consente di monitorare e gestire i parametri del sistema di storage come temperatura, tensione, corrente e velocità delle ventole.
+
+Quando il processore di servizi rileva una condizione anomala in uno dei parametri del sistema di storage, registra un evento, notifica il problema a ONTAP e genera messaggi AutoSupport tramite e-mail o trap SNMP.
+
+Il Service Processor monitora ONTAP attraverso un meccanismo di controllo e può facilitare un rapido failover verso il nodo partner. Il Service Processor tiene inoltre traccia di numerosi eventi di sistema e li salva in un file di log. Gli eventi includono lo stato di avanzamento dell'avvio, le modifiche FRU (Field-Replaceable Unit), gli eventi generati da ONTAP e la cronologia delle transazioni degli utenti.
+
+Il Service Processor può accedere e amministrare in remoto il sistema storage ed eseguire diagnosi, spegnere, spegnere e riaccendere o riavviare il sistema, indipendentemente dallo stato del sistema storage. Inoltre, il Service Processor offre funzionalità di diagnostica remota.
+
+Le funzionalità combinate di monitoraggio e gestione del Service Processor consentono di valutare il sistema storage in caso di problemi e di eseguire immediatamente azioni di servizio efficaci.
+
+
+
+== Finestra Service Processor
+
+È possibile utilizzare la finestra Service Processor per visualizzare e modificare gli attributi dei Service Processor, ad esempio l'indirizzo IP, la maschera di rete (IPv4) o la lunghezza del prefisso (IPv6) e il gateway, nonché per configurare l'origine IP per un Service Processor.
+
+
+
+=== Pulsanti di comando
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Service Processor, che consente di modificare l'indirizzo IP, la maschera di rete (IPv4) o la lunghezza del prefisso (IPv6) e le informazioni del gateway di un Service Processor.
+
+* *Impostazioni globali*
++
+Apre la finestra di dialogo Global Settings (Impostazioni globali), che consente di configurare l'origine dell'indirizzo IP per tutti i Service Processor come uno dei seguenti: DHCP, subnet o manuale.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei processori di servizio
+
+* Nodo *
++
+Specifica il nodo su cui si trova il Service Processor.
+
+* *Indirizzo IP*
++
+Specifica gli indirizzi IP del Service Processor.
+
+* *Stato*
++
+Specifica lo stato del Service Processor, che può essere online, offline, daemon offline, nodo offline, degradato, riavviato o sconosciuto.
+
+* *Indirizzo MAC*
++
+Specifica l'indirizzo MAC del Service Processor.
+
+
+
+
+
+=== Area dei dettagli
+
+L'area sotto l'elenco Service Processor visualizza informazioni dettagliate sul Service Processor, inclusi i dettagli di rete, come l'indirizzo IP, la maschera di rete (IPv4) o la lunghezza del prefisso (IPv6), il gateway, la fonte IP, E indirizzo MAC, oltre a dettagli generali, come la versione del firmware e se l'aggiornamento automatico del firmware è attivato.
+
+*Informazioni correlate*
+
+xref:task_setting_up_network_when_ip_address_range_is_disabled.adoc[Impostazione di una rete quando un intervallo di indirizzi IP è disattivato]

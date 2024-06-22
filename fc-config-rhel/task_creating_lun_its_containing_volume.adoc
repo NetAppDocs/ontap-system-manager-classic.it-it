@@ -1,0 +1,49 @@
+---
+permalink: fc-config-rhel/task_creating_lun_its_containing_volume.html 
+sidebar: sidebar 
+keywords: create, lun, wizard, igroup, map, create a lun 
+summary: 'Per creare un LUN, utilizzare la procedura guidata Create LUN (Crea LUN). La procedura guidata crea anche il igroup e mappa il LUN all"igroup, consentendo all"host specificato di accedere al LUN.' 
+---
+= Creare un LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per creare un LUN, utilizzare la procedura guidata Create LUN (Crea LUN). La procedura guidata crea anche il igroup e mappa il LUN all'igroup, consentendo all'host specificato di accedere al LUN.
+
+.Prima di iniziare
+* Deve essere presente un aggregato con spazio libero sufficiente per contenere il LUN.
+* Deve essere presente una macchina virtuale di storage (SVM) con il protocollo FC attivato e le interfacce logiche (LIF) appropriate create.
+* È necessario aver registrato i nomi delle porte internazionali (WWPN) delle porte FC host.
+
+
+.A proposito di questa attività
+Se l'organizzazione dispone di una convenzione di denominazione, è necessario utilizzare i nomi per il LUN, il volume e così via che si adattano alla convenzione. In caso contrario, accettare i nomi predefiniti.
+
+.Fasi
+. Accedere alla finestra *LUN*.
+. Selezionare *Crea.*
+. Cercare e selezionare una SVM in cui si desidera creare le LUN.
++
+Viene visualizzata la procedura guidata di creazione del LUN.
+
+. Nella pagina *General Properties* (Proprietà generali), selezionare il tipo di LUN *Linux* per le LUN utilizzate direttamente dall'host Linux.
++
+Lasciare deselezionata la casella di controllo *thin provisioning*.
+
++
+image::../media/lun_creation_thin_provisioned_linux_fc_rhel.gif[L'illustrazione mostra la finestra di dialogo con la casella di controllo thin provisioning deselezionata.]
+
+. Nella pagina *LUN container*, selezionare un volume FlexVol esistente.
++
+È necessario assicurarsi che vi sia spazio sufficiente nel volume. Se non è disponibile spazio sufficiente nei volumi esistenti, è possibile creare un nuovo volume.
+
+. Nella pagina *Initiator Mapping*, selezionare *Add Initiator Group* (Aggiungi gruppo di iniziatori), inserire le informazioni richieste nella scheda *General* (Generale), quindi nella scheda *Initiator* (iniziatori), inserire tutte le WWPN delle porte FC host registrate.
+. Confermare i dettagli, quindi selezionare *fine* per completare la procedura guidata.
+
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Amministrazione del sistema"]

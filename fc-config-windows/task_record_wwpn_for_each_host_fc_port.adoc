@@ -1,0 +1,36 @@
+---
+permalink: fc-config-windows/task_record_wwpn_for_each_host_fc_port.html 
+sidebar: sidebar 
+keywords: worldwide, port, name, wwpn, require, zone, fc, switch, create, igroup, host, lun, record, record the wwpn for each host fc port 
+summary: 'Il nome della porta universale (WWPN) è necessario per mettere in zona gli switch FC e per creare gli igroups che consentono all"host di accedere al proprio LUN.' 
+---
+= Registrare il numero WWPN per ciascuna porta FC host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il nome della porta universale (WWPN) è necessario per mettere in zona gli switch FC e per creare gli igroups che consentono all'host di accedere al proprio LUN.
+
+.Prima di iniziare
+È necessario aver installato l'utility HBA del vendor per gli HBA nell'host e verificare che gli HBA eseguano versioni del driver, del firmware e del BIOS supportate per la configurazione.
+
+.A proposito di questa attività
+Il WWPN viene utilizzato per tutte le configurazioni. Non è necessario registrare il nome del nodo globale (WWNN).
+
+.Fasi
+. Eseguire l'utility HBA per il tipo di HBA FC in uso.
+. Selezionare l'HBA.
+. Registrare il numero WWPN di ciascuna porta.
++
+Nell'esempio seguente viene illustrato Emulex HBA Manager, precedentemente noto come OneCommand Manager.
+
++
+image::../media/emulex_hba_fc_fc_windows.gif[L'immagine mostra un HBA a 2 porte visualizzato in OneCommand Manager con i valori WWPN per ciascuna porta.]
+
++
+Altre utility, come QLogic QConvergeConsole, forniscono le informazioni equivalenti.
+
+. Ripetere il passaggio precedente per ciascun HBA FC nell'host.
+

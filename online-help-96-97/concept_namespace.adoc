@@ -1,0 +1,125 @@
+---
+permalink: online-help-96-97/concept_namespace.html 
+sidebar: sidebar 
+keywords: junction, path, window, system, manager, mount, unmount, flexvol, volume, svm, namespace, online, help, policies, export 
+summary: È possibile utilizzare la finestra percorso di giunzione in Gestione sistema per montare o smontare volumi FlexVol su una giunzione nello spazio dei nomi SVM. 
+---
+= Finestra percorso di giunzione in Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra percorso di giunzione in Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per montare o smontare volumi FlexVol su una giunzione nello spazio dei nomi SVM.
+
+
+
+== Montare i volumi
+
+È possibile utilizzare System Manager per montare i volumi su una giunzione nello spazio dei nomi SVM (Storage Virtual Machine).
+
+.A proposito di questa attività
+* Se si monta un volume su un percorso di giunzione con un'impostazione della lingua diversa da quella del volume principale immediato nel percorso, i client NFSv3 non possono accedere ad alcuni file perché alcuni caratteri potrebbero non essere decodificati correttamente.
++
+Questo problema non si verifica se la directory principale immediata è il volume root.
+
+* È possibile montare un volume SnapLock solo sotto la directory principale della SVM.
+* Non è possibile montare un volume normale sotto un volume SnapLock.
+
+
+.Fasi
+. Fare clic su *Storage* > *Junction Path*.
+. Dal menu a discesa nel campo *SVM*, selezionare la SVM su cui si desidera montare un volume.
+. Fare clic su *Mount*, quindi selezionare il volume da montare.
+. *Opzionale:* se si desidera modificare il nome predefinito della giunzione, specificare un nuovo nome.
+. Fare clic su *Browse*, quindi selezionare il percorso di giunzione in cui si desidera montare il volume.
+. Fare clic su *OK*, quindi su *Mount*.
+. Verificare il nuovo percorso di giunzione nella scheda *Dettagli*.
+
+
+
+
+== Smontare i volumi FlexVol
+
+È possibile utilizzare l'opzione percorso di giunzione del riquadro dello storage in Gestione sistema per smontare i volumi FlexVol da una giunzione nello spazio dei nomi SVM (Storage Virtual Machine).
+
+.Fasi
+. Fare clic su *Storage* > *Junction Path*.
+. Dal menu a discesa nel campo *SVM*, selezionare la SVM dalla quale si desidera smontare un volume.
+. Selezionare i volumi da smontare, quindi fare clic su *Unmount*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Disinstalla*.
+
+
+
+
+== Modificare le policy di esportazione
+
+Quando viene creato un volume, il volume eredita automaticamente la policy di esportazione predefinita del volume root della macchina virtuale di storage (SVM). È possibile utilizzare System Manager per modificare il criterio di esportazione predefinito associato al volume e ridefinire l'accesso client ai dati.
+
+.Fasi
+. Fare clic su *Storage* > *Junction Path*.
+. Dal menu a discesa nel campo *SVM*, selezionare la SVM in cui si trova il volume che si desidera modificare.
+. Selezionare il volume, quindi fare clic su *Change Export Policy* (Modifica policy di esportazione).
+. Selezionare il criterio di esportazione, quindi fare clic su *Cambia*.
+. Verificare che nella colonna *Export Policy* della finestra *Junction Path* sia visualizzato il criterio di esportazione applicato al volume.
+
+
+.Risultati
+Il criterio di esportazione predefinito viene sostituito dal criterio di esportazione selezionato.
+
+
+
+== Finestra Junction Path (percorso giunzione)
+
+È possibile utilizzare il menu Junction Path per gestire lo spazio dei nomi NAS delle macchine virtuali di storage (SVM).
+
+
+
+=== Pulsanti di comando
+
+* *Montare*
++
+Apre la finestra di dialogo Mount Volume, che consente di montare un volume sulla giunzione in uno spazio dei nomi SVM.
+
+* *Smontare*
++
+Apre la finestra di dialogo Unmount Volume (Disinstalla volume), che consente di smontare un volume dal volume principale.
+
+* *Modifica policy di esportazione*
++
+Apre la finestra di dialogo Modifica criterio di esportazione, che consente di modificare i criteri di esportazione esistenti associati al volume.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco dei percorsi di giunzione
+
+* *Percorso*
++
+Specifica il percorso di giunzione del volume montato. È possibile fare clic sul percorso di giunzione per visualizzare i volumi e le qtree correlati.
+
+* *Oggetto di storage*
++
+Specifica il nome del volume montato sul percorso di giunzione. È inoltre possibile visualizzare i qtree contenuti nel volume.
+
+* *Politica di esportazione*
++
+Specifica il criterio di esportazione del volume montato.
+
+* *Stile di sicurezza*
++
+Specifica lo stile di protezione del volume. I valori possibili includono UNIX (per i bit in modalità UNIX), NTFS (per ACL CIFS) e Mixed (per le autorizzazioni miste NFS e CIFS).
+
+
+
+
+
+=== Scheda Dettagli
+
+Visualizza informazioni generali sul volume o qtree selezionato, ad esempio il nome, il tipo di oggetto di storage, il percorso di giunzione dell'oggetto montato e i criteri di esportazione. Se l'oggetto selezionato è un qtree, vengono visualizzati i dettagli relativi al limite massimo di spazio, al limite minimo di spazio e all'utilizzo dello spazio.

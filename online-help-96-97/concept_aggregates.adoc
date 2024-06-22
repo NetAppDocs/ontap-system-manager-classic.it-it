@@ -1,0 +1,203 @@
+---
+permalink: online-help-96-97/concept_aggregates.html 
+sidebar: sidebar 
+keywords: aggregates, system, manager, security, backup, performance, data, sharing, classic, online, help, window 
+summary: È possibile utilizzare System Manager per creare aggregati per supportare i diversi requisiti di sicurezza, backup, performance e condivisione dei dati degli utenti. 
+---
+= Gestione degli aggregati con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+
+
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare aggregati in grado di supportare i diversi requisiti di sicurezza, backup, performance e condivisione dei dati degli utenti.
+
+
+
+== Finestra aggregati
+
+È possibile utilizzare la finestra aggregati per creare, visualizzare e gestire le informazioni sugli aggregati.
+
+
+
+=== Pulsanti di comando
+
+* *Crea*
++
+Apre la finestra di dialogo Crea aggregato, che consente di creare un aggregato.
+
+* *Modifica*
++
+Apre la finestra di dialogo Modifica aggregato, che consente di modificare il nome di un aggregato o il livello di protezione RAID che si desidera fornire per l'aggregato.
+
+* *Elimina*
++
+Elimina l'aggregato selezionato.
+
++
+[NOTE]
+====
+Questo pulsante è disattivato per l'aggregato root.
+
+====
+* *Altre azioni*
++
+Fornisce le seguenti opzioni:
+
+* *Cambia stato in*
++
+Cambia lo stato dell'aggregato selezionato in uno dei seguenti stati:
+
++
+** Online
++
+È consentito l'accesso in lettura e scrittura ai volumi contenuti in questo aggregato.
+
+** Offline
++
+Non è consentito l'accesso in lettura e scrittura.
+
+** Limitare
++
+Alcune operazioni, come la ricostruzione della parità, sono consentite, ma l'accesso ai dati non è consentito.
+
+
+
+* *Aggiungi capacità*
++
+Consente di aggiungere capacità (HDD o SSD) agli aggregati esistenti.
+
+* *Aggiungi cache*
++
+Consente di aggiungere dischi cache (SSD) ad aggregati HDD o aggregati Flash Pool esistenti.
+
++
+Questo pulsante non è disponibile per un cluster contenente nodi con personalità ottimizzata per All Flash.
+
+* *Mirror*
++
+Consente di eseguire il mirroring degli aggregati.
+
+* *Spostamento del volume*
++
+Consente di spostare un volume FlexVol.
+
+* *Attach Cloud Tier*
++
+Consente di collegare un Tier cloud all'aggregato.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Elenco aggregato
+
+Visualizza il nome e le informazioni sull'utilizzo dello spazio per ciascun aggregato.
+
+* *Stato*
++
+Visualizza lo stato dell'aggregato.
+
+* *Nome*
++
+Visualizza il nome dell'aggregato.
+
+* Nodo *
++
+Visualizza il nome del nodo a cui sono assegnati i dischi dell'aggregato.
+
++
+Questo campo è disponibile solo a livello di cluster.
+
+* *Tipo*
++
+Visualizza il tipo di aggregato.
+
++
+Questo campo non viene visualizzato per un cluster contenente nodi con All Flash Optimized Personality.
+
+* *Utilizzato (%)*
++
+Visualizza la percentuale di spazio utilizzata nell'aggregato.
+
+* *Spazio disponibile*
++
+Visualizza lo spazio disponibile nell'aggregato.
+
+* *Spazio usato*
++
+Visualizza la quantità di spazio utilizzata per i dati nell'aggregato.
+
+* *Spazio totale*
++
+Visualizza lo spazio totale dell'aggregato.
+
+* *FabricPool*
++
+Visualizza se l'aggregato selezionato è collegato a un livello cloud.
+
+* *Tier cloud*
++
+Se l'aggregato selezionato è collegato a un livello cloud, viene visualizzato il nome del livello cloud.
+
+* *Conteggio volumi*
++
+Visualizza il numero di volumi associati all'aggregato.
+
+* *Numero di dischi*
++
+Visualizza il numero di dischi utilizzati per creare l'aggregato.
+
+* *Flash Pool*
++
+Visualizza le dimensioni totali della cache dell'aggregato di Flash Pool. Il valore NA indica che l'aggregato non è un aggregato di Flash Pool.
+
++
+Questo campo non viene visualizzato per un cluster contenente nodi con All Flash Optimized Personality.
+
+* *Mirrorato*
++
+Visualizza se l'aggregato è mirrorato.
+
+* *Tipo SnapLock*
++
+Visualizza il tipo di SnapLock dell'aggregato.
+
+
+
+
+
+=== Area dei dettagli
+
+Selezionare un aggregato per visualizzare le informazioni sull'aggregato selezionato. Fare clic su Show More Details (Mostra ulteriori dettagli) per visualizzare informazioni dettagliate sull'aggregato selezionato.
+
+* *Scheda Panoramica*
++
+Visualizza informazioni dettagliate sull'aggregato selezionato e una rappresentazione grafica dell'allocazione dello spazio dell'aggregato, del risparmio di spazio dell'aggregato e delle performance dell'aggregato in IOPS e dei trasferimenti di dati totali.
+
+* *Scheda Disk Information (informazioni disco)*
++
+Visualizza informazioni sul layout del disco, come il nome del disco, il tipo di disco, le dimensioni fisiche, le dimensioni utilizzabili, la posizione del disco, Stato del disco, nome del plex, stato del plex, gruppo RAID, tipo RAID, e pool di storage (se presente) per l'aggregato selezionato. Vengono visualizzate anche la porta del disco associata al percorso primario del disco e il nome del disco con il percorso secondario del disco per una configurazione multipath.
+
+* Scheda *Volumes*
++
+Visualizza i dettagli relativi al numero totale di volumi nell'aggregato, allo spazio aggregato totale e allo spazio impegnato nell'aggregato.
+
+* Scheda Performance (prestazioni)*
++
+Visualizza i grafici che mostrano le metriche delle performance degli aggregati, inclusi throughput e IOPS. I dati delle metriche delle performance per i trasferimenti totali, in lettura e scrittura vengono visualizzati per throughput e IOPS, mentre i dati per SSD e HDD vengono registrati separatamente.
+
++
+La modifica del fuso orario del client o del fuso orario del cluster influisce sui grafici delle metriche delle performance. Aggiornare il browser per visualizzare i grafici aggiornati.
+
+
+
+*Informazioni correlate*
+
+xref:task_provisioning_storage_through_aggregates.adoc[Provisioning dello storage tramite aggregati]
+
+xref:task_deleting_aggregates.adoc[Eliminazione di aggregati]
+
+xref:task_editing_aggregates.adoc[Modifica degli aggregati]

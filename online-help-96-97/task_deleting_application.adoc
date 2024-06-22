@@ -1,0 +1,42 @@
+---
+permalink: online-help-96-97/task_deleting_application.html 
+sidebar: sidebar 
+keywords: delete, application, provisioned 
+summary: 'È possibile eliminare un"applicazione con provisioning quando non è più necessaria.' 
+---
+= Eliminare un'applicazione con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per eliminare un'applicazione con provisioning quando non è più necessaria.
+
+.A proposito di questa attività
+In qualità di amministratore del cluster, dopo aver eseguito il provisioning di un'applicazione, è possibile eliminarla quando non è più necessaria. La procedura di esempio che segue descrive come eliminare un'applicazione *NAS container*.
+
+.Fasi
+. Fare clic su *applicazioni e livelli* > *applicazioni*
+. Fare clic sul nome dell'applicazione container NAS.
++
+[NOTE]
+====
+Se qualcuno aggiunge nuove applicazioni utilizzando l'API CLI o REST mentre si visualizza l'elenco di applicazioni, non sarà possibile visualizzarle quando si scorre l'elenco.
+
+====
++
+La scheda *Panoramica* della finestra Dettagli applicazione: nas visualizza le impostazioni dell'applicazione.
+
+. Fare clic su *Delete* (Elimina).
++
+Viene visualizzata una finestra di dialogo con un messaggio di avviso che chiede se si desidera eliminare l'applicazione.
+
+. Fare clic su *Delete* (Elimina).
++
+[NOTE]
+====
+Tutti i volumi eliminati mediante l'operazione di eliminazione dell'applicazione non vengono inseriti nella coda di ripristino. Il volume viene cancellato immediatamente.
+
+====
+

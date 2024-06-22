@@ -1,0 +1,96 @@
+---
+permalink: online-help-96-97/task_adding_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, add, license, storage, software, online, help 
+summary: 'Se il software del sistema di storage è stato installato in fabbrica, System Manager aggiunge automaticamente il software all"elenco delle licenze. Se il software non è stato installato in fabbrica o se si desidera aggiungere licenze software aggiuntive, è possibile aggiungere la licenza software utilizzando System Manager.' 
+---
+= Aggiunta di licenze con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per aggiungere la licenza software se il software non è stato installato in fabbrica o se si desidera aggiungere ulteriori licenze software.
+
+Se il software del sistema di storage è stato installato in fabbrica, System Manager aggiunge automaticamente il software all'elenco delle licenze.
+
+.Prima di iniziare
+Il codice di licenza software per il servizio ONTAP specifico deve essere disponibile.
+
+.A proposito di questa attività
+* A partire da ONTAP 9.10.1, si utilizza Gestione di sistema per installare un file di licenza NetApp (NLF) per abilitare più funzionalità con licenza tutte contemporaneamente. L'utilizzo di un file di licenza NetApp semplifica l'installazione delle licenze, in quanto non è più necessario aggiungere chiavi di licenza per funzionalità separate. È possibile scaricare il file di licenza NetApp dal sito di supporto NetApp.
++
+Per ulteriori informazioni, vedere link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Abilitare le nuove funzioni aggiungendo le chiavi di licenza"]
+
++
+Per informazioni sulla gestione delle licenze, vedere link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Panoramica sulla gestione delle licenze (solo amministratori del cluster)"^]
+
+* Quando si aggiunge una nuova licenza in una configurazione MetroCluster, è consigliabile aggiungere la licenza anche al cluster di siti sopravvissuti.
+* Non è possibile utilizzare Gestione di sistema per aggiungere la licenza Cloud Volumes ONTAP.
++
+La licenza Cloud Volumes ONTAP non è elencata nella pagina della licenza. System Manager non invia alcun avviso sullo stato di rischio dei diritti della licenza Cloud Volumes ONTAP.
+
+* È possibile caricare solo licenze basate sulla capacità.
++
+Le licenze basate sulla capacità sono di tipo "`json`".
+
+
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Licenses*.
+. Fare clic su *Aggiungi*.
+. Nella finestra di dialogo *Aggiungi licenza*, eseguire la procedura appropriata:
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Aggiungere una licenza per un servizio ONTAP specifico
+ a| 
+.. Inserire la chiave di licenza del software.
++
+È possibile aggiungere più licenze inserendo le chiavi di licenza software separate da virgole.
+
+.. Fare clic su *Aggiungi*.
+
+
+
+
+ a| 
+Aggiungere una licenza basata sulla capacità
+ a| 
+.. Fare clic su Sfoglia, quindi selezionare il file di licenza basato sulla capacità.
+.. Fare clic su *Aggiungi*.
+
+
+
+
+ a| 
+Aggiungere una licenza per un servizio ONTAP specifico e una licenza basata sulla capacità
+ a| 
+.. Inserire la chiave di licenza del software.
++
+È possibile aggiungere più licenze inserendo le chiavi di licenza software separate da virgole.
+
+.. Fare clic su Sfoglia, quindi selezionare il file di licenza basato sulla capacità.
+.. Fare clic su *Aggiungi*.
+
+
+|===
++
+La nuova licenza viene aggiunta.
+
++
+La finestra di dialogo Add License Status (Aggiungi stato licenza) visualizza l'elenco delle licenze aggiunte correttamente. La finestra di dialogo visualizza anche le chiavi di licenza delle licenze che non sono state aggiunte e il motivo per cui le licenze non sono state aggiunte.
+
+. Fare clic su *Chiudi*.
+
+
+.Risultati
+La licenza software viene aggiunta al sistema di storage e visualizzata nell'elenco delle licenze nella finestra Licenses (licenze).
+
+*Informazioni correlate*
+
+xref:reference_licenses_window.adoc[Finestra delle licenze]

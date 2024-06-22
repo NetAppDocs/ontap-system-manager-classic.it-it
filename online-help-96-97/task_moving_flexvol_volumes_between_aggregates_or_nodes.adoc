@@ -1,0 +1,63 @@
+---
+permalink: online-help-96-97/task_moving_flexvol_volumes_between_aggregates_or_nodes.html 
+sidebar: sidebar 
+keywords: move, flexcol, volume, aggregate, node, online, help, system, manager 
+summary: 'È possibile spostare senza interruzioni un volume FlexVol in un aggregato diverso o in un nodo diverso per l"utilizzo della capacità e il miglioramento delle performance utilizzando Gestione di sistema.' 
+---
+= Sposta i volumi FlexVol tra aggregati o nodi con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per spostare senza interruzioni un volume FlexVol in un aggregato diverso o in un nodo diverso per l'utilizzo della capacità e il miglioramento delle performance.
+
+.Prima di iniziare
+Se si sposta un volume di protezione dati (DP), le relazioni del mirror di protezione dati devono essere inizializzate prima di spostare il volume.
+
+.A proposito di questa attività
+Non è possibile spostare volumi SnapLock tra aggregati e nodi.
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Dal menu a discesa nel campo *SVM*, selezionare *All SVM*.
+. Selezionare il volume che si desidera spostare.
+. Fare clic su *altre azioni* > *Sposta*.
+. Nella finestra di dialogo *Move Volume* (Sposta volume), selezionare l'aggregato o il nodo di destinazione per il volume, quindi modificare il criterio di tiering.
++
+[NOTE]
+====
+** Non è possibile modificare la policy di tiering di un volume root.
+** Non è possibile spostare il volume root in FabricPool.
+** Per i volumi di lettura/scrittura, è possibile impostare la policy di tiering come "backup" durante lo spostamento del volume.
++
+La policy di tiering diventa "snapshot-only" dopo lo spostamento.
+
+** I valori del Tier di capacità visualizzati nel campo "usato dopo lo spostamento" nell'aggregato di origine e nell'aggregato di destinazione sono valori stimati.
++
+Per ottenere i valori esatti, accedere alla finestra di aggregazione e visualizzare i dettagli di un aggregato specifico.
+
+
+
+====
+. Fare clic su *Sposta*.
+
+
+
+
+== Attivazione manuale del cutover per lo spostamento del volume
+
+Per un'operazione di spostamento del volume, è possibile utilizzare System Manager per attivare manualmente il cutover quando il volume entra nella fase di cutover differita. È possibile impostare la durata del cutover e dell'azione di cutover che il sistema deve eseguire se l'operazione non riesce entro tale intervallo di tempo.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Fare clic sulla scheda *Volumes* (volumi).
+. Espandere il volume per il quale è stata avviata l'operazione di spostamento del volume.
+. Fare clic sul collegamento *Mostra ulteriori dettagli* per visualizzare ulteriori informazioni sul volume.
+. Nella scheda *Panoramica*, fare clic su *Cutover*.
+. Nella finestra di dialogo *Cutover*, fare clic su *Opzioni avanzate*.
+. *Opzionale:* specificare l'azione di cutover e il periodo della finestra di cutover.
+. Fare clic su *OK*.
+

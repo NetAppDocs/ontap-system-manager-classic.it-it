@@ -1,0 +1,27 @@
+---
+permalink: fc-config-rhel/task_creating_aggregate.html 
+sidebar: sidebar 
+keywords: exist, aggregate, create, physical, storage, volume, create an aggregate 
+summary: Se non si desidera utilizzare un aggregato esistente, è possibile creare un nuovo aggregato per fornire storage fisico al volume che si sta eseguendo il provisioning. 
+---
+= Creare un aggregato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se non si desidera utilizzare un aggregato esistente, è possibile creare un nuovo aggregato per fornire storage fisico al volume che si sta eseguendo il provisioning.
+
+.Fasi
+. Inserire l'URL `+https://IP-address-of-cluster-management-LIF+` In un browser Web e accedere a System Manager utilizzando la credenziale dell'amministratore del cluster.
+. Passare alla finestra *aggregati*.
+. Selezionare *Crea.*
+. Seguire le istruzioni sullo schermo per creare l'aggregato utilizzando la configurazione RAID-DP predefinita, quindi selezionare *Create* (Crea).
++
+image::../media/aggregate_creation_fc_rhel.gif[Creazione di una schermata aggregata in System Manager]
+
+
+
+.Risultati
+L'aggregato viene creato con la configurazione specificata e aggiunto all'elenco degli aggregati nella finestra aggregati.

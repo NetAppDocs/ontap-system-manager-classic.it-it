@@ -1,0 +1,113 @@
+---
+permalink: online-help-96-97/reference_trace_file_access_window.html 
+sidebar: sidebar 
+keywords: system, manager, commnd, button, trace, file, access, window, online, help, cif, entry, list 
+summary: A partire da System Manager 9.6, è possibile utilizzare la finestra Trace file Access per diagnosticare i problemi di accesso a file e condivisioni su una SVM utilizzando il protocollo CIFS o NFS. 
+---
+= Finestra Trace file Access in System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da Gestore di sistema di ONTAP 9.6, è possibile utilizzare la finestra accesso al file di traccia per diagnosticare i problemi di accesso a file e condivisioni su una SVM utilizzando il protocollo CIFS o NFS.
+
+
+
+== Pulsanti di comando
+
+* *Continua*
++
+Avvia il processo di configurazione e avvio di una traccia di accesso al file sulla SVM selezionata.
+
+* *Protocolli*
++
+Consente di selezionare il protocollo utilizzato per accedere ai file e alle condivisioni sulla SVM selezionata, CIFS o NFS.
+
+* *Icona Opzioni avanzate*
++
+Consente di specificare ulteriori dettagli per limitare l'ambito della traccia.
+
+* *Mostra in risultati traccia*
++
+Consente di specificare nella finestra di dialogo Opzioni avanzate se si desidera che i risultati della traccia visualizzino solo le richieste di accesso ai file negate o tutte le richieste di accesso ai file, ovvero quelle riuscite e quelle negate.
+
+* *Avvia traccia*
++
+Consente di avviare la traccia. I risultati mostrano problemi di accesso per le richieste di accesso ai file inviate nei prossimi 60 minuti.
+
+* *Interrompi traccia*
++
+Consente di interrompere la traccia.
+
+* *Visualizza permessi*
++
+Consente di visualizzare le autorizzazioni. Quando si utilizza il protocollo CIFS, è possibile visualizzare i permessi di file e condivisione effettivi. Quando si utilizza il protocollo NFS, è possibile visualizzare i permessi dei file effettivi.
+
+* *Copia negli Appunti*
++
+Consente di copiare la tabella dei risultati negli Appunti.
+
+* *Esporta risultati traccia*
++
+Consente di esportare i risultati della traccia in un file in formato .csv (comma-separated-values).
+
+
+
+
+
+== Campi di immissione
+
+* *Nome utente*
++
+Immettere il nome dell'utente che ha ricevuto gli errori di richiesta di accesso al file che si desidera tenere traccia.
+
+* *Ricerca risultati traccia*
++
+Immettere le informazioni specifiche che si desidera trovare nei risultati della ricerca, quindi fare clic su *Invio*.
+
+* *Indirizzo IP client*
++
+Nella finestra di dialogo Opzioni avanzate, è possibile specificare l'indirizzo IP del client come ulteriore dettaglio per limitare l'ambito della traccia.
+
+* *File*
++
+Nella finestra di dialogo Opzioni avanzate, è possibile specificare il percorso del file o del file a cui si desidera accedere come ulteriore dettaglio per limitare l'ambito della traccia.
+
+
+
+.Elenco dei risultati per il tracciamento del protocollo CIFS
+Quando si specifica il protocollo CIFS, l'elenco dei risultati visualizza i seguenti dati per la traccia in base ai parametri specificati. I dati vengono visualizzati in ordine cronologico inverso. Se si interrompe la traccia, i risultati rimangono nell'elenco fino a quando non si avvia un'altra traccia.
+
+* Share (Condividi): Il nome della condivisione a cui il sistema ha tentato di accedere, indipendentemente dal fatto che sia stato eseguito correttamente.
+* Percorso: Il percorso del file a cui il sistema ha tentato di accedere, indipendentemente dal fatto che l'operazione abbia esito positivo o negativo.
+* Client IP Address (Indirizzo IP client): L'indirizzo IP del client da cui sono state avviate le richieste di accesso.
+* Motivi: I motivi per cui il tentativo di accesso al file o alla condivisione è riuscito o meno.
++
+[NOTE]
+====
+Quando il risultato della traccia mostra un messaggio che indica che l'accesso non è consentito per "Synchronize", "Read Control", "Read Attributes", "Execute", "Read EA", Il messaggio "Write" (scrittura) o "Read" (lettura) indica che l'accesso desiderato non è stato concesso per il set di autorizzazioni elencato. Per visualizzare lo stato effettivo delle autorizzazioni, è necessario visualizzare le autorizzazioni utilizzando il collegamento fornito.
+
+====
+
+
+.Elenco dei risultati per il tracciamento del protocollo NFS
+Quando si specifica il protocollo NFS, l'elenco dei risultati visualizza i seguenti dati per la traccia in base ai parametri specificati. I dati vengono visualizzati in ordine cronologico inverso. Se si interrompe la traccia, i risultati rimangono nell'elenco fino a quando non si avvia un'altra traccia.
+
+* Percorso: Il percorso del file a cui il sistema ha tentato di accedere, indipendentemente dal fatto che l'operazione abbia esito positivo o negativo.
+* Client IP Address (Indirizzo IP client): L'indirizzo IP del client da cui sono state avviate le richieste di accesso.
+* Motivi: I motivi per cui il tentativo di accesso al file o alla condivisione è riuscito o meno.
++
+[NOTE]
+====
+Quando il risultato della traccia mostra un messaggio che indica che l'accesso non è consentito per "Synchronize", "Read Control", "Read Attributes", "Execute", "Read EA", Il messaggio "Write" (scrittura) o "Read" (lettura) indica che l'accesso desiderato non è stato concesso per il set di autorizzazioni elencato. Per visualizzare lo stato effettivo delle autorizzazioni, è necessario visualizzare le autorizzazioni utilizzando il collegamento fornito.
+
+====
+
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gestione SMB/CIFS"]
+
+xref:../nas-multiprotocol-config/index.html[Configurazione multiprotocollo SMB/CIFS e NFS]

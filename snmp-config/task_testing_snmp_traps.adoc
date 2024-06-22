@@ -1,0 +1,23 @@
+---
+permalink: snmp-config/task_testing_snmp_traps.html 
+sidebar: sidebar 
+keywords: communication, traphost, automatic, validate, add, snmp, traphost, correct, trap, test, test snmp traps 
+summary: 'È possibile utilizzare l"interfaccia "classic" di Gestore di sistema ONTAP con ONTAP 9.7 o versioni precedenti per verificare i trap SNMP. Poiché la comunicazione con un traphost non viene convalidata automaticamente quando viene aggiunto, è necessario verificare che il traphost SNMP possa ricevere correttamente i trap.' 
+---
+= Verificare i trap SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare l'interfaccia _classic_ di Gestore di sistema ONTAP con ONTAP 9.7 o versioni precedenti per verificare i trap SNMP. Poiché la comunicazione con un traphost non viene convalidata automaticamente quando viene aggiunto, è necessario verificare che il traphost SNMP possa ricevere correttamente i trap.
+
+.Fasi
+. Accedere alla schermata *SNMP*.
+. Fare clic su *Test Trap host* per generare una trap dal cluster in cui è stato aggiunto un traphost.
+. Verificare che la trap sia stata ricevuta dalla posizione del traphost.
++
+Utilizzare qualsiasi software normalmente utilizzato per gestire il traphost SNMP.
+
+

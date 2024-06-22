@@ -1,0 +1,194 @@
+---
+permalink: online-help-96-97/task_creating_snaplock_volumes.html 
+sidebar: sidebar 
+keywords: create, snaplock, volume, online, help, system, manager 
+summary: 'È possibile utilizzare Gestione sistema per creare un volume di conformità SnapLock o un volume aziendale SnapLock. Quando si crea un volume, è anche possibile impostare i tempi di conservazione e scegliere se automatizzare l"impostazione dello stato WORM sui dati del volume.' 
+---
+= Creazione di volumi SnapLock con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare un volume di conformità SnapLock o un volume aziendale SnapLock. Quando si crea un volume, è anche possibile impostare i tempi di conservazione e scegliere se automatizzare l'impostazione dello stato WORM sui dati del volume.
+
+.Prima di iniziare
+* La licenza SnapLock deve essere stata installata.
+* L'aggregato SnapLock deve essere online.
+* Per creare un volume crittografato, è necessario aver installato la licenza di crittografia del volume utilizzando System Manager e aver attivato "`key-manager setup`" utilizzando l'interfaccia a riga di comando (CLI).
++
+Dopo aver attivato "`key-manager setup`", è necessario aggiornare il browser Web.
+
+
+
+.A proposito di questa attività
+* È possibile eliminare un volume aziendale SnapLock completo o un file in un volume aziendale SnapLock; tuttavia, non è possibile eliminare solo i dati all'interno di un file in un volume aziendale SnapLock.
+* Non è possibile eliminare un volume di conformità SnapLock se i dati sono impegnati nel volume.
+* Non è possibile crittografare un volume in Cloud Volumes ONTAP.
+* Se la crittografia è attivata sul volume di origine e nel cluster di destinazione è in esecuzione una versione del software ONTAP precedente a ONTAP 9.3, la crittografia viene disattivata per impostazione predefinita nel volume di destinazione.
+
+
+.Fasi
+. Fare clic su *Storage* > *Volumes*.
+. Fare clic su *Crea* > *Crea FlexVol*.
+. Cercare e selezionare la macchina virtuale di storage (SVM) in cui si desidera creare il volume.
+. Nella finestra di dialogo *Create Volume* (Crea volume), specificare un nuovo nome se si desidera modificare il nome predefinito del volume.
++
+Dopo aver creato il volume, non è possibile modificare il nome di un volume di conformità SnapLock.
+
+. Selezionare l'aggregato container per il volume.
++
+Per creare un volume SnapLock, è necessario selezionare un aggregato di conformità SnapLock o un aggregato aziendale SnapLock. Il volume eredita il tipo SnapLock dall'aggregato e il tipo SnapLock non può essere modificato dopo la creazione del volume; pertanto, è necessario selezionare l'aggregato corretto.
+
+. Selezionare la casella di controllo *Volume Encryption* per attivare la crittografia per il volume.
++
+Questa opzione è disponibile solo se è stata attivata la licenza Volume Encryption e se la piattaforma corrispondente è in grado di supportare la crittografia.
+
+. Selezionare il tipo di storage per il quale si desidera creare il volume.
++
+Se si crea un volume di destinazione SnapMirror, selezionare *Data Protection* (protezione dati). Viene fornito l'accesso in sola lettura a questo volume.
+
+. Specificare le dimensioni del volume e la percentuale delle dimensioni totali del volume che si desidera riservare per le copie Snapshot.
++
+Lo spazio predefinito riservato per le copie Snapshot è pari allo zero percento per i volumi SAN e VMware. Per i volumi NAS, il valore predefinito è 5%.
+
+. *Opzionale:* selezionare *thin provisioning* per abilitare il thin provisioning per il volume.
++
+Quando il thin provisioning è attivato, lo spazio viene allocato al volume dall'aggregato solo quando i dati vengono scritti nel volume.
+
+. *Opzionale:* apportare le modifiche necessarie nella scheda *efficienza dello storage* per attivare la deduplica sul volume.
++
+System Manager utilizza la pianificazione di deduplica predefinita. Se le dimensioni del volume specificato superano il limite richiesto per l'esecuzione della deduplica, il volume viene creato e la deduplica non viene attivata.
+
+. Selezionare la scheda *SnapLock*, quindi attenersi alla seguente procedura:
++
+.. *Opzionale:* specificare il periodo di autocommit.
++
+Il file nel volume rimane invariato per il periodo specificato prima del commit del file allo stato WORM. Per impostare manualmente lo stato WORM dei file, selezionare *Not specified* come impostazione di autocommit.
+
++
+I valori devono essere compresi tra 5 minuti e 10 anni.
+
+.. Specificare il periodo minimo di conservazione e il periodo massimo di conservazione.
++
+I valori devono essere compresi tra 1 giorno e 70 anni o Infinite.
+
+.. Selezionare il periodo di conservazione predefinito.
++
+Il periodo di conservazione predefinito deve rientrare nel periodo minimo e massimo di conservazione specificati.
+
+
+
+. *Opzionale:* selezionare la casella di controllo *Gestisci qualità del servizio dello storage* nella scheda *qualità del servizio* per abilitare la qualità del servizio dello storage per il volume FlexVol per gestire le performance del carico di lavoro.
+. Creare un gruppo di criteri di qualità del servizio di storage o selezionare un gruppo di criteri esistente per controllare le prestazioni di input/output (i/o) del volume FlexVol.
++
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Creare un gruppo di criteri di QoS dello storage
+ a| 
+.. Selezionare *nuovo gruppo di criteri*.
+.. Specificare il nome del gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS, B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
+
+
+
+
+
+ a| 
+Selezionare un gruppo di criteri esistente
+ a| 
+.. Selezionare *Gruppo di criteri esistente*, quindi fare clic su *Scegli* per selezionare un gruppo di criteri esistente dalla finestra di dialogo Seleziona gruppo di criteri.
+.. Specificare il limite minimo di throughput.
++
+*** In System Manager 9.5, è possibile impostare il limite minimo di throughput solo su una personalità ottimizzata per All Flash basata sulle performance. In Gestione sistema 9.6, è anche possibile impostare il limite minimo di throughput per i sistemi ONTAP Select Premium.
+*** Non è possibile impostare il limite minimo di throughput per i volumi su un aggregato abilitato a FabricPool.
+*** Se non si specifica il valore di throughput minimo o se il valore di throughput minimo è impostato su 0, il sistema visualizza automaticamente "`None`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole.
+
+
+
+.. Specificare il limite massimo di throughput per garantire che il carico di lavoro degli oggetti nel gruppo di criteri non superi il limite di throughput specificato.
++
+*** Il limite minimo di throughput e il limite massimo di throughput devono essere dello stesso tipo di unità.
+*** Se non si specifica il limite minimo di throughput, è possibile impostare il limite massimo di throughput in IOPS, B/s, KB/s, MB/s e così via.
+*** Se non si specifica il valore di throughput massimo, il sistema visualizza automaticamente "`Unlimited`" come valore.
++
+Questo valore fa distinzione tra maiuscole e minuscole. L'unità specificata non influisce sul throughput massimo.
+
+
+
++
+Se il gruppo di criteri è assegnato a più di un oggetto, il throughput massimo specificato viene condiviso tra gli oggetti.
+
+
+
+|===
+. Attivare *Volume Protection* nella scheda *Protection* per proteggere il volume:
+. Nella scheda *protezione*, selezionare il tipo di replica *Replication*:
++
+|===
+| Se è stato selezionato il tipo di replica come... | Eseguire questa operazione... 
+
+
+ a| 
+Asincrono
+ a| 
+.. *Opzionale:* se non si conoscono il tipo di replica e il tipo di relazione, fare clic su *Aiutami a scegliere*, specificare i valori, quindi fare clic su *Applica*.
+.. Selezionare il tipo di relazione.
++
+Il tipo di relazione può essere mirror, vault o mirror e vault.
+
+.. Selezionare un cluster e una SVM per il volume di destinazione.
++
+Se il cluster selezionato esegue una versione del software ONTAP precedente a ONTAP 9.3, vengono elencate solo le SVM con peering. Se il cluster selezionato esegue ONTAP 9.3 o versione successiva, vengono elencate le SVM in peering e le SVM consentite.
+
+.. Se necessario, modificare il suffisso del nome del volume.
+
+
+
+
+ a| 
+Sincrono
+ a| 
+.. *Opzionale:* se non si conoscono il tipo di replica e il tipo di relazione, fare clic su *Aiutami a scegliere*, specificare i valori, quindi fare clic su *Applica*.
+.. Selezionare il criterio di sincronizzazione.
++
+Il criterio di sincronizzazione può essere StrictSync o Sync.
+
+.. Selezionare un cluster e una SVM per il volume di destinazione.
++
+Se il cluster selezionato esegue una versione del software ONTAP precedente a ONTAP 9.3, vengono elencate solo le SVM con peering. Se il cluster selezionato esegue ONTAP 9.3 o versione successiva, vengono elencate le SVM in peering e le SVM consentite.
+
+.. Se necessario, modificare il suffisso del nome del volume.
+
+
+|===
+. Fare clic su *Create* (Crea).
+. Verificare che il volume creato sia incluso nell'elenco dei volumi nella finestra *Volume*.
+
+
+.Risultati
+Il volume viene creato con la sicurezza in stile UNIX e le autorizzazioni UNIX 700 "`read write execute`" per il proprietario.

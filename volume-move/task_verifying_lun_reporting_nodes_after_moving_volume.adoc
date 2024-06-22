@@ -1,0 +1,39 @@
+---
+permalink: volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, lun, destination, aggregate, high-availability, ha, pair, ontap, selective, reporting-nodes, list, path, verify, verify lun reporting nodes after moving a volume 
+summary: È possibile aggiungere nodi di reporting LUN per mantenere percorsi LUN ottimizzati. 
+---
+= Verificare i nodi di reporting LUN dopo lo spostamento di un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere nodi di reporting LUN per mantenere percorsi LUN ottimizzati.
+
+Se il volume spostato contiene LUN e l'aggregato di destinazione si trova su un'altra coppia ha (High Availability), ONTAP aggiunge automaticamente una coppia ha all'elenco dei nodi di reporting della mappa LUN selettiva
+
+.Prima di iniziare
+È necessario configurare due LIF: Una LIF sul nodo di destinazione e l'altra LIF sul partner ha del nodo di destinazione.
+
+.A proposito di questa attività
+Questa procedura è necessaria solo se si sposta un volume da una coppia ha a una coppia ha diversa. Se si sposta un volume in un nodo diverso della stessa coppia ha, ad esempio se si dispone di un cluster a due nodi o di una configurazione MetroCluster, è possibile ignorare questa procedura.
+
+.Fasi
+. Verificare che il nodo di destinazione e il nodo partner siano presenti nell'elenco dei nodi di reporting del volume. Se i nodi non sono presenti nell'elenco dei nodi di reporting, aggiungere il nodo di destinazione e il relativo nodo partner all'elenco dei nodi di reporting del volume:
++
+`lun mapping add-reporting-nodes`
+
+. Eseguire nuovamente la scansione dall'host per rilevare i percorsi aggiunti di recente.
+. Aggiungi i nuovi percorsi alla tua configurazione MPIO.
+. Rimuovere il proprietario del LUN precedente e il relativo nodo partner dall'elenco dei nodi di reporting:
++
+`lun mapping remove-reporting-nodes -remote-nodes -vserver vserver_name -path lun_path -igroup igroup_name`
+
+. Eseguire nuovamente la scansione dell'host per verificare la rimozione dei vecchi percorsi.
++
+Consultare la documentazione dell'host per istruzioni specifiche su come eseguire nuovamente la scansione degli host.
+
+

@@ -1,0 +1,42 @@
+---
+permalink: fc-config-esxi/task_verifying_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, write, data, verify that the host can write to and read from the lun 
+summary: 'Prima di utilizzare il LUN, verificare che l"host sia in grado di scrivere i dati sul LUN e di leggerli.' 
+---
+= Verificare che l'host sia in grado di scrivere e leggere dal LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di utilizzare il LUN, verificare che l'host sia in grado di scrivere i dati sul LUN e di leggerli.
+
+.A proposito di questa attività
+Se è possibile eseguire il failover del nodo del cluster su cui viene creata la LUN nel nodo partner, verificare la lettura dei dati mentre si verifica il failover del nodo. Questo test potrebbe non essere possibile se il cluster è in uso in produzione.
+
+.Fasi
+. Nella pagina iniziale di vSphere Web Client, fare clic su *host e cluster*.
+. Nel riquadro di navigazione, fare clic sulla scheda *Storage*.
+. Espandere il data center, quindi selezionare il nuovo datastore.
+. Nel riquadro centrale, fare clic su *Gestisci* > *file*.
++
+Viene visualizzato il contenuto dell'archivio dati.
+
+. Creare una nuova cartella nell'archivio dati e caricare un file nella nuova cartella.
++
+Potrebbe essere necessario installare il plug-in di integrazione client.
+
+. Verificare che sia possibile accedere al file appena scritto.
+. *Opzionale:* eseguire il failover del nodo del cluster contenente il LUN e verificare che sia ancora possibile scrivere e leggere un file.
++
+Se uno qualsiasi dei test ha esito negativo, verificare che il servizio FC sia in esecuzione sul cluster di storage e controllare i percorsi FC verso il LUN e lo zoning dello switch FC.
+
+. *Opzionale:* se si è verificato un errore nel nodo del cluster, assicurarsi di restituire il nodo e restituire tutte le LIF alle porte home.
+. Per un cluster ESXi, visualizzare l'archivio dati di ciascun host ESXi nel cluster e verificare che il file caricato sia visualizzato.
+
+
+*Informazioni correlate*
+
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["Configurazione ad alta disponibilità di ONTAP 9"]

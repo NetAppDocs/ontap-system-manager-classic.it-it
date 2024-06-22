@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/task_creating_initiator_groups.html 
+sidebar: sidebar 
+keywords: create, initiator, group, system, manager, lun, online, help, manage, delete, edit, add 
+summary: 'È possibile utilizzare System Manager per creare un gruppo di iniziatori. I gruppi di iniziatori consentono di controllare l"accesso degli host a LUN specifiche. È possibile utilizzare i portset per limitare le LIF a cui un iniziatore può accedere.' 
+---
+= Gestire i gruppi di iniziatori con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per gestire un gruppo di iniziatori, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti). I gruppi di iniziatori consentono di controllare l'accesso degli host a LUN specifiche. È possibile utilizzare i portset per limitare le LIF a cui un iniziatore può accedere.
+
+
+
+== Creare gruppi di iniziatori
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Nella scheda *Initiator Groups*, fare clic su *Create* (Crea).
+. Nella scheda *Generale* della finestra di dialogo *Crea gruppo di iniziatori*, specificare il nome del gruppo di iniziatori, il sistema operativo, il nome alias dell'host, il portset e il protocollo supportato per il gruppo.
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Eliminare i gruppi di iniziatori
+
+È possibile utilizzare la scheda Initiator Groups (gruppi iniziatori) in System Manager per eliminare i gruppi iniziatori.
+
+.Prima di iniziare
+Tutte le LUN mappate al gruppo iniziatore devono essere dismappate manualmente.
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Nella scheda *Initiator Groups*, selezionare uno o più gruppi di iniziatori da eliminare, quindi fare clic su *Delete* (Elimina).
+. Fare clic su *Delete* (Elimina).
+. Verificare che i gruppi iniziatori eliminati non siano più visualizzati nella scheda *Initiator Groups*.
+
+
+
+
+== Aggiungere gli iniziatori
+
+È possibile utilizzare System Manager per aggiungere gli iniziatori a un gruppo di iniziatori. Un iniziatore fornisce l'accesso a un LUN quando il gruppo iniziatore a cui appartiene viene mappato a tale LUN.
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Nella scheda *LUN Management*, selezionare il gruppo di iniziatori a cui si desidera aggiungere gli iniziatori e fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Initiator Group* (Modifica gruppo iniziatore), fare clic su *Initiator* (iniziatori).
+. Fare clic su *Aggiungi*.
+. Specificare il nome dell'iniziatore e fare clic su *OK*.
+. Fare clic su *Save and Close* (Salva e chiudi).
+
+
+
+
+== Eliminare gli iniziatori da un gruppo di iniziatori
+
+È possibile utilizzare la scheda Initiator Groups (gruppi iniziatori) in System Manager per eliminare un iniziatore. Per eliminare un iniziatore da un gruppo iniziatore, è necessario disassociare l'iniziatore dal gruppo iniziatore.
+
+.Prima di iniziare
+Tutte le LUN mappate al gruppo iniziatore che contiene l'iniziatore che si desidera eliminare devono essere dismappate manualmente.
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Nella scheda *Initiator Groups*, selezionare il gruppo di iniziatori dal quale si desidera eliminare l'iniziatore, quindi fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Edit Initiator Group* (Modifica gruppo iniziatore), fare clic sulla scheda *Initiators* (iniziatori).
+. Selezionare ed eliminare l'iniziatore dalla casella di testo, quindi fare clic su *Salva*.
++
+L'iniziatore viene disassociato dal gruppo iniziatore.
+
+
+
+*Informazioni correlate*
+
+xref:reference_luns_window.adoc[Finestra LUN]

@@ -1,0 +1,46 @@
+---
+section: fc-config-rhel
+title: Configurazione FC per Red Hat Enterprise Linux
+entries:
+- title: Panoramica
+  url: "/fc-config-rhel/index.html"
+- title: Workflow di provisioning e configurazione FC
+  url: "/fc-config-rhel/concept_fc_configuration_workflow.html"
+  entries:
+  - title: Verificare che la configurazione FC sia supportata
+    url: "/fc-config-rhel/task_verifying_that_iscsi_fc_configuration_is_supported.html"
+  - title: Completare il foglio di lavoro di configurazione FC
+    url: "/fc-config-rhel/reference_completing_iscsi_configuration_worksheet.html"
+  - title: Installare l'utility HBA dal fornitore dell'HBA
+    url: "/fc-config-rhel/task_installing_hba_utility_from_hba_vendor.html"
+  - title: Aggiornare il driver HBA, il firmware e il BIOS
+    url: "/fc-config-rhel/task_updating_hba_driver_firmware_bios.html"
+  - title: Installare Linux Unified host Utilities e ottimizzare le performance di
+      i/O.
+    url: "/fc-config-rhel/task_installing_linux_unified_host_utilities_optimizing_i_o_performance.html"
+  - title: Registrare il numero WWPN per ciascuna porta FC host
+    url: "/fc-config-rhel/task_record_wwpn_for_each_host_fc_port.html"
+  - title: Configurare DM-multipath
+    url: "/fc-config-rhel/task_configuring_dm_multipath.html"
+  - title: Creare un aggregato
+    url: "/fc-config-rhel/task_creating_aggregate.html"
+  - title: Decidere dove eseguire il provisioning del volume
+    url: "/fc-config-rhel/task_deciding_where_to_provision_volume.html"
+    entries:
+    - title: Verificare che il servizio FC sia in esecuzione su una SVM esistente
+      url: "/fc-config-rhel/task_verifying_that_fc_service_is_running_on_existing_svm.html"
+    - title: Creare un LUN
+      url: "/fc-config-rhel/task_creating_lun_its_containing_volume.html"
+    - title: Configurare FC su una SVM esistente
+      url: "/fc-config-rhel/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html"
+    - title: Creare una nuova SVM
+      url: "/fc-config-rhel/task_creating_svm.html"
+  - title: Zone gli switch FC in base all'host e alle WWPN LIF
+    url: "/fc-config-rhel/task_zoning_fc_switches_by_host_lif_wwpns.html"
+  - title: Rilevare nuovi dispositivi SCSI (LUN) e multipath
+    url: "/fc-config-rhel/task_discovering_new_scsi_devices_dm_multipath_devices.html"
+  - title: Configurare volumi logici su dispositivi multipath e creare un file system
+    url: "/fc-config-rhel/task_configuring_logical_volumes_on_multipath_devices_creating_file_system.html"
+  - title: Verificare che l'host sia in grado di scrivere e leggere da un dispositivo
+      multipath
+    url: "/fc-config-rhel/task_verifying_that_host_can_write_to_read_fom_lun.html"

@@ -1,0 +1,33 @@
+---
+permalink: online-help-96-97/concept_how_to_determine_when_safe_to_remove_multi_disk_carrier.html 
+sidebar: sidebar 
+keywords: remove, multidisk, carrier, system, manager, storage, disruption, raid 
+summary: 'La rimozione di un carrier multi-disco prima che sia sicuro può causare il degrado di uno o più gruppi RAID o, probabilmente, persino un"interruzione dello storage. System Manager consente di determinare quando è possibile rimuovere un supporto multi-disco in tutta sicurezza.' 
+---
+= Determinare quando è sicuro rimuovere un carrier multi-disco con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La rimozione di un carrier multi-disco prima che sia sicuro può causare il degrado di uno o più gruppi RAID o, probabilmente, persino un'interruzione dello storage. Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti) consente di determinare quando rimuovere un supporto multi-disco è sicuro.
+
+Quando è necessario sostituire un supporto multi-disco, prima di poter rimuovere il supporto in modo sicuro devono verificarsi i seguenti eventi:
+
+* Deve essere stato registrato un messaggio AutoSupport che indica che il gestore è pronto per essere rimosso.
+* Deve essere stato registrato un messaggio EMS che indica che il vettore è pronto per essere rimosso.
+* Lo stato di entrambi i dischi nel supporto deve essere visualizzato come `broken` Nella finestra dischi.
++
+È necessario rimuovere i dischi solo dopo aver svuotato l'accoppiamento carrier di un disco guasto. Fare clic su Details (Dettagli) per visualizzare lo stato di evacuazione del disco nella scheda Properties (Proprietà) della finestra Disks (dischi).
+
+* Il LED di guasto (ambra) sul supporto deve essere acceso fisso per indicare che è pronto per la rimozione.
+* Il LED di attività (verde) deve essere spento per indicare che non c'è attività sul disco.
+* Il display digitale dello shelf mostra solo il numero ID dello shelf.
+
+
+[NOTE]
+====
+Non è possibile riutilizzare l'accoppiamento carrier di un disco guasto. Quando si rimuove un supporto multi-disco che contiene un disco guasto, è necessario sostituirlo con un nuovo supporto.
+
+====

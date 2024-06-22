@@ -1,0 +1,37 @@
+---
+permalink: online-help-96-97/task_setting_time_zone_for_cluster.html 
+sidebar: sidebar 
+keywords: system, manager, set, up, time, zone, cluster, modify, server, ntp 
+summary: È possibile impostare o modificare manualmente il fuso orario di un cluster utilizzando la finestra di dialogo Modifica data e ora in System Manager. È inoltre possibile aggiungere server di riferimento orario al cluster. 
+---
+= Impostare il fuso orario per un cluster con Gestione sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile impostare o modificare manualmente il fuso orario di un cluster utilizzando la finestra di dialogo Modifica data e ora in Gestore di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti). È inoltre possibile aggiungere server di riferimento orario al cluster.
+
+.A proposito di questa attività
+Network Time Protocol (NTP) è sempre attivato su un cluster. È possibile disattivare NTP, ma non è consigliabile.
+
+È possibile aggiungere gli indirizzi IP del server NTP nel sito. Questo server viene utilizzato per sincronizzare l'ora nel cluster.
+
+È possibile specificare un indirizzo IPv4 o IPv6 per il server di riferimento orario.
+
+.Fasi
+. Fare clic su *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. Nel pannello *Setup*, fare clic su *Data e ora*.
+. Fare clic su *Edit* (Modifica).
+. Nella finestra di dialogo *Modifica data e ora*, selezionare il fuso orario.
+. Specificare l'indirizzo IP dei server di riferimento orario, quindi fare clic su *Aggiungi*.
+. Fare clic su *OK*.
+. Verificare le modifiche apportate alle impostazioni dell'ora nella finestra *Data e ora*.
+
+
+*Informazioni correlate*
+
+xref:reference_date_time_window.adoc[Finestra di data e ora]
+
+xref:task_creating_kerberos_realm_configurations.adoc[Creazione di una configurazione di area di autenticazione Kerberos]

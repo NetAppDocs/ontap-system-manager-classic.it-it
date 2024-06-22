@@ -1,0 +1,69 @@
+---
+permalink: online-help-96-97/concept_setting_up_network.html 
+sidebar: sidebar 
+keywords: online, help, set, up, network, ipspace, broadcast, domain, subnet, system, manager, cluster, range 
+summary: La configurazione della rete consiste nella creazione di spazi IP, un dominio di trasmissione e sottoreti. 
+---
+= Configurare la rete con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per configurare la rete, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti). La configurazione della rete consiste nella creazione di spazi IP, un dominio di trasmissione e sottoreti.
+
+
+
+== Creare IPspaces
+
+È possibile creare un IPSpace utilizzando Gestione sistema per configurare un singolo cluster ONTAP per l'accesso client da più domini di rete separati a livello amministrativo, anche quando i client utilizzano lo stesso intervallo di subnet di indirizzi IP. In questo modo è possibile separare il traffico client per garantire privacy e sicurezza.
+
+.A proposito di questa attività
+Tutti i nomi IPSpace devono essere univoci all'interno di un cluster e non devono essere costituiti da nomi riservati dal sistema, ad esempio "`local`" o "`localhost`".
+
+.Fasi
+. Fare clic sulla scheda *rete*.
+. Nella scheda *IPspaces*, fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea IPspaces*, specificare un nome per IPSpace che si desidera creare.
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Creare domini di broadcast
+
+È possibile creare un dominio di broadcast utilizzando System Manager per fornire una divisione logica di una rete di computer. In un dominio di broadcast, tutti i nodi associati possono essere raggiunti attraverso la trasmissione in corrispondenza del livello datalink
+
+.Fasi
+. Fare clic sulla scheda *rete*.
+. Nella scheda *Broadcast Domains*, fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea dominio di trasmissione*, specificare il nome, la dimensione MTU, IPSpace e le porte per il dominio di trasmissione che si desidera creare.
+. Fare clic su *Create* (Crea).
+
+
+
+
+== Creare sottoreti
+
+È possibile creare una subnet utilizzando System Manager per fornire una suddivisione logica di una rete IP per preallocare gli indirizzi IP. Una subnet consente di creare interfacce più facilmente specificando una subnet anziché un indirizzo IP e i valori della maschera di rete per ogni nuova interfaccia.
+
+.Prima di iniziare
+È necessario aver creato il dominio di trasmissione su cui viene utilizzata la subnet.
+
+.A proposito di questa attività
+Se si specifica un gateway durante la creazione di una subnet, una route predefinita al gateway viene aggiunta automaticamente alla SVM quando viene creata una LIF utilizzando tale subnet.
+
+.Fasi
+. Fare clic sulla scheda *rete*.
+. Nella scheda *subnet*, fare clic su *Crea*.
+. Nella finestra di dialogo *Crea subnet*, specificare i dettagli della subnet, ad esempio il nome, l'indirizzo IP della subnet o la subnet mask, l'intervallo di indirizzi IP, l'indirizzo del gateway e il dominio di trasmissione.
++
+È possibile specificare gli indirizzi IP come un intervallo, come più indirizzi separati da virgole o come una combinazione di entrambi.
+
+. Fare clic su *Create* (Crea).
+
+
+*Informazioni correlate*
+
+xref:reference_network_window.adoc[Finestra Network (rete)]

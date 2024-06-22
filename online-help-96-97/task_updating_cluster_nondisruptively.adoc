@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/task_updating_cluster_nondisruptively.html 
+sidebar: sidebar 
+keywords: nondisruptive, upgrades, NDU, cluster, system, manager, online, help 
+summary: 'È possibile utilizzare Gestione sistema per aggiornare un cluster o singoli nodi in coppie ad alta disponibilità che eseguono ONTAP 8.3.1 o versione successiva a una versione specifica del software ONTAP senza interrompere l"accesso ai dati del client.' 
+---
+= Aggiorna un cluster senza interruzioni con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per aggiornare un cluster o singoli nodi in coppie ad alta disponibilità (ha) che eseguono ONTAP 8.3.1 o versioni successive a una versione specifica del software ONTAP senza interrompere l'accesso ai dati del client.
+
+.Prima di iniziare
+* Tutti i nodi devono essere in coppie ha.
+* Tutti i nodi devono essere integri.
+* L'immagine software deve essere stata copiata dal sito di supporto NetApp su un server HTTP o FTP sulla rete, in modo che i nodi possano accedere all'immagine.
++
+link:task_obtaining_ontap_software_images.html["Ottenere immagini del software ONTAP"]
+
+
+
+.A proposito di questa attività
+* Se si tenta di eseguire altre attività da System Manager durante l'aggiornamento del nodo che ospita la LIF di gestione del cluster, potrebbe essere visualizzato un messaggio di errore.
++
+Prima di eseguire qualsiasi operazione, è necessario attendere il completamento dell'aggiornamento.
+
+* Viene eseguito un aggiornamento in sequenza per i cluster con meno di otto nodi e un aggiornamento in batch per i cluster con più di otto nodi.
++
+In un aggiornamento continuo, i nodi nel cluster vengono aggiornati uno alla volta. In un aggiornamento batch, più nodi vengono aggiornati in parallelo.
+
+* È possibile aggiornare senza interruzioni il software ONTAP da una release LTS (Long-Term Service) alla successiva release LTS (LTS+1).
++
+Ad esempio, se ONTAP 9.1 e ONTAP 9.3 sono release LTS, è possibile aggiornare il cluster senza interruzioni da ONTAP 9.1 a ONTAP 9.3.
+
+* A partire da System Manager 9.6, se il protocollo NVMe è configurato in System Manager 9.5 e si esegue un aggiornamento da System Manager 9.5 a System Manager 9.6, non si dispone più di un periodo di tolleranza di 90 giorni per avere il protocollo NVMe disponibile senza licenza. Se il periodo di tolleranza è in vigore quando si esegue l'aggiornamento da ONTAP 9.5 a 9.6, il periodo di tolleranza deve essere sostituito con una licenza NVMeoF valida per poter continuare a utilizzare le funzioni NVMe.
++
+Questa funzione non è disponibile nelle configurazioni MetroCluster.
+
+* Se il protocollo NVMe non è configurato in System Manager 9.5 e si esegue un aggiornamento da System Manager 9.5 a System Manager 9.6, il periodo di tolleranza non viene fornito ed è necessario installare la licenza NVMe per utilizzare il protocollo NVMe.
++
+Questa funzione non è disponibile nelle configurazioni MetroCluster.
+
+* A partire da ONTAP 9.5, è necessario configurare almeno una LIF NVMe per ciascun nodo di una coppia ha utilizzando il protocollo NVMe. È inoltre possibile creare un massimo di due LIF NVMe per nodo. Quando si esegue l'aggiornamento a ONTAP 9.5, è necessario assicurarsi che sia definito un minimo di un LIF NVMe per ciascun nodo di una coppia ha utilizzando il protocollo NVMe.
+
+
+.Fasi
+. Fare clic su *Configuration* > *Cluster* > *Update*.
+. Nella scheda *Aggiorna*, aggiungere una nuova immagine o selezionare un'immagine disponibile.
++
+|===
+| Se si desidera... | Quindi... 
+
+
+ a| 
+Aggiungere una nuova immagine software dal client locale
+ a| 
+.. Fare clic su *Add from Local Client* (Aggiungi da client locale).
+.. Cercare l'immagine software, quindi fare clic su *Apri*.
+
+
+
+
+ a| 
+Aggiungere una nuova immagine software dal sito di supporto NetApp
+ a| 
+.. Fare clic su *Aggiungi dal server*.
+.. Nella finestra di dialogo Add a New Software Image (Aggiungi nuova immagine software), inserire l'URL del server HTTP o del server FTP su cui è stata salvata l'immagine scaricata dal sito di supporto NetApp.
++
+Per l'FTP anonimo, è necessario specificare l'URL in `+ftp://anonymous@ftpserver+` formato.
+
+.. Fare clic su *Aggiungi*.
+
+
+
+
+ a| 
+Selezionare un'immagine disponibile
+ a| 
+Scegliere una delle immagini elencate.
+
+|===
+. Fare clic su *Validate* (convalida) per eseguire i controlli di convalida pre-aggiornamento e verificare se il cluster è pronto per un aggiornamento.
++
+L'operazione di convalida verifica i componenti del cluster per verificare che l'aggiornamento possa essere completato senza interruzioni, quindi visualizza eventuali errori o avvisi. Inoltre, vengono visualizzate tutte le azioni correttive necessarie da eseguire prima di aggiornare il software.
+
++
+[NOTE]
+====
+Prima di procedere con l'aggiornamento, è necessario eseguire tutte le azioni correttive richieste per gli errori. Sebbene sia possibile ignorare le azioni correttive per gli avvisi, la procedura consigliata consiste nell'eseguire tutte le azioni correttive prima di procedere con l'aggiornamento.
+
+====
+. Fare clic su *Avanti*.
+. Fare clic su *Aggiorna*.
++
+La convalida viene eseguita di nuovo.
+
++
+** Una volta completata la convalida, una tabella visualizza eventuali errori e avvisi, oltre alle azioni correttive necessarie da intraprendere prima di procedere.
+** Se la convalida viene completata con avvisi, selezionare la casella di controllo *continua aggiornamento con avvisi*, quindi fare clic su *continua*.
+Una volta completata la convalida e in corso l'aggiornamento, l'aggiornamento potrebbe essere in pausa a causa di errori. È possibile fare clic sul messaggio di errore per visualizzare i dettagli, quindi eseguire le azioni correttive prima di riprendere l'aggiornamento.
+
+
++
+Una volta completato l'aggiornamento, il nodo viene riavviato e si viene reindirizzati alla pagina di accesso di System Manager. Se il nodo impiega molto tempo per il riavvio, è necessario aggiornare il browser.
+
+. Accedere a System Manager e verificare che il cluster sia aggiornato correttamente alla versione selezionata facendo clic su *Configuration* > *Cluster* > *Update* > *Update History* (Configurazione* > *Cluster* > *Update History*), quindi visualizzando i dettagli.
+
+
+*Informazioni correlate*
+
+xref:concept_how_you_update_cluster_nondisruptively.adoc[Come aggiornare un cluster senza interruzioni]

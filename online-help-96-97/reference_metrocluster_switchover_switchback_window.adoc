@@ -1,0 +1,68 @@
+---
+permalink: online-help-96-97/reference_metrocluster_switchover_switchback_window.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, operations, window, command, button, other, action, online, help, status 
+summary: 'A partire da System Manager 9.6, è possibile utilizzare la finestra operazioni di switchover e switchback MetroCluster per avviare uno switchover negoziato (pianificato) o non pianificato da un sito o cluster (sito B) a un altro sito o cluster (sito A). Dopo aver eseguito interventi di manutenzione o riparazione sul sito B, è possibile avviare uno switchback dal sito A al sito B e visualizzare lo stato dell"operazione in questa finestra.' 
+---
+= Finestra delle operazioni di switchover e switchback di MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partire da System Manager 9.6, è possibile utilizzare la finestra operazioni di switchover e switchback MetroCluster per avviare uno switchover negoziato (pianificato) o non pianificato da un sito o cluster (sito B) a un altro sito o cluster (sito A). Dopo aver eseguito interventi di manutenzione o riparazione sul sito B, è possibile avviare uno switchback dal sito A al sito B e visualizzare lo stato dell'operazione in questa finestra.
+
+
+
+== Pulsanti di comando
+
+* *Passare dal sito B al sito A*
++
+Avvia il processo che consente di passare dal sito B al sito A.
+
+* *Passare dal sito A al sito B*
++
+Avvia il processo che riporta il sito A al sito B.
+
+
+
+
+
+== Altre azioni
+
+* *Accedere al cluster del sito B*
++
+Inserire l'indirizzo IP di gestione del cluster del sito B.
+
+* *Casella di controllo per lo switchover non pianificato*
++
+Se si desidera avviare uno switchover non pianificato, selezionare la casella *continua con switchover non pianificato*.
+
+
+
+
+
+== Aree di stato
+
+Man mano che il sistema procede attraverso il processo di commutazione o di ritorno, System Manager visualizza lo stato con i seguenti metodi:
+
+* *Grafico della riga di avanzamento*
++
+Visualizza le fasi delle operazioni e indica le fasi che sono state completate. Le fasi sono Switchover, Site B Operations e Switchback.
+
+* ***Mostra dettagli***
++
+Visualizza un elenco di eventi di sistema con data e ora durante l'avanzamento delle operazioni MetroCluster.
+
+* *Locale: Sito A*
++
+Visualizza un grafico della configurazione del cluster nel sito A, incluso lo stato del sito durante l'avanzamento delle fasi dell'operazione.
+
+* *Remoto: Sito B*
++
+Visualizza un grafico della configurazione del cluster nel sito B, incluso lo stato del sito durante l'avanzamento delle fasi dell'operazione.
+
+
+
+Se si accede al sito B e si visualizza la finestra operazioni di switchover e switchback MetroCluster, lo stato del sito A viene visualizzato come "`INATTIVO`" e lo stato del sito B viene visualizzato come "MODALITÀ DI COMMUTAZIONE `S`".

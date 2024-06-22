@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_adding_home_directory_paths.html 
+sidebar: sidebar 
+keywords: cifs, system, manager, online, help, storage, add , delete, home, directory 
+summary: È possibile utilizzare System Manager per specificare uno o più percorsi che possono essere utilizzati dal sistema di storage per risolvere la posizione delle home directory CIFS degli utenti. 
+---
+= Gestire i percorsi home directory - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per specificare uno o più percorsi che possono essere utilizzati dal sistema di storage per risolvere la posizione delle home directory CIFS degli utenti.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nell'area *Home Directory* della scheda *Configurazione*, fare clic su *Gestisci*.
+. Nella finestra di dialogo *Gestisci home directory*, specificare i percorsi che devono essere utilizzati dal sistema di storage per cercare le home directory CIFS degli utenti.
+. Fare clic su *Aggiungi*, quindi su *Salva e chiudi*.
+
+
+
+
+== Eliminare i percorsi della home directory
+
+È possibile utilizzare System Manager per eliminare un percorso home directory quando non si desidera che il sistema di storage utilizzi il percorso per risolvere la posizione delle home directory CIFS degli utenti.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nell'area *Home Directory* della scheda *Configurazione*, fare clic su *Gestisci*.
+. Nella finestra di dialogo *Gestisci home directory*, selezionare il percorso della home directory che si desidera eliminare, quindi fare clic su *Elimina*.
+. Fare clic su *Save and Close* (Salva e chiudi).
+
+
+*Informazioni correlate*

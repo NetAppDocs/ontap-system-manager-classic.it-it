@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/concept_jobs.html 
+sidebar: sidebar 
+keywords: jobs, system, manager, job, task, display, information, progress, asynchronous, volume, operation, copy, move, mirror, data, queue, cluster, administrator, online, help 
+summary: 'È possibile utilizzare System Manager per gestire le attività del lavoro, ad esempio la visualizzazione delle informazioni sul lavoro e il monitoraggio dell"avanzamento di un lavoro.' 
+---
+= Gestione dei job con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema di ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire le attività di lavoro, ad esempio la visualizzazione delle informazioni sul lavoro e il monitoraggio dello stato di avanzamento di un lavoro.
+
+
+
+== Lavori
+
+_Jobs_ sono attività asincrone e in genere operazioni di volume a esecuzione prolungata, come la copia, lo spostamento o il mirroring dei dati. I lavori vengono inseriti in una coda di lavoro e vengono eseguiti quando le risorse sono disponibili. L'amministratore del cluster può eseguire tutte le attività correlate alla gestione dei processi.
+
+Un lavoro può essere una delle seguenti categorie:
+
+* Un lavoro _affiliato al server_ viene messo in coda dal framework di gestione per essere eseguito in un nodo specifico.
+* Un lavoro _affiliato al cluster_ viene messo in coda dal framework di gestione per essere eseguito in qualsiasi nodo del cluster.
+* Un processo _privato_ è specifico di un nodo e non utilizza il database replicato (RDB) o qualsiasi altro meccanismo del cluster.
++
+Per eseguire i comandi per gestire i processi privati, è necessario disporre di un livello di privilegio avanzato o superiore.
+
+
+
+È possibile gestire i lavori nei seguenti modi:
+
+* Visualizzazione delle informazioni sul lavoro, tra cui:
++
+** Lavori in base al nodo
+** Lavori affiliati al cluster
+** Lavori completati
+** Cronologia lavori
+
+
+* Monitoraggio dello stato di avanzamento di un lavoro
+* Visualizzazione delle informazioni sullo stato di inizializzazione per i job manager.
+
+
+È possibile determinare il risultato di un lavoro completato controllando il registro eventi.
+
+
+
+== Finestra del lavoro
+
+È possibile utilizzare la finestra lavoro per gestire le attività del lavoro, ad esempio la visualizzazione delle informazioni sul lavoro e il monitoraggio dell'avanzamento di un lavoro.
+
+
+
+=== Pulsante di comando
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Schede
+
+* *Lavori correnti*
++
+Questa scheda visualizza le informazioni relative alle attività di lavoro in corso.
+
+* *Cronologia lavori*
++
+Questa scheda visualizza informazioni su tutti i lavori.
+
+
+
+
+
+=== Elenco lavori
+
+* *ID lavoro*
++
+Visualizza l'ID del lavoro.
+
+* *Ora di inizio*
++
+Visualizza l'ora di inizio del lavoro.
+
+* *Nome lavoro*
++
+Visualizza il nome del lavoro.
+
+* Nodo *
++
+Visualizza il nome del nodo.
+
+* *Stato*
++
+Visualizza lo stato del lavoro.
+
+* *Descrizione del lavoro*
++
+Visualizza la descrizione del lavoro.
+
+* *Avanzamento*
++
+Visualizza lo stato del lavoro.
+
+* *Nome pianificazione*
++
+Visualizza il nome della pianificazione.
+
+

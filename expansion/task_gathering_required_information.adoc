@@ -1,0 +1,70 @@
+---
+permalink: expansion/task_gathering_required_information.html 
+sidebar: sidebar 
+keywords: expand, cluster, network, information, require, configure, node-management, lif, service, ip, adress, node, gather the required network information 
+summary: Prima di espandere un cluster, è necessario ottenere le informazioni di rete necessarie per configurare in seguito le LIF di gestione dei nodi e gli indirizzi IP del Service Processor per entrambi i nodi. 
+---
+= Raccogliere le informazioni di rete richieste
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di espandere un cluster, è necessario ottenere le informazioni di rete necessarie per configurare in seguito le LIF di gestione dei nodi e gli indirizzi IP del Service Processor per entrambi i nodi.
+
+.Fasi
+. Ottenere i seguenti dettagli per configurare due LIF di gestione dei nodi, una per ciascuno dei nodi che si intende aggiungere al cluster:
++
+** Indirizzo IP
+** Maschera di rete
+** Gateway
+** Porta
+
+
+. Se il sito in genere dispone di voci DNS per le LIF di gestione dei nodi, assicurarsi che le voci DNS vengano create per i nuovi nodi.
+. Determinare se il cluster utilizza la configurazione di rete automatica o manuale per l'SP utilizzando `system service-processor network auto-configuration show` comando.
++
+Se viene visualizzato un nome di subnet in `SP IPv4 Subnet Name` oppure `SP IPv6 Subnet Name` Il cluster utilizza la rete SP automatica. Se entrambe le colonne sono vuote, il cluster sta utilizzando la rete SP manuale.
+
++
+Nell'output seguente, la subnet sub1 indica che il provider del cluster1 utilizza la configurazione di rete automatica:
+
++
+[listing]
+----
+cluster1::> system service-processor network auto-configuration show
+Cluster Name         SP IPv4 Subnet Name          SP IPv6 Subnet Name
+-------------------- ---------------------------- -------------------
+cluster1             sub1                            -
+----
++
+Nel seguente output, i campi di subnet vuoti indicano che Cluster1 SP utilizza la configurazione di rete manuale:
+
++
+[listing]
+----
+cluster1::> system service-processor network auto-configuration show
+Cluster Name         SP IPv4 Subnet Name          SP IPv6 Subnet Name
+-------------------- ---------------------------- -------------------
+cluster1             -                            -
+----
+. A seconda della configurazione della rete SP, eseguire una delle seguenti operazioni:
++
+** Se l'SP utilizza la configurazione di rete manuale, ottenere due indirizzi IP che verranno utilizzati in seguito per la configurazione dell'SP sui nuovi nodi.
+** Se l'SP utilizza la configurazione di rete automatica, verificare che la subnet utilizzata dall'SP disponga di indirizzi IP disponibili per i due nuovi nodi utilizzando `network subnet show` comando.
+Nel seguente output, la subnet sub1 ha 2 indirizzi disponibili:
+
+
++
+[listing]
+----
+cluster1::>  network subnet show
+IPspace: Default
+Subnet                     Broadcast                   Avail/
+Name      Subnet           Domain    Gateway           Total   Ranges
+--------- ---------------- --------- --------------- --------- ---------------
+sub1      10.53.33.1/18    Default   10.53.0.1          2/4    10.53.33.3-10.53.33.6
+...
+----
+

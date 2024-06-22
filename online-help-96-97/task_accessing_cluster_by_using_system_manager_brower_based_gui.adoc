@@ -1,0 +1,53 @@
+---
+permalink: online-help-96-97/task_accessing_cluster_by_using_system_manager_brower_based_gui.html 
+sidebar: sidebar 
+keywords: access, cluster, ontap, system, maanger, graphic, interface, online, help 
+summary: 'Se si preferisce utilizzare un"interfaccia grafica invece dell"interfaccia della riga di comando per accedere e gestire un cluster, è possibile farlo utilizzando Gestione di sistema di ONTAP, che è incluso in ONTAP come servizio Web, è attivato per impostazione predefinita ed è accessibile tramite un browser.' 
+---
+= Accesso a un cluster utilizzando l'interfaccia grafica basata su browser di Gestione di sistema di ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si preferisce utilizzare un'interfaccia grafica invece dell'interfaccia della riga di comando per accedere e gestire un cluster, è possibile farlo utilizzando Gestione di sistema di ONTAP, che è incluso in ONTAP come servizio Web, è attivato per impostazione predefinita ed è accessibile tramite un browser.
+
+.Prima di iniziare
+* È necessario disporre di un account utente del cluster configurato con `admin` e a. `http`, `ontapi`, e. `console` tipi di applicazioni.
+* È necessario abilitare i cookie e i dati del sito nel browser.
+
+
+.A proposito di questa attività
+È possibile utilizzare una LIF di gestione del cluster o una LIF di gestione dei nodi per accedere a Gestione di sistema di ONTAP. Per un accesso ininterrotto a Gestione di sistema di ONTAP, è necessario utilizzare una LIF di gestione del cluster.
+
+.Fasi
+. Puntare il browser Web sull'indirizzo IP della LIF di gestione del cluster:
++
+** Se si utilizza IPv4: `+https://cluster-mgmt-LIF+`
+** Se si utilizza IPv6: `https://[cluster-mgmt-LIF]`
++
+Solo HTTPS è supportato per l'accesso tramite browser a Gestione di sistema di ONTAP.
+
+
+
++
+Se il cluster utilizza un certificato digitale autofirmato, il browser potrebbe visualizzare un avviso che indica che il certificato non è attendibile. È possibile riconoscere il rischio di continuare l'accesso o installare un certificato digitale firmato dall'autorità di certificazione (CA) sul cluster per l'autenticazione del server.
+
+. *Opzionale:* se è stato configurato un banner di accesso mediante l'interfaccia CLI, leggere il messaggio visualizzato nella finestra di dialogo *Avviso* e scegliere l'opzione desiderata per procedere.
++
+Questa opzione non è supportata nei sistemi in cui è attivata l'autenticazione SAML (Security Assertion Markup Language).
+
++
+** Se non si desidera continuare, fare clic su *Annulla* e chiudere il browser.
+** Se si desidera continuare, fare clic su *OK* per accedere alla pagina di accesso di Gestore di sistema di ONTAP.
+
+
+. Accedere a Gestore di sistema di ONTAP utilizzando le credenziali di amministratore del cluster.
+
+
+*Informazioni correlate*
+
+xref:task_enabling_saml_authentication.adoc[Attivazione dell'autenticazione SAML]
+
+xref:task_disabling_saml_authentication.adoc[Disattivazione dell'autenticazione SAML]

@@ -1,0 +1,43 @@
+---
+permalink: fc-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html 
+sidebar: sidebar 
+keywords: datastore, contain, virtual, machine, vmdk, esxi, host, provision, lun, cluster, provision a datastore and create its containing lun and volume 
+summary: 'Un datastore contiene macchine virtuali e relativi VMDK sull"host ESXi. Il provisioning del datastore sull"host ESXi viene eseguito su un LUN del cluster di storage.' 
+---
+= Eseguire il provisioning di un datastore e crearne il LUN e il volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un datastore contiene macchine virtuali e relativi VMDK sull'host ESXi. Il provisioning del datastore sull'host ESXi viene eseguito su un LUN del cluster di storage.
+
+.Prima di iniziare
+Virtual Storage Console per VMware vSphere (VSC) deve essere installato e registrato con il vCenter Server che gestisce l'host ESXi.
+
+VSC deve disporre di credenziali sufficienti per cluster o storage virtual machine (SVM) per creare LUN e volume.
+
+.A proposito di questa attività
+VSC automatizza il provisioning del datastore, inclusa la creazione di un LUN e di un volume sulla SVM specificata.
+
+.Fasi
+. Dalla pagina iniziale di vSphere Web Client, fare clic su *host e cluster*.
+. Nel riquadro di navigazione, espandere il data center in cui si desidera eseguire il provisioning del datastore.
+. Fare clic con il pulsante destro del mouse sull'host ESXi, quindi selezionare *NetApp VSC* > *Provision Datastore*.
++
+In alternativa, è possibile fare clic con il pulsante destro del mouse sul cluster durante il provisioning per rendere il datastore disponibile a tutti gli host del cluster.
+
+. Fornire le informazioni richieste nella procedura guidata:
++
+image::../media/datastore_provisioning_wizard_vsc5.gif[L'immagine mostra la prima pagina di VSC Datastore Provisioning Wizard.]
+
++
+** Selezionare *VMFS* come tipo di datastore.
+** Selezionare *FC/FCoE* come protocollo VMFS.
+** Selezionare *None* come Storage Capability Profile (Profilo capacità di storage).
+** Selezionare la casella *thin provisioning*.
+** Selezionare la casella di controllo *Create new volume* (Crea nuovo volume).
+
+
+

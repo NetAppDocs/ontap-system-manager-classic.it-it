@@ -1,0 +1,125 @@
+---
+permalink: expansion/concept_joining_nodes_to_cluster_using_cli.html 
+sidebar: sidebar 
+keywords: install, controller, module, cluster, setup, command, join nodes to the cluster using the cli 
+summary: Quando i moduli controller appena installati sono pronti, è possibile aggiungerli al cluster utilizzando il comando di installazione del cluster. 
+---
+= Unire i nodi al cluster utilizzando la CLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando i moduli controller appena installati sono pronti, è possibile aggiungerli al cluster utilizzando `cluster setup` comando.
+
+.A proposito di questa attività
+* Eseguire questa procedura su entrambi i nodi.
+* È necessario unire ciascun nodo uno alla volta, non contemporaneamente.
+
+
+.Fasi
+. [[step1]]avviare la procedura guidata di configurazione del cluster utilizzando `cluster setup` Al prompt della CLI.
++
+[listing]
+----
+::> cluster setup
+
+Welcome to the cluster setup wizard....
+
+Use your web browser to complete cluster setup by accessing
+https://10.63.11.29
+
+Otherwise, press Enter to complete cluster setup using the
+command line interface:
+----
++
+[NOTE]
+====
+Per istruzioni sull'utilizzo della configurazione guidata del cluster basata su GUI, vedere xref:task_adding_nodes_to_cluster_using_system_manager.html[Aggiunta di nodi al cluster mediante System Manager].
+
+====
+. Premere Invio per utilizzare l'interfaccia CLI per completare l'attività. Quando viene richiesto di creare un nuovo cluster o di unirsi a un cluster esistente, immettere `join`.
++
+[listing]
+----
+Do you want to create a new cluster or join an existing cluster? {create, join}:
+join
+----
+. Quando viene richiesto di specificare la configurazione dell'interfaccia del cluster esistente, premere `Enter` per accettarlo.
++
+[listing]
+----
+Existing cluster interface configuration found:
+
+Port    MTU     IP              Netmask
+e1a     9000    169.254.87.75   255.255.0.0
+
+Do you want to use this configuration? {yes, no} [yes]:
+----
+. Seguire le istruzioni per accedere al cluster esistente.
++
+[listing]
+----
+Step 1 of 3: Join an Existing Cluster
+You can type "back", "exit", or "help" at any question.
+
+Enter the name of the cluster you would like to join [cluster1]: cluster1
+
+Joining cluster cluster1
+
+Starting cluster support services ..
+
+This node has joined the cluster cluster1.
+
+Step 2 of 3: Configure Storage Failover (SFO)
+You can type "back", "exit", or "help" at any question.
+
+SFO will be enabled when the partner joins the cluster.
+
+Step 3 of 3: Set Up the Node
+
+Cluster setup is now complete.
+----
++
+Il nodo viene rinominato automaticamente in modo che corrisponda al nome del cluster.
+
+. [[step5]]sul cluster, verificare che il nodo faccia parte del cluster utilizzando `cluster show` comando.
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+cluster1-3            true    true
+3 entries were displayed.
+----
+. Ripetere link:#step1["passaggio 1"] attraverso link:#step5["passaggio 5"] per il secondo modulo controller appena installato.
++
+La procedura guidata di installazione del cluster differisce nel secondo nodo per i seguenti motivi:
+
++
+** Per impostazione predefinita, il partner entra a far parte del cluster esistente perché il partner fa già parte di esso.
+** Abilita automaticamente il failover dello storage su entrambi i nodi.
+
+
+. Verificare che il failover dello storage sia attivato e possibile utilizzando `storage failover show` comando.
++
+Il seguente output mostra che il failover dello storage è abilitato e possibile su tutti i nodi del cluster, inclusi i nodi appena aggiunti:
+
++
+[listing]
+----
+cluster1::> storage failover show
+                              Takeover
+Node           Partner        Possible State
+-------------- -------------- -------- -------------------------------------
+cluster1-1     cluster1-2     true     Connected to cluster1-2
+cluster1-2     cluster1-1     true     Connected to cluster1-1
+cluster1-3     cluster1-4     true     Connected to cluster1-3
+cluster1-4     cluster1-3     true     Connected to cluster1-4
+4 entries were displayed.
+----
+

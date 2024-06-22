@@ -1,0 +1,494 @@
+---
+permalink: online-help-96-97/reference_volumes_window.html 
+sidebar: sidebar 
+keywords: system, manager, volume, window, flexgroup, volume, online, help 
+summary: 'È possibile utilizzare la finestra Volumes (volumi) per gestire i volumi FlexVol e FlexGroup. A partire da System Manager 9.6, è possibile gestire anche i volumi FlexCache.' 
+---
+= Finestra Volumes (volumi) in System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra Volumes (volumi) in Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire i volumi FlexVol e FlexGroup. A partire da System Manager 9.6, è possibile gestire anche i volumi FlexCache.
+
+Non è possibile visualizzare o gestire volumi che si trovano in macchine virtuali di storage (SVM) configurate per il disaster recovery utilizzando System Manager. È necessario utilizzare la CLI.
+
+[NOTE]
+====
+I pulsanti di comando e l'elenco di colonne variano in base al tipo di volume selezionato. È possibile visualizzare solo i pulsanti di comando e le colonne applicabili al volume selezionato.
+
+====
+
+
+== Campo di selezione
+
+* Menu a discesa *SVM Selection (selezione SVM)*
++
+Consente di selezionare tutte le SVM o una SVM specifica da visualizzare nell'elenco.
+
+
+
+
+
+== Pulsanti di comando
+
+* *Crea*
++
+Fornisce le seguenti opzioni:
+
++
+** *FlexVol*
++
+Apre la finestra di dialogo Crea volume, che consente di aggiungere volumi FlexVol.
+
+** *FlexGroup*
++
+Apre la finestra Create FlexGroup (Crea volumi), che consente di creare volumi FlexGroup.
+
+** *FlexCache*
++
+Apre la finestra Crea volume FlexCache, che consente di creare volumi FlexCache.
+
+
+
+* *Modifica*
++
+Consente di modificare le proprietà del volume selezionato.
+
+* *Elimina*
++
+Elimina il volume o i volumi selezionati.
+
+* *Altre azioni*
++
+Fornisce le seguenti opzioni:
+
++
+** *Cambia stato in*
++
+Consente di modificare lo stato del volume selezionato in uno dei seguenti stati:
+
++
+*** Online
+*** Offline
+*** Limitare
+
+
+** *Ridimensiona*
++
+Consente di modificare le dimensioni del volume.
+
++
+Per i volumi FlexGroup, è possibile utilizzare le risorse esistenti per ridimensionare i volumi oppure aggiungere nuove risorse per espanderli.
+
++
+Per i volumi FlexCache, è anche possibile aggiungere o rimuovere un aggregato.
+
+** *Proteggere*
++
+Apre la finestra Crea relazione di protezione per i volumi selezionati come origine.
+
+** *Gestisci snapshot*
++
+Fornisce un elenco di opzioni Snapshot, tra cui:
+
++
+*** *Crea*
++
+Visualizza la finestra di dialogo Create Snapshot (Crea istantanea), che consente di creare una copia Snapshot del volume selezionato.
+
+*** *Impostazioni di configurazione*
++
+Configura le impostazioni di Snapshot.
+
+*** *Ripristina*
++
+Ripristina una copia Snapshot del volume selezionato.
+
+
+
+** *Clone*
++
+Fornisce un elenco di opzioni di clonazione, tra cui:
+
++
+*** *Crea*
++
+Crea un clone del volume selezionato o un clone di un file dal volume selezionato.
+
+*** *Split*
++
+Divide il clone dal volume padre.
+
+*** *Visualizza gerarchia*
++
+Visualizza le informazioni sulla gerarchia dei cloni.
+
+
+
+** *Efficienza dello storage*
++
+Apre la finestra di dialogo Storage Efficiency (efficienza dello storage), che consente di avviare manualmente la deduplica o di interrompere un'operazione di deduplica in esecuzione. Questo pulsante viene visualizzato solo se la deduplica è attivata sul sistema storage.
+
+** *Sposta*
++
+Apre la finestra di dialogo Move Volume (Sposta volume), che consente di spostare i volumi da un aggregato o nodo a un altro aggregato o nodo all'interno della stessa SVM.
+
+** *QoS dello storage*
++
+Apre la finestra di dialogo Dettagli qualità del servizio, che consente di assegnare uno o più volumi a un gruppo di criteri nuovo o esistente.
+
+** *Modifica policy di tiering*
++
+Consente di modificare la policy di tiering del volume selezionato.
+
+** *Volume Encryption Rekey*
++
+Modifica la chiave di crittografia dei dati del volume.
+
++
+I dati nel volume vengono ricifrati utilizzando la nuova chiave generata automaticamente. La vecchia chiave viene automaticamente eliminata al termine dell'operazione di riscrivere.
+
++
+A partire da System Manager 9.6, la rekey per la crittografia dei volumi è supportata per i volumi FlexGroup DP e FlexCache. La funzione di re-key è disattivata per i volumi che hanno ereditato la crittografia da un aggregato NAE.
+
++
+[NOTE]
+====
+Se si avvia un'operazione di spostamento del volume quando è in corso l'operazione di riscrivere lo stesso volume, l'operazione di riscrivere viene interrotta. In System Manager 9.5 e versioni precedenti, se si tenta di spostare un volume quando è in corso un'operazione di conversione o rekey di un volume, l'operazione viene interrotta senza preavviso. A partire da System Manager 9.6, se si tenta di spostare un volume durante un'operazione di conversione o rekey, viene visualizzato un messaggio che avvisa che l'operazione di conversione o rekey verrà interrotta se si continua.
+
+====
+** *Provision Storage per VMware*
++
+Consente di creare un volume per l'archivio dati NFS e di specificare i server ESX che possono accedere all'archivio dati NFS.
+
+
+
+* *Visualizza relazione di protezione mancante*
++
+Visualizza i volumi di lettura/scrittura online e non protetti e i volumi con relazioni di protezione ma non inizializzati.
+
+* *Ripristina filtri*
++
+Consente di reimpostare i filtri impostati per visualizzare le relazioni di protezione mancanti.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+* *image:../media/advanced_options.gif[""]*
++
+Consente di selezionare i dettagli da visualizzare nell'elenco della finestra Volumes (volumi).
+
+
+
+
+
+== Volume list (elenco volumi)
+
+* *Stato*
++
+Visualizza lo stato del volume.
+
+* *Nome*
++
+Visualizza il nome del volume.
+
+* *Stile*
++
+In Gestione sistema 9.5, questa colonna visualizza il tipo di volume, ad esempio FlexVol o FlexGroup. I volumi FlexCache creati utilizzando l'interfaccia CLI vengono visualizzati come volumi FlexGroup.
+
++
+In Gestione sistema 9.6, questa colonna visualizza il tipo di volume: FlexVol, FlexGroup o FlexCache.
+
+* *SVM*
++
+Visualizza la SVM che contiene il volume.
+
+* *Aggregati*
++
+Visualizza il nome degli aggregati appartenenti al volume.
+
+* *Thin provisioning*
++
+Visualizza se è stata impostata una garanzia di spazio per il volume selezionato. I valori validi per i volumi online sono `Yes` e. `No`.
+
+* *Volume root*
++
+Visualizza se il volume è un volume root.
+
+* *Spazio disponibile*
++
+Visualizza lo spazio disponibile nel volume.
+
+* *Spazio totale*
++
+Visualizza lo spazio totale nel volume, che include lo spazio riservato alle copie Snapshot.
+
+* *% utilizzato*
++
+Visualizza la quantità di spazio (in percentuale) utilizzata nel volume.
+
+* *Logica utilizzata %*
++
+Visualizza la quantità di spazio logico (in percentuale), incluse le riserve di spazio, utilizzata nel volume.
+
++
+[NOTE]
+====
+Questo campo viene visualizzato solo se è stato attivato il reporting dello spazio logico utilizzando la CLI.
+
+====
+* *Logical Space Reporting*
++
+Visualizza se il reporting dello spazio logico è attivato sul volume.
+
++
+[NOTE]
+====
+Questo campo viene visualizzato solo se è stato attivato il reporting dello spazio logico utilizzando la CLI.
+
+====
+* *Applicazione dello spazio logico*
++
+Visualizza se eseguire la contabilità dello spazio logico sul volume.
+
+* *Tipo*
++
+Visualizza il tipo di volume: `rw` per lettura/scrittura, `ls` per la condivisione del carico, o. `dp` per la protezione dei dati.
+
+* *Relazione di protezione*
++
+Consente di visualizzare se il volume ha avviato una relazione di protezione.
+
++
+Se la relazione è tra un sistema ONTAP e un sistema non ONTAP, il valore viene visualizzato come `No` per impostazione predefinita.
+
+* *Efficienza dello storage*
++
+Visualizza se la deduplica è attivata o disattivata per il volume selezionato.
+
+* *Crittografato*
++
+Visualizza se il volume è crittografato o meno.
+
+* *QoS Policy Group*
++
+Visualizza il nome del gruppo di criteri Storage QoS a cui è assegnato il volume. Per impostazione predefinita, questa colonna è nascosta.
+
+* *Tipo SnapLock*
++
+Visualizza il tipo di SnapLock del volume.
+
+* *Clone*
++
+Visualizza se il volume è un volume FlexClone.
+
+* *È lo spostamento del volume*
++
+Visualizza se un volume viene spostato da un aggregato a un altro aggregato o da un nodo a un altro nodo.
+
+* *Policy di tiering*
++
+Visualizza il criterio di tiering di un aggregato abilitato a FabricPool. Il criterio di tiering predefinito è "`snappshot-only`".
+
+* *Applicazione*
++
+Visualizza il nome dell'applicazione assegnata al volume.
+
+
+
+
+
+== Area panoramica
+
+È possibile fare clic sul segno più (+) a sinistra nella riga in cui è elencato un volume per visualizzare una panoramica dei dettagli relativi a tale volume.
+
+* *Protezione*
++
+Visualizza la scheda *Data Protection* della finestra Volume per il volume selezionato.
+
+* *Prestazioni*
++
+Visualizza la scheda *Performance* della finestra Volume per il volume selezionato.
+
+* *Mostra ulteriori dettagli*
++
+Visualizza la finestra Volume per il volume selezionato.
+
+
+
+
+
+== Finestra del volume per il volume selezionato
+
+È possibile visualizzare questa finestra utilizzando uno dei seguenti metodi:
+
+* Fare clic sul nome del volume nell'elenco dei volumi nella finestra Volumes (volumi).
+* Fare clic su *Mostra ulteriori dettagli* nell'area *Panoramica* visualizzata per il volume selezionato.
+
+
+La finestra Volume visualizza le seguenti schede:
+
+* *Scheda Panoramica*
++
+Visualizza informazioni generali sul volume selezionato e una rappresentazione grafica dell'allocazione dello spazio del volume, dello stato di protezione del volume e delle prestazioni del volume. La scheda Panoramica visualizza i dettagli sulla crittografia del volume, ad esempio lo stato di crittografia e il tipo di crittografia, lo stato di conversione o lo stato di rekey, le informazioni su un volume che viene spostato, ad esempio lo stato e la fase dello spostamento del volume, il nodo di destinazione e l'aggregato in cui viene spostato il volume, la percentuale di spostamento del volume completata, il tempo stimato per completare l'operazione di spostamento del volume e i dettagli dell'operazione di spostamento del volume. Questa scheda visualizza anche informazioni sul blocco del volume per le operazioni di input/output (i/o) e sull'applicazione che blocca l'operazione.
+
++
+Per i volumi FlexCache, vengono visualizzati i dettagli relativi all'origine del volume FlexCache.
+
++
+L'intervallo di refresh per i dati delle performance è di 15 secondi.
+
++
+Questa scheda contiene il seguente pulsante di comando:
+
++
+** *Cutover*
++
+Apre la finestra di dialogo Cutover, che consente di attivare manualmente il cutover.
+
++
+Il pulsante di comando *Cutover* viene visualizzato solo se l'operazione di spostamento del volume si trova nello stato "`replication`" o "`hard rinviato`".
+
+
+
+* *Scheda Snapshot Copies*
++
+Visualizza le copie Snapshot del volume selezionato. Questa scheda contiene i seguenti pulsanti di comando:
+
++
+** *Crea*
++
+Apre la finestra di dialogo Create Snapshot Copy (Crea copia snapshot), che consente di creare una copia Snapshot del volume selezionato.
+
+** *Impostazioni di configurazione*
++
+Configura le impostazioni di Snapshot.
+
+** Menu:altre azioni[Rinomina]
++
+Apre la finestra di dialogo Rename Snapshot Copy (Rinomina copia snapshot), che consente di rinominare una copia Snapshot selezionata.
+
+** Menu:altre azioni[Ripristina]
++
+Ripristina una copia Snapshot.
+
+** Menu:altre azioni[Estendi periodo di scadenza]
++
+Estende il periodo di scadenza di una copia Snapshot.
+
+** *Elimina*
++
+Elimina la copia Snapshot selezionata.
+
+** *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+* Scheda protezione dati*
++
+Visualizza le informazioni sulla protezione dei dati relative al volume selezionato.
+
++
+Se il volume di origine (volume di lettura/scrittura) è selezionato, la scheda visualizza tutte le relazioni di mirroring, le relazioni di vault e le relazioni di mirroring e vault correlate al volume di destinazione (volume DP). Se si seleziona il volume di destinazione, la scheda visualizza la relazione con il volume di origine.
+
++
+Se alcune o tutte le relazioni peer del cluster locale si trovano in uno stato non integro, la scheda Data Protection (protezione dati) potrebbe richiedere del tempo per visualizzare le relazioni di protezione relative a una relazione peer del cluster sana. Le relazioni relative a relazioni peer del cluster non funzionanti non vengono visualizzate.
+
+* *Scheda efficienza dello storage*
++
+Visualizza le informazioni nei seguenti riquadri:
+
++
+** Grafico a barre
++
+Visualizza (in formato grafico) lo spazio del volume utilizzato dai dati e dalle copie Snapshot. È possibile visualizzare i dettagli sullo spazio utilizzato prima e dopo l'applicazione delle impostazioni per il risparmio dell'efficienza dello storage.
+
+** Dettagli
++
+Visualizza informazioni sulle proprietà della deduplica, tra cui se la deduplica è attivata sul volume, la modalità di deduplica, lo stato della deduplica, il tipo e se la compressione inline o in background è attivata sul volume.
+
+** Dettagli dell'ultima esecuzione
++
+Fornisce dettagli sull'ultima operazione di deduplica eseguita sul volume. Vengono visualizzati anche i risparmi di spazio derivanti dalle operazioni di compressione e deduplica applicate ai dati sul volume.
+
+
+
+* Scheda Performance (prestazioni)*
++
+Visualizza le informazioni sulle metriche medie delle performance, le metriche di performance di lettura e le metriche di performance di scrittura del volume selezionato, tra cui throughput, IOPS e latenza.
+
++
+La modifica del fuso orario del client o del fuso orario del cluster influisce sui grafici delle metriche delle performance. È necessario aggiornare il browser per visualizzare i grafici aggiornati.
+
+* Scheda *FlexCache*
++
+Visualizza i dettagli sui volumi FlexCache solo se il volume selezionato è un volume di origine a cui sono associati volumi FlexCache. In caso contrario, questa scheda non viene visualizzata.
+
+
+
+*Informazioni correlate*
+
+xref:task_creating_flexvol_volumes.adoc[Creazione di volumi FlexVol]
+
+xref:task_creating_flexclone_volumes.adoc[Creazione di volumi FlexClone]
+
+xref:task_creating_flexclone_files.adoc[Creazione di file FlexClone]
+
+xref:task_deleting_volumes.adoc[Eliminazione di volumi]
+
+xref:task_setting_snapshot_copy_reserve.adoc[Impostazione della riserva di copia Snapshot]
+
+xref:task_deleting_snapshot_copies.adoc[Eliminazione delle copie Snapshot]
+
+xref:task_creating_snapshot_copies_outside_defined_schedule.adoc[Creazione di copie Snapshot al di fuori di una pianificazione definita]
+
+xref:task_editing_volume_properties.adoc[Modifica delle proprietà del volume]
+
+xref:task_changing_status_volume.adoc[Modifica dello stato di un volume]
+
+xref:task_enabling_storage_efficiency_on_volume.adoc[Efficienza dello storage su un volume]
+
+xref:task_changing_deduplication_schedule.adoc[Modifica della pianificazione della deduplica]
+
+xref:task_running_deduplication_operations.adoc[Esecuzione delle operazioni di deduplica]
+
+xref:task_splitting_flexclone_volume_from_its_parent_volume.adoc[Suddivisione di un volume FlexClone dal volume padre]
+
+xref:task_resizing_volumes.adoc[Ridimensionamento dei volumi]
+
+xref:task_restoring_volume_from_snapshot_copy.adoc[Ripristino di un volume da una copia Snapshot]
+
+xref:task_scheduling_automatic_creation_snapshot_copies.adoc[Pianificazione della creazione automatica di copie Snapshot]
+
+xref:task_renaming_snapshot_copies.adoc[Ridenominazione delle copie Snapshot]
+
+xref:task_hiding_snapshot_copy_directory.adoc[Nascondere la directory di copia Snapshot]
+
+xref:task_viewing_flexclone_volumes_hierarchy.adoc[Visualizzazione della gerarchia di volumi FlexClone]
+
+xref:task_creating_flexgroup_volumes.adoc[Creazione di volumi FlexGroup]
+
+xref:task_editing_flexgroup_volumes.adoc[Modifica dei volumi FlexGroup]
+
+xref:task_resizing_flexgroup_volumes.adoc[Ridimensionamento dei volumi FlexGroup]
+
+xref:task_changing_status_flexgroup_volume.adoc[Modifica dello stato di un volume FlexGroup]
+
+xref:task_deleting_flexgroup_volumes.adoc[Eliminazione dei volumi FlexGroup]
+
+xref:task_viewing_flexgroup_volume_information.adoc[Visualizzazione delle informazioni sul volume FlexGroup]
+
+xref:task_creating_flexcache_volumes.adoc[Creazione di volumi FlexCache]
+
+xref:task_editing_flexcache_volumes.adoc[Modifica dei volumi FlexCache]
+
+xref:task_resizing_flexcache_volumes.adoc[Ridimensionamento dei volumi FlexCache]
+
+xref:task_deleting_flexcache_volumes.adoc[Eliminazione dei volumi FlexCache]

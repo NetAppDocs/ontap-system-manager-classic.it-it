@@ -1,0 +1,138 @@
+---
+permalink: online-help-96-97/task_provisioning_cache_by_adding_disks.html 
+sidebar: sidebar 
+keywords: ssd, system, manager, storage, pool, root, aggregate, provision, cache, online, help, ssd, disks, flash, pool 
+summary: È possibile utilizzare System Manager per aggiungere SSD come pool di storage o SSD dedicati per il provisioning della cache. Aggiungendo SSD, è possibile convertire un aggregato non root o un aggregato root che non contiene dischi partizionati in un aggregato Flash Pool o aumentare le dimensioni della cache di un aggregato Flash Pool esistente. 
+---
+= Provisioning della cache con l'aggiunta di SSD con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per aggiungere SSD come pool di storage o SSD dedicati per il provisioning della cache. Aggiungendo SSD, è possibile convertire un aggregato non root o un aggregato root che non contiene dischi partizionati in un aggregato Flash Pool o aumentare le dimensioni della cache di un aggregato Flash Pool esistente.
+
+.A proposito di questa attività
+* La cache SSD aggiunta non si aggiunge alle dimensioni dell'aggregato ed è possibile aggiungere un gruppo RAID SSD a un aggregato anche quando si trova alle dimensioni massime.
+* Non è possibile utilizzare SSD partizionati quando si aggiunge la cache utilizzando System Manager.
+
+
+
+
+== Provisioning della cache agli aggregati mediante l'aggiunta di SSD
+
+È possibile utilizzare System Manager per aggiungere pool di storage o SSD dedicati per il provisioning della cache convertendo un aggregato HDD non root esistente o un aggregato root che non contiene dischi partizionati in un aggregato Flash Pool.
+
+.Prima di iniziare
+* L'aggregato deve essere online.
+* Nel pool di storage devono essere presenti unità SSD o di allocazione di riserva sufficienti che possono essere assegnate come dischi cache.
+* Tutti i nodi del cluster devono eseguire ONTAP 8.3 o versione successiva.
++
+Se il cluster si trova in uno stato di versione mista, è possibile utilizzare l'interfaccia della riga di comando per creare un aggregato Flash Pool e quindi eseguire il provisioning della cache SSD.
+
+* È necessario aver identificato un aggregato non root valido a 64 bit composto da HDD che possono essere convertiti in un aggregato Flash Pool.
+* L'aggregato non deve contenere LUN di array.
+
+
+.A proposito di questa attività
+È necessario conoscere le Best practice specifiche per piattaforma e carico di lavoro per la configurazione e la dimensione del Tier SSD aggregato di Flash Pool.
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Nella finestra *Storage Tier*, selezionare l'aggregato, quindi fare clic su *altre azioni* > *Aggiungi cache*.
++
+[NOTE]
+====
+L'aggiunta di cache non è supportata negli aggregati abilitati per FabricPool.
+
+====
+. Nella finestra di dialogo *Aggiungi cache*, eseguire l'azione appropriata:
++
+|===
+| Se è stata selezionata l'origine della cache come... | Eseguire questa operazione... 
+
+
+ a| 
+Pool di storage
+ a| 
+.. Selezionare il pool di storage da cui è possibile ottenere la cache.
+.. Specificare le dimensioni della cache.
+.. Se necessario, modificare il tipo di RAID.
+
+
+
+
+ a| 
+SSD dedicati
+ a| 
+Selezionare le dimensioni dell'SSD e il numero di SSD da includere e, facoltativamente, modificare la configurazione RAID:
+
+.. Fare clic su *Cambia*.
+.. Nella finestra di dialogo Change RAID Configuration (Modifica configurazione RAID), specificare il tipo di RAID e le dimensioni del gruppo RAID, quindi fare clic su *Save* (Salva).
+
+
+|===
+. Fare clic su *Aggiungi*.
++
+Per gli aggregati mirrorati, viene visualizzata la finestra di dialogo *Add cache* (Aggiungi cache) con le informazioni che consentono di aggiungere il doppio del numero di dischi selezionati.
+
+. Nella finestra di dialogo *Aggiungi cache*, fare clic su *Sì*.
+
+
+.Risultati
+I dischi della cache vengono aggiunti all'aggregato selezionato.
+
+
+
+== Aumento della cache per gli aggregati di Flash Pool mediante l'aggiunta di SSD
+
+È possibile aggiungere SSD come pool di storage o SSD dedicati per aumentare le dimensioni di un aggregato di Flash Pool utilizzando System Manager.
+
+.Prima di iniziare
+* L'aggregato di Flash Pool deve essere online.
+* Nel pool di storage devono essere presenti unità SSD o di allocazione di riserva sufficienti che possono essere assegnate come dischi cache.
+
+
+.Fasi
+. Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+. Nella finestra *aggregati*, selezionare l'aggregato di Flash Pool, quindi fare clic su *Aggiungi cache*.
+. Nella finestra di dialogo *Aggiungi cache*, eseguire l'azione appropriata:
++
+|===
+| Se è stata selezionata l'origine della cache come... | Eseguire questa operazione... 
+
+
+ a| 
+Pool di storage
+ a| 
+Selezionare il pool di storage da cui è possibile ottenere la cache e specificare le dimensioni della cache.
+
+
+
+ a| 
+SSD dedicati
+ a| 
+Selezionare le dimensioni dell'SSD e il numero di SSD da includere.
+
+|===
+. Fare clic su *Aggiungi*.
++
+Per gli aggregati mirrorati, viene visualizzata una finestra di dialogo Add cache (Aggiungi cache) con le informazioni che consentono di aggiungere il doppio del numero di dischi selezionati.
+
+. Nella finestra di dialogo *Aggiungi cache*, fare clic su *Sì*.
+
+
+.Risultati
+I dischi della cache vengono aggiunti all'aggregato Flash Pool selezionato.
+
+*Informazioni correlate*
+
+http://www.netapp.com/us/media/tr-4070.pdf["Report tecnico di NetApp 4070: Progettazione e implementazione di Flash Pool"^]
+
+xref:concept_how_storage_pool_works.adoc[Come funziona il pool di storage]

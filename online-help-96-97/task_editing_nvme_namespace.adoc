@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_editing_nvme_namespace.html 
+sidebar: sidebar 
+keywords: edit, nvme, namespace, online, help, system, manager 
+summary: È possibile utilizzare System Manager per modificare lo spazio dei nomi modificando il sottosistema a cui è mappato lo spazio dei nomi. 
+---
+= Modifica uno spazio dei nomi NVMe con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classico (disponibile in ONTAP 9.7 e versioni precedenti) per modificare lo spazio dei nomi modificando il sottosistema a cui è mappato lo spazio dei nomi.
+
+.A proposito di questa attività
+In questa finestra è possibile modificare solo le impostazioni del sottosistema NVMe; non è possibile modificare i dettagli degli altri spazi dei nomi.
+
+.Fasi
+. Fare clic su *NVMe* > *NVMe namespace*.
+. Nella finestra *NVMe namespaces*, selezionare lo spazio dei nomi che si desidera modificare.
+. Selezionare un'opzione di sottosistema:
++
+** None (Nessuna): Selezionando questa opzione, la mappatura del sottosistema esistente viene annullata solo per questo namespace. Questa opzione è preselezionata se non è presente alcuna mappatura del sottosistema per lo spazio dei nomi selezionato.
+** USA un sottosistema esistente: Questa opzione è preselezionata se è presente il mapping tra sottosistema e spazio dei nomi. La scelta di un sottosistema diverso mappa il nuovo sottosistema annullando la mappatura del sottosistema precedentemente mappato.
+
+
+

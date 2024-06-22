@@ -1,0 +1,282 @@
+---
+permalink: online-help-96-97/concept_export_policies.html 
+sidebar: sidebar 
+keywords: system, manager, create, edit, manage, export, policy, online, help, volume, rules, svm, qtree, rename 
+summary: È possibile utilizzare System Manager per creare, modificare e gestire le policy di esportazione. 
+---
+= Gestione delle policy di esportazione con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per creare, modificare e gestire le policy di esportazione.
+
+
+
+== Creare una policy di esportazione
+
+È possibile utilizzare System Manager per creare una policy di esportazione in modo che i client possano accedere a volumi specifici.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+. Fare clic su *Create* (Crea).
+. Nella finestra di dialogo *Crea policy di esportazione*, specificare un nome per il criterio di esportazione.
+. Se si desidera creare un criterio di esportazione copiando le regole da un criterio di esportazione esistente, selezionare la casella di controllo *Copy Rules from* (Copia regole da), quindi selezionare la macchina virtuale di storage (SVM) e il criterio di esportazione.
++
+Non selezionare la SVM di destinazione per il disaster recovery dal menu a discesa per creare un criterio di esportazione.
+
+. Nell'area **regole di esportazione**, fare clic su *Aggiungi* per aggiungere regole al criterio di esportazione.
+. Fare clic su *Create* (Crea).
+. Verificare che il criterio di esportazione creato sia visualizzato nella finestra *Export Policies* (Criteri di esportazione).
+
+
+
+
+== Rinominare i criteri di esportazione
+
+È possibile utilizzare System Managerper rinominare un criterio di esportazione esistente.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+. Selezionare il criterio di esportazione che si desidera rinominare, quindi fare clic su *Rinomina policy*.
+. Nella finestra di dialogo *Rinomina policy*, specificare un nuovo nome di policy, quindi fare clic su *Modifica*.
+. Verificare le modifiche apportate nella finestra *Export Policies* (Criteri di esportazione).
+
+
+
+
+== Eliminare i criteri di esportazione
+
+È possibile utilizzare System Manager per eliminare i criteri di esportazione non più necessari.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+. Selezionare il criterio di esportazione che si desidera eliminare, quindi fare clic su *Delete Policy* (Elimina policy).
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Elimina*.
+
+
+
+
+== Aggiungere regole a un criterio di esportazione
+
+È possibile utilizzare System Manager per aggiungere regole a un criterio di esportazione, che consente di definire l'accesso client ai dati.
+
+.Prima di iniziare
+È necessario aver creato il criterio di esportazione a cui si desidera aggiungere le regole di esportazione.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+. Selezionare il criterio di esportazione a cui si desidera aggiungere le regole e dalla scheda *regole di esportazione*, fare clic su *Aggiungi*.
+. Nella finestra di dialogo *Create Export Rule* (Crea regola di esportazione), attenersi alla seguente procedura:
++
+.. Specificare il client che richiede l'accesso ai dati.
++
+È possibile specificare più client come valori separati da virgole.
+
++
+È possibile specificare il client in uno dei seguenti formati:
+
++
+*** Come nome host, ad esempio host1
+*** Come indirizzo IPv4; ad esempio, 10.1.12.24
+*** Come indirizzo IPv4 con una maschera di rete; ad esempio, 10.1.16.0/255.255.255.0
+*** Come indirizzo IPv6, ad esempio FE80::0202:B3FF:FE1E:8329
+*** Come indirizzo IPv6 con una maschera di rete; ad esempio, 2001:db8::/32
+*** Come netgroup, con il nome del netgroup preceduto da un simbolo (@); ad esempio, @netgroup
+*** Come nome di dominio preceduto da un punto (.); ad esempio, .example.com
+
+
++
+[NOTE]
+====
+Non inserire un intervallo di indirizzi IP, ad esempio da 10.1.12.10 a 10.1.12.70. Le voci in questo formato vengono interpretate come una stringa di testo e vengono trattate come un nome host.
+
+====
++
+È possibile inserire l'indirizzo IPv4 `0.0.0.0/0` fornire l'accesso a tutti gli host.
+
+.. Se si desidera modificare il numero di indice della regola, selezionare il numero di indice della regola appropriato.
+.. Selezionare uno o più protocolli di accesso.
++
+Se non si seleziona alcun protocollo di accesso, il valore predefinito "`Any`" viene assegnato alla regola di esportazione.
+
+.. Selezionare uno o più tipi di sicurezza e regole di accesso.
+
+
+. Fare clic su *OK*.
+. Verificare che la regola di esportazione aggiunta sia visualizzata nella scheda *regole di esportazione* del criterio di esportazione selezionato.
+
+
+
+
+== Modificare le regole dei criteri di esportazione
+
+È possibile utilizzare System Manager per modificare il client specificato, i protocolli di accesso e le autorizzazioni di accesso di una regola dei criteri di esportazione.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+. Nella finestra *Export Policies* (Criteri di esportazione), selezionare il criterio di esportazione per il quale si desidera modificare la regola di esportazione e nella scheda *Export Rules* (regole di esportazione) selezionare la regola che si desidera modificare, quindi fare clic su *Edit* (Modifica).
+. Modificare i seguenti parametri secondo necessità:
++
+** Specifica del client
+** Protocolli di accesso
+** Dettagli di accesso
+
+
+. Fare clic su *OK*.
+. Verificare che le modifiche aggiornate per la regola di esportazione siano visualizzate nella scheda *regole di esportazione*.
+
+
+
+
+== Eliminare le regole dei criteri di esportazione
+
+È possibile utilizzare System Manager per eliminare le regole dei criteri di esportazione non più necessarie.
+
+.Fasi
+. Fare clic su *Storage* > *SVM*.
+. Selezionare la SVM, quindi fare clic su *SVM Settings* (Impostazioni SVM).
+. Nel riquadro *Policies*, fare clic su *Export Policies* (Esporta policy).
+. Selezionare il criterio di esportazione per il quale si desidera eliminare la regola di esportazione.
+. Nella scheda *regole di esportazione*, selezionare la regola di esportazione che si desidera eliminare, quindi fare clic su *Elimina*.
+. Nella casella di conferma, fare clic su *Delete* (Elimina).
+
+
+
+
+== In che modo le policy di esportazione controllano l'accesso dei client ai volumi o ai qtree
+
+I criteri di esportazione contengono una o più _regole di esportazione_ che elaborano ogni richiesta di accesso client. Il risultato del processo determina se al client viene negato o concesso l'accesso e quale livello di accesso. Affinché i client possano accedere ai dati, è necessario che sulla macchina virtuale di storage (SVM) sia presente un criterio di esportazione con regole di esportazione.
+
+Per configurare l'accesso del client al volume o al qtree, è necessario associare esattamente un criterio di esportazione a ciascun volume o qtree. La SVM può contenere più policy di esportazione. Ciò consente di eseguire le seguenti operazioni per le SVM con più volumi o qtree:
+
+* Assegnare criteri di esportazione diversi a ciascun volume o qtree di SVM per il controllo degli accessi dei singoli client a ciascun volume o qtree di SVM.
+* Assegnare la stessa policy di esportazione a più volumi o qtree di SVM per un controllo identico dell'accesso client senza dover creare una nuova policy di esportazione per ciascun volume o qtree.
+
+
+Se un client effettua una richiesta di accesso non consentita dalla policy di esportazione applicabile, la richiesta non riesce e viene visualizzato un messaggio di autorizzazione negata. Se un client non corrisponde a nessuna regola nella policy di esportazione, l'accesso viene negato. Se un criterio di esportazione è vuoto, tutti gli accessi vengono implicitamente negati.
+
+È possibile modificare dinamicamente un criterio di esportazione su un sistema che esegue ONTAP.
+
+
+
+== Finestra Esporta policy
+
+È possibile utilizzare la finestra Export Policies (Esporta policy) per creare, visualizzare e gestire le informazioni relative ai criteri di esportazione e alle relative regole di esportazione.
+
+
+
+=== Policy di esportazione
+
+La finestra Export Policies (Esporta policy) consente di visualizzare e gestire i criteri di esportazione creati per la macchina virtuale di storage (SVM).
+
+* *Pulsanti di comando*
++
+** Creare
++
+Apre la finestra di dialogo Create Export Policy (Crea policy di esportazione), che consente di creare un criterio di esportazione e aggiungere regole di esportazione. È inoltre possibile copiare le regole di esportazione da una SVM esistente.
+
+** Rinominare
++
+Apre la finestra di dialogo Rinomina policy, che consente di rinominare il criterio di esportazione selezionato.
+
+** Eliminare
++
+Apre la finestra di dialogo Delete Export Policy (Elimina policy di esportazione), che consente di eliminare il criterio di esportazione selezionato.
+
+** Aggiornare
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+
+
+=== Scheda regole di esportazione
+
+La scheda regole di esportazione consente di visualizzare le informazioni sulle regole di esportazione create per un determinato criterio di esportazione. È inoltre possibile aggiungere, modificare ed eliminare le regole.
+
+* *Pulsanti di comando*
++
+** Aggiungi
++
+Apre la finestra di dialogo Crea regola di esportazione, che consente di aggiungere una regola di esportazione al criterio di esportazione selezionato.
+
+** Modifica
++
+Apre la finestra di dialogo Modifica regola di esportazione, che consente di modificare gli attributi della regola di esportazione selezionata.
+
+** Eliminare
++
+Apre la finestra di dialogo Delete Export Rule (Elimina regola di esportazione), che consente di eliminare la regola di esportazione selezionata.
+
+** Sposta in alto
++
+Sposta in alto l'indice della regola di esportazione selezionata.
+
+** Sposta in basso
++
+Sposta in basso l'indice della regola di esportazione selezionata.
+
+** Aggiornare
++
+Aggiorna le informazioni nella finestra.
+
+
+
+* *Elenco regole di esportazione*
++
+** Indice delle regole
++
+Specifica la priorità in base alla quale vengono elaborate le regole di esportazione. Per scegliere la priorità, utilizzare i pulsanti Sposta su e Sposta giù.
+
+** Client
++
+Specifica il client a cui si applica la regola.
+
+** Protocolli di accesso
++
+Visualizza il protocollo di accesso specificato per la regola di esportazione.
+
++
+Se non è stato specificato alcun protocollo di accesso, viene preso in considerazione il valore predefinito "`Any`".
+
+** Regola di sola lettura
++
+Specifica uno o più tipi di protezione per l'accesso in sola lettura.
+
+** Regola di lettura/scrittura
++
+Specifica uno o più tipi di protezione per l'accesso in lettura/scrittura.
+
+** Accesso superutente
++
+Specifica il tipo o i tipi di protezione per l'accesso del superutente.
+
+
+
+
+
+
+
+=== Scheda oggetti assegnati
+
+La scheda Assigned Objects (oggetti assegnati) consente di visualizzare i volumi e le qtree assegnati al criterio di esportazione selezionato. È inoltre possibile visualizzare se il volume è crittografato o meno.
+
+*Informazioni correlate*
+
+xref:task_setting_up_cifs.adoc[Configurazione di CIFS]

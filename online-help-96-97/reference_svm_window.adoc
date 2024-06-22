@@ -1,0 +1,219 @@
+---
+permalink: online-help-96-97/reference_svm_window.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, window, svm, online, help, command, button, peer 
+summary: 'È possibile utilizzare la finestra Storage Virtual Machines per gestire le macchine virtuali di storage (SVM) e visualizzare le relative informazioni.' 
+---
+= Finestra Storage Virtual Machines in System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la finestra Storage Virtual Machines (macchine virtuali di storage) in ONTAP System Manager classic (disponibile in ONTAP 9.7 e versioni precedenti) per gestire le macchine virtuali di storage (SVM) e visualizzarne le informazioni.
+
+Non è possibile gestire (creare, eliminare, avviare o arrestare) una SVM configurata per il disaster recovery (DR) utilizzando System Manager. Inoltre, non è possibile visualizzare gli oggetti di storage associati alla SVM configurata per il disaster recovery nell'interfaccia dell'applicazione.
+
+
+
+== Pulsanti di comando
+
+* *Crea*
++
+Apre la procedura guidata di installazione di Storage Virtual Machine (SVM), che consente di creare una nuova SVM.
+
+* *Modifica*
++
+Apre la finestra di dialogo Edit Storage Virtual Machine, che consente di modificare le proprietà di una SVM selezionata, ad esempio lo switch name service, lo switch name mapping e l'elenco aggregato.
+
+* *Elimina*
++
+Elimina le SVM selezionate.
+
+* *Avvio*
++
+Avvia la SVM selezionata.
+
+* *Stop*
++
+Arresta la SVM selezionata.
+
+* *Impostazioni SVM*
++
+Gestisce lo storage, le policy e la configurazione per la SVM selezionata.
+
+* *Operazioni di protezione*
++
+Fornisce le seguenti opzioni:
+
++
+** *Inizializza*
++
+Consente di inizializzare la relazione SVM per eseguire un trasferimento di riferimento dalla SVM di origine alla SVM di destinazione.
+
+** *Aggiorna*
++
+Consente di aggiornare i dati dalla SVM di origine alla SVM di destinazione.
+
+** *Attivare SVM di destinazione*
++
+Consente di attivare la SVM di destinazione.
+
+** *Risincronizzazione da SVM di origine*
++
+Consente di avviare la risincronizzazione della relazione interrotta.
+
+** *Risincronizzazione da SVM di destinazione (risincronizzazione inversa)*
++
+Consente di risincronizzare la relazione tra la SVM di destinazione e la SVM di origine.
+
+** *Riattiva SVM di origine*
++
+Consente di riattivare la SVM di origine.
+
+
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+* *Accesso al file di traccia*
++
+Consente di tenere traccia dell'accessibilità di un file o di una condivisione sulla SVM selezionata per un nome utente specificato.
+
+
+
+
+
+== Elenco SVM
+
+L'elenco SVM visualizza il nome di ogni SVM e i protocolli consentiti.
+
+È possibile visualizzare solo le SVM di dati utilizzando System Manager.
+
+* *Nome*
++
+Visualizza il nome della SVM.
+
+* *Stato*
++
+Visualizza lo stato SVM, ad esempio in esecuzione, in avvio, interrotto o in arresto.
+
+* *Sottotipo*
++
+Visualizza il sottotipo di SVM, che può essere uno dei seguenti:
+
++
+** predefinito
++
+Specifica che SVM è una SVM che serve dati.
+
+** destinazione dp
++
+Specifica che SVM è configurato per il disaster recovery.
+
+** sync-source
++
+Specifica che la SVM si trova nel sito principale di una configurazione MetroCluster.
+
+** sync-destination
++
+Specifica che la SVM si trova nel sito sopravvissuto di una configurazione MetroCluster.
+
+
+
+* *Protocolli consentiti*
++
+Visualizza i protocolli consentiti, come CIFS e NFS, su ogni SVM.
+
+* *IPSpace*
++
+Visualizza l'IPSpace della SVM associata.
+
+* *Volume Type* (tipo di volume)
++
+Visualizza il tipo di volume consentito, ad esempio il volume FlexVol, su ogni SVM.
+
+* *Protetto*
++
+Visualizza se la SVM è protetta o meno.
+
+* *Stato di configurazione*
++
+Visualizza se lo stato di configurazione della SVM è bloccato o sbloccato.
+
+
+
+
+
+== Area dei dettagli
+
+L'area sotto l'elenco SVM visualizza informazioni dettagliate, come il tipo di volumi consentiti, la lingua e la policy Snapshot, sulla SVM selezionata.
+
+È inoltre possibile configurare i protocolli consentiti su questa SVM. Se i protocolli non sono stati configurati durante la creazione di SVM, fare clic sul collegamento del protocollo per configurarlo.
+
+Non è possibile configurare i protocolli per una SVM configurata per il disaster recovery utilizzando System Manager.
+
+[NOTE]
+====
+Se il servizio FCP è già stato avviato per SVM, facendo clic sul collegamento FC/FCoE si apre la finestra Network Interfaces (interfacce di rete).
+
+====
+Il colore indica lo stato della configurazione del protocollo:
+
+|===
+| Stato | Descrizione 
+
+
+ a| 
+Verde
+ a| 
+Le LIF esistono e il protocollo è configurato. Fare clic sul collegamento per visualizzare i dettagli della configurazione.
+
+[NOTE]
+====
+La configurazione potrebbe essere parzialmente completata. Tuttavia, il servizio è in esecuzione. È possibile creare le LIF e completare la configurazione dalla finestra Network Interfaces (interfacce di rete).
+
+====
+
+
+ a| 
+Giallo
+ a| 
+Indica una delle seguenti opzioni:
+
+* Le LIF esistono. Il servizio è stato creato ma non è in esecuzione.
+* Le LIF esistono. Servizio non creato.
+* Viene creato il servizio. Le LIF non esistono.
+
+
+
+
+ a| 
+Grigio
+ a| 
+Il protocollo non è configurato. È possibile fare clic sul collegamento del protocollo per configurarlo.
+
+
+
+ a| 
+Bordo grigio
+ a| 
+La licenza del protocollo è scaduta o mancante. È possibile fare clic sul collegamento del protocollo per aggiungere le licenze nella pagina Licenses (licenze).
+
+|===
+È inoltre possibile aggiungere l'interfaccia di gestione e visualizzare dettagli quali le relazioni di protezione, i criteri di protezione, il dominio NIS e così via.
+
+L'area *Dettagli* include anche un collegamento per visualizzare il certificato SSL pubblico per una SVM. Facendo clic su questo collegamento, è possibile eseguire le seguenti operazioni:
+
+* Visualizzare i dettagli del certificato, il numero di serie, la data di inizio e la data di scadenza.
+* Copiare il certificato negli Appunti.
+* Inviare via email i dettagli del certificato.
+
+
+
+
+== Area delle macchine virtuali Peer Storage
+
+Visualizza un elenco delle SVM che sono in peering con la SVM selezionata insieme ai dettagli delle applicazioni che utilizzano la relazione peer.

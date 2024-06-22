@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_reviewing_storage_recommendations.html 
+sidebar: sidebar 
+keywords: review, storage, recommendation, window, online, help, create, aggregate 
+summary: 'Utilizzando la finestra Storage (archiviazione), è possibile esaminare i consigli di storage forniti per la creazione di aggregati.' 
+---
+= Esaminate le raccomandazioni relative allo storage con System Manager - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile esaminare i consigli relativi allo storage forniti per la creazione di aggregati utilizzando la finestra di storage in Gestione di sistema di ONTAP Classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+.Prima di iniziare
+È necessario aver configurato il cluster, la rete e i dettagli del supporto.
+
+.A proposito di questa attività
+È possibile creare aggregati di dati in base alle raccomandazioni sullo storage oppure saltare questo passaggio e creare aggregati di dati in un secondo momento utilizzando System Manager.
+
+
+
+== Procedura
+
+* Per creare aggregati di dati in base alle raccomandazioni sullo storage, fare clic su *Submit and Continue* (Invia e continua).
+* Per creare aggregati di dati in un secondo momento utilizzando System Manager, fare clic su *Ignora questo passaggio*.
+
+
+
+
+== Cosa fare in seguito
+
+Se si è scelto di creare aggregati in base alle raccomandazioni sullo storage, è necessario creare una macchina virtuale dello storage (SVM) per continuare con la configurazione del cluster.

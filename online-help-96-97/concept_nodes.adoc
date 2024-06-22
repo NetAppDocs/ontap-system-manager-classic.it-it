@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/concept_nodes.html 
+sidebar: sidebar 
+keywords: node, system, manager, view, detail, cluster, online, help 
+summary: È possibile utilizzare System Manager per visualizzare i dettagli dei nodi nel cluster. 
+---
+= Gestione dei nodi con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+
+
+[role="lead"]
+Per visualizzare i dettagli dei nodi nel cluster, è possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti).
+
+
+
+== Inizializzare l'ora di ComplianceClock
+
+È possibile utilizzare System Manager per inizializzare l'ora di ComplianceClock in base all'ora corrente del cluster. Per creare aggregati SnapLock, è necessario inizializzare l'ora di ComplianceClock.
+
+.Prima di iniziare
+È necessario installare la licenza SnapLock.
+
+.A proposito di questa attività
+Non è possibile modificare o interrompere l'ora di ComplianceClock dopo l'inizializzazione.
+
+.Fasi
+. Fare clic su *Storage* > *Nodes*.
+. Selezionare il nodo, quindi fare clic su *Inizializza ComplianceClock*.
+. Nella finestra di dialogo *Initialize ComplianceClock* (Inizializza ComplianceClock), fare clic su *Yes* (Sì) per inizializzare l'ora del cluster corrente.
+
+
+
+
+== Finestra nodi
+
+È possibile utilizzare la finestra Nodes (nodi) per visualizzare i dettagli dei nodi in un cluster.
+
+
+
+=== Pulsanti di comando
+
+* *Inizializza ComplianceClock*
++
+Inizializza ComplianceClock del nodo selezionato sul valore corrente dell'orologio di sistema.
+
+* *Aggiorna*
++
+Aggiorna le informazioni nella finestra.
+
+
+
+
+
+=== Nodes (nodi)
+
+* *Nome*
++
+Visualizza il nome del nodo.
+
+* *Stato*
++
+Visualizza lo stato del nodo (se il nodo è in alto o in basso).
+
+* *Tempo di attività*
++
+Visualizza la durata per cui il nodo è attivo.
+
+* *Versione ONTAP*
++
+Visualizza la versione di ONTAP installata sul nodo.
+
+* *Modello*
++
+Visualizza il numero di modello della piattaforma del nodo.
+
+* *ID sistema*
++
+Visualizza l'ID del nodo.
+
+* *Numero di serie*
++
+Visualizza il numero di serie del nodo.
+
+
+
+
+
+=== Area dei dettagli
+
+Visualizza informazioni dettagliate sul nodo selezionato.
+
+* Scheda *Dettagli*
++
+Visualizza le informazioni relative al nodo selezionato, ad esempio il nome del nodo, lo stato del nodo e la durata del funzionamento del nodo.
+
+* Scheda Performance (prestazioni)*
++
+Visualizza il throughput, gli IOPS e la latenza del nodo selezionato.
+
++
+La modifica del fuso orario del client o del fuso orario del cluster influisce sui grafici delle metriche delle performance. Aggiornare il browser per visualizzare i grafici aggiornati.
+
+

@@ -1,0 +1,46 @@
+---
+permalink: nfs-config-esxi/task_verifying_configuration_is_supported.html 
+sidebar: sidebar 
+keywords: reliable, operation, verify, configuration, support, nfs, verify that the configuration is supported 
+summary: 'Per un funzionamento affidabile, è necessario verificare che l"intera configurazione sia supportata. Elenca le configurazioni supportate per NFS e per Virtual Storage Console.' 
+---
+= Verificare che la configurazione sia supportata
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per un funzionamento affidabile, è necessario verificare che l'intera configurazione sia supportata. Elenca le configurazioni supportate per NFS e per Virtual Storage Console.
+
+.Fasi
+. Accedere a per verificare di disporre di una combinazione supportata dei seguenti componenti:
++
+https://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"]
+
++
+** Software ONTAP
+** Protocollo storage NFS
+** Versione del sistema operativo ESXi
+** Tipo e versione del sistema operativo guest
+** Per il software (VSC)
+** Plug-in NFS per VAAI
+
+
+. Fare clic sul nome della configurazione selezionata.
++
+I dettagli della configurazione vengono visualizzati nella finestra Dettagli configurazione.
+
+. Esaminare le informazioni nelle seguenti schede:
++
+** Note
++
+Elenca avvisi e informazioni importanti specifici della configurazione.
+
+** Policy e linee guida
++
+Fornisce linee guida generali per tutte le configurazioni NAS.
+
+
+
+

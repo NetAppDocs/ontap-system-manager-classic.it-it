@@ -1,0 +1,46 @@
+---
+permalink: volume-disaster-recovery/task_breaking_snapmirror_relationship.html 
+sidebar: sidebar 
+keywords: quiesce, break, snapmirror, relationship, activate, destination, volume, snapmirror, quiescing, transfer, disable, break the snapmirror relationship 
+summary: Per attivare il volume di destinazione, è necessario interrompere e interrompere la relazione di SnapMirror. Dopo la disattivazione, i futuri trasferimenti di dati SnapMirror vengono disattivati. 
+---
+= Interrompere la relazione di SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per attivare il volume di destinazione, è necessario interrompere e interrompere la relazione di SnapMirror. Dopo la disattivazione, i futuri trasferimenti di dati SnapMirror vengono disattivati.
+
+.Prima di iniziare
+Il volume di destinazione deve essere montato sullo spazio dei nomi SVM di destinazione.
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *destination*.
+
+.Fasi
+. A seconda della versione di System Manager in esecuzione, eseguire una delle seguenti operazioni:
++
+** ONTAP 9.4 o versione precedente: Fare clic su *protezione* > *relazioni*.
+** A partire da ONTAP 9.5: Fare clic su *protezione* > *Relazioni volume*.
+
+
+. Selezionare la relazione di SnapMirror tra i volumi di origine e di destinazione.
+. Fare clic su *Operations* > *Quiesce* per disattivare i trasferimenti futuri di dati.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Quiesce*.
++
+L'operazione di quiesce potrebbe richiedere del tempo; non è necessario eseguire altre operazioni sulla relazione SnapMirror fino a quando lo stato del trasferimento non viene visualizzato come `Quiesced`.
+
+. Fare clic su *operazioni* > *interruzione*.
+. Selezionare la casella di controllo di conferma, quindi fare clic su *Interrompi*.
++
+image::../media/break.gif[Schermata di interruzione di SnapMirror]
+
++
+La relazione di SnapMirror è stata stabilita `Broken Off` stato.
+
++
+image::../media/break_verify.gif[Relazione di SnapMirror in stato interrotto]
+
+

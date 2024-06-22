@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_viewing_initiator_groups.html 
+sidebar: sidebar 
+keywords: view, initiator, group, lun, system, manager, online, help 
+summary: 'È possibile utilizzare la scheda Initiator Groups (gruppi iniziatori) in System Manager per visualizzare tutti i gruppi iniziatori e gli iniziatori mappati a questi gruppi di iniziatori, nonché i LUN e l"ID LUN mappati ai gruppi di iniziatori.' 
+---
+= Visualizzare i gruppi di iniziatori con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la scheda *gruppi di iniziatori* in Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per visualizzare tutti i gruppi di iniziatori e gli iniziatori mappati a questi gruppi di iniziatori, nonché i LUN e l'ID LUN mappati ai gruppi di iniziatori.
+
+.Fasi
+. Fare clic su *Storage* > *LUN*.
+. Fare clic su *Initiator Groups* (gruppi iniziatori) ed esaminare i gruppi di iniziatori elencati nel riquadro superiore.
+. Selezionare un gruppo di iniziatori per visualizzare gli iniziatori ad esso appartenenti, elencati nella scheda *iniziatori* nel riquadro inferiore.
+. Selezionare un gruppo di iniziatori per visualizzare i LUN ad esso mappati, elencati nei *LUN mappati* nel riquadro inferiore.
+

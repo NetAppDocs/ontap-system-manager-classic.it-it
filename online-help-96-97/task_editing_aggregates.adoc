@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_editing_aggregates.html 
+sidebar: sidebar 
+keywords: online, help, edit, aggregates, raid, type, group, size, online, help 
+summary: 'È possibile utilizzare System Manager per modificare il nome dell"aggregato, il tipo di RAID e le dimensioni del gruppo RAID di un aggregato esistente, se necessario.' 
+---
+= Modifica gli aggregati con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per modificare il nome dell'aggregato, il tipo di RAID e la dimensione del gruppo RAID di un aggregato esistente, se necessario.
+
+.Prima di iniziare
+Per modificare il tipo RAID di un aggregato da RAID4 a RAID-DP, l'aggregato deve contenere un numero sufficiente di dischi di riserva compatibili, esclusi gli hot spare.
+
+.A proposito di questa attività
+* Non è possibile modificare il gruppo RAID dei sistemi ONTAP che supportano le LUN degli array.
++
+RAID0 è l'unica opzione disponibile.
+
+* Non è possibile modificare il tipo RAID dei dischi partizionati.
++
+RAID-DP è l'unica opzione disponibile per i dischi partizionati.
+
+* Non è possibile rinominare un aggregato di conformità SnapLock.
+* Se l'aggregato è costituito da SSD con pool di storage, è possibile modificare solo il nome dell'aggregato.
+* Se la dimensione del disco a tripla parità è di 10 TB e gli altri dischi sono di dimensioni inferiori a 10 TB, è possibile selezionare RAID-DP o RAID-TEC come tipo RAID.
+* Se la dimensione del disco di parità tripla è di 10 TB e anche uno degli altri dischi è superiore a 10 TB, RAID-TEC è l'unica opzione disponibile per il tipo RAID.
+
+
+.Fasi
+. Scegliere uno dei seguenti metodi:
++
+** Fare clic su *applicazioni e livelli* > *Tier di storage*.
+** Fare clic su *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selezionare l'aggregato che si desidera modificare, quindi fare clic su *Modifica*.
+. Nella finestra di dialogo *Edit aggregate* (Modifica aggregato), modificare il nome dell'aggregato, il tipo di RAID e le dimensioni del gruppo RAID, come richiesto.
+. Fare clic su *Save* (Salva).
+
+
+*Informazioni correlate*
+
+xref:reference_aggregates_window.adoc[Finestra aggregati]
+
+xref:concept_what_compatible_spare_disks_are.adoc[Quali sono i dischi di riserva compatibili]
+
+xref:reference_storage_tiers_window.adoc[Finestra Storage Tiers (livelli di storage)]

@@ -1,0 +1,28 @@
+---
+permalink: volume-restore-snapvault/task_identifying_snapvault_backup_destination_volume.html 
+sidebar: sidebar 
+keywords: identify, snapvault, backup, destination, volume, restore, data, source, corrupt, identify the snapvault backup destination volume 
+summary: È necessario identificare il volume di destinazione del backup SnapVault da cui si desidera ripristinare i dati quando i dati nel volume di origine vengono danneggiati o persi. 
+---
+= Identificare il volume di destinazione del backup di SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario identificare il volume di destinazione del backup SnapVault da cui si desidera ripristinare i dati quando i dati nel volume di origine vengono danneggiati o persi.
+
+.A proposito di questa attività
+È necessario eseguire questa attività dal cluster *source*.
+
+.Fasi
+. Inserire l'URL `+https://IP-address-of-cluster-management-LIF+` In un browser Web e accedere a System Manager utilizzando la credenziale dell'amministratore del cluster.
+. Accedere alla finestra *Volumes*.
+. Identificare il volume di destinazione nella relazione SnapVault e il nome della SVM che contiene il volume:
++
+** ONTAP 9.3 o versione successiva: Fare doppio clic sul volume per visualizzare i dettagli, quindi fare clic su *PROTECTION*.
+** ONTAP 9.2 o versioni precedenti: Fare clic sulla scheda *protezione dati* nella parte inferiore della finestra volumi.
+
+
+
