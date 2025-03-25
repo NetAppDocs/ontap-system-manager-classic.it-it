@@ -1,0 +1,10 @@
+---
+section: networking
+title: Argomenti generali relativi alla rete (ONTAP 9,7 e versioni precedenti)
+entries:
+- title: Rimozione di una scheda di rete dal nodo (ONTAP 9,7 o versione precedente)
+  url: "/networking/remove_a_nic_from_the_node_97.html"
+- title: Ruoli LIF (ONTAP 9,5 e versioni precedenti)
+  url: "/networking/lif_roles95.html"
+- title: Configurazione dei servizi DNS (ONTAP 9,7 e versioni precedenti)
+  url: "/networking/configure_dns_services_manual.html"

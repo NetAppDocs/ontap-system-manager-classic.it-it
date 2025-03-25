@@ -5,7 +5,12 @@ keywords: autosupport, notification, message, monitor, system, health, storage, 
 summary: È possibile utilizzare Gestione sistema per configurare le notifiche AutoSupport che consentono di monitorare lo stato del sistema di storage. 
 ---
 = Gestione delle notifiche AutoSupport con Gestione di sistema - ONTAP 9.7 e versioni precedenti
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 È possibile utilizzare Gestore di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per configurare le notifiche AutoSupport che consentono di monitorare lo stato del sistema storage.

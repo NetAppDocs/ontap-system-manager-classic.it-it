@@ -1,0 +1,11 @@
+---
+section: networking-failover
+title: Flusso di lavoro di failover del percorso NAS (ONTAP 9,7 e versioni precedenti)
+entries:
+- title: Informazioni sul failover del percorso NAS (ONTAP 9,7 e versioni precedenti)
+  url: "/networking-failover/set_up_nas_path_failover_9_to_97_cli.html"
+- title: Flusso di lavoro di failover del percorso NAS (ONTAP 9,7 e versioni precedenti)
+  url: "/networking-failover/workflow__nas_path_failover_overview_manual.html"
+- title: Foglio di lavoro per la configurazione del failover del percorso NAS (ONTAP
+    9,7 e versioni precedenti)
+  url: "/networking-failover/worksheet_for_nas_path_failover_configuration_manual.html"
