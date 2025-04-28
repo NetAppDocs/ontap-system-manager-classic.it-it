@@ -29,7 +29,7 @@ Per impostazione predefinita, gli aggregati esistenti vengono utilizzati per rid
 +
 [NOTE]
 ====
-Se si desidera espandere il volume FlexCache aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif[""] (opzioni avanzate). Fare riferimento a. link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Specifica delle opzioni avanzate per i volumi FlexCache"].
+Se si desidera espandere il volume FlexCache aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif["icona opzioni avanzate"] (opzioni avanzate). Fare riferimento alla link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Specifica delle opzioni avanzate per i volumi FlexCache"].
 
 ====
 . Fare clic su *Save* (Salva) per ridimensionare il volume FlexCache.

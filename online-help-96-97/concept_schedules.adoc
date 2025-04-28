@@ -100,7 +100,6 @@ Specificare le opzioni avanzate di cron in mesi, giorni, giorni della settimana 
 
 == Eliminare le pianificazioni
 
-[role="lead"]
 È possibile utilizzare System Manager per eliminare le pianificazioni che eseguono specifiche attività di gestione dello storage.
 
 .Fasi

@@ -56,4 +56,4 @@ Nella seconda fase, il sito è pronto per il processo di switchback.
 
 Il seguente diagramma di flusso illustra le fasi e i processi che si verificano quando si avviano le operazioni di switchover e switchback.
 
-image::../media/switchover_switchback_workflow.jpg[workflow di switchover switchback]
+image::../media/switchover_switchback_workflow.jpg[diagramma di flusso del flusso di lavoro di switchover e switchback di MetroCluster]

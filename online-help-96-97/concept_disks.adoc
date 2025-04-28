@@ -17,6 +17,4 @@ Per gestire i dischi, è possibile utilizzare Gestore di sistema ONTAP classic (
 
 https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gestione di dischi e aggregati"^]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Requisiti e riferimenti per l'installazione della virtualizzazione FlexArray"^]
-
 https://docs.netapp.com/us-en/ontap/concepts/index.html["Concetti di ONTAP"^]

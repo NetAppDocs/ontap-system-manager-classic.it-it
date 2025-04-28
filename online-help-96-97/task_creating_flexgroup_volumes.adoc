@@ -70,7 +70,7 @@ Impedisce che i dati sul volume vengano spostati in un Tier cloud.
 ** Se nella SVM sono presenti solo aggregati FabricPool, il pulsante *FabricPool* viene visualizzato nella posizione "Enabled" (attivato) e non può essere modificato.
 
 
-. Se si desidera specificare aggregati particolari, fare clic su image:../media/advanced_options.gif[""] (opzioni avanzate).
+. Se si desidera specificare aggregati particolari, fare clic su image:../media/advanced_options.gif["icona opzioni avanzate"] (opzioni avanzate).
 +
 Gli aggregati associati al volume FlexGroup che si sta creando vengono selezionati per impostazione predefinita, in base alle Best practice. Vengono visualizzati accanto all'etichetta *aggregati*.
 

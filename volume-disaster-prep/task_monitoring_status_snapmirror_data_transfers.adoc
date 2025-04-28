@@ -44,7 +44,7 @@ Ad esempio, se la pianificazione del trasferimento è oraria, il ritardo non dev
 http://www.netapp.com/us/media/tr-4015.pdf["Report tecnico di NetApp 4015: Configurazione e Best practice di SnapMirror per ONTAP 9.1, 9.2"^]
 
 +
-image::../media/snapmirror_monitor_3_health_state_lag.gif[ritardo dello stato di salute del monitor snapmirror 3]
+image::../media/snapmirror_monitor_3_health_state_lag.gif[stato dei trasferimenti dati SnapMirror]
 
 
 

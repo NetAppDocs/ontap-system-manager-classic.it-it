@@ -17,7 +17,6 @@ summary: È possibile utilizzare System Manager per gestire la rete del sistema 
 
 == Finestra Network (rete)
 
-[role="lead"]
 È possibile utilizzare la finestra rete per visualizzare l'elenco dei componenti di rete, ad esempio subnet, interfacce di rete, porte Ethernet, domini di trasmissione, Adattatori FC/FCoE e NVMe e IPspaces e per creare, modificare o eliminare questi componenti nel sistema storage.
 
 

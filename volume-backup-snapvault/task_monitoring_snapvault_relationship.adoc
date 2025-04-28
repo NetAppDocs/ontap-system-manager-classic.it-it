@@ -44,7 +44,7 @@ Ad esempio, se la pianificazione del trasferimento è giornaliera, il tempo di r
 http://www.netapp.com/us/media/tr-4015.pdf["Report tecnico di NetApp 4015: Configurazione e Best practice di SnapMirror per ONTAP 9.1, 9.2"^]
 
 +
-image::../media/monitor_sv.gif[monitorare sv]
+image::../media/monitor_sv.gif[stato della relazione di SnapVault]
 
 
 

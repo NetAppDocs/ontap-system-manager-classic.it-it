@@ -26,7 +26,7 @@ La finestra Trace file Access (accesso al file di traccia) per la SVM selezionat
 . Fare clic su *Continue* (continua) per avviare il processo di analisi del file.
 . Selezionare il protocollo utilizzato per accedere ai file o alle condivisioni sulla SVM selezionata.
 . Nel campo *Nome utente*, immettere il nome dell'utente che stava tentando di accedere al file o alla condivisione.
-. *Opzionale:* fare clic image:../media/advanced_options.gif[""] per specificare ulteriori dettagli per limitare l'ambito della traccia.
+. *Opzionale:* fare clic image:../media/advanced_options.gif["icona opzioni avanzate"] per specificare ulteriori dettagli per restringere l'ambito della traccia.
 +
 La finestra di dialogo Opzioni avanzate consente di specificare i seguenti dettagli:
 

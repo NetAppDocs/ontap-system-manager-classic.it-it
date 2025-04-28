@@ -23,7 +23,7 @@ Quando il volume di origine non è disponibile, è necessario verificare che il 
 +
 ** A partire da ONTAP 9.3: Fare doppio clic sul volume di origine per visualizzare i dettagli, quindi fare clic su *PROTECTION* per identificare il volume di destinazione nella relazione di SnapMirror e il nome della SVM che contiene il volume.
 +
-image::../media/snapmirror_destination_93.gif[destinazione di snapmirror 93]
+image::../media/snapmirror_destination_93.gif[immagine della scheda protezione che mostra il volume di destinazione nella relazione SnapMirror]
 
 ** ONTAP 9.2 o versione precedente: Fare clic sulla scheda *protezione dati* nella parte inferiore della pagina volumi per identificare il volume di destinazione nella relazione SnapMirror e il nome della SVM che contiene il volume.
 +

@@ -22,7 +22,7 @@ Prima di configurare un volume per il disaster recovery, è necessario verificar
 .. Fare clic su *Configuration* > *Cluster Peers*.
 .. Verificare che il cluster peered sia autenticato e disponibile.
 +
-image::../media/cluster_pper_930_disaster.gif[disastro del cluster pper 930]
+image::../media/cluster_pper_930_disaster.gif[verificare che il cluster in peering sia autenticato e disponibile]
 
 .. Fare clic su *Configuration* > *SVM Peers*.
 .. Verificare che la SVM di destinazione sia in peering con la SVM di origine.
@@ -34,7 +34,7 @@ image::../media/cluster_pper_930_disaster.gif[disastro del cluster pper 930]
 .. Nel riquadro *Cluster Details*, fare clic su *Cluster Peers*.
 .. Verificare che il cluster peered sia autenticato e disponibile.
 +
-image::../media/cluster_peer_health_disaster.gif[disastro della salute peer del cluster]
+image::../media/cluster_peer_health_disaster.gif[sezione cluster peer che mostra che il cluster in cui è stato eseguito il peering è autenticato e disponibile]
 
 .. Fare clic sulla scheda *SVM* e selezionare la SVM di origine.
 .. Nell'area *Peer Storage Virtual Machines* (macchine virtuali di storage peer), verificare che la SVM di destinazione sia peer con la SVM di origine.

@@ -13,4 +13,4 @@ summary: 'È possibile creare un cluster utilizzando System Manager o l"interfac
 [role="lead"]
 È possibile creare un cluster utilizzando System Manager o l'interfaccia della riga di comando (CLI). Per creare un cluster utilizzando System Manager, è necessario impostare l'indirizzo IP di gestione dei nodi su qualsiasi nodo della rete del cluster. Se è stato creato un cluster utilizzando la CLI, è possibile configurarlo utilizzando System Manager.
 
-image::../media/guided_cluster_setup.gif[installazione guidata del cluster]
+image::../media/guided_cluster_setup.gif[flusso di lavoro per la configurazione dell'ambiente cluster]

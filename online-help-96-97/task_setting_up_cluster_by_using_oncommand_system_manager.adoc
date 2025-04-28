@@ -31,4 +31,4 @@ L'operazione di configurazione del cluster non è supportata nelle configurazion
 
 È possibile configurare il cluster utilizzando un file di modello o inserendo manualmente i valori nella procedura guidata di installazione del cluster.
 
-image::../media/cluster_setup_workflow.gif[workflow di setup del cluster]
+image::../media/cluster_setup_workflow.gif[flusso di lavoro per la configurazione dei cluster con ONTAP system manager]

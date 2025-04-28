@@ -20,7 +20,7 @@ A partire da System Manager 9.6, è possibile modificare le proprietà di un vol
 . *Opzionale:* inserire un nuovo nome per il volume FlexCache nel campo *Volume* sotto *Volume FlexCache*.
 . *Opzionale:* inserire una nuova dimensione per il volume FlexCache nel campo *dimensione* sotto *Volume FlexCache* e selezionare l'unità di misura dal menu a discesa.
 . *Opzionale:* attiva o disattiva la crittografia.
-. *Opzionale:* fare clic image:../media/advanced_options.gif[""] Per modificare le impostazioni avanzate del volume FlexCache. Fare riferimento a. link:task_specifying_advanced_options_for_flexcache_volume.html["Specifica delle opzioni avanzate per un volume FlexCache"].
+. *Opzionale:* fare clic image:../media/advanced_options.gif["icona opzioni avanzate"] per modificare le impostazioni avanzate del volume FlexCache. Fare riferimento alla link:task_specifying_advanced_options_for_flexcache_volume.html["Specifica delle opzioni avanzate per un volume FlexCache"].
 . Fare clic su *Save* (Salva) per salvare le modifiche.
 
 

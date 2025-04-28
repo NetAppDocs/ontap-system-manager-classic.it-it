@@ -17,7 +17,6 @@ Per gestire le subnet, è possibile utilizzare Gestore di sistema ONTAP classic 
 
 == Modificare le impostazioni della subnet
 
-[role="lead"]
 È possibile utilizzare System Manager per modificare gli attributi della subnet, ad esempio il nome, l'indirizzo della subnet, l'intervallo di indirizzi IP e l'indirizzo del gateway della subnet.
 
 .A proposito di questa attività

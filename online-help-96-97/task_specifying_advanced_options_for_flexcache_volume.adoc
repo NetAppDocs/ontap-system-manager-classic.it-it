@@ -14,7 +14,7 @@ summary: A partire da Gestore di sistema 9.6, quando si modifica un volume FlexC
 A partire da Gestore di sistema 9.6, quando si modifica un volume FlexCache, è possibile specificare le opzioni avanzate che si desidera associare al volume FlexCache.
 
 .Fasi
-. *Opzionale:* nella finestra *Modifica volume FlexCache*, fare clic su image:../media/advanced_options.gif[""] per specificare le opzioni avanzate.
+. *Opzionale:* nella finestra *Modifica volume FlexCache*, fare clic su image:../media/advanced_options.gif["icona opzioni avanzate"] per specificare le opzioni avanzate.
 +
 Viene visualizzata la finestra Advanced Options (Opzioni avanzate). Contiene sezioni (le intestazioni nella colonna di sinistra), in cui è possibile specificare varie opzioni.
 

@@ -13,7 +13,7 @@ summary: 'L"impostazione del peering implica la creazione di interfacce logiche 
 [role="lead"]
 È possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per impostare il peering. L'impostazione del peering implica la creazione di interfacce logiche (LIF) tra cluster su ciascun nodo, la creazione del peering dei cluster e la creazione del peering SVM.
 
-image::../media/peering_workflow.gif[workflow di peering]
+image::../media/peering_workflow.gif[flusso di lavoro per il peering]
 
 
 

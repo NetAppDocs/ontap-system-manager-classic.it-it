@@ -29,7 +29,7 @@ Per impostazione predefinita, gli aggregati esistenti vengono utilizzati per rid
 +
 [NOTE]
 ====
-Se si desidera espandere il volume FlexGroup aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif[""] (opzioni avanzate).
+Se si desidera espandere il volume FlexGroup aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif["icona opzioni avanzate"] (opzioni avanzate).
 
 ====
 . Specificare la percentuale della riserva di copia Snapshot.

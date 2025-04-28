@@ -37,7 +37,7 @@ A partire da System Manager 9.6, è possibile rinominare anche i volumi FlexGrou
 Questa opzione è disponibile solo se è stata attivata la licenza Volume Encryption e se la piattaforma corrispondente supporta la crittografia.
 
 . Specificare la percentuale della riserva di copia Snapshot.
-. *Opzionale:* fare clic image:../media/advanced_options.gif[""] Per modificare le impostazioni del volume FlexGroup. Fare riferimento a. link:task_specifying_advanced_options_for_flexgroup_volume.html["Specifica delle opzioni avanzate per un volume FlexGroup"].
+. *Opzionale:* fare clic image:../media/advanced_options.gif["icona opzioni avanzate"] per modificare le impostazioni del volume FlexGroup. Fare riferimento alla link:task_specifying_advanced_options_for_flexgroup_volume.html["Specifica delle opzioni avanzate per un volume FlexGroup"].
 . Specificare le dimensioni in cui si desidera ridimensionare il volume FlexGroup.
 +
 Per impostazione predefinita, gli aggregati esistenti vengono utilizzati per ridimensionare il volume FlexGroup. Le dimensioni minime consentite per il volume vengono visualizzate accanto ai campi delle dimensioni.
@@ -45,7 +45,7 @@ Per impostazione predefinita, gli aggregati esistenti vengono utilizzati per rid
 +
 [NOTE]
 ====
-Se si desidera espandere il volume FlexGroup aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif[""] (opzioni avanzate). Fare riferimento a. link:task_specifying_advanced_options_for_flexgroup_volume.html["Specifica delle opzioni avanzate per un volume FlexGroup"].
+Se si desidera espandere il volume FlexGroup aggiungendo nuove risorse, fare clic su image:../media/advanced_options.gif["icona opzioni avanzate"] (opzioni avanzate). Fare riferimento alla link:task_specifying_advanced_options_for_flexgroup_volume.html["Specifica delle opzioni avanzate per un volume FlexGroup"].
 
 ====
 . Fare clic su *Save* (Salva) per salvare le modifiche.

@@ -178,7 +178,3 @@ Visualizza il nome del pool a cui è assegnato il LUN dell'array selezionato.
 === Area dei dettagli
 
 L'area sotto l'elenco Array LUN (LUN array) visualizza informazioni dettagliate sul LUN dell'array selezionato.
-
-*Informazioni correlate*
-
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Requisiti e riferimenti per l'installazione della virtualizzazione FlexArray"]

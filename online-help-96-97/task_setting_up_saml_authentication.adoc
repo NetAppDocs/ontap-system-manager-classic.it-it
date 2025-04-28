@@ -13,7 +13,7 @@ summary: 'È possibile impostare l"autenticazione SAML (Security Assertion Marku
 [role="lead"]
 È possibile utilizzare Gestione di sistema ONTAP classic (disponibile in ONTAP 9.7 e versioni precedenti) per impostare l'autenticazione SAML (Security Assertion Markup Language). Gli utenti remoti vengono autenticati tramite un provider di identità sicuro (IdP) prima di accedere a System Manager.
 
-image::../media/mfa_workflow.gif[workflow mfa]
+image::../media/mfa_workflow.gif[flusso di lavoro per impostare l'autenticazione saml con il responsabile di sistema]
 
 
 
